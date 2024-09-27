@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/mobile_system.dir/src/main.cpp.o CMakeFiles/mobile_system.dir/src/hello_world.cpp.o -o mobile_system 
