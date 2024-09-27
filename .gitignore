@@ -32,9 +32,9 @@
 *.app
 
 # Build
-/build/*
-!/build/.gitkeep
+cpp/build/*
+!/cpp/build/.gitkeep
 
 # Ignore other CMake-generated files
-/CMakeFiles/
-/CMakeCache.txt
+/cpp/CMakeFiles/
+/cpp/CMakeCache.txt
