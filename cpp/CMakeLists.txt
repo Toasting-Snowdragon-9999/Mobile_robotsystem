@@ -1,34 +1,31 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project name
-project(optimize)
+project(mobile_system)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Find the NLopt package
-find_package(NLopt REQUIRED)
+#find_package(NLopt REQUIRED)
 include_directories(include)
 
 set(SOURCES
-    # src/blended_trajectories.cpp
-    src/blended_trajectories_with_blend.cpp
     src/main.cpp
-    src/correct_values.cpp
+    src/hello_world.cpp
 )
 
 set(HEADERS
-    include/blended_trajectories_with_blend.hpp
-    include/correct_values.hpp
+    include/hello_world.h
 )
 # Include directories
-include_directories(${NLOPT_INCLUDE_DIRS})
+#include_directories(${NLOPT_INCLUDE_DIRS})
 
 # Add executable
 
-add_executable(optimize ${SOURCES} ${HEADERS})
+add_executable(mobile_system ${SOURCES} ${HEADERS})
 
 # Link libraries
-target_link_libraries(optimize ${NLOPT_LIBRARIES})
+target_link_libraries(mobile_system ${NLOPT_LIBRARIES})
 
