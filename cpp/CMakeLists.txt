@@ -27,5 +27,5 @@ set(HEADERS
 add_executable(mobile_system ${SOURCES} ${HEADERS})
 
 # Link libraries
-target_link_libraries(mobile_system ${NLOPT_LIBRARIES})
+# target_link_libraries(mobile_system ${NLOPT_LIBRARIES})
 

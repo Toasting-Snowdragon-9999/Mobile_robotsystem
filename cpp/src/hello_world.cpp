@@ -7,5 +7,6 @@ void HelloWorld::print(){
         throw HelloWorldError("No message");
     }
     std::cout << _hello << std::endl;
+
 }
 
