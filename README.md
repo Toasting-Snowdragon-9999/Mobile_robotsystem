@@ -3,17 +3,16 @@
 
 What is this repository for?
 
-    Blended Trajectories with ramping on linear segments
+    SFML audio
+
 
 How do I get set up?
 
-    Intall nlopt lib: nlopt
+    install SFML on linux using: "sudo apt-get install libsfml-dev"
 
 Contribution guidelines
 
-    Writing tests
-    Code review
-    Other guidelines
+    guidelines for git and code structure found in Docs.
 
 Who do I talk to?
 
