@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/chris/git/Mobile_robotsystem/build",
+  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -I/home/chris/git/Mobile_robotsystem/cpp/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtMultimedia -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -g -fPIC -std=gnu++11 -o CMakeFiles/mobile_system.dir/src/main.cpp.o -c /home/chris/git/Mobile_robotsystem/cpp/src/main.cpp",
+  "file": "/home/chris/git/Mobile_robotsystem/cpp/src/main.cpp"
+},
+{
+  "directory": "/home/chris/git/Mobile_robotsystem/build",
+  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -I/home/chris/git/Mobile_robotsystem/cpp/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtMultimedia -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -g -fPIC -std=gnu++11 -o CMakeFiles/mobile_system.dir/src/hello_world.cpp.o -c /home/chris/git/Mobile_robotsystem/cpp/src/hello_world.cpp",
+  "file": "/home/chris/git/Mobile_robotsystem/cpp/src/hello_world.cpp"
+},
+{
+  "directory": "/home/chris/git/Mobile_robotsystem/build",
+  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -I/home/chris/git/Mobile_robotsystem/cpp/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtMultimedia -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -g -fPIC -std=gnu++11 -o CMakeFiles/mobile_system.dir/src/tester.cpp.o -c /home/chris/git/Mobile_robotsystem/cpp/src/tester.cpp",
+  "file": "/home/chris/git/Mobile_robotsystem/cpp/src/tester.cpp"
+}
+]
