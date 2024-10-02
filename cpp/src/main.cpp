@@ -2,19 +2,30 @@
 #include "hello_world.h"
 #include <QCoreApplication>
 #include <QSoundEffect>
+#include <QMediaPlayer>
+#include <QApplication>
+#include <QUrl>
 
 int main(int argc, char** argv){
 	HelloWorld hw;
 	hw.print();
 
-	QCoreApplication a(argc, argv);
+	QApplication app(argc, argv);
 
-	QSoundEffect dog;
-	dog.setSource(QUrl::fromLocalFile("../tester_sarah/dog.wav"));
-	dog.setLoopCount(1);
-	dog.setVolume(100);
+    QMediaPlayer* player = new QMediaPlayer();
 
-	dog.play()
+    // Set the media file you want to play
+    player->setMedia(QUrl::fromLocalFile("../tester_sarah/dog.wav"));
 
-	return 0;
+    // Start playback
+    player->play();
+
+    // Check if it's playing
+    if (player->state() == QMediaPlayer::PlayingState) {
+        return 1;  // Playback is happening
+    } else {
+        return 0;  // Not playing
+    }
+
+    return app.exec();
 }
