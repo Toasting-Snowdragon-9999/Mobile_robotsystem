@@ -1,9 +1,10 @@
 #include <iostream>
-#include "hello_world.h"
+#include <fstream>
+#include "read_shared_data.h"
 
 int main(){
-	HelloWorld hw;
-	hw.print();
+	SharedData sd;
+	sd.read_shared_data();
+	sd.print();
 	return 0;
-
 }
