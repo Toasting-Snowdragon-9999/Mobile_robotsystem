@@ -14,7 +14,9 @@ int main(int argc, char** argv){
 	dog.setLoopCount(1);
 	dog.setVolume(100);
 
-	dog.play();
+	if(dog.play()){
+		return 1;
+	}
 
 	return 0;
 }
