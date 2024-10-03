@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <fstream>
 #include <sstream>
+#include <stdlib.h>
 
 class SharedData{
     public:
@@ -44,7 +45,7 @@ class SharedData{
         double get_data();
 
     private:
-        double _data;
+        __uint128_t _data;
         std::vector<std::vector<uint16_t>> _path;
 
         /**
@@ -64,4 +65,5 @@ class SharedData{
         std::vector<std::vector<int>> get_path();
         void sort(std::vector<std::vector<uint16_t>>& unsorted);
         void calculate_path();
+        __uint128_t string_to_uint128(const std::string& str);
 };

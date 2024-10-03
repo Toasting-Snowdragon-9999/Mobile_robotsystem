@@ -26,33 +26,45 @@ void SharedData::read_data(){
     if(s.empty()){
         throw SharedDataException("File is empty", 21);
     }
-    _data = std::stod(s);
+    _data = this->string_to_uint128(s);
     std::cout << s << '\n';
 	std::string ss = " ";
 	std::fstream(fname, std::ofstream::out | std::ofstream::trunc) >> ss;
 }
 
+__uint128_t SharedData::string_to_uint128(const std::string& str) {
+    __uint128_t result = 0;
+    for (char c : str) {
+        if (c < '0' || c > '9') {
+            throw std::invalid_argument("Invalid character in string");
+        }
+        result = result * 10 + (c - '0');
+    }
+    return result;
+}
+
 void SharedData::calculate_path(){
     std::vector<uint16_t> bit_chunks;
-    uint64_t copied_data = _data;
+    __uint128_t copied_data = _data;
     while (copied_data > 0){
-        uint16_t chunk = copied_data & 0x0FFF;
+        uint16_t chunk = copied_data & 0xFFF;
         std::cout << chunk << std::endl;
         bit_chunks.push_back(chunk);
         copied_data = copied_data >> 12;
     }
-    std::cout << "we are here " << std::endl;
-    std::cout << bit_chunks.size() << std::endl;
+    // std::cout << bit_chunks.size() << std::endl;
     for(int i = 0; i < bit_chunks.size(); i++){
         uint16_t temp = bit_chunks[i];
         std::vector<uint16_t> temp_vec;
         temp_vec.push_back(temp & 0x000f);
+        std::cout << temp_vec[0] << std::endl;
         temp = temp >> 4;
         temp_vec.push_back(temp & 0x000f);
+        std::cout << temp_vec[1] << std::endl;
         temp = temp >> 4;
         temp_vec.push_back(temp & 0x00f);
+        std::cout << temp_vec[2] << std::endl;
         this->push_to_front(_path, temp_vec);
-        //_path.push_forward(temp_vec);
         temp_vec.clear();
     }
     this->sort(_path);

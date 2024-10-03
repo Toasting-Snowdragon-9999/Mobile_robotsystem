@@ -28,19 +28,19 @@ class SharedData:
         return int(bits, 2)
 
     def int_to_bit(self, value: int) -> str:
-        # Convert to binary and pad to 4 bits
-        return format(value, '04b')  # Format to 4-bit binary string
+        four_bit_format = '04b'
+        return format(value, four_bit_format)
 
     def array_to_bit(self, sequence: list) -> str:
         sequence_string = ""
         for a in sequence:
-            sequence_string += self.int_to_bit(a)  # No need for range(len(sequence))
+            sequence_string += self.int_to_bit(a)
         return sequence_string
 
     def calculate_bit_string(self, sequence: list[list]) -> str:
         sequence_string = ""
         for a in sequence:
-            sequence_string += self.array_to_bit(a)  # No need for range(len(sequence))
+            sequence_string += self.array_to_bit(a)
         return sequence_string
 
 
