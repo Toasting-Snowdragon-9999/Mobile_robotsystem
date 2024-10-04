@@ -1,9 +1,20 @@
 #include <iostream>
-#include "hello_world.h"
+#include <fstream>
+#include "read_shared_data.h"
 
 int main(){
-	HelloWorld hw;
-	hw.print();
-	return 0;
+	SharedData sd;
+	while (1){
+		try{
+			sd.read_shared_data();
+			sd.print();
+		}
+		catch(SharedDataException &e){
+			if (e.error_code() == 21){
 
+			}
+			else{std::cout << "[Error] " << e.what() << std::endl;}
+		}
+	}
+	return 0;
 }

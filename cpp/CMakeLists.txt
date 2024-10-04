@@ -14,10 +14,12 @@ include_directories(include)
 set(SOURCES
     src/main.cpp
     src/hello_world.cpp
+    src/read_shared_data.cpp
 )
 
 set(HEADERS
     include/hello_world.h
+    include/read_shared_data.h
 )
 # Include directories
 #include_directories(${NLOPT_INCLUDE_DIRS})
