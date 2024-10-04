@@ -38,6 +38,8 @@ class SharedData:
         return sequence_string
 
     def calculate_bit_string(self, sequence: list[list]) -> str:
+        if len(sequence) > 10:
+            raise self.SharedDataException("Limit of commands is exceeded")
         sequence_string = ""
         for a in sequence:
             sequence_string += self.array_to_bit(a)

@@ -6,26 +6,28 @@
 #include <fstream>
 #include <sstream>
 #include <stdlib.h>
+class SharedDataException : public std::runtime_error {
+    public:
+        int _error_code;
+
+        SharedDataException(const std::string& message, int error_code = 0): std::runtime_error(message), _error_code(error_code) {}
+        int error_code(){
+            return _error_code;
+        }
+        virtual const char* what() const noexcept override {
+            std::ostringstream oss;
+            oss << std::runtime_error::what(); // Base error message
+            if (_error_code != 0) {
+                oss << " (Error code: " << _error_code << ")";
+            }
+            static std::string full_error;
+            full_error = oss.str(); // Update static variable with new message
+            return full_error.c_str(); // Return pointer to the message
+        }
+};
 
 class SharedData{
     public:
-        class SharedDataException : public std::runtime_error {
-            public:
-                int _error_code;
-
-                SharedDataException(const std::string& message, int error_code = 0): std::runtime_error(message), _error_code(error_code) {}
-
-                virtual const char* what() const noexcept override {
-                    std::ostringstream oss;
-                    oss << std::runtime_error::what(); // Base error message
-                    if (_error_code != 0) {
-                        oss << " (Error code: " << _error_code << ")";
-                    }
-                    static std::string full_error;
-                    full_error = oss.str(); // Update static variable with new message
-                    return full_error.c_str(); // Return pointer to the message
-                }
-            };
 
         SharedData();
         std::vector<std::vector<uint16_t>> read_shared_data();

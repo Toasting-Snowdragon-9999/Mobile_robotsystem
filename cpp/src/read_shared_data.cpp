@@ -20,14 +20,16 @@ void SharedData::print(){
 }
 
 void SharedData::read_data(){
+    _path.clear();
 	const char* fname = "../../Docs/shared_file.txt";
 	std::string s;
     std::fstream(fname, std::ios::in) >> s;
     if(s.empty()){
         throw SharedDataException("File is empty", 21);
     }
+    system("clear");
     _data = this->string_to_uint128(s);
-    std::cout << s << '\n';
+    //std::cout << s << '\n';
 	std::string ss = " ";
 	std::fstream(fname, std::ofstream::out | std::ofstream::trunc) >> ss;
 }
@@ -36,7 +38,7 @@ __uint128_t SharedData::string_to_uint128(const std::string& str) {
     __uint128_t result = 0;
     for (char c : str) {
         if (c < '0' || c > '9') {
-            throw std::invalid_argument("Invalid character in string");
+            throw SharedDataException("Invalid character in string");
         }
         result = result * 10 + (c - '0');
     }
@@ -48,7 +50,7 @@ void SharedData::calculate_path(){
     __uint128_t copied_data = _data;
     while (copied_data > 0){
         uint16_t chunk = copied_data & 0xFFF;
-        std::cout << chunk << std::endl;
+        //std::cout << chunk << std::endl;
         bit_chunks.push_back(chunk);
         copied_data = copied_data >> 12;
     }
@@ -57,13 +59,10 @@ void SharedData::calculate_path(){
         uint16_t temp = bit_chunks[i];
         std::vector<uint16_t> temp_vec;
         temp_vec.push_back(temp & 0x000f);
-        std::cout << temp_vec[0] << std::endl;
         temp = temp >> 4;
         temp_vec.push_back(temp & 0x000f);
-        std::cout << temp_vec[1] << std::endl;
         temp = temp >> 4;
         temp_vec.push_back(temp & 0x00f);
-        std::cout << temp_vec[2] << std::endl;
         this->push_to_front(_path, temp_vec);
         temp_vec.clear();
     }
