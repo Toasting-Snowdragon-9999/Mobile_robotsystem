@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/mobile_system.dir/src/main.cpp.o CMakeFiles/mobile_system.dir/src/hello_world.cpp.o CMakeFiles/mobile_system.dir/src/tester.cpp.o -o mobile_system  /usr/lib/x86_64-linux-gnu/libQt5Multimedia.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Network.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.3 
