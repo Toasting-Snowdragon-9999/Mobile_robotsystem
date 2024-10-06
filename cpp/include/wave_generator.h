@@ -5,6 +5,17 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
+#include <sndfile.h> 
+
+/*
+
+sudo apt install libsndfile-dev
+
+sudo apt install autoconf autogen automake build-essential libasound2-dev \
+  libflac-dev libogg-dev libtool libvorbis-dev libopus-dev libmp3lame-dev \
+  libmpg123-dev pkg-config
+
+*/
 
 class WaveGenerator {
 
@@ -40,9 +51,9 @@ public:
 
     WaveGenerator();
     WaveGenerator(std::vector<std::vector<int>> sequence);
-
+    void save_to_wav_file(const std::string& filename);
     void play_sounds();
-
+ 
 };
 
 #endif

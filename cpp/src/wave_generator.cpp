@@ -1,5 +1,9 @@
 #include "wave_generator.h"
 
+WaveGenerator::WaveGenerator(){
+
+}
+
 WaveGenerator::WaveGenerator(std::vector<std::vector<int>> sequence): _sequence(sequence){
     _frequency_combinations_DTMF.push_back({0,0});
     for(int i = 0; i < _low_frequencies.size(); i++){
@@ -116,4 +120,16 @@ void WaveGenerator::print_frequency_vector(){
         std::cout << "\n";
     }
 
+}
+
+void WaveGenerator::save_to_wav_file(const std::string& filename){
+    std::vector<sf::Int16> combined_samples;
+    for (const auto& samples : _all_samples) {
+        combined_samples.insert(combined_samples.end(), samples.begin(), samples.end());
+    }
+    SF_INFO sfinfo;
+    sfinfo.channels = 1;  // Mono (you can change to 2 for stereo if needed)
+    sfinfo.samplerate = _sample_rate;
+    sfinfo.format = SF_FORMAT_WAV | SF_FORMAT_PCM_16;
+    
 }

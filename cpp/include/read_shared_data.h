@@ -1,3 +1,6 @@
+#ifndef READ_SHARED_DATA_H
+#define READ_SHARED_DATA_H
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -6,6 +9,8 @@
 #include <fstream>
 #include <sstream>
 #include <stdlib.h>
+
+
 class SharedDataException : public std::runtime_error {
     public:
         int _error_code;
@@ -20,6 +25,7 @@ class SharedDataException : public std::runtime_error {
             if (_error_code != 0) {
                 oss << " (Error code: " << _error_code << ")";
             }
+            
             static std::string full_error;
             full_error = oss.str(); // Update static variable with new message
             return full_error.c_str(); // Return pointer to the message
@@ -69,3 +75,5 @@ class SharedData{
         void calculate_path();
         __uint128_t string_to_uint128(const std::string& str);
 };
+
+#endif
