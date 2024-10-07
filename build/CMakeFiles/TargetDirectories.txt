@@ -1,3 +1,0 @@
-/home/chris/git/Mobile_robotsystem/build/CMakeFiles/mobile_system.dir
-/home/chris/git/Mobile_robotsystem/build/CMakeFiles/edit_cache.dir
-/home/chris/git/Mobile_robotsystem/build/CMakeFiles/rebuild_cache.dir
