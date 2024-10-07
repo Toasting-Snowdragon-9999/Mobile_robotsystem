@@ -15,7 +15,7 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(SNDFILE REQUIRED sndfile)
 
 set(SOURCES
-    src/main.cpp 
+    src/main.cpp
     src/hello_world.cpp
     src/read_shared_data.cpp
     src/wave_generator.cpp
@@ -35,7 +35,7 @@ add_executable(mobile_system ${SOURCES} ${HEADERS})
 
 # Link libraries
 # target_link_libraries(mobile_system ${NLOPT_LIBRARIES})
-target_link_libraries(mobile_system 
-    PRIVATE sfml-audio sfml-system 
+target_link_libraries(mobile_system
+    PRIVATE sfml-audio sfml-system
     ${SNDFILE_LIBRARIES}
 )
