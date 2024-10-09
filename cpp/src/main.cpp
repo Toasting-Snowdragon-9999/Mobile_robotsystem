@@ -30,5 +30,6 @@ int main(){
 		}
 	}
 	//py to cpp ended
+
 	return 0;
 }
