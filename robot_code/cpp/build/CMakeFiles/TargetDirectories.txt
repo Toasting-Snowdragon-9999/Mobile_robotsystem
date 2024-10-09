@@ -1,3 +1,0 @@
-/home/sarah/git/Mobile_robotsystem/robot_code/cpp/build/CMakeFiles/robot_code.dir
-/home/sarah/git/Mobile_robotsystem/robot_code/cpp/build/CMakeFiles/edit_cache.dir
-/home/sarah/git/Mobile_robotsystem/robot_code/cpp/build/CMakeFiles/rebuild_cache.dir
