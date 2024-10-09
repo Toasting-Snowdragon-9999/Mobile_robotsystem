@@ -9,7 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdlib.h>
-
+#include <cstdint>
 
 class SharedDataException : public std::runtime_error {
     public:

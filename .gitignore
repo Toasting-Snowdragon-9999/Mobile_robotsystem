@@ -38,6 +38,15 @@
 /cpp/build/*
 !/cpp/build/.gitkeep
 
+/build/*
+!/build/.gitkeep
+
+/robot_code/cpp/build/*
+!/robot_code/cpp/build/.gitkeep
+
 # Ignore other CMake-generated files
 /cpp/CMakeFiles/
 /cpp/CMakeCache.txt
+
+# Shared files
+/Docs/Shared_file.txt

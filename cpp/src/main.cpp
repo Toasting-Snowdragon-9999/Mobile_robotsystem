@@ -12,7 +12,6 @@ int main(){
 	}
 	catch(SharedDataException &e){
 		if (e.error_code() == 21){
-
 		}
 		else{std::cout << "[Error] " << e.what() << std::endl;}
 	}
