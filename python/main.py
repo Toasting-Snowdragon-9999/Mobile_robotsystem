@@ -34,13 +34,6 @@ def main():
         [11, 8, 5],
         [14, 7, 7],
         [11, 9, 9],
-        [13, 6, 9],
-        [11, 1, 0],
-        [14, 3, 0],
-        [11, 0, 2],
-        [13, 9, 1],
-        [11, 2, 3],
-        [14, 8, 3]
     ]
     shared_data = SharedData()
     bits = shared_data.calculate_bit_string(data)
