@@ -22,4 +22,14 @@ void Algorithms<T>::print(){
     std::cout << _data[0] << std::endl;
 }
 
+template <typename T>
+void Algorithms<T>::FFT(){
+    std::cout << _data[0] << std::endl;
+}
+
+template <typename T>
+void Algorithms<T>::goertzel(){
+    std::cout << _data[0] << std::endl;
+}
+
 }

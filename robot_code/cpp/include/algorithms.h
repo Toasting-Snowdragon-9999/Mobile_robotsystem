@@ -16,6 +16,8 @@ public:
     Algorithms(T data);
     Algorithms(std::vector<T> data);
     void print();
+    void FFT();
+    void goertzel();
 
 };
 
