@@ -14,6 +14,36 @@ class SharedData:
     def __init__(self) -> None:
         pass
 
+    def compute_bin(self, sequence):
+        bin_dict = {
+            1: 0b0001,
+            2: 0b0010,
+            3: 0b0011,
+            4: 0b0100,
+            5: 0b0101,
+            6: 0b0110,
+            7: 0b0111,
+            8: 0b1000,
+            9: 0b1001,
+            10: 0b1010,
+            11: 0b1011,
+            12: 0b1100,
+            13: 0b1101,
+            14: 0b1110,
+            15: 0b1111,
+            16: 0b0000,
+        }
+
+        complete_bin = 0
+
+        for inner_list in sequence:
+            mapped_inner_list = [bin_dict[number] for number in inner_list if number in bin_dict]
+            for value in mapped_inner_list:
+                complete_bin = (complete_bin << 4) | value  # Shift and concatenate
+        print(f"Concatenated binary result: {bin(complete_bin)}")  # Print the binary result
+        print(type(complete_bin))
+        return complete_bin
+
     def save_to_file(self, value: int) -> None:
         if os.path.exists("Docs") == False:
             raise self.SharedDataException("File not found", 10)

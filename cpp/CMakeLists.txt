@@ -19,12 +19,14 @@ set(SOURCES
     src/hello_world.cpp
     src/read_shared_data.cpp
     src/wave_generator.cpp
+    src/socket_connection.cpp
 )
 
 set(HEADERS
     include/hello_world.h
     include/read_shared_data.h
     include/wave_generator.h
+    include/socket_connection.h
 )
 # Include directories
 #include_directories(${NLOPT_INCLUDE_DIRS})
@@ -38,4 +40,6 @@ add_executable(mobile_system ${SOURCES} ${HEADERS})
 target_link_libraries(mobile_system
     PRIVATE sfml-audio sfml-system
     ${SNDFILE_LIBRARIES}
+    pthread  # Link pthread for socket programming (if needed)
+
 )

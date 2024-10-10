@@ -1,4 +1,5 @@
 #include "read_shared_data.h"
+#include "socket_connection.h"
 
 SharedData::SharedData(){}
 
@@ -19,7 +20,67 @@ void SharedData::print(){
     }
 }
 
+void SharedData::print_bin(int num, int size) {
+    switch (size) {
+        case 4: {
+            std::bitset<4> binary(num & 0b1111); // Mask to limit to 4 bits
+            std::cout << binary << std::endl;
+            break;
+        }
+        case 8: {
+            std::bitset<8> binary(num & 0b11111111); // Mask to limit to 8 bits
+            std::cout << binary << std::endl;
+            break;
+        }
+        case 16: {
+            std::bitset<16> binary(num & 0b1111111111111111); // Mask to limit to 16 bits
+            std::cout << binary << std::endl;
+            break;
+        }
+        case 32: {
+            std::bitset<32> binary(num & 0xFFFFFFFF); // Mask to limit to 32 bits
+            std::cout << binary << std::endl;
+            break;
+        }
+        default:
+            std::cout << "Invalid size" << std::endl;
+            break;
+    }
+}
+
 void SharedData::read_data(){
+    char exspected_start = 0b11111110;
+    char exspected_stop = 0b11111101;
+    char data[1024];
+    int port = 62908;
+    SocketConnection socket;
+    if (socket.connect(port)){
+        throw SharedDataException("Socket connection failed", 81);
+    }
+    ReadResult received = socket.read();  // Use a pointer to receive data
+    std::copy(received.data, received.data + received.length, data); // Copy the actual received data
+    int end_of_data = 0;
+    std::cout << "Recieved length: " << received.length << std::endl;
+    print_bin(data[0]);
+    if (data[0] == exspected_start){
+        for(int i = 1; i <= received.length; i++){
+            if(data[i] == exspected_stop){
+                std::cout << "Stop bit found at: " << i << std::endl;
+                end_of_data = i;
+                break;
+            }
+        }
+    }
+    else{
+        if(data[received.length-1] == exspected_start){
+            std::cout << "It is backwards" << std::endl;
+        }
+        std::cout << "Start byte was not the first byte" << std::endl;
+    }
+
+}
+
+void SharedData::read_data_file(){
     _path.clear();
 	const char* fname = "../../Docs/shared_file.txt";
 	std::string s;

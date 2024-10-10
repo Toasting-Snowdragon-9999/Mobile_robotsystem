@@ -1,5 +1,6 @@
 import os
 from packages.share_data import SharedData
+from packages.socket_connection import SocketConnect
 
 def path():
     try:
@@ -27,28 +28,24 @@ def path():
         return
 
 def main(): 
-    
     path()
     print(os.getcwd())
     data = [
-        [11, 8, 5],
-        [14, 7, 7],
-        [11, 9, 9],
+        [11, 8, 5]
+
     ]
     shared_data = SharedData()
-    bits = shared_data.calculate_bit_string(data)
-    value = shared_data.bits_to_int(bits)
-    print (f"Value: {value}")
+    socket = SocketConnect()
+    bits = shared_data.compute_bin(data)
+    socket.add_validation(bits)
     try:
-        shared_data.save_to_file(value)
-        bits2 = shared_data.int_to_bit(value)
-        value2 = shared_data.bits_to_int(bits2)
-        if bits2 == bits and value == value2:
-            print("success")
-        else:
-            print("failure")
+        socket.connect()
+        socket.send_data(bits)
     except SharedData.SharedDataException as e:
         print(f"Error: {e}")
+    socket.disconnect()
+
 
 if __name__ == '__main__':
     main()
+

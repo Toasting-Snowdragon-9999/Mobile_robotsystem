@@ -8,6 +8,7 @@ What is this repository for?
     libsndfile
 
 
+
 How do I get set up?
 
     install SFML on linux using: "sudo apt-get install libsfml-dev"
@@ -15,6 +16,8 @@ How do I get set up?
     if it doesnt work use: "sudo apt install autoconf autogen automake build-essential libasound2-dev \
                             libflac-dev libogg-dev libtool libvorbis-dev libopus-dev libmp3lame-dev \
                             libmpg123-dev pkg-config "
+    install websocket for socket connnection "sudo apt install libboost-all-dev"
+
 
 Contribution guidelines
 

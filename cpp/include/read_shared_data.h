@@ -9,7 +9,9 @@
 #include <fstream>
 #include <sstream>
 #include <stdlib.h>
+#include <bitset>
 #include <cstdint>
+
 
 class SharedDataException : public std::runtime_error {
     public:
@@ -58,10 +60,6 @@ class SharedData{
          */
         std::vector<std::vector<uint16_t>> get_data();
 
-    private:
-        __uint128_t _data;
-        std::vector<std::vector<uint16_t>> _path;
-
         /**
          * @brief Read data method, used for reading the data from a shared files.
          *
@@ -69,6 +67,11 @@ class SharedData{
          * @return Nothing.
          */
         void read_data();
+        void print_bin(int num, int size = 8);
+
+    private:
+        __uint128_t _data;
+        std::vector<std::vector<uint16_t>> _path;
         /**
          * @brief Read data method, used for reading the data from a shared files.
          *
@@ -76,6 +79,7 @@ class SharedData{
          * @param value a list on the form std::vector<uint16_t> that should be the first element in the vec.
          * @return Nothing.
          */
+        void read_data_file();
         void push_to_front(std::vector<std::vector<uint16_t>>& vec, std::vector<uint16_t> value);
         /**
          * @brief returning the an array of the full path.
