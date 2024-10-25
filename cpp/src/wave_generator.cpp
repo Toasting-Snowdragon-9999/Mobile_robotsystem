@@ -129,10 +129,8 @@ void WaveGenerator::save_to_wav_file(const std::string& filename){
 
     // Combine all the samples with silence in between
     for (size_t i = 0; i < _all_samples.size(); ++i) {
-        // Append the current sound samples
         combined_samples.insert(combined_samples.end(), _all_samples[i].begin(), _all_samples[i].end());
 
-        // Add silence after each sound, except for the last one
         if (i != _all_samples.size() - 1) {
             combined_samples.insert(combined_samples.end(), silence.begin(), silence.end());
         }

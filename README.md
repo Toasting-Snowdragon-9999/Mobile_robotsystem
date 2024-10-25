@@ -4,7 +4,7 @@
 What is this repository for?
 
     SFML audio
-
+    PortAudio
     libsndfile
 
 
@@ -15,6 +15,20 @@ How do I get set up?
     if it doesnt work use: "sudo apt install autoconf autogen automake build-essential libasound2-dev \
                             libflac-dev libogg-dev libtool libvorbis-dev libopus-dev libmp3lame-dev \
                             libmpg123-dev pkg-config "
+
+
+    PortAudio: (might not work in WSL)
+        install follow these steps: 
+        "sudo apt update
+        sudo apt install build-essential libasound2-dev libjack-jackd2-dev"
+        "git clone https://github.com/PortAudio/portaudio.git
+        cd portaudio"
+        "./configure && make"       # Need make for this "sudo make install"
+        "cd bin
+        ./pa_devs
+        ./pa_minlat"
+        
+
 
 Contribution guidelines
 
