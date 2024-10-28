@@ -3,6 +3,8 @@
 #include "read_shared_data.h"
 #include "wave_generator.h"
 
+
+
 int main(){
 	SharedData sd;
 
@@ -11,9 +13,19 @@ int main(){
     std::vector<std::vector<int>> sequence2 = {{2,7,4},{16,1,2},{14,8,6},{1,3,9},{15,3,4},{9,16,1}};
     std::vector<std::vector<int>> sequence3 = {{16,16,16},{1,1,1},{16,16,16},{1,1,1},{16,16,16}};
     std::vector<std::vector<int>> sequence4 = {{11,8,10}};
+	std::vector<std::vector<int>> testSequence1 = {{1,1,1}};
+	std::vector <std::vector<int>> preambleSeq = {{10,10,15}};
 
-	WaveGenerator sounds(sequence4);
-	sounds.play_sounds();
+
+	// WaveGenerator sounds(testSequence1);
+	// sounds.play_sounds();
+
+	WaveGenerator preamble(sequence1);
+	preamble.play_sounds();
+
+
+
+
 	//lyde ended
 
 	//py to cpp
@@ -31,5 +43,13 @@ int main(){
 	}
 	//py to cpp ended
 
+
+
+
+
+
 	return 0;
+
+
+
 }
