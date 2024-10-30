@@ -7,7 +7,7 @@
 #include <cstring>
 #include <portaudio.h>
 
-#define NUM_SECONDS (5)
+#define NUM_SECONDS (2)
 #define NUM_CHANNELS (1)
 #define SAMPLE_TYPE paFloat32
 
@@ -26,6 +26,8 @@ public:
     void save_to_wav(const std::string &fileName);
     void audio_open();
     void audio_close();
+    void save_to_textfile(const std::string &fileName);
+    void read_from_file(const std::string &fileName);
 
 private:
     int _sample_rate;

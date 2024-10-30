@@ -144,9 +144,31 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
     for( i = 0; i < frames_per_buffer; i++ ){
         float mono_in = *in++;  /* Mono channel input */
-        std::cout << "Mono Input: " << mono_in << std::endl;
+        //std::cout << "Mono Input: " << mono_in << std::endl;
 		data->recorded_samples.push_back(mono_in);
     }
 
     return paContinue;
+}
+
+void AudioInput::save_to_textfile(const std::string &fileName){
+    std::ofstream outFile(fileName);
+
+    for (auto &sample : _mic_data.recorded_samples) {
+        outFile << sample << "\n";
+    }
+
+    outFile.close();
+
+}
+
+void AudioInput::read_from_file(const std::string &fileName){
+    std::ifstream inFile(fileName);
+    std::string line;
+
+    while (std::getline(inFile, line)) {
+        printf("%s\n", line.c_str());
+    }
+
+    inFile.close();
 }
