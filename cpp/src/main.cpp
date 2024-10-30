@@ -5,7 +5,15 @@
 #include <bitset>
 #include <algorithm>
 
-// Binary conversion for CRC-check
+using std::string;
+
+
+/**
+ * @brief Binary conversion for CRC-check
+ *
+ * @param decimalSequence The original tone sequence in decimal, divided in vectors of vectors
+ * @return The sequence in a long binary string
+ */
 std::string decimalSeqToBinaryMsg(std::vector<std::vector<int>> decimalSequence)
 {
 	int binaryConvertedTone = 0;
@@ -53,6 +61,15 @@ std::string decimalSeqToBinaryMsg(std::vector<std::vector<int>> decimalSequence)
 
 	return binaryConvertedToneStr;
 }
+
+
+/// @brief Encode binary data sequence with CRC4-Codeword
+/// @param uncodedBinarySequence
+/// @return Binary sequence with CRC4-Codeword appended
+std::string CRCencode (string uncodedBinarySequence){
+
+}
+
 
 int main()
 {
