@@ -1,0 +1,153 @@
+[0.000000] (-) TimerEvent: {}
+[0.000488] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.000514] (-) JobUnselected: {'identifier': 'cpp_srvcli'}
+[0.000631] (turtlebot3_control) JobQueued: {'identifier': 'turtlebot3_control', 'dependencies': OrderedDict()}
+[0.000675] (turtlebot3_control) JobStarted: {'identifier': 'turtlebot3_control'}
+[0.008040] (turtlebot3_control) JobProgress: {'identifier': 'turtlebot3_control', 'progress': 'cmake'}
+[0.008481] (turtlebot3_control) Command: {'cmd': ['/usr/bin/cmake', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/turtlebot3_control', '-DCMAKE_INSTALL_PREFIX=/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control'], 'cwd': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'chris'), ('LC_TIME', 'de_DE.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/chris'), ('OLDPWD', '/home/chris/git/Mobile_robotsystem/robot_code/cpp'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'de_DE.UTF-8'), ('SYSTEMD_EXEC_PID', '2337'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/cpp_pubsub/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'chris'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'chris'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('PATH', '/opt/ros/humble/bin:/home/chris/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/UbuntuBeast:@/tmp/.ICE-unix/2316,unix/UbuntuBeast:/tmp/.ICE-unix/2316'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'de_DE.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/d8b04046_14e9_409b_96e8_6495b2979657'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'de_DE.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.FVW8V2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.178'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'de_DE.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'de_DE.UTF-8'), ('LC_IDENTIFICATION', 'de_DE.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'de_DE.UTF-8'), ('LC_PAPER', 'de_DE.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/turtlebot3_simulations:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/turtlebot3_gazebo:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/turtlebot3_fake_node')]), 'shell': False}
+[0.092520] (turtlebot3_control) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.099561] (-) TimerEvent: {}
+[0.172516] (turtlebot3_control) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.183056] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.199918] (-) TimerEvent: {}
+[0.289144] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.296075] (turtlebot3_control) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.296507] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.297167] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.299860] (-) TimerEvent: {}
+[0.300394] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.399984] (-) TimerEvent: {}
+[0.431191] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.441382] (turtlebot3_control) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.441717] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.442266] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.447493] (turtlebot3_control) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.500106] (-) TimerEvent: {}
+[0.600454] (-) TimerEvent: {}
+[0.649778] (turtlebot3_control) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.700553] (-) TimerEvent: {}
+[0.766463] (turtlebot3_control) StdoutLine: {'line': b'-- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.800655] (-) TimerEvent: {}
+[0.829521] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.837406] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.848616] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.863520] (turtlebot3_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.884387] (turtlebot3_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.900765] (-) TimerEvent: {}
+[0.945391] (turtlebot3_control) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.949559] (turtlebot3_control) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.000914] (-) TimerEvent: {}
+[1.098932] (turtlebot3_control) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[1.100983] (-) TimerEvent: {}
+[1.146312] (turtlebot3_control) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[1.201172] (-) TimerEvent: {}
+[1.216154] (turtlebot3_control) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.229550] (turtlebot3_control) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.301357] (-) TimerEvent: {}
+[1.344980] (turtlebot3_control) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.345497] (turtlebot3_control) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.401489] (-) TimerEvent: {}
+[1.472265] (turtlebot3_control) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[1.473804] (turtlebot3_control) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.501592] (-) TimerEvent: {}
+[1.534274] (turtlebot3_control) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[1.548639] (turtlebot3_control) StdoutLine: {'line': b'-- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[1.566942] (turtlebot3_control) StdoutLine: {'line': b'-- Found tf2: 0.25.8 (/opt/ros/humble/share/tf2/cmake)\n'}
+[1.584292] (turtlebot3_control) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.25.8 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)\n'}
+[1.601680] (-) TimerEvent: {}
+[1.608809] (turtlebot3_control) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[1.610084] (turtlebot3_control) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[1.610192] (turtlebot3_control) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.701806] (-) TimerEvent: {}
+[1.713860] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[1.801930] (-) TimerEvent: {}
+[1.804376] (turtlebot3_control) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.827727] (turtlebot3_control) StdoutLine: {'line': b'-- Generating done\n'}
+[1.831683] (turtlebot3_control) StdoutLine: {'line': b'-- Build files have been written to: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control\n'}
+[1.848300] (turtlebot3_control) CommandEnded: {'returncode': 0}
+[1.849255] (turtlebot3_control) JobProgress: {'identifier': 'turtlebot3_control', 'progress': 'build'}
+[1.850009] (turtlebot3_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control', '--', '-j16', '-l16'], 'cwd': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'chris'), ('LC_TIME', 'de_DE.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/chris'), ('OLDPWD', '/home/chris/git/Mobile_robotsystem/robot_code/cpp'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'de_DE.UTF-8'), ('SYSTEMD_EXEC_PID', '2337'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/cpp_pubsub/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'chris'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'chris'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('PATH', '/opt/ros/humble/bin:/home/chris/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/UbuntuBeast:@/tmp/.ICE-unix/2316,unix/UbuntuBeast:/tmp/.ICE-unix/2316'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'de_DE.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/d8b04046_14e9_409b_96e8_6495b2979657'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'de_DE.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.FVW8V2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.178'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'de_DE.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'de_DE.UTF-8'), ('LC_IDENTIFICATION', 'de_DE.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'de_DE.UTF-8'), ('LC_PAPER', 'de_DE.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/turtlebot3_simulations:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/turtlebot3_gazebo:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/turtlebot3_fake_node')]), 'shell': False}
+[1.902090] (-) TimerEvent: {}
+[1.937382] (turtlebot3_control) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o\x1b[0m\n'}
+[1.937688] (turtlebot3_control) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o\x1b[0m\n'}
+[2.002221] (-) TimerEvent: {}
+[2.102582] (-) TimerEvent: {}
+[2.202968] (-) TimerEvent: {}
+[2.303429] (-) TimerEvent: {}
+[2.403939] (-) TimerEvent: {}
+[2.504301] (-) TimerEvent: {}
+[2.604770] (-) TimerEvent: {}
+[2.705239] (-) TimerEvent: {}
+[2.805630] (-) TimerEvent: {}
+[2.906066] (-) TimerEvent: {}
+[3.006581] (-) TimerEvent: {}
+[3.107032] (-) TimerEvent: {}
+[3.207441] (-) TimerEvent: {}
+[3.307871] (-) TimerEvent: {}
+[3.408318] (-) TimerEvent: {}
+[3.508699] (-) TimerEvent: {}
+[3.609193] (-) TimerEvent: {}
+[3.709706] (-) TimerEvent: {}
+[3.810231] (-) TimerEvent: {}
+[3.910678] (-) TimerEvent: {}
+[4.011074] (-) TimerEvent: {}
+[4.111568] (-) TimerEvent: {}
+[4.211923] (-) TimerEvent: {}
+[4.312287] (-) TimerEvent: {}
+[4.412788] (-) TimerEvent: {}
+[4.513266] (-) TimerEvent: {}
+[4.613676] (-) TimerEvent: {}
+[4.714103] (-) TimerEvent: {}
+[4.814582] (-) TimerEvent: {}
+[4.915035] (-) TimerEvent: {}
+[5.015424] (-) TimerEvent: {}
+[5.115847] (-) TimerEvent: {}
+[5.216274] (-) TimerEvent: {}
+[5.316606] (-) TimerEvent: {}
+[5.417040] (-) TimerEvent: {}
+[5.517461] (-) TimerEvent: {}
+[5.617946] (-) TimerEvent: {}
+[5.718358] (-) TimerEvent: {}
+[5.818820] (-) TimerEvent: {}
+[5.919272] (-) TimerEvent: {}
+[6.019638] (-) TimerEvent: {}
+[6.120143] (-) TimerEvent: {}
+[6.220747] (-) TimerEvent: {}
+[6.321257] (-) TimerEvent: {}
+[6.421712] (-) TimerEvent: {}
+[6.522156] (-) TimerEvent: {}
+[6.622597] (-) TimerEvent: {}
+[6.723097] (-) TimerEvent: {}
+[6.823545] (-) TimerEvent: {}
+[6.924017] (-) TimerEvent: {}
+[7.024163] (turtlebot3_control) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable move_turtlebot\x1b[0m\n'}
+[7.024397] (-) TimerEvent: {}
+[7.124635] (-) TimerEvent: {}
+[7.224985] (-) TimerEvent: {}
+[7.290626] (turtlebot3_control) StdoutLine: {'line': b'[100%] Built target move_turtlebot\n'}
+[7.320255] (turtlebot3_control) CommandEnded: {'returncode': 0}
+[7.325131] (-) TimerEvent: {}
+[7.377177] (turtlebot3_control) JobProgress: {'identifier': 'turtlebot3_control', 'progress': 'install'}
+[7.393064] (turtlebot3_control) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control'], 'cwd': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'chris'), ('LC_TIME', 'de_DE.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/chris'), ('OLDPWD', '/home/chris/git/Mobile_robotsystem/robot_code/cpp'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'de_DE.UTF-8'), ('SYSTEMD_EXEC_PID', '2337'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/cpp_pubsub/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'chris'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'chris'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('PATH', '/opt/ros/humble/bin:/home/chris/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/UbuntuBeast:@/tmp/.ICE-unix/2316,unix/UbuntuBeast:/tmp/.ICE-unix/2316'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'de_DE.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/d8b04046_14e9_409b_96e8_6495b2979657'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'de_DE.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.FVW8V2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.178'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'de_DE.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'de_DE.UTF-8'), ('LC_IDENTIFICATION', 'de_DE.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'de_DE.UTF-8'), ('LC_PAPER', 'de_DE.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/turtlebot3_simulations:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/turtlebot3_gazebo:/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/turtlebot3_fake_node')]), 'shell': False}
+[7.408261] (turtlebot3_control) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[7.408686] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot\n'}
+[7.411884] (turtlebot3_control) StdoutLine: {'line': b'-- Set runtime path of "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot" to ""\n'}
+[7.412228] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/package_run_dependencies/turtlebot3_control\n'}
+[7.412469] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/parent_prefix_path/turtlebot3_control\n'}
+[7.412843] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.sh\n'}
+[7.413127] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.dsv\n'}
+[7.413415] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.sh\n'}
+[7.413667] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.dsv\n'}
+[7.413935] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.bash\n'}
+[7.414216] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.sh\n'}
+[7.414552] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.zsh\n'}
+[7.414795] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.dsv\n'}
+[7.415067] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.dsv\n'}
+[7.415454] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/packages/turtlebot3_control\n'}
+[7.415810] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig.cmake\n'}
+[7.416068] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig-version.cmake\n'}
+[7.416348] (turtlebot3_control) StdoutLine: {'line': b'-- Installing: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.xml\n'}
+[7.419648] (turtlebot3_control) CommandEnded: {'returncode': 0}
+[7.425253] (-) TimerEvent: {}
+[7.430109] (turtlebot3_control) JobEnded: {'identifier': 'turtlebot3_control', 'rc': 0}
+[7.430901] (-) EventReactorShutdown: {}

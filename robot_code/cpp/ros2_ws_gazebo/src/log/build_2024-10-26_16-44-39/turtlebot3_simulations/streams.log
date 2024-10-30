@@ -1,0 +1,18 @@
+[0.012s] Invoking command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_simulations': /usr/bin/cmake /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_simulations -DCMAKE_INSTALL_PREFIX=/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/turtlebot3_simulations
+[0.081s] -- The C compiler identification is GNU 11.4.0
+[0.154s] -- The CXX compiler identification is GNU 11.4.0
+[0.163s] -- Detecting C compiler ABI info
+[0.250s] -- Detecting C compiler ABI info - done
+[0.256s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.256s] -- Detecting C compile features
+[0.257s] -- Detecting C compile features - done
+[0.260s] -- Detecting CXX compiler ABI info
+[0.365s] -- Detecting CXX compiler ABI info - done
+[0.371s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.372s] -- Detecting CXX compile features
+[0.372s] -- Detecting CXX compile features - done
+[0.375s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.537s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.693s] -- Configuring done
+[0.698s] -- Generating done
+[0.699s] -- Build files have been written to: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_simulations

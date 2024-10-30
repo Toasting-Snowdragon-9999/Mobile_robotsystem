@@ -1,0 +1,1 @@
+Invoking command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_simulations': /usr/bin/cmake /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_simulations -DCMAKE_INSTALL_PREFIX=/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/turtlebot3_simulations

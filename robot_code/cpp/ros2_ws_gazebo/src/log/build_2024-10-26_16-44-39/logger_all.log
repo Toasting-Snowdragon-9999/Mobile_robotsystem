@@ -1,0 +1,136 @@
+[0.079s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.079s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7f8d675bea70>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f8d675be560>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f8d675be560>>, mixin_verb=('build',))
+[0.188s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.188s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.188s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.188s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.188s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.188s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.188s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extensions ['ignore']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extension 'ignore'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extensions ['colcon_pkg']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extension 'colcon_pkg'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extensions ['colcon_meta']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extension 'colcon_meta'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extensions ['cmake', 'python']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extension 'cmake'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extension 'python'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extensions ['python_setup_py']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations) by extension 'python_setup_py'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_fake_node) by extensions ['ignore']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_fake_node) by extension 'ignore'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_fake_node) by extensions ['colcon_pkg']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_fake_node) by extension 'colcon_pkg'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_fake_node) by extensions ['colcon_meta']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_fake_node) by extension 'colcon_meta'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_fake_node) by extensions ['cmake', 'python']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_fake_node) by extension 'cmake'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_fake_node) by extension 'python'
+[0.191s] DEBUG:colcon.colcon_core.package_identification:Package 'turtlebot3_simulations/turtlebot3_fake_node' with type 'cmake' and name 'turtlebot3_fake_node'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_gazebo) by extensions ['ignore']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_gazebo) by extension 'ignore'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_gazebo) by extensions ['colcon_pkg']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_gazebo) by extension 'colcon_pkg'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_gazebo) by extensions ['colcon_meta']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_gazebo) by extension 'colcon_meta'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_gazebo) by extensions ['cmake', 'python']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_gazebo) by extension 'cmake'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_gazebo) by extension 'python'
+[0.192s] DEBUG:colcon.colcon_core.package_identification:Package 'turtlebot3_simulations/turtlebot3_gazebo' with type 'cmake' and name 'turtlebot3_gazebo'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_simulations) by extensions ['ignore']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_simulations) by extension 'ignore'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_simulations) by extensions ['colcon_pkg']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_simulations) by extension 'colcon_pkg'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_simulations) by extensions ['colcon_meta']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_simulations) by extension 'colcon_meta'
+[0.193s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_simulations) by extensions ['cmake', 'python']
+[0.193s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_simulations) by extension 'cmake'
+[0.193s] Level 1:colcon.colcon_core.package_identification:_identify(turtlebot3_simulations/turtlebot3_simulations) by extension 'python'
+[0.193s] DEBUG:colcon.colcon_core.package_identification:Package 'turtlebot3_simulations/turtlebot3_simulations' with type 'cmake' and name 'turtlebot3_simulations'
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.193s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.208s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 3 installed packages in /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install
+[0.208s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install
+[0.208s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/cpp_pubsub/src/install
+[0.208s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.209s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_fake_node' build argument 'cmake_args' from command line to 'None'
+[0.209s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_fake_node' build argument 'cmake_target' from command line to 'None'
+[0.209s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_fake_node' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.209s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_fake_node' build argument 'cmake_clean_cache' from command line to 'False'
+[0.209s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_fake_node' build argument 'cmake_clean_first' from command line to 'False'
+[0.209s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_fake_node' build argument 'cmake_force_configure' from command line to 'False'
+[0.209s] DEBUG:colcon.colcon_core.verb:Building package 'turtlebot3_fake_node' with the following arguments: {'build_base': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_fake_node', 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/turtlebot3_fake_node', 'merge_install': False, 'path': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_fake_node', 'symlink_install': True, 'test_result_base': None}
+[0.209s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_gazebo' build argument 'cmake_args' from command line to 'None'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_gazebo' build argument 'cmake_target' from command line to 'None'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_gazebo' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_gazebo' build argument 'cmake_clean_cache' from command line to 'False'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_gazebo' build argument 'cmake_clean_first' from command line to 'False'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_gazebo' build argument 'cmake_force_configure' from command line to 'False'
+[0.210s] DEBUG:colcon.colcon_core.verb:Building package 'turtlebot3_gazebo' with the following arguments: {'build_base': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_gazebo', 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/turtlebot3_gazebo', 'merge_install': False, 'path': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_gazebo', 'symlink_install': True, 'test_result_base': None}
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_simulations' build argument 'cmake_args' from command line to 'None'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_simulations' build argument 'cmake_target' from command line to 'None'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_simulations' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_simulations' build argument 'cmake_clean_cache' from command line to 'False'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_simulations' build argument 'cmake_clean_first' from command line to 'False'
+[0.210s] Level 5:colcon.colcon_core.verb:set package 'turtlebot3_simulations' build argument 'cmake_force_configure' from command line to 'False'
+[0.210s] DEBUG:colcon.colcon_core.verb:Building package 'turtlebot3_simulations' with the following arguments: {'build_base': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_simulations', 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/turtlebot3_simulations', 'merge_install': False, 'path': '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_simulations', 'symlink_install': True, 'test_result_base': None}
+[0.210s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.211s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.211s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_fake_node'
+[0.213s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.213s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.213s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.215s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_gazebo'
+[0.215s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.215s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.217s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_simulations'
+[0.218s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.218s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.224s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_fake_node': /usr/bin/cmake /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_fake_node -DCMAKE_INSTALL_PREFIX=/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/turtlebot3_fake_node
+[0.226s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_gazebo': /usr/bin/cmake /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_gazebo -DCMAKE_INSTALL_PREFIX=/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/turtlebot3_gazebo
+[0.230s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_simulations': /usr/bin/cmake /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_simulations -DCMAKE_INSTALL_PREFIX=/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/turtlebot3_simulations
+[0.871s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/build/turtlebot3_fake_node' returned '1': /usr/bin/cmake /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/turtlebot3_simulations/turtlebot3_fake_node -DCMAKE_INSTALL_PREFIX=/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/turtlebot3_fake_node
+[2.312s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.313s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.313s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '1'
+[2.313s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.318s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.318s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.318s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.328s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.329s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/local_setup.ps1'
+[2.330s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/_local_setup_util_ps1.py'
+[2.331s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/setup.ps1'
+[2.331s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/local_setup.sh'
+[2.332s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/_local_setup_util_sh.py'
+[2.332s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/setup.sh'
+[2.333s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/local_setup.bash'
+[2.334s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/setup.bash'
+[2.334s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/local_setup.zsh'
+[2.334s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/src/install/setup.zsh'
