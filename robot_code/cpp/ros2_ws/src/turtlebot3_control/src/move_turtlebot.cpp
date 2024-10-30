@@ -32,7 +32,7 @@ public:
         float time = distance_m / velocity;         // dist = speed * time
         auto message = geometry_msgs::msg::Twist();
 
-        message.linear.x = velocity; //  ms/s          
+        message.linear.x = velocity; //  m/s          
         message.angular.z = 0.0;                    
 
         RCLCPP_INFO(this->get_logger(), "Moving the TurtleBot!");
@@ -46,34 +46,34 @@ public:
         _publisher->publish(message);
     }
 
-    // void turn(int angle_degree, float angular_velocity = 0.5) {
-    //     float angle_radians = angle_degree * (M_PI / 180.0); 
-    //     auto message = geometry_msgs::msg::Twist();
-    //     float time = angle_radians / angular_velocity;         // angle = angular_velocity * time
+        // void turn(int angle_degree, float angular_velocity = 0.5) {
+        //     float angle_radians = angle_degree * (M_PI / 180.0); 
+        //     auto message = geometry_msgs::msg::Twist();
+        //     float time = angle_radians / angular_velocity;         // angle = angular_velocity * time
 
-    //     message.linear.x = 0.0;               
-    //     message.angular.z = angular_velocity;                    
+        //     message.linear.x = 0.0;               
+        //     message.angular.z = angular_velocity;                    
 
-    //     RCLCPP_INFO(this->get_logger(), "Turning the TurtleBot!");
-    //     auto start_time = this->now();
-    //     rclcpp::Duration duration = rclcpp::Duration::from_seconds(time);
-    //     rclcpp::Rate rate(100);  // 100 Hz control rate
+        //     RCLCPP_INFO(this->get_logger(), "Turning the TurtleBot!");
+        //     auto start_time = this->now();
+        //     rclcpp::Duration duration = rclcpp::Duration::from_seconds(time);
+        //     rclcpp::Rate rate(100);  // 100 Hz control rate
 
-    //     // Rotate for the calculated duration
-    //     while ((this->now() - start_time) < duration) {
-    //         _publisher->publish(message);
-    //         rate.sleep();  // This will keep the loop running at ~100 Hz
-    //     }
+        //     // Rotate for the calculated duration
+        //     while ((this->now() - start_time) < duration) {
+        //         _publisher->publish(message);
+        //         rate.sleep();  // This will keep the loop running at ~100 Hz
+        //     }
 
-    //     // Ensure the bot stops rotating
-    //     message.angular.z = 0.0;
-    //     for (int i = 0; i < 5; ++i) {  // Publish the stop message multiple times
-    //         _publisher->publish(message);
-    //         rclcpp::sleep_for(std::chrono::milliseconds(10));
-    //     }
+        //     // Ensure the bot stops rotating
+        //     message.angular.z = 0.0;
+        //     for (int i = 0; i < 5; ++i) {  // Publish the stop message multiple times
+        //         _publisher->publish(message);
+        //         rclcpp::sleep_for(std::chrono::milliseconds(10));
+        //     }
 
-    //     RCLCPP_INFO(this->get_logger(), "Rotation completed.");
-    // }
+        //     RCLCPP_INFO(this->get_logger(), "Rotation completed.");
+        // }
 
 
 
