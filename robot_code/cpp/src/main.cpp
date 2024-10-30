@@ -1,32 +1,31 @@
-// #include <iostream>
-// #include <fstream>
-// #include "algorithms.h"
-#include "audio_input.h"
+#include "goertzel.h"
+#include "dft.h"
+#include "algorithms.h"
+#include <chrono>
 
-#define SAMPLE_RATE (44100)
-#define FRAMES_PER_BUFFER (256)
-#define INPUT_DEVICE (14)  /* Device index for the input device 5 default*/
+int main() {
 
+    std::string file = "output.txt";
 
-int main(){
+    auto start_DFT = std::chrono::high_resolution_clock::now();
+    DFT dft;
+    dft.read_from_file(file);
+    dft.init();
+    auto stop_DFT = std::chrono::high_resolution_clock::now();
+    auto duration_DFT = std::chrono::duration_cast<std::chrono::microseconds>(stop_DFT-start_DFT);
+    std::cout << "Time for DFT: " << duration_DFT.count() << " microseconds " << std::endl;
 
-	// std::vector<std::complex<double>> a = {{1, 2}, {3, 4}, {5, 6}, {7, 8}};
-	// SP::Algorithms<double> A(a);
-	// SP::Algorithms<double> B;
-	// A.print_data();
+    auto start_goertzel = std::chrono::high_resolution_clock::now();
+    Goertzel goertzel;
+    goertzel.read_from_file(file);
+    goertzel.init();
+    auto stop_goertzel = std::chrono::high_resolution_clock::now();
+    auto duration_goertzel = std::chrono::duration_cast<std::chrono::microseconds>(stop_goertzel-start_goertzel);
+    std::cout << "Time for Goertzel: " << duration_goertzel.count() << " microseconds " << std::endl;
 
-	// std::cout << "\nFFT: " << std::endl;
-	// B.FFT(a);
-	// B.print_data();
-
-	// std::cout << "\nGoertzel: " << std::endl;
-	// A.goertzel();
-
-    AudioInput audio_input(SAMPLE_RATE, FRAMES_PER_BUFFER);
-    audio_input.audio_open();
-    audio_input.list_audio_devices();
-    audio_input.record_audio(INPUT_DEVICE);
-    audio_input.save_to_wav("../dtmf_sounds/output.wav");
-    audio_input.audio_close();
-	return 0;
+    return 0;
 }
+
+
+
+
