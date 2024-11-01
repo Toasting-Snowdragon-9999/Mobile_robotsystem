@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <string>
 
-using std::string;
+using std::string, std::cout, std::endl;
 
 /**
  * @brief Binary conversion for CRC-check
@@ -62,16 +62,22 @@ string decimalSeqToBinaryMsg(std::vector<std::vector<int>> decimalSequence)
 	return binaryConvertedToneStr;
 }
 
-/// @brief Performs XOR-operation on 2 characters
+/// @brief Performs XOR-operation on 2 strings characterwise
 /// @param a
 /// @param b
 /// @return Result of XOR-operation
-string ExclusiveOR(char a, char b)
+string ExclusiveOR(string a, string b)
 {
-	if (a == b)
-		return "0";
-	else
-		return "1";
+	string xorresult = "";
+	if (a.size() != b.size())
+	{
+		throw std::invalid_argument("Strings of XOR-operation are not same size");
+	}
+	for (int i = 0; i < a.size(); i++)
+	{
+		(a[i] == b[i]) ? '0' : '1';
+	}
+	return xorresult;
 }
 
 /// @brief Encode binary data sequence with CRC4-Codeword
@@ -80,10 +86,11 @@ string ExclusiveOR(char a, char b)
 string CRCencode(string uncodedBinarySequence)
 {
 	string CRCFourCodeword = "10011";
-	string CRCFourZeroes = "00000";
-	string CRCremainder = "";
-	string &CRCremainderRef = CRCremainder;
+	string remainder = "";
+	string &remainderRef = remainder;
 	int codewordLength = CRCFourCodeword.length();
+	string zeroes = (codewordLength, "0");
+	;
 	int datawordLength = uncodedBinarySequence.length();
 	std::string::iterator subsIndexIt = uncodedBinarySequence.begin();
 	int subsIndexInt = std::distance(uncodedBinarySequence.begin(), subsIndexIt);
@@ -97,34 +104,25 @@ string CRCencode(string uncodedBinarySequence)
 	while (subsIndexInt <= lengthWithoutCodeword) // Binary-division
 	{
 
-		for (int j = 0; j < CRCFourCodeword.length(); j++) // XOR on Substring
+		for (int i = 0; i < CRCFourCodeword.length(); i++) // XOR on Substring
 		{
 			if (firstCounter <= 0) // XOR on the first string
 			{
-				CRCremainderRef.append(uncodedBinarySequence.substr(subsIndexInt2, bitshiftCounter));
-				CRCremainderRef.append(ExclusiveOR(uncodedBinarySequence.substr(subsIndexInt, subsIndexInt2)[j], CRCFourCodeword[j]));
-			} else {
-
-
+				remainderRef.append(uncodedBinarySequence.substr(subsIndexInt2, bitshiftCounter));
+				remainderRef.append(ExclusiveOR(uncodedBinarySequence.substr(subsIndexInt, subsIndexInt2)[], CRCFourCodeword[j]));
 			}
-
-
-
-			bitshiftCounter = 0;
+			else
+			{
+			}
 		}
 
-		while (CRCremainderRef[0] != '1') // Bit-shift until all zeroes from the beginning of the remainder
+		if (remainder[0] == 0)
 		{
-			int CRCremainderInt = std::stoi(CRCremainder, nullptr);
-			CRCremainderInt <<= 1;
-			CRCremainderRef = std::to_string(CRCremainderInt);
-			bitshiftCounter++;
-			if (firstCounter == 0)
-				firstCounter++;
-		};
+			for (int i = 0)
+		}
 	}
 
-	return CRCremainder;
+	return remainder;
 }
 
 int main()
