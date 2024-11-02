@@ -20,7 +20,6 @@ int main(){
 	sounds.play_sounds();
 	std::string filename = "../dtmf_sounds/dtmf_sounds.wav";
 	sounds.save_to_wav_file(filename);
-	//lyde ended
 
 	return 0;
 }
