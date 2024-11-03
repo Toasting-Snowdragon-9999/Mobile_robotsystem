@@ -16,7 +16,7 @@ using std::string;
  * @param decimalSequence The original tone sequence in decimal, divided in vectors of vectors
  * @return The sequence in a long binary string
  */
-string decimalSeqToBinaryMsg(const std::vector<std::vector<int>>& decimalSequence)
+string decimalSeqToBinaryMsg(const std::vector<std::vector<int>> &decimalSequence)
 {
 	string binaryConvertedTone = "";
 	std::string tmpTone;
@@ -92,7 +92,7 @@ string CRC4Encode(string binaryDataword)
 			selection = ExclusiveORStrings(selection, codeword);
 		}
 
-		selection = selection.substr(1) + binaryDataword[selectionPlusOneIdx];
+		selection = selection.substr(1) + binaryDatawordWithZeroes[selectionPlusOneIdx];
 		selectionPlusOneIdx++;
 	}
 
@@ -132,20 +132,19 @@ int main()
 	// std::vector<std::vector<int>> sequence2 = {{2, 7, 4}, {16, 1, 2}, {14, 8, 6}, {1, 3, 9}, {15, 3, 4}, {9, 16, 1}};
 	// std::vector<std::vector<int>> sequence3 = {{16, 16, 16}, {1, 1, 1}, {16, 16, 16}, {1, 1, 1}, {16, 16, 16}};
 	// std::vector<std::vector<int>> sequence4 = {{11, 8, 10}};
-	std::vector<std::vector<int>> testSequence1 = {{10, 10, 10}, {12, 9, 9, 9}, {14, 4, 5}, {13, 2, 0, 0}, {10, 10, 10}};
-	std::vector<std::vector<int>> preambleSeq = {{10}};
+	std::vector<std::vector<int>> testSequence1 = {{10, 10, 10}, {13, 2, 0, 0}, {10, 10, 10}};
+	std::vector<std::vector<int>> preambleSeq = {{11, 10, 12, 12}, {}};
 
 	// WaveGenerator sounds(testSequence1);
 	// sounds.play_sounds();
 
 	// WaveGenerator preamble(preambleSeq);
 	// preamble.play_sounds();
-
-	printNestedVector(preambleSeq, "Preamble Sequence");
-	std::cout << "Converted binary msg: " << decimalSeqToBinaryMsg(preambleSeq) << endl;
-	std::cout << "CRC4-Encoded msg: " << CRC4Encode(decimalSeqToBinaryMsg(preambleSeq)) << std::endl;
-
 	// lyde ended
+
+	printNestedVector(testSequence1, "Test Sequence");
+	std::cout << "Converted binary msg: " << decimalSeqToBinaryMsg(testSequence1) << endl;
+	std::cout << "CRC4-Encoded msg: " << CRC4Encode(decimalSeqToBinaryMsg(testSequence1)) << std::endl;
 
 	// py to cpp
 	while (1)
