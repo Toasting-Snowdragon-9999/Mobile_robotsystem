@@ -133,7 +133,6 @@ int main()
 	// std::vector<std::vector<int>> sequence3 = {{16, 16, 16}, {1, 1, 1}, {16, 16, 16}, {1, 1, 1}, {16, 16, 16}};
 	// std::vector<std::vector<int>> sequence4 = {{11, 8, 10}};
 	std::vector<std::vector<int>> testSequence1 = {{10, 10, 10}, {13, 2, 0, 0}, {10, 10, 10}};
-	std::vector<std::vector<int>> preambleSeq = {{11, 10, 12, 12}, {}};
 
 	// WaveGenerator sounds(testSequence1);
 	// sounds.play_sounds();
@@ -144,7 +143,7 @@ int main()
 
 	printNestedVector(testSequence1, "Test Sequence");
 	std::cout << "Converted binary msg: " << decimalSeqToBinaryMsg(testSequence1) << endl;
-	std::cout << "CRC4-Encoded msg: " << CRC4Encode(decimalSeqToBinaryMsg(testSequence1)) << std::endl;
+	std::cout << "CRC4-Encoded msg: " << CRC4Encode(decimalSeqToBinaryMsg(testSequence1)) << " | CRC-remainder: " << CRC4Encode(decimalSeqToBinaryMsg(testSequence1)).substr(CRC4Encode(decimalSeqToBinaryMsg(testSequence1)).size()-4) << std::endl;
 
 	// py to cpp
 	while (1)
