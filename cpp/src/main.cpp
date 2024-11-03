@@ -1,10 +1,18 @@
 #include <iostream>
 #include <fstream>
+#include <filesystem>
+#include <string>
+
 #include "read_shared_data.h"
 #include "wave_generator.h"
 
 int main(){
-	SharedData sd;
+	// std::filesystem::path currentPath = std::filesystem::current_path();
+    // std::cout << "Current working directory: " << currentPath << std::endl;
+	// return 0;
+	std::string path_gui = "../Docs/shared_file.txt";
+	std::string path_debug = "../../Docs/shared_file.txt";
+	SharedData sd(path_gui);
 	std::vector<std::vector<uint16_t>> sequence1;
 	try{
 		sequence1 = sd.read_shared_data();

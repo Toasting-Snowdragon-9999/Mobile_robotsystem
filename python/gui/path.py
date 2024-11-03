@@ -1,5 +1,5 @@
 from PySide6.QtGui import QFont, QStandardItemModel, QStandardItem, QColor
-from ui_form import Ui_MainWindow
+from gui.ui_form import Ui_MainWindow
 
 class PathGenerator:
 

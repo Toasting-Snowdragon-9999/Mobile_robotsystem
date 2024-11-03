@@ -3,11 +3,11 @@ import json
 from PySide6.QtGui import QTextCursor
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QLabel, QLineEdit
-from ui_form import Ui_MainWindow
+from gui.ui_form import Ui_MainWindow
 import re
 
-from path import PathGenerator
-from rules import Rules
+from gui.path import PathGenerator
+from gui.rules import Rules
 
 class Shell:
     def __init__(self, ui: Ui_MainWindow, rules: tuple) -> None:
@@ -19,6 +19,7 @@ class Shell:
         self.colored_prompt_html = f'<span style="color: #57c979;">{self.username}@local</span>: <span style="color: #4c89c7;">~/ </span>'
         self.rules, self.attributes = rules
         self.path_gen = PathGenerator(ui)
+        self.ui.shell_text_field.setReadOnly(True)
         self.setup()
 
     def setup(self):
@@ -67,7 +68,7 @@ class Shell:
             self.reset_command_field()
             return
         command, attr, distance, ekstr = self.search_for_rule(full_command)
-        print(f"Command: {command}, attr: {attr}, Distance: {distance}, ekstra: {ekstr}")
+        # print(f"Command: {command}, attr: {attr}, Distance: {distance}, ekstra: {ekstr}")
         self.append_text(full_command)
 
         for rule_index, rule in enumerate(self.rules):
@@ -83,7 +84,6 @@ class Shell:
             return
         if command == "delete" or command == "delete ":
             self.delete(attr, distance, ekstr)
-            print("Are we here in shell?")
             self.reset_command_field()
             return
         self.history.append([command, attr, distance])
@@ -165,8 +165,8 @@ class Shell:
             self.history.clear()
             return
 
-    def execute(self):
-        pass
+    def get_path(self) -> list:
+        return self.history
     
     def search_for_help(self, help_text: str):
         match = re.match(r"(\w+)\s+(\w+)", help_text)
@@ -235,6 +235,12 @@ class Shell:
             self.append_text_error(f"No saved history found at {path}.")
         except json.JSONDecodeError:
             self.append_text_error(f"Error: The file at {path} is not a valid JSON file.")
+    
+    def clear_path(self):
+        self.history.clear()
+        self.ui.shell_text_field.clear()
+        self.path_gen.reset()
+        self.append_text_plain("Path cleared.")
 
     def show_specific_help(self, command: str):
         help_text = "Command invalid"

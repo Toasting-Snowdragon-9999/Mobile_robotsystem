@@ -1,6 +1,6 @@
 #include "read_shared_data.h"
 
-SharedData::SharedData(){}
+SharedData::SharedData(std::string fname): _fname(fname){}
 
 std::vector<std::vector<uint16_t>> SharedData::read_shared_data(){
     this->read_data();
@@ -21,7 +21,7 @@ void SharedData::print(){
 
 void SharedData::read_data(){
     _path.clear();
-	const char* fname = "../../Docs/shared_file.txt";
+	const char* fname = _fname.c_str();
 	std::string s;
     std::fstream(fname, std::ios::in) >> s;
     if(s.empty()){

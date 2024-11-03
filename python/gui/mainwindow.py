@@ -1,18 +1,16 @@
 # This Python file uses the following encoding: utf-8
-import os
-from pathlib import Path
-import sys
 
-from shell import Shell
-from rules import Rules
+from gui.shell import Shell
+from gui.rules import Rules
+from gui.send_path import SendPath
+from gui.run_cpp import RunCpp
 
-from PySide6.QtWidgets import QApplication, QMainWindow
-from PySide6.QtCore import QFile
+from PySide6.QtWidgets import QMainWindow
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or
 #     pyside2-uic form.ui -o ui_form.py
-from ui_form import Ui_MainWindow
+from gui.ui_form import Ui_MainWindow
 
 class MainWindow(QMainWindow):
     def __init__(self, *args: tuple, **kwargs: dict) -> None:
@@ -25,15 +23,15 @@ class MainWindow(QMainWindow):
         self.ui.send_path.clicked.connect(self.send_path)
         self.rules = Rules(self.ui)
         self.shell = Shell(self.ui, self.rules.get_rules())
-
-    def set_up_rules(self):
-        return 
+        self.ui.send_path.clicked.disconnect()
+        self.ui.send_path.clicked.connect(self.send_path)
     
     def send_path(self):
-        return
+        self.sender = SendPath(self.rules.get_rules())
+        message = self.sender.send(self.shell.get_path())
+        if message == "success":
+            self.shell.clear_path()
+        self.shell.append_text_plain(message)
+        RunCpp().run()
 
-if __name__ == "__main__":
-    app = QApplication([])
-    widget = MainWindow()
-    widget.show()
-    sys.exit(app.exec())
+    

@@ -35,7 +35,7 @@ class SharedDataException : public std::runtime_error {
 class SharedData{
     public:
 
-        SharedData();
+        SharedData(std::string fname);
         /**
          * @brief This method reads from the shared_file.txt found in Docs and then makes some bit shifting and AND operation to split it into a list of lists of each 3 uint16 commands.
          *
@@ -61,6 +61,7 @@ class SharedData{
     private:
         __uint128_t _data;
         std::vector<std::vector<uint16_t>> _path;
+        std::string _fname;
 
         /**
          * @brief Read data method, used for reading the data from a shared files.

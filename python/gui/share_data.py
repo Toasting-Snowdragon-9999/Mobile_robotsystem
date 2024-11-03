@@ -11,16 +11,18 @@ class SharedData:
                 return f"{self.args[0]} (Error code: {self.error_code})"
             return self.args[0]
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, path, docs_path) -> None:
+        self.path = path    
+        self.docs_path = docs_path
 
     def save_to_file(self, value: int) -> None:
-        if os.path.exists("Docs") == False:
+        if os.path.exists(self.docs_path) == False:
             raise self.SharedDataException("File not found", 10)
-        if os.path.getsize("Docs/shared_file.txt") > 0:
+        if os.path.getsize(self.path) > 1:
+            print("Size of file = ", os.path.getsize(self.path))
             raise self.SharedDataException("File not empty, other applitcation has not read the file", 11)
         value_in_string = str(value)
-        f = open("Docs/shared_file.txt", "w")
+        f = open(self.path, "w")
         f.write(value_in_string)
         f.close()
 
