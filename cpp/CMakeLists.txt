@@ -17,12 +17,14 @@ set(SOURCES
     src/hello_world.cpp
     src/read_shared_data.cpp
     src/wave_generator.cpp
+    src/com_protocol.cpp
 )
 
 set(HEADERS
     include/hello_world.h
     include/read_shared_data.h
     include/wave_generator.h
+    include/com_protocol.h
 )
 # Include directories
 #include_directories(${NLOPT_INCLUDE_DIRS})

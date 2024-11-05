@@ -1,13 +1,13 @@
 #include "../include/com_protocol.h"
 
-ComProtocol::ComProtocol(std::vector<std::vector<int>> data) : _data(data)
+ComProtocol::ComProtocol(std::vector<std::vector<int>> robotPath) : _robotPath(robotPath)
 {
-    int outerVecSize = _data.size(); // Size of outer vector (how many vectors are in the vector)
+    int outerVecSize = _robotPath.size(); // Size of outer vector (how many vectors are in the vector)
     int size = 0;
 
     for (int i = 0; i < outerVecSize; i++)
     {
-        int innerVecSize = _data[i].size(); // Size of inner vector (how many elements are in the currently looked at vector)
+        int innerVecSize = _robotPath[i].size(); // Size of inner vector (how many elements are in the currently looked at vector)
 
         for (int i = 0; i < innerVecSize; i++)
         {
@@ -25,7 +25,7 @@ ComProtocol::ComProtocol(std::vector<std::vector<int>> data) : _data(data)
     int DTMFLengthTone2 = std::stoi(DTMFLength2, nullptr, 2);
     int DTMFLengthTone3 = std::stoi(DTMFLength3, nullptr, 2);
 
-    _dataLength = {DTMFLengthTone1, DTMFLengthTone2, DTMFLengthTone3};
+    _robotPathLength = {DTMFLengthTone1, DTMFLengthTone2, DTMFLengthTone3};
 }
 
 std::vector<std::vector<int>> ComProtocol::protocol_structure()
@@ -34,18 +34,17 @@ std::vector<std::vector<int>> ComProtocol::protocol_structure()
 
     // Add all elements of data to the protocol structure (creating the entire package)
     protocolStructureVec.push_back(_preAndPostamble);
-    protocolStructureVec.push_back(_dataLength);
-    for (int i = 0; i < _data.size(); i++)
+    protocolStructureVec.push_back(_robotPathLength);
+    for (int i = 0; i < _robotPath.size(); i++)
     {
-        protocolStructureVec.push_back(_data[i]);
+        protocolStructureVec.push_back(_robotPath[i]);
     }
     protocolStructureVec.push_back(_preAndPostamble);
 
     return protocolStructureVec;
 }
 
-// For testing purpose - Prints elements from a package
-void ComProtocol::printVecElements(std::vector<std::vector<int>> package, std::string description)
+void ComProtocol::print_vec_elements(std::vector<std::vector<int>> package, std::string description)
 {
     for (size_t i = 0; i < package.size(); ++i)
     {
