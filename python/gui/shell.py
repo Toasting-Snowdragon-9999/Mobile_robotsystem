@@ -8,6 +8,7 @@ import re
 
 from gui.path import PathGenerator
 from gui.rules import Rules
+from gui.info import Info
 
 class Shell:
     def __init__(self, ui: Ui_MainWindow, rules: tuple) -> None:
@@ -20,6 +21,7 @@ class Shell:
         self.rules, self.attributes = rules
         self.path_gen = PathGenerator(ui)
         self.ui.shell_text_field.setReadOnly(True)
+        self.info_level = Info()
         self.setup()
 
     def setup(self):
@@ -48,9 +50,9 @@ class Shell:
             self.reset_command_field()
             return
         
-        if self.search_for_help(full_command) is not None:
-            first_word, second_word = self.search_for_help(full_command)
-            if first_word == "help" or first_word == "Help":
+        if self.search_for_two_words(full_command) is not None:
+            first_word, second_word = self.search_for_two_words(full_command)
+            if first_word == "help" or first_word == "help ":
                 self.show_specific_help(second_word)
                 self.reset_command_field()
                 return
@@ -68,7 +70,6 @@ class Shell:
             self.reset_command_field()
             return
         command, attr, distance, ekstr = self.search_for_rule(full_command)
-        # print(f"Command: {command}, attr: {attr}, Distance: {distance}, ekstra: {ekstr}")
         self.append_text(full_command)
 
         for rule_index, rule in enumerate(self.rules):
@@ -79,13 +80,28 @@ class Shell:
             print(error)
             if distance == 0:
                 error = f"Command not found: {full_command}"
-            self.append_text_error(error)
+            self.append_text_info(error, 3)
             self.reset_command_field()
             return
         if command == "delete" or command == "delete ":
             self.delete(attr, distance, ekstr)
             self.reset_command_field()
             return
+        if command == "turn":
+            if distance is None:
+                self.append_text_info(f"Invalid degrees", 3)
+                self.reset_command_field()
+                return
+            self.check_degrees(distance)
+        if command == "move":
+            if not self.validate_distance(distance):
+                self.append_text_info(f"Invalid distance", 3)
+                self.reset_command_field()
+                return
+            if distance > 99: 
+                self.multiple_distance([command, attr, distance])
+                self.append_text_info(f"Distance longer than 99, spitting up into multiple distances", 1)
+                return
         self.history.append([command, attr, distance])
         self.path_gen.add_path([command, attr, distance])
         self.reset_command_field()
@@ -106,9 +122,7 @@ class Shell:
             self.ui.shell_text_field.append('\n' * padding_lines)
 
     def append_text(self, text):
-
         self.add_padding()
-        
         to_append = f'<span style="color: #57c979;">{self.username}@local</span>: <span style="color: #4c89c7;">~/ </span> {text}'
         self.ui.shell_text_field.append(to_append)
         
@@ -117,34 +131,13 @@ class Shell:
         self.ui.shell_text_field.setTextCursor(cursor)
         self.ui.shell_text_field.ensureCursorVisible()
 
-    def append_text_plain(self, text):
+    def append_text_info(self, text, info_level):
+        surfix = self.info_level.get_surfix(info_level)
+        color = self.info_level.get_color_code(info_level)
         self.add_padding()
-        self.ui.shell_text_field.append(text)
-        
-        cursor = self.ui.shell_text_field.textCursor()
-        cursor.movePosition(QTextCursor.End)
-        self.ui.shell_text_field.setTextCursor(cursor)
-        self.ui.shell_text_field.ensureCursorVisible()
-    
-    def append_text_error(self, text):
-
-        self.add_padding()
-        
-        to_append = f'<span style="color: #b54343;">[ Error ]</span>:  {text}'
+        to_append = f'<span style="color: {color};">{surfix}</span>: {text}'
         self.ui.shell_text_field.append(to_append)
-        
-        cursor = self.ui.shell_text_field.textCursor()
-        cursor.movePosition(QTextCursor.End)
-        self.ui.shell_text_field.setTextCursor(cursor)
-        self.ui.shell_text_field.ensureCursorVisible()
 
-    def append_text_help(self, text):
-
-        self.add_padding()
-        
-        to_append = f'<span style="color: #dede6d;">[ Help ]</span>: {text}'
-        self.ui.shell_text_field.append(to_append)
-        
         cursor = self.ui.shell_text_field.textCursor()
         cursor.movePosition(QTextCursor.End)
         self.ui.shell_text_field.setTextCursor(cursor)
@@ -168,7 +161,12 @@ class Shell:
     def get_path(self) -> list:
         return self.history
     
-    def search_for_help(self, help_text: str):
+    def check_degrees(self, degrees) -> None:
+        if degrees > 180:
+            negated_deg = 360 - degrees
+            self.append_text_info(f"Degrees exceed 180, you could turn {negated_deg}\u00B0 in the other direction", 1)
+
+    def search_for_two_words(self, help_text: str):
         match = re.match(r"(\w+)\s+(\w+)", help_text)
         if match:
             first_word = match.group(1)
@@ -219,7 +217,7 @@ class Shell:
         path = os.path.join("saved_paths", filename)
         with open(path, "w") as f:
             json.dump(self.history, f, indent=4)  # indent=4 for pretty printing
-        self.append_text_plain(f"Successfully saved path to {filename}")
+        self.append_text_info(f"Successfully saved path to {filename}", -1)
 
     def load(self, filename="history"):
         filename = filename + ".json"
@@ -229,18 +227,36 @@ class Shell:
                 self.history = json.load(f)
                 self.path_gen.reset()
                 self.path_gen.add_whole_path(self.history)
-                self.append_text_plain(f"Path successfully loaded from {filename}")
+                self.append_text_info(f"Path successfully loaded from {filename}", -1)
             print(f"History loaded from {path}")
         except FileNotFoundError:
-            self.append_text_error(f"No saved history found at {path}.")
+            self.append_text_info(f"No saved history found at {path}.", 3)
         except json.JSONDecodeError:
-            self.append_text_error(f"Error: The file at {path} is not a valid JSON file.")
+            self.append_text_info(f"Error: The file at {path} is not a valid JSON file.", 3)
     
     def clear_path(self):
         self.history.clear()
         self.ui.shell_text_field.clear()
         self.path_gen.reset()
-        self.append_text_plain("Path cleared.")
+        self.append_text_info("Path cleared.", -1)
+
+    def validate_distance(self, distance: int) -> bool:
+        if distance is None:
+            return False
+        if distance < 1:
+            return False
+        return True
+
+    def multiple_distance(self, command: list) -> tuple:
+        distance = command[2]
+
+        while distance > 99:
+            distance = distance - 99
+            self.history.append([command[0], command[1], 99])
+            self.path_gen.add_path([command[0], command[1], 99])
+        self.history.append([command[0], command[1], distance])
+        self.path_gen.add_path([command[0], command[1], distance])
+        self.reset_command_field()
 
     def show_specific_help(self, command: str):
         help_text = "Command invalid"
@@ -303,7 +319,7 @@ located in the folder called "saved_paths"
 This will clear the terminal of all text
 </pre>
     """
-        self.append_text_help(help_text)
+        self.append_text_info(help_text, 0)
 
 
     def show_help(self):
@@ -326,4 +342,4 @@ To use a command it should be in the following format:
 Now you can use clear to delete this help menu and start using the commands
 </pre>
         """
-        self.append_text_help(help_text)
+        self.append_text_info(help_text, 0)

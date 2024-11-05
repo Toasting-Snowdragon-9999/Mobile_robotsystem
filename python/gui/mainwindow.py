@@ -31,7 +31,7 @@ class MainWindow(QMainWindow):
         message = self.sender.send(self.shell.get_path())
         if message == "success":
             self.shell.clear_path()
-        self.shell.append_text_plain(message)
+        self.shell.append_text_info(message, -1)
         RunCpp().run()
 
     

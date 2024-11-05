@@ -31,9 +31,9 @@ class Rules:
         self.rules.append(("load", 6))
 
     def define_attribute(self) -> None:
-        self.attributes.append([0, "-fw", "Move the robot forward x amount of cm", 11])
-        self.attributes.append([0, "-bw", "Move the robot backward x amount of cm", 12])
-        self.attributes.append([1, "-l", "Turn the robot left x amount of degrees", 13])
+        self.attributes.append([0, "-fw", "Move the robot forward x amount of cm",12])
+        self.attributes.append([0, "-bw", "Move the robot backward x amount of cm", 13])
+        self.attributes.append([1, "-l", "Turn the robot left x amount of degrees", 15])
         self.attributes.append([1, "-r", "Turn the robot right x amount of degrees", 14])
         self.attributes.append([2, "-d", "Delete the x index command from the path list", 30])
         self.attributes.append([2, "-i", "Delete the x to y index command from the path list", 31])
