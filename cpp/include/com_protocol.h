@@ -47,12 +47,14 @@ public:
     /// @brief Encode binary dataword with CRC4-Codeword
     /// @param binaryDataword Type: String - String of binary numbers to be encoded
     /// @return Type: String - Binary dataword with CRC4-Codeword appended
-    string crc4_encode(string binaryDataword);
+    string crc4(string binaryDataword);
 
     /// @brief Prints nested vector 
     /// @param preambleSeq Type: vector of vectors { {...}, {...}, ....., {...} } - Decimal values for sequence
     /// @param name Type: String - Name for the sequence
     void print_nested_vector(const std::vector<std::vector<int>> &preambleSeq, const std::string &name = "Preamble Sequence");
+
+    std::string find_remainder(std::string msg);
 };
 
 #endif // COM_PROTOCOL_H

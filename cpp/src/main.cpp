@@ -149,8 +149,18 @@ int main()
 
 	testPackage.print_nested_vector(testPackage.protocol_structure(), "Test Package");
 	std::cout << "Converted binary robot path: " << testPackage.decimal_seq_to_binary_msg(testSequenceFULL) << endl;
-	std::cout << "CRC4-encoded robot path: " << testPackage.crc4_encode(testPackage.decimal_seq_to_binary_msg(testSequenceFULL))
-			  << " | CRC-remainder: " << testPackage.crc4_encode(testPackage.decimal_seq_to_binary_msg(testSequenceFULL)).substr(testPackage.crc4_encode(testPackage.decimal_seq_to_binary_msg(testSequenceFULL)).size() - 4) << std::endl;
+	std::cout << "CRC4-encoded robot path: " << testPackage.crc4(testPackage.decimal_seq_to_binary_msg(testSequenceFULL))
+			  << " | CRC-remainder: " << testPackage.crc4(testPackage.decimal_seq_to_binary_msg(testSequenceFULL)).substr(testPackage.crc4(testPackage.decimal_seq_to_binary_msg(testSequenceFULL)).size() - 4) << std::endl;
+	std::cout << "CRC4-decoded robot path: " << testPackage.crc4(testPackage.crc4(testPackage.decimal_seq_to_binary_msg(testSequenceFULL))) << std::endl;
+
+	std::string binaryMsg = testPackage.decimal_seq_to_binary_msg(testSequenceFULL);
+	std::string encodedMsg = testPackage.crc4(binaryMsg);
+	std::string decodedMsg = testPackage.crc4(encodedMsg);
+	std::cout << "CRC4 remainder with method: " << testPackage.find_remainder(decodedMsg) << std::endl;
+
+	if (testPackage.find_remainder(decodedMsg) == "0000") {
+		std::cout << "YAAAYYYYY" << std::endl;
+	}
 
 	WaveGenerator testPackageWave(testPackage.protocol_structure());
 	testPackageWave.play_sounds();
