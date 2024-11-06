@@ -28,8 +28,8 @@ endif()
 find_package(SFML 2.5 COMPONENTS audio system REQUIRED)
 
 # Find sndfile
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(SNDFILE REQUIRED sndfile)
+# find_package(PkgConfig REQUIRED)
+# pkg_check_modules(SNDFILE REQUIRED sndfile)
 
 # Sources
 set(SOURCES
@@ -49,7 +49,7 @@ add_executable(robot_code ${SOURCES} ${HEADERS})
 # Link libraries
 target_link_libraries(robot_code
     PRIVATE sfml-audio sfml-system
-    ${SNDFILE_LIBRARIES}
+    # ${SNDFILE_LIBRARIES}
     ${PORTAUDIO_LIBRARIES}  # Link PortAudio
 )
 

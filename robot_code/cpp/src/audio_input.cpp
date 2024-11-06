@@ -132,7 +132,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
     MicSample *data = (MicSample*)userData; 
     const float *in = (const float*)input_buffer; /* Audio input data */
     unsigned int i;
-    std::vector <float> &buffer;
+    std::vector <float> buffer;
     (void) output_buffer; /* Prevent unused variable warning. */
 
     if( input_buffer == NULL ){
@@ -144,16 +144,16 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         float mono_in = *in++;  /* Mono channel input */
 		buffer.push_back(mono_in);
     }
-
-    // Do signal processing
-    if(true){
+    data->recorded_samples = buffer;
+    // // Do signal processing
+    // if(true){
         
-        data->success = true;
-    }
-    else{
-        buffer->clear();
-        data->success = false;
-    }
+    //     data->success = true;
+    // }
+    // else{
+    //     buffer->clear();
+    //     data->success = false;
+    // }
 
     return paContinue;
 }
