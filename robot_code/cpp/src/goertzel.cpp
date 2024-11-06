@@ -14,6 +14,9 @@ void Goertzel::translate_signal_goertzel(){
 
     sort(_magnitudes, _DTMF_freq);
 
+    detect_DTMF(_freq_from_signals[0], _freq_from_signals[1]);
+
+
 }
 
 void Goertzel::compute_goertzel() {
@@ -77,14 +80,7 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
     _freq_from_signals.push_back(y[0]);
     _freq_from_signals.push_back(y[1]);
 
-     std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
-     detect_DTMF(_freq_from_signals[0], _freq_from_signals[1]);
-
-     /* -------------------- FOR DEBUG: -----------------------*/
-
-//     std::cout << "Size of message vector: "<< _message_vec.size() << std::endl;
-     std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
-
+    std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
 }
 
 
@@ -104,6 +100,11 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2) {
        std::cout<< " DTMF_Freq does not found " << std::endl;
 
     }
+     /* -------------------- FOR DEBUG: -----------------------*/
+
+//  std::cout << "Size of message vector: "<< _message_vec.size() << std::endl;
+
+    std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
 
 }
 
