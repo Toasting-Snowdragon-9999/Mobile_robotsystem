@@ -1,0 +1,32 @@
+[0.011s] Invoking command in '/home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/cpp_srvcli': /usr/bin/cmake /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/cpp_srvcli -DCMAKE_TOOLCHAIN_FILE=/home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/turtlebot3_control/toolchain.cmake -DCMAKE_PREFIX_PATH=/opt/ros/arm-humble -DCMAKE_INSTALL_PREFIX=/home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/cpp_srvcli
+[0.107s] -- The C compiler identification is GNU 11.4.0
+[0.467s] -- The CXX compiler identification is GNU 11.4.0
+[0.779s] -- Detecting C compiler ABI info
+[0.885s] -- Detecting C compiler ABI info - done
+[0.889s] -- Check for working C compiler: /usr/bin/aarch64-linux-gnu-gcc - skipped
+[0.890s] -- Detecting C compile features
+[0.891s] -- Detecting C compile features - done
+[0.893s] -- Detecting CXX compiler ABI info
+[0.992s] -- Detecting CXX compiler ABI info - done
+[0.997s] -- Check for working CXX compiler: /usr/bin/aarch64-linux-gnu-g++ - skipped
+[0.997s] -- Detecting CXX compile features
+[0.997s] -- Detecting CXX compile features - done
+[0.998s] [31mCMake Error at CMakeLists.txt:4 (find_package):
+[0.998s]   By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project
+[0.998s]   has asked CMake to find a package configuration file provided by
+[0.998s]   "ament_cmake", but CMake did not find one.
+[0.998s] 
+[0.998s]   Could not find a package configuration file provided by "ament_cmake" with
+[0.998s]   any of the following names:
+[0.998s] 
+[0.998s]     ament_cmakeConfig.cmake
+[0.998s]     ament_cmake-config.cmake
+[0.998s] 
+[0.998s]   Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set
+[0.998s]   "ament_cmake_DIR" to a directory containing one of the above files.  If
+[0.998s]   "ament_cmake" provides a separate development package or SDK, be sure it
+[0.998s]   has been installed.
+[0.998s] 
+[0.998s] [0m
+[0.998s] -- Configuring incomplete, errors occurred!
+[0.999s] See also "/home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/cpp_srvcli/CMakeFiles/CMakeOutput.log".

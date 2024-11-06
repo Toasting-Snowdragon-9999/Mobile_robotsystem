@@ -2,7 +2,7 @@
 # ament_cmake_core/cmake/uninstall_target/ament_cmake_uninstall_target.cmake.in
 
 function(ament_cmake_uninstall_target_remove_empty_directories path)
-  set(install_space "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control")
+  set(install_space "/home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control")
   if(install_space STREQUAL "")
     message(FATAL_ERROR "The CMAKE_INSTALL_PREFIX variable must not be empty")
   endif()
@@ -29,7 +29,7 @@ function(ament_cmake_uninstall_target_remove_empty_directories path)
 endfunction()
 
 # uninstall files installed using the standard install() function
-set(install_manifest "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/install_manifest.txt")
+set(install_manifest "/home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/install_manifest.txt")
 if(NOT EXISTS "${install_manifest}")
   message(FATAL_ERROR "Cannot find install manifest: ${install_manifest}")
 endif()

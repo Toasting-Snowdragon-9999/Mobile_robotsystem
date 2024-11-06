@@ -1,0 +1,50 @@
+[
+    {
+        "Dimensions": [
+            {
+                "Name": "Complete",
+                "Value": "False"
+            },
+            {
+                "Name": "Architecture",
+                "Value": "aarch64"
+            },
+            {
+                "Name": "OS",
+                "Value": "ubuntu"
+            },
+            {
+                "Name": "ROS Distro",
+                "Value": "humble"
+            }
+        ],
+        "MetricName": "gather_rosdeps-time",
+        "Timestamp": 1730638742.8934007,
+        "Unit": "Seconds",
+        "Value": 0.00764487000014924
+    },
+    {
+        "Dimensions": [
+            {
+                "Name": "Complete",
+                "Value": "False"
+            },
+            {
+                "Name": "Architecture",
+                "Value": "aarch64"
+            },
+            {
+                "Name": "OS",
+                "Value": "ubuntu"
+            },
+            {
+                "Name": "ROS Distro",
+                "Value": "humble"
+            }
+        ],
+        "MetricName": "end_to_end-time",
+        "Timestamp": 1730638742.893406,
+        "Unit": "Seconds",
+        "Value": 0.014958502000808949
+    }
+]

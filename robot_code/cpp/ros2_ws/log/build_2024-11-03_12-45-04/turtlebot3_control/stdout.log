@@ -1,0 +1,22 @@
+[35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[ 66%] [32m[1mLinking CXX executable move_turtlebot[0m
+[100%] Built target move_turtlebot
+-- Install configuration: ""
+-- Installing: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot
+-- Set runtime path of "/home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot" to ""
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/package_run_dependencies/turtlebot3_control
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/parent_prefix_path/turtlebot3_control
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.sh
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.sh
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.dsv
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.bash
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.sh
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.zsh
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.dsv
+-- Installing: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.dsv
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/packages/turtlebot3_control
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig.cmake
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig-version.cmake
+-- Up-to-date: /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.xml
