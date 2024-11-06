@@ -160,6 +160,10 @@ int main()
 	std::cout << "CRC4-encoded robot path: " << encodedMsg << " | CRC-remainder: " << encodedMsgRemainder << std::endl;
 	std::cout << "CRC4-decoded robot path: " << decodedMsg << " | CRC-remainder: " << decodedMsgRemainder << std::endl;
 
+	if (testPackage.is_message_correct(decodedMsg)) { std::cout << "Recieved package IS correct!" << std::endl; }
+	else { std::cout << "Recieved package IS NOT correct!" << std::endl; }
+
+	std::cout << std::endl;
 	WaveGenerator testPackageWave(testPackage.protocol_structure());
 	testPackageWave.play_sounds();
 

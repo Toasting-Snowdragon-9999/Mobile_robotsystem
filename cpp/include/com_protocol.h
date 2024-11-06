@@ -49,6 +49,9 @@ public:
     /// @return Type: String - Binary dataword with CRC4-Codeword appended
     string crc4_encode(string binaryDataword);
 
+    /// @brief Decodes an encoded binary dataword using CRC4 (binary division)
+    /// @param binaryEncodedDataword Type: String - A binary encoded dataword
+    /// @return Type: String - A binary decoded dataword
     string crc4_decode(string binaryEncodedDataword);
 
     /// @brief Prints nested vector
@@ -56,11 +59,14 @@ public:
     /// @param name Type: String - Name for the sequence
     void print_nested_vector(const std::vector<std::vector<int>> &preambleSeq, const std::string &name = "Preamble Sequence");
 
-    std::string find_remainder(std::string msg);
+    /// @brief Finds remainder in a binary dataword (last 4 binary digits)
+    /// @param dataword Type: String - A binary dataword
+    /// @return Type: String - Remainder of dataword (4 binary digits)
+    std::string find_remainder(std::string dataword);
 
-    /// @brief Checks if decoded CRC-message is correct
-    /// @param binaryDecodedDataword
-    /// @return A bool 1 if message is correct and 0 if not
+    /// @brief Checks if decoded CRC-message is correct (if remainder is 0000)
+    /// @param binaryDecodedDataword Type: String - A binary decoded dataword
+    /// @return Type: Bool - 1 if message is correct and 0 if not
     bool is_message_correct(const string &binaryDecodedDataword);
 };
 
