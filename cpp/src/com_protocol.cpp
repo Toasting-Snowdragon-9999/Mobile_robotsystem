@@ -177,6 +177,10 @@ string ComProtocol::crc4_decode(string binaryEncodedDataword)
     return decodedBinaryData = binaryEncodedDataword + remainder;
 }
 
+bool ComProtocol::is_message_correct(const string &binaryDecodedDataword){
+    return find_remainder(binaryEncodedDataword) == "0000";
+}
+
 void ComProtocol::print_nested_vector(const std::vector<std::vector<int>> &preambleSeq, const std::string &name)
 {
     std::cout << name << ":" << std::endl;

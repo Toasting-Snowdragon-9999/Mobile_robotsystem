@@ -51,12 +51,17 @@ public:
 
     string crc4_decode(string binaryEncodedDataword);
 
-    /// @brief Prints nested vector 
+    /// @brief Prints nested vector
     /// @param preambleSeq Type: vector of vectors { {...}, {...}, ....., {...} } - Decimal values for sequence
     /// @param name Type: String - Name for the sequence
     void print_nested_vector(const std::vector<std::vector<int>> &preambleSeq, const std::string &name = "Preamble Sequence");
 
     std::string find_remainder(std::string msg);
+
+    /// @brief Checks if decoded CRC-message is correct
+    /// @param binaryDecodedDataword
+    /// @return A bool 1 if message is correct and 0 if not
+    bool is_message_correct(const string &binaryDecodedDataword);
 };
 
 #endif // COM_PROTOCOL_H
