@@ -2,8 +2,9 @@
 
 FFT::FFT(){}
 
-void FFT::compute_FFT(std::vector<std::complex<double>> data){
+void FFT::compute_FFT(std::vector<std::complex<double>>& data){
     _size_of_signal = data.size();
+
     if (_size_of_signal <= 1) return;
 
     std::vector<std::complex<double>> even(_size_of_signal/2);
@@ -19,32 +20,67 @@ void FFT::compute_FFT(std::vector<std::complex<double>> data){
     compute_FFT(odd);
 //    _size_of_signal = data.size();
 
-    for(int k = 0; k < (_size_of_signal / 2) - 1; k++){
-        std::complex<double> coef = std::polar(1.0, -2.0 * M_PI * k / _size_of_signal) * data[k + (_size_of_signal / 2)]; // *odd[k];
+    for(int k = 0; k < (_size_of_signal / 2); ++k){
+
+
+        std::complex<double> coef = std::polar(1.0, -2.0 * M_PI * k /_size_of_signal) * odd[k];
 
         data[k] = even[k] + coef;
         data[k + _size_of_signal / 2] = even[k] - coef;
+
     }
 
-    _data = data;
-  // std::cout << "data: " << data[1] << " " << data[2] << " " << data[3] << std::endl;
+//    _data = data;
 
 }
 
+void FFT::perform_FFT(){
+    compute_FFT(_data);
+    sort_FFT();
+}
+
 void FFT::sort_FFT(){
-    for(int h = 0; h < 87808 / 2; h++){
-   _abs.push_back(std::abs(_data[h]));
+    for(int h = 0; h < _data.size() / 2; h++){
+
+    double abs_val =  std::abs(_data[h]);
+     _abs.push_back(abs_val);
+
    //sample_freq*vec_1tosize/2*1/size
-   _freq_val = (44100.0 * (h + 1.0)) * (1.0 / 87808.0);
+   _freq_val = (44100.0 * (h + 1)) * (1.0 / _data.size());
    //std::cout<< _freq_val <<std::endl;
 
    _freq_vec.push_back(_freq_val);
    //std::cout << "Freq_vec: " << _freq_vec[h] << std::endl;
 
    }
-    std::cout << "Start sort: " << std::endl;
+
+//    std::cout << "Size of abs_vec: " << _abs.size() << std::endl;
+
+//    double max = *std::max_element(_abs.begin(), _abs.end());
+//    std::cout << "Highest val in _abs:  " << max << std::endl;
+//    std::cout << "Size of freq_: " << _freq_vec.size() << std::endl;
+//    for(int f = 0; f < 10; f++){
+//    std::cout << "content of abs_vec: " << _abs[f] << std::endl;
+//    }
+//    for(int f = 0; f < 10; f++){
+//    std::cout << "content of _data_vec: " << _data[f] << std::endl;
+//    }
+//    auto it = std::find(_freq_vec.begin(), _freq_vec.end(), 0.502232);
+//    if( it != _freq_vec.end()){
+//    std::cout << "Abs val on freq 1477: " << "found at: " << it - _freq_vec.begin() + 1 << std::endl;
+//    }
+//    else {
+//         std::cout << "Abs val on freq 1477: " << "not found " << it - _freq_vec.begin() + 1 <<  std::endl;
+//    }
+//    for(int f = 0; f < 10; f++){
+//    std::cout << "content of freq_vec: " << _freq_vec[f] << std::endl;
+//    }
+//    std::cout << "Size of _data_vec: " << _data.size() << std::endl;
+//    std::cout << "Start sort: " << std::endl;
    sort(_abs, _freq_vec);
-   std::cout << "Highest freq: " << _freq_vec[0] << std::endl;
+//   for(int f = 0; f < 10 ; f++){
+//   std::cout << "Highest 10 freq: " << _freq_vec[f] << std::endl;
+//   }
 }
 
 
@@ -58,18 +94,20 @@ void FFT::read_from_file(const std::string &fileName){
        //std::cout << "Line: " << line << std::endl;
     }
 
-    _size_of_signal = _data.size();
-     std::cout << "Size of signal: " << _size_of_signal << std::endl;
+    _actual_size_of_signal = _data.size();
+     std::cout << "Size of signal: " << _actual_size_of_signal << std::endl;
     inFile.close();
+
+    int y = std::log2(_actual_size_of_signal);
+    _size_of_signal_with_zero = std::exp2(y + 1);
+    for(int i = 0; i < (_size_of_signal_with_zero - _actual_size_of_signal); i++){
+        _data.push_back(std::complex<double> (0.0, 0.0));
+    }
 
 }
 
 std::vector<std::complex<double>> FFT::get_data(){
     return _data;
-}
-
-std::vector<int> FFT::abs_coef(){
-    //return std::abs(_data);
 }
 
 void FFT::sort(std::vector <double> &x, std::vector <double> &y){

@@ -3,29 +3,24 @@
 Goertzel::Goertzel(){}
 
 Goertzel::Goertzel(const std::vector<double> data)
-    : _data(data), _size_of_signal(data.size()) {}
+        : _data(data), _size_of_signal(data.size()) {}
 
-void Goertzel::init(){
+void Goertzel::translate_signal_goertzel(){
     _DTMF_freq = {697, 770, 852, 941, 1209, 1336, 1477, 1633};
-
-    _sample_freq = 44100;
 
     _init_coefficients();
 
-    compute_Goertzel();
-
-    //printResults();
+    compute_goertzel();
 
     sort(_magnitudes, _DTMF_freq);
 
-
 }
 
-void Goertzel::compute_Goertzel() {
+void Goertzel::compute_goertzel() {
     _magnitudes.resize(_DTMF_freq.size());
 
-    for (int freqIndex = 0; freqIndex < _DTMF_freq.size(); ++freqIndex) {
-        double omega = (2.0 * M_PI * _DTMF_freq[freqIndex]) / _sample_freq;
+    for (int freq_index = 0; freq_index < _DTMF_freq.size(); ++freq_index) {
+        double omega = (2.0 * M_PI * _DTMF_freq[freq_index]) / _sample_freq;
         double sine = std::sin(omega);
         double cosine = std::cos(omega);
         double coeff = 2.0 * cosine;
@@ -41,37 +36,29 @@ void Goertzel::compute_Goertzel() {
 
         double real = (last_signal - before_last_signal * cosine);
         double imag = (before_last_signal * sine);
-        _magnitudes[freqIndex] = std::sqrt(real * real + imag * imag);
+        _magnitudes[freq_index] = std::sqrt(real * real + imag * imag);
     }
 }
 
-void Goertzel::printResults(){
-    for (int i = 0; i < _DTMF_freq.size(); ++i) {
-        std::cout << "Frequency: " << _DTMF_freq[i] << " Hz, Magnitude: " << _magnitudes[i] << std::endl;
-    }
-}
 
-void Goertzel::read_from_file(const std::string &fileName){
-    std::ifstream inFile(fileName);
+void Goertzel::read_from_file(const std::string &file_name){
+    std::ifstream in_file(file_name);
     std::string line;
 
-    while (std::getline(inFile, line)) {
+    while (std::getline(in_file, line)) {
         double value = std::stod(line);
         _data.push_back(value);
-       //std::cout << "Line: " << line << std::endl;
 
     }
 
     _size_of_signal = _data.size();
-    std::cout << "Size of signal: " << _size_of_signal << std::endl;
-    inFile.close();
+
+    in_file.close();
 }
 
 
 void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
-    // Using the bubble sort algorithm
-    // Evaluates x and swaps both x and y
-    // The smallest value -> largest value
+
     bool swap;
     for(int i = 0; i < x.size()-1; i++){
         swap = false;
@@ -86,7 +73,38 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
             break;
         }
     }
-     std::cout << "Frequency found: " << y[0] << " and " << y[1] << std::endl;
+
+    _freq_from_signals.push_back(y[0]);
+    _freq_from_signals.push_back(y[1]);
+
+//     std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
+     detect_DTMF(_freq_from_signals[0], _freq_from_signals[1]);
+
+     /* -------------------- FOR DEBUG: -----------------------*/
+
+//     std::cout << "Size og message vector: "<< _message_vec.size() << std::endl;
+//     std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
+
+}
+
+
+void Goertzel::detect_DTMF(int freq_1, int freq_2) {
+    if (freq_1 > freq_2) {
+       std::swap(freq_1, freq_2);
+    }
+
+    auto DTMF_freq = _DTMF_mapping.find({freq_1, freq_2});
+
+    if (DTMF_freq != _DTMF_mapping.end()) {
+        _message_vec.push_back(DTMF_freq->second);
+
+    }
+    else {
+
+       std::cout<< " DTMF_Freq does not found " << std::endl;
+
+    }
+
 }
 
 

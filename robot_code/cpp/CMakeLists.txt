@@ -15,13 +15,15 @@ set(SOURCES
     src/main.cpp
     src/dft.cpp
     src/goertzel.cpp
+    src/fft_test.cpp
 )
 
 # Headers
 set(HEADERS
-    include/algorithms.h
     include/dft.h
     include/goertzel.h
+    include/fft_test.h
+
 )
 
 # Add executable
