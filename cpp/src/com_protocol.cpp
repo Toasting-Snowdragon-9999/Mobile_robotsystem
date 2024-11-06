@@ -107,7 +107,7 @@ string ComProtocol::exclusive_or_strings(string a, string b)
     return xorresult;
 }
 
-string ComProtocol::crc4(string binaryDataword)
+string ComProtocol::crc4_encode(string binaryDataword)
 {
     string codeword = "10011";
     string encodedBinaryData = binaryDataword;
@@ -141,6 +141,40 @@ string ComProtocol::crc4(string binaryDataword)
     string remainder = selection.substr(1); // Return substring since codeword is CRC-Degree+1 in size
 
     return encodedBinaryData = binaryDataword + remainder;
+}
+
+string ComProtocol::crc4_decode(string binaryEncodedDataword)
+{
+    string codeword = "10011";
+    string decodedBinaryData = binaryEncodedDataword;
+
+    int crcDegree = codeword.length() - 1;
+
+    int selectionPlusOneIdx = codeword.length();
+    int codewordLength = codeword.length();
+
+    string selection = binaryEncodedDataword.substr(0, codeword.length());
+    int encodedDatawordLength = binaryEncodedDataword.length();
+
+    while (selectionPlusOneIdx < encodedDatawordLength) // Binary-division
+    {
+        if (selection[0] == '1')
+        {
+            selection = exclusive_or_strings(selection, codeword);
+        }
+
+        selection = selection.substr(1) + binaryEncodedDataword[selectionPlusOneIdx];
+        selectionPlusOneIdx++;
+    }
+
+    if ((selection[0] == '1')) // XOR the last selection with the codeword if needed
+    {
+        selection = exclusive_or_strings(selection, codeword);
+    }
+
+    string remainder = selection.substr(1); // Return substring since codeword is CRC-Degree+1 in size
+
+    return decodedBinaryData = binaryEncodedDataword + remainder;
 }
 
 void ComProtocol::print_nested_vector(const std::vector<std::vector<int>> &preambleSeq, const std::string &name)

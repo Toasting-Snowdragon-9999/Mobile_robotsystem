@@ -47,7 +47,9 @@ public:
     /// @brief Encode binary dataword with CRC4-Codeword
     /// @param binaryDataword Type: String - String of binary numbers to be encoded
     /// @return Type: String - Binary dataword with CRC4-Codeword appended
-    string crc4(string binaryDataword);
+    string crc4_encode(string binaryDataword);
+
+    string crc4_decode(string binaryEncodedDataword);
 
     /// @brief Prints nested vector 
     /// @param preambleSeq Type: vector of vectors { {...}, {...}, ....., {...} } - Decimal values for sequence

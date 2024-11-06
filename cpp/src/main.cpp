@@ -147,20 +147,18 @@ int main()
 	std::vector<std::vector<int>> testSequenceFULL = {{13, 2, 0, 0}, {12, 5, 9}};
 	ComProtocol testPackage(testSequenceFULL);
 
-	testPackage.print_nested_vector(testPackage.protocol_structure(), "Test Package");
-	std::cout << "Converted binary robot path: " << testPackage.decimal_seq_to_binary_msg(testSequenceFULL) << endl;
-	std::cout << "CRC4-encoded robot path: " << testPackage.crc4(testPackage.decimal_seq_to_binary_msg(testSequenceFULL))
-			  << " | CRC-remainder: " << testPackage.crc4(testPackage.decimal_seq_to_binary_msg(testSequenceFULL)).substr(testPackage.crc4(testPackage.decimal_seq_to_binary_msg(testSequenceFULL)).size() - 4) << std::endl;
-	std::cout << "CRC4-decoded robot path: " << testPackage.crc4(testPackage.crc4(testPackage.decimal_seq_to_binary_msg(testSequenceFULL))) << std::endl;
-
 	std::string binaryMsg = testPackage.decimal_seq_to_binary_msg(testSequenceFULL);
-	std::string encodedMsg = testPackage.crc4(binaryMsg);
-	std::string decodedMsg = testPackage.crc4(encodedMsg);
-	std::cout << "CRC4 remainder with method: " << testPackage.find_remainder(decodedMsg) << std::endl;
 
-	if (testPackage.find_remainder(decodedMsg) == "0000") {
-		std::cout << "YAAAYYYYY" << std::endl;
-	}
+	std::string encodedMsg = testPackage.crc4_encode(binaryMsg);
+	std::string encodedMsgRemainder = testPackage.find_remainder(encodedMsg);
+
+	std::string decodedMsg = testPackage.crc4_decode(encodedMsg);
+	std::string decodedMsgRemainder = testPackage.find_remainder(decodedMsg);
+
+	testPackage.print_nested_vector(testPackage.protocol_structure(), "Test Package");
+	std::cout << "Converted binary robot path: " << binaryMsg << endl;
+	std::cout << "CRC4-encoded robot path: " << encodedMsg << " | CRC-remainder: " << encodedMsgRemainder << std::endl;
+	std::cout << "CRC4-decoded robot path: " << decodedMsg << " | CRC-remainder: " << decodedMsgRemainder << std::endl;
 
 	WaveGenerator testPackageWave(testPackage.protocol_structure());
 	testPackageWave.play_sounds();
