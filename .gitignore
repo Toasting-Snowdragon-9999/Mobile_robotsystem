@@ -50,3 +50,13 @@
 
 # Shared files
 /Docs/Shared_file.txt
+
+# Gui
+/python/gui/__pycache__/*
+/python/packages/gui/__pycache__/*
+
+# DTMF 
+/robot_code/cpp/dtmf_sounds/*
+!/robot_code/cpp/dtmf_sounds/.gitkeep
+/cpp/dtmf_sounds/*
+!/cpp/dtmf_sounds/.gitkeep

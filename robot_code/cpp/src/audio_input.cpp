@@ -94,7 +94,7 @@ void AudioInput::record_audio(int input_device){
         return;
     }
 
-    Pa_Sleep(NUM_SECONDS*1000); /* Sleep for 5 seconds while the stream is running */
+    Pa_Sleep(NUM_SECONDS*10); /* Sleep for 5 seconds while the stream is running */
 
     _err = Pa_StopStream( _stream );
     if( _err != paNoError ) {
@@ -128,13 +128,11 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
                            PaStreamCallbackFlags status_flags,
                            void *userData ){
 
-    // MicSample *data = static_cast<MicSample*>(userData);
-    // const float *in = static_cast<const float*>(input_buffer);
 
     MicSample *data = (MicSample*)userData; 
     const float *in = (const float*)input_buffer; /* Audio input data */
     unsigned int i;
-    
+    std::vector <float> &buffer;
     (void) output_buffer; /* Prevent unused variable warning. */
 
     if( input_buffer == NULL ){
@@ -144,8 +142,17 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
     for( i = 0; i < frames_per_buffer; i++ ){
         float mono_in = *in++;  /* Mono channel input */
-        //std::cout << "Mono Input: " << mono_in << std::endl;
-		data->recorded_samples.push_back(mono_in);
+		buffer.push_back(mono_in);
+    }
+
+    // Do signal processing
+    if(true){
+        
+        data->success = true;
+    }
+    else{
+        buffer->clear();
+        data->success = false;
     }
 
     return paContinue;

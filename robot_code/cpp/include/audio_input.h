@@ -7,7 +7,7 @@
 #include <cstring>
 #include <portaudio.h>
 
-#define NUM_SECONDS (2)
+#define NUM_SECONDS (3)
 #define NUM_CHANNELS (1)
 #define SAMPLE_TYPE paFloat32
 
@@ -15,6 +15,7 @@ typedef float SAMPLE;
 
 struct MicSample {
     std::vector<SAMPLE> recorded_samples;
+    bool success;
 };
 
 class AudioInput {
