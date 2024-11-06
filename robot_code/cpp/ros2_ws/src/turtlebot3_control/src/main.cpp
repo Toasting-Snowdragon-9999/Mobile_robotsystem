@@ -14,18 +14,6 @@ int main(int argc, char *argv[]) {
 
     node->run_path(table_sequence);
 
-    // std::cout << "Enter distance (cm) " << std::endl;
-    // float distance;
-    // std::cin >> distance;
-
-    // node->move(distance);
-
-    // std::cout << "Enter angle (degrees) " << std::endl;
-    // float angle;
-    // std::cin >> angle;
-
-    // node->turn(angle);
-    //node->move(20, 0.2);
     rclcpp::shutdown();
     return 0;
 }
