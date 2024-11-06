@@ -24,7 +24,7 @@ int main() {
 
     /*-------------------------------Goertzel-Run_Code----------------------------------*/
 
-            std::string file = "PI_FIRST_TONE.txt";
+            std::string file = "../dtmf_sounds/PI_FIRST_TONE.txt";
             Goertzel goertzel;
             goertzel.read_from_file(file);
             goertzel.translate_signal_goertzel();

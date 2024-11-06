@@ -77,13 +77,13 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
     _freq_from_signals.push_back(y[0]);
     _freq_from_signals.push_back(y[1]);
 
-//     std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
+     std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
      detect_DTMF(_freq_from_signals[0], _freq_from_signals[1]);
 
      /* -------------------- FOR DEBUG: -----------------------*/
 
-//     std::cout << "Size og message vector: "<< _message_vec.size() << std::endl;
-//     std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
+//     std::cout << "Size of message vector: "<< _message_vec.size() << std::endl;
+     std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
 
 }
 
