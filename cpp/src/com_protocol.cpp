@@ -1,46 +1,58 @@
 #include "com_protocol.h"
 
-ComProtocol::ComProtocol(std::vector<std::vector<int>> robotPath) : _robotPath(robotPath)
+ComProtocol::ComProtocol(std::vector<std::vector<uint16_t>> robotPath) : _robotPath(robotPath)
 {
-    int outerVecSize = _robotPath.size(); // Size of outer vector (how many vectors are in the vector)
-    int size = 0;
+    uint16_t outerVecSize = _robotPath.size(); // Size of outer vector (how many vectors are in the vector)
+    uint16_t size = 0;
 
-    for (int i = 0; i < outerVecSize; i++)
+    for (uint16_t i = 0; i < outerVecSize; i++)
     {
-        int innerVecSize = _robotPath[i].size(); // Size of inner vector (how many elements are in the currently looked at vector)
+        uint16_t innerVecSize = _robotPath[i].size(); // Size of inner vector (how many elements are in the currently looked at vector)
 
-        for (int i = 0; i < innerVecSize; i++)
+        for (uint16_t i = 0; i < innerVecSize; i++)
         {
             size++;
         }
     }
-    std::bitset<12> binaryBitLength(size + 1); // Converts size of the robot path to 12-bit value (+1 is added because CRC4 is one tone added to end of message)
-    std::string binaryStrLength = binaryBitLength.to_string();
+    size++; // Adds 1 to size to account for CRC¤, which is 1 tone
 
-    std::string DTMFLength1 = binaryStrLength.substr(0, 4);
-    std::string DTMFLength2 = binaryStrLength.substr(4, 4);
-    std::string DTMFLength3 = binaryStrLength.substr(8, 4);
+    uint16_t DTMFLengthTone1 = 0;
+    uint16_t DTMFLengthTone2 = 0;
+    uint16_t DTMFLengthTone3 = 0;
+    std::string sizeString = std::to_string(size);
 
-    int DTMFLengthTone1 = std::stoi(DTMFLength1, nullptr, 2);
-    int DTMFLengthTone2 = std::stoi(DTMFLength2, nullptr, 2);
-    int DTMFLengthTone3 = std::stoi(DTMFLength3, nullptr, 2);
+    if (size < 10)
+    {
+        DTMFLengthTone3 = size;
+    }
+    else if (size < 100 && size > 9)
+    {
+        DTMFLengthTone3 = sizeString[1] - '0';
+        DTMFLengthTone2 = sizeString[0] - '0';
+    }
+    else if (size < 1000 && size > 99)
+    {
+        DTMFLengthTone3 = sizeString[2] - '0';
+        DTMFLengthTone2 = sizeString[1] - '0';
+        DTMFLengthTone1 = sizeString[0] - '0';
+    }
 
     _robotPathLength = {DTMFLengthTone1, DTMFLengthTone2, DTMFLengthTone3};
 }
 
-std::vector<std::vector<int>> ComProtocol::protocol_structure()
+std::vector<std::vector<uint16_t>> ComProtocol::protocol_structure()
 {
-    std::vector<std::vector<int>> protocolStructureVec;
-    
+    std::vector<std::vector<uint16_t>> protocolStructureVec;
+
     std::string binaryRobotPath = decimal_seq_to_binary_msg(_robotPath);
     std::string remainderString = find_remainder(crc4_encode(binaryRobotPath));
-    int remainderInt = std::stoi(remainderString, nullptr, 2);  // Converts remainder from 4-bit string to integer value
-    std::vector<int> remainderVecInt = {remainderInt};          // Inserts remainder integer value into a vector
+    uint16_t remainderInt = static_cast<uint16_t>(std::stoi(remainderString, nullptr, 2)); // Converts remainder from 4-bit string to integer value
+    std::vector<uint16_t> remainderVecInt = {remainderInt};         // Inserts remainder integer value into a vector
 
     // Add all elements of data to the protocol structure (creating the entire package)
     protocolStructureVec.push_back(_preAndPostamble);
     protocolStructureVec.push_back(_robotPathLength);
-    for (int i = 0; i < _robotPath.size(); i++)
+    for (uint16_t i = 0; i < _robotPath.size(); i++)
     {
         protocolStructureVec.push_back(_robotPath[i]);
     }
@@ -50,7 +62,7 @@ std::vector<std::vector<int>> ComProtocol::protocol_structure()
     return protocolStructureVec;
 }
 
-void ComProtocol::print_vec_elements(std::vector<std::vector<int>> package, std::string description)
+void ComProtocol::print_vec_elements(std::vector<std::vector<uint16_t>> package, std::string description)
 {
     for (size_t i = 0; i < package.size(); ++i)
     {
@@ -66,7 +78,7 @@ void ComProtocol::print_vec_elements(std::vector<std::vector<int>> package, std:
     }
 }
 
-string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence)
+string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<uint16_t>> &decimalSequence)
 {
     string binaryConvertedTone = "";
     std::string tmpTone;
@@ -75,7 +87,7 @@ string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<int>
     {
         for (auto tone : pair)
         {
-            int toneCopy = tone;
+            uint16_t toneCopy = tone;
             if (tone == 0)
             {
                 tmpTone += '0'; // If a tone is zero, no conversion is needed
@@ -106,7 +118,7 @@ string ComProtocol::exclusive_or_strings(string a, string b)
     {
         throw std::invalid_argument("Strings of XOR-operation are not same size");
     }
-    for (int i = 0; i < a.size(); i++)
+    for (uint16_t i = 0; i < a.size(); i++)
     {
         xorresult += (a[i] == b[i]) ? '0' : '1';
     }
@@ -118,15 +130,15 @@ string ComProtocol::crc4_encode(string binaryDataword)
     string codeword = "10011";
     string encodedBinaryData = binaryDataword;
 
-    int crcDegree = codeword.length() - 1;
+    uint16_t crcDegree = codeword.length() - 1;
 
-    int selectionPlusOneIdx = codeword.length();
-    int codewordLength = codeword.length();
+    uint16_t selectionPlusOneIdx = codeword.length();
+    uint16_t codewordLength = codeword.length();
 
     string binaryDatawordWithZeroes = binaryDataword + string(crcDegree, '0'); // Append CRC-Degree zeroes to data
 
     string selection = binaryDatawordWithZeroes.substr(0, codeword.length());
-    int datawordLength = binaryDatawordWithZeroes.length();
+    uint16_t datawordLength = binaryDatawordWithZeroes.length();
 
     while (selectionPlusOneIdx < datawordLength) // Binary-division
     {
@@ -154,13 +166,13 @@ string ComProtocol::crc4_decode(string binaryEncodedDataword)
     string codeword = "10011";
     string decodedBinaryData = binaryEncodedDataword;
 
-    int crcDegree = codeword.length() - 1;
+    uint16_t crcDegree = codeword.length() - 1;
 
-    int selectionPlusOneIdx = codeword.length();
-    int codewordLength = codeword.length();
+    uint16_t selectionPlusOneIdx = codeword.length();
+    uint16_t codewordLength = codeword.length();
 
     string selection = binaryEncodedDataword.substr(0, codeword.length());
-    int encodedDatawordLength = binaryEncodedDataword.length();
+    uint16_t encodedDatawordLength = binaryEncodedDataword.length();
 
     while (selectionPlusOneIdx < encodedDatawordLength) // Binary-division
     {
@@ -188,11 +200,11 @@ bool ComProtocol::is_message_correct(const string &binaryDecodedDataword)
     return find_remainder(binaryDecodedDataword) == "0000";
 }
 
-void ComProtocol::print_nested_vector(const std::vector<std::vector<int>> &preambleSeq, const std::string &name)
+void ComProtocol::print_nested_vector(const std::vector<std::vector<uint16_t>> &preambleSeq, const std::string &name)
 {
     std::cout << name << ":" << std::endl;
     std::cout << "[" << std::endl;
-    for (const std::vector<int> &innerVec : preambleSeq)
+    for (const std::vector<uint16_t> &innerVec : preambleSeq)
     {
         std::cout << "  [ ";
         for (int num : innerVec)

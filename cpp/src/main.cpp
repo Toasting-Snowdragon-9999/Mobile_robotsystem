@@ -38,7 +38,7 @@ int main()
 		{3, 5, 14, 1, 12, 9, 10, 13, 4, 11}
 	};
 	
-	std::vector<std::vector<int>> robotPath = {{13, 2, 0, 0}, {12, 5}, {13, 7, 5, 0}, {12}, {13, 4, 5}};
+	std::vector<std::vector<uint16_t>> robotPath = {{13, 2, 0}, {12, 5, 0}, {13, 7, 5}, {13, 4, 5}};
 	ComProtocol testPackage(robotPath);
 
 	std::string binaryMsg = testPackage.decimal_seq_to_binary_msg(robotPath);

@@ -6,6 +6,7 @@
 #include <bitset>
 #include <string>
 #include <algorithm>
+#include <cstdint>
 
 using std::cout;
 using std::endl;
@@ -15,28 +16,28 @@ class ComProtocol
 {
 
 private:
-    std::vector<int> _preAndPostamble = {10, 10, 10}; // Sequence of DTMF tones for preamble and postamble
-    std::vector<int> _robotPathLength;                // Length of data in the message itself
-    std::vector<std::vector<int>> _robotPath;         // Data formed by path for robot, created by user
+    std::vector<uint16_t> _preAndPostamble = {10, 10, 10}; // Sequence of DTMF tones for preamble and postamble
+    std::vector<uint16_t> _robotPathLength;                // Length of data in the message itself
+    std::vector<std::vector<uint16_t>> _robotPath;         // Data formed by path for robot, created by user
 
 public:
     /// @brief Constructor to create instance of ComProtocol
     /// @param robotPath Type: vector of vectors { {...}, {...}, ....., {...} } - The message itself (path for robot created by user)
-    ComProtocol(std::vector<std::vector<int>> robotPath);
+    ComProtocol(std::vector<std::vector<uint16_t>> robotPath);
 
     /// @brief Method for creating entire package - Adds preamble, length, data, CRC and postamble toghether in a vector of vectors
     /// @return Type: Vectors in vector { {preamble}, {length}, {robot path}, {CRC}, {postamble} }
-    std::vector<std::vector<int>> protocol_structure();
+    std::vector<std::vector<uint16_t>> protocol_structure();
 
     /// @brief Method for testing purpose - Prints all elements for a package (vector of vectors)
     /// @param package Type: vector of vectors { {...}, {...}, ....., {...} }
     /// @param description Type: String "description" - Describes what the package contains
-    void print_vec_elements(std::vector<std::vector<int>> package, std::string description);
+    void print_vec_elements(std::vector<std::vector<uint16_t>> package, std::string description);
 
     /// @brief Binary conversion for CRC-check
     /// @param decimalSequence Type: vector of vectors { {...}, {...}, ....., {...} } - The original tone sequence in decimal, divided in vectors of vectors
     /// @return Type: String - The sequence in a long binary string
-    string decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence);
+    string decimal_seq_to_binary_msg(const std::vector<std::vector<uint16_t>> &decimalSequence);
 
     /// @brief Performs XOR-operation on 2 strings characterwise
     /// @param a Type: String - 1st string to perform XOR-operation on
@@ -57,7 +58,7 @@ public:
     /// @brief Prints nested vector
     /// @param preambleSeq Type: vector of vectors { {...}, {...}, ....., {...} } - Decimal values for sequence
     /// @param name Type: String - Name for the sequence
-    void print_nested_vector(const std::vector<std::vector<int>> &preambleSeq, const std::string &name = "Preamble Sequence");
+    void print_nested_vector(const std::vector<std::vector<uint16_t>> &preambleSeq, const std::string &name = "Preamble Sequence");
 
     /// @brief Finds remainder in a binary dataword (last 4 binary digits)
     /// @param dataword Type: String - A binary dataword
