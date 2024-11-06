@@ -1,3 +1,6 @@
+// #include <iostream>
+// #include <fstream>
+// #include "algorithms.h"
 #include "audio_input.h"
 #include <unistd.h>
 #define SAMPLE_RATE (44100)
@@ -6,6 +9,18 @@
 
 
 int main(){
+
+	// std::vector<std::complex<double>> a = {{1, 2}, {3, 4}, {5, 6}, {7, 8}};
+	// SP::Algorithms<double> A(a);
+	// SP::Algorithms<double> B;
+	// A.print_data();
+
+	// std::cout << "\nFFT: " << std::endl;
+	// B.FFT(a);
+	// B.print_data();
+
+	// std::cout << "\nGoertzel: " << std::endl;
+	// A.goertzel();
 
     AudioInput audio_input(SAMPLE_RATE, FRAMES_PER_BUFFER);
     audio_input.audio_open();
