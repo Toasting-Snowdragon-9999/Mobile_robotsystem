@@ -11,143 +11,37 @@ using std::cout;
 using std::endl;
 using std::string;
 
-/*THIS MIGHT BE DELETED*/
-// /**
-//  * @brief Binary conversion for CRC-check
-//  *
-//  * @param decimalSequence The original tone sequence in decimal, divided in vectors of vectors
-//  * @return The sequence in a long binary string
-//  */
-// string decimalSeqToBinaryMsg(const std::vector<std::vector<int>> &decimalSequence)
-// {
-// 	string binaryConvertedTone = "";
-// 	std::string tmpTone;
-
-// 	for (auto pair : decimalSequence)
-// 	{
-// 		for (auto tone : pair)
-// 		{
-// 			int toneCopy = tone;
-// 			if (tone == 0)
-// 			{
-// 				tmpTone += '0'; // If a tone is zero, no conversion is needed
-
-// 				continue;
-// 			}
-
-// 			while (toneCopy > 0)
-// 			{
-// 				tmpTone += (toneCopy % 2) ? '1' : '0';
-
-// 				toneCopy /= 2;
-// 			}
-
-// 			std::reverse(tmpTone.begin(), tmpTone.end());
-// 			binaryConvertedTone += tmpTone;
-// 			tmpTone.clear();
-// 		}
-// 	}
-
-// 	return binaryConvertedTone;
-// }
-
-// /// @brief Performs XOR-operation on 2 strings characterwise
-// /// @param a
-// /// @param b
-// /// @return Result of XOR-operation
-// string ExclusiveORStrings(string a, string b)
-// {
-// 	string xorresult = "";
-// 	if (a.size() != b.size())
-// 	{
-// 		throw std::invalid_argument("Strings of XOR-operation are not same size");
-// 	}
-// 	for (int i = 0; i < a.size(); i++)
-// 	{
-// 		xorresult += (a[i] == b[i]) ? '0' : '1';
-// 	}
-// 	return xorresult;
-// }
-
-// /// @brief Encode binary dataword with CRC4-Codeword
-// /// @param binaryDataword
-// /// @return Binary dataword with CRC4-Codeword appended
-// string CRC4Encode(string binaryDataword)
-// {
-// 	string codeword = "10011";
-// 	string encodedBinaryData = binaryDataword;
-
-// 	int crcDegree = codeword.length() - 1;
-
-// 	int selectionPlusOneIdx = codeword.length();
-// 	int codewordLength = codeword.length();
-
-// 	string binaryDatawordWithZeroes = binaryDataword + string(crcDegree, '0'); // Append CRC-Degree zeroes to data
-
-// 	string selection = binaryDatawordWithZeroes.substr(0, codeword.length());
-// 	int datawordLength = binaryDatawordWithZeroes.length();
-
-// 	while (selectionPlusOneIdx < datawordLength) // Binary-division
-// 	{
-// 		if (selection[0] == '1')
-// 		{
-// 			selection = ExclusiveORStrings(selection, codeword);
-// 		}
-
-// 		selection = selection.substr(1) + binaryDatawordWithZeroes[selectionPlusOneIdx];
-// 		selectionPlusOneIdx++;
-// 	}
-
-// 	if ((selection[0] == '1')) // XOR the last selection with the codeword if needed
-// 	{
-// 		selection = ExclusiveORStrings(selection, codeword);
-// 	}
-
-// 	string remainder = selection.substr(1); // Return substring since codeword is CRC-Degree+1 in size
-
-// 	return encodedBinaryData = binaryDataword + remainder;
-// }
-
-// // Function to print a vector of chars
-// void printNestedVector(const std::vector<std::vector<int>> &preambleSeq, const std::string &name = "Preamble Sequence")
-// {
-// 	std::cout << name << ":" << std::endl;
-// 	std::cout << "[" << std::endl;
-// 	for (const std::vector<int> &innerVec : preambleSeq)
-// 	{
-// 		std::cout << "  [ ";
-// 		for (int num : innerVec)
-// 		{
-// 			std::cout << num << " ";
-// 		}
-// 		std::cout << "]" << std::endl;
-// 	}
-// 	std::cout << "]" << std::endl;
-// }
-/*END OF DELETION*/
-
 int main()
 {
 	SharedData sd;
 
-	// lyde
-	// std::vector<std::vector<int>> sequence1 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}, {13, 14, 15}, {16, 0, 0}}; // missing 16
-	// std::vector<std::vector<int>> sequence2 = {{2, 7, 4}, {16, 1, 2}, {14, 8, 6}, {1, 3, 9}, {15, 3, 4}, {9, 16, 1}};
-	// std::vector<std::vector<int>> sequence3 = {{16, 16, 16}, {1, 1, 1}, {16, 16, 16}, {1, 1, 1}, {16, 16, 16}};
-	// std::vector<std::vector<int>> sequence4 = {{11, 8, 10}};
-	// std::vector<std::vector<int>> testSequence1 = {{10, 10, 10}, {13, 2, 0, 0}, {10, 10, 10}};
+	std::vector<std::vector<int>> bigPath = {
+		{1, 5, 3, 7, 9, 2, 8, 4, 6, 0},
+		{10, 14, 12, 11, 15, 13, 1, 5, 7, 3},
+		{8, 2, 4, 6, 10, 12, 14, 11, 9, 0},
+		{15, 13, 1, 4, 7, 10, 3, 2, 5, 8},
+		{9, 0, 12, 6, 14, 11, 13, 15, 1, 7},
+		{3, 10, 4, 5, 8, 6, 9, 2, 12, 11},
+		{14, 0, 7, 13, 15, 3, 5, 10, 1, 8},
+		{6, 2, 9, 11, 4, 12, 14, 0, 7, 13},
+		{3, 1, 15, 5, 8, 6, 10, 9, 2, 11},
+		{4, 14, 7, 12, 0, 13, 1, 5, 9, 10},
+		{2, 8, 11, 3, 15, 6, 4, 7, 14, 12},
+		{13, 0, 1, 9, 8, 10, 2, 3, 5, 11},
+		{7, 4, 15, 6, 13, 12, 9, 1, 10, 3},
+		{8, 14, 5, 11, 7, 0, 6, 2, 12, 9},
+		{13, 4, 14, 3, 1, 10, 15, 8, 5, 7},
+		{2, 6, 12, 11, 9, 0, 3, 14, 5, 8},
+		{10, 7, 1, 13, 15, 4, 9, 12, 11, 2},
+		{6, 8, 0, 5, 3, 14, 7, 10, 1, 13},
+		{12, 9, 11, 2, 4, 0, 8, 6, 15, 7},
+		{3, 5, 14, 1, 12, 9, 10, 13, 4, 11}
+	};
+	
+	std::vector<std::vector<int>> robotPath = {{13, 2, 0, 0}, {12, 5}, {13, 7, 5, 0}, {12}, {13, 4, 5}};
+	ComProtocol testPackage(robotPath);
 
-	// WaveGenerator sounds(testSequence1);
-	// sounds.play_sounds();
-
-	// WaveGenerator preamble(preambleSeq);
-	// preamble.play_sounds();
-	// lyde ended
-
-	std::vector<std::vector<int>> testSequenceFULL = {{13, 2, 0, 0}, {12, 5, 9}};
-	ComProtocol testPackage(testSequenceFULL);
-
-	std::string binaryMsg = testPackage.decimal_seq_to_binary_msg(testSequenceFULL);
+	std::string binaryMsg = testPackage.decimal_seq_to_binary_msg(robotPath);
 
 	std::string encodedMsg = testPackage.crc4_encode(binaryMsg);
 	std::string encodedMsgRemainder = testPackage.find_remainder(encodedMsg);
@@ -160,8 +54,14 @@ int main()
 	std::cout << "CRC4-encoded robot path: " << encodedMsg << " | CRC-remainder: " << encodedMsgRemainder << std::endl;
 	std::cout << "CRC4-decoded robot path: " << decodedMsg << " | CRC-remainder: " << decodedMsgRemainder << std::endl;
 
-	if (testPackage.is_message_correct(decodedMsg)) { std::cout << "Recieved package IS correct!" << std::endl; }
-	else { std::cout << "Recieved package IS NOT correct!" << std::endl; }
+	if (testPackage.is_message_correct(decodedMsg))
+	{
+		std::cout << "Recieved package IS correct!" << std::endl;
+	}
+	else
+	{
+		std::cout << "Recieved package IS NOT correct!" << std::endl;
+	}
 
 	std::cout << std::endl;
 	WaveGenerator testPackageWave(testPackage.protocol_structure());

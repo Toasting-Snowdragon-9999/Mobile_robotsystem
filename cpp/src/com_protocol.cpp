@@ -14,7 +14,7 @@ ComProtocol::ComProtocol(std::vector<std::vector<int>> robotPath) : _robotPath(r
             size++;
         }
     }
-    std::bitset<12> binaryBitLength(size);
+    std::bitset<12> binaryBitLength(size + 1); // Converts size of the robot path to 12-bit value (+1 is added because CRC4 is one tone added to end of message)
     std::string binaryStrLength = binaryBitLength.to_string();
 
     std::string DTMFLength1 = binaryStrLength.substr(0, 4);
@@ -31,6 +31,11 @@ ComProtocol::ComProtocol(std::vector<std::vector<int>> robotPath) : _robotPath(r
 std::vector<std::vector<int>> ComProtocol::protocol_structure()
 {
     std::vector<std::vector<int>> protocolStructureVec;
+    
+    std::string binaryRobotPath = decimal_seq_to_binary_msg(_robotPath);
+    std::string remainderString = find_remainder(crc4_encode(binaryRobotPath));
+    int remainderInt = std::stoi(remainderString, nullptr, 2);  // Converts remainder from 4-bit string to integer value
+    std::vector<int> remainderVecInt = {remainderInt};          // Inserts remainder integer value into a vector
 
     // Add all elements of data to the protocol structure (creating the entire package)
     protocolStructureVec.push_back(_preAndPostamble);
@@ -39,6 +44,7 @@ std::vector<std::vector<int>> ComProtocol::protocol_structure()
     {
         protocolStructureVec.push_back(_robotPath[i]);
     }
+    protocolStructureVec.push_back(remainderVecInt);
     protocolStructureVec.push_back(_preAndPostamble);
 
     return protocolStructureVec;
@@ -177,7 +183,8 @@ string ComProtocol::crc4_decode(string binaryEncodedDataword)
     return decodedBinaryData = binaryEncodedDataword + remainder;
 }
 
-bool ComProtocol::is_message_correct(const string &binaryDecodedDataword){
+bool ComProtocol::is_message_correct(const string &binaryDecodedDataword)
+{
     return find_remainder(binaryDecodedDataword) == "0000";
 }
 
@@ -199,6 +206,6 @@ void ComProtocol::print_nested_vector(const std::vector<std::vector<int>> &pream
 
 std::string ComProtocol::find_remainder(std::string dataword)
 {
-    dataword = dataword.substr(dataword.size()-4);
+    dataword = dataword.substr(dataword.size() - 4);
     return dataword;
 }
