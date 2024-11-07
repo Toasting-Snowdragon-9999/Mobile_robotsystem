@@ -1,34 +1,29 @@
-#ifndef FFT_H
-#define FFT_H
+#ifndef FFT_TEST_H
+#define FFT_TEST_H
+
+
 #include <iostream>
-#include <cmath>
 #include <vector>
 #include <complex>
 #include <fstream>
+#include <cmath>
 #include <algorithm>
+#include<numeric>
+#include<unordered_map>
+#include <chrono>
 
-class FFT
-{
+
+class FFT {
+public:
+    void read_from_file(const std::string &fileName);
+    void perform_fft();
+    void print_top_frequencies(int top_n = 7) const;
+
 private:
     std::vector<std::complex<double>> _data;
     int _size_of_signal = 0;
-     std::vector<double> _abs;
-     std::vector<double> _freq_vec;
-     double _freq_val;
-     double _sample_freq = 44100;
-     double _actual_size_of_signal;
-     double _size_of_signal_with_zero;
-
-public:
-    FFT();
-    FFT(std::vector<double> data);
-    void compute_FFT(std::vector<std::complex<double>>& data);
-    void read_from_file(const std::string &fileName);
-    std::vector<std::complex<double>> get_data();
-    std::vector<int> abs_coef();
-    void sort(std::vector <double> &x, std::vector <double> &y);
-    void perform_FFT();
-    void sort_FFT();
+    double _sample_freq = 44100.0;
+    void fft(std::vector<std::complex<double>>& x);
 };
 
-#endif // FFT_H
+#endif // FFT_TEST_H

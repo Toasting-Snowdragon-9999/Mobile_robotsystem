@@ -15,14 +15,14 @@ set(SOURCES
     src/main.cpp
     src/dft.cpp
     src/goertzel.cpp
-    src/fft_test.cpp
+    src/fft.cpp
 )
 
 # Headers
 set(HEADERS
     include/dft.h
     include/goertzel.h
-    include/fft_test.h
+    include/fft.h
 
 )
 

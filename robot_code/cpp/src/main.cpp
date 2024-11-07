@@ -1,4 +1,4 @@
-#include "fft_test.h"
+#include "fft.h"
 #include "goertzel.h"
 #include "dft.h"
 
@@ -24,10 +24,10 @@ int main() {
 
     /*-------------------------------Goertzel-Run_Code----------------------------------*/
 
-            std::string file = "../dtmf_sounds/PI_FIRST_TONE.txt";
-            Goertzel goertzel;
-            goertzel.read_from_file(file);
-            goertzel.translate_signal_goertzel();
+            // std::string file = "../dtmf_sounds/PI_FIRST_TONE.txt";
+            // Goertzel goertzel;
+            // goertzel.read_from_file(file);
+            // goertzel.translate_signal_goertzel();
 
     /*-------------------------------For-loop for time_testing----------------------------------*/
 
@@ -47,10 +47,10 @@ int main() {
 
      /*-------------------------------FFT-Run_Code----------------------------------*/
 
-//      std::string file = "output.txt";
-//      FFT fftProcessor;
-//      fftProcessor.perform_fft();
-//      fftProcessor.read_from_file("output.txt");
+     std::string file = "output.txt";
+     FFT fftProcessor;
+     fftProcessor.perform_fft();
+     fftProcessor.read_from_file("output.txt");
 
      /*--------------------------------------------------------------------------------------------*/
 
