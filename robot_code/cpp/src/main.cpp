@@ -45,14 +45,14 @@ int main() {
      /*--------------------------------------------------------------------------------------------*/
 
 
-     /*-------------------------------FFT-Run_Code----------------------------------*/
+    /*-------------------------------FFT-Run_Code----------------------------------*/
 
-     std::string file = "output.txt";
-     FFT fftProcessor;
-     fftProcessor.perform_fft();
-     fftProcessor.read_from_file("output.txt");
+    std::string file = "Signal_For_FFT_Test.txt";
+    FFT fftProcessor;
+    fftProcessor.read_from_file("Signal_For_FFT_Test.txt");
+    fftProcessor.perform_fft();
 
-     /*--------------------------------------------------------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------*/
 
      /*-------------------------------For-loop for time_testing----------------------------------*/
        /*
