@@ -50,3 +50,7 @@
 
 # Shared files
 /Docs/Shared_file.txt
+Docs/shared_file.json
+
+# DTMF sounds folder
+cpp/dtmf_sounds/dtmf_sounds.wav

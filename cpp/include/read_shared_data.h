@@ -10,6 +10,8 @@
 #include <sstream>
 #include <stdlib.h>
 #include <cstdint>
+#include <nlohmann/json.hpp>
+#include <filesystem>   
 
 class SharedDataException : public std::runtime_error {
     public:
@@ -43,6 +45,7 @@ class SharedData{
          * @return std::vector<std::vector<uint16_t>>
          */
         std::vector<std::vector<uint16_t>> read_shared_data();
+        std::vector<std::vector <std::string> > read_json();
         /**
          * @brief printing method for printint the data vector like [[command1, command2, command3] , [command4, command5, command6]].
          *
