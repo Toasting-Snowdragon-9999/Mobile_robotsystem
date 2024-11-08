@@ -98,10 +98,7 @@ class Shell:
                 self.append_text_info(f"Invalid distance", 3)
                 self.reset_command_field()
                 return
-            if distance > 99: 
-                self.multiple_distance([command, attr, distance])
-                self.append_text_info(f"Distance longer than 99, spitting up into multiple distances", 1)
-                return
+
         self.history.append([command, attr, distance])
         self.path_gen.add_path([command, attr, distance])
         self.reset_command_field()
