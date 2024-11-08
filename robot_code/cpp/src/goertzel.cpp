@@ -25,7 +25,6 @@ void Goertzel::compute_goertzel() {
     for (int freq_index = 0; freq_index < _DTMF_freq.size(); ++freq_index) {
         //double omega = (2.0 * M_PI * _DTMF_freq[freq_index]) / _sample_freq;
         double omega = (2.0 * M_PI) / _size_of_signal * (0.5 + (_size_of_signal * _DTMF_freq[freq_index] / _sample_freq) );
-//        double sine = std::sin(omega);
         double cosine = std::cos(omega);
         double coeff = 2.0 * cosine;
         double signal = 0.0;
@@ -33,15 +32,16 @@ void Goertzel::compute_goertzel() {
         double before_last_signal = 0.0;
 
         for (int i = 0; i < _size_of_signal; ++i) {
+
             signal = coeff * last_signal - before_last_signal + _data[i];
             before_last_signal = last_signal;
             last_signal = signal;
         }
+        double last_signal_square = last_signal * last_signal;
+        double before_last_signal_square = before_last_signal * before_last_signal;
 
-         _magnitudes[freq_index] = std::sqrt(last_signal * last_signal + before_last_signal * before_last_signal - last_signal * before_last_signal * coeff);
-//        double real = (last_signal - before_last_signal * cosine);
-//        double imag = (before_last_signal * sine);
-//        _magnitudes[freq_index] = std::sqrt(real * real + imag * imag);
+        _magnitudes[freq_index] = std::sqrt(last_signal_square + before_last_signal_square - last_signal * before_last_signal * coeff);
+
     }
 }
 
@@ -65,12 +65,17 @@ void Goertzel::read_from_file(const std::string &file_name){
 void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
 
     bool swap;
+    
     for(int i = 0; i < x.size()-1; i++){
+        
         swap = false;
+        
         for (int j = 0; j < x.size()-1; j++){
+            
             if (x[j] < x[j+1]){
                 std::swap(x[j], x[j+1]);
                 std::swap(y[j],y[j+1]);
+                
                 swap = true;
             }
         }
@@ -82,7 +87,7 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
     _freq_from_signals.push_back(y[0]);
     _freq_from_signals.push_back(y[1]);
 
-   // std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
+    std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
 }
 
 
@@ -99,14 +104,14 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2) {
     }
     else {
 
-   //    std::cout<< " DTMF_Freq does not found " << std::endl;
+        std::cout<< " DTMF_Freq does not found " << std::endl;
 
     }
      /* -------------------- FOR DEBUG: -----------------------*/
 
 //  std::cout << "Size of message vector: "<< _message_vec.size() << std::endl;
 
-//    std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
+    std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
 
 }
 

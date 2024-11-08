@@ -15,20 +15,20 @@ class Goertzel
 private:
     double _sample_freq = 44100.0;
     int _size_of_signal;
-    std::vector<double> _data;
-    std::vector<int> _DTMF_freq;
-    std::vector<double> _coefficients;
-    std::vector<double> _magnitudes;
-
+    
     void _init_coefficients() {
         _coefficients.resize(_DTMF_freq.size());
 
         for (int i = 0; i < _DTMF_freq.size(); ++i) {
-            double omega = (2.0 * M_PI * _DTMF_freq[i]) / _sample_freq;
+            double omega = ( (2.0 * M_PI) / _size_of_signal ) * (0.5 + (2.0 * M_PI * _DTMF_freq[i]) / _sample_freq );
             _coefficients[i] = 2.0 * std::cos(omega);
         }
     }
 
+    std::vector<double> _data;
+    std::vector<int> _DTMF_freq;
+    std::vector<double> _coefficients;
+    std::vector<double> _magnitudes;
     std::vector<double> _freq_from_signals;
 
     std::map<std::pair<int, int>, int> _DTMF_mapping = {
@@ -45,6 +45,7 @@ private:
 public:
     Goertzel();
     Goertzel(const std::vector<double> data);
+
     void compute_goertzel();
     void read_from_file(const std::string &file_name);
     void translate_signal_goertzel();

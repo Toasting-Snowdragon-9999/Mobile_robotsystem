@@ -74,13 +74,13 @@ void FFT::perform_fft() {
         _frequencies.push_back(freq);
     }
 
-    _detect_DTMF_freq();
+    _extract_DTMF_freq();
 
     _sort(_abs_vec, _freq_vec);
 
 }
 
-void FFT::_detect_DTMF_freq(){
+void FFT::_extract_DTMF_freq(){
     // Create a map to store frequency-amplitude pairs
     std::unordered_map<double, double> frequency_amplitude_map;
 
@@ -111,8 +111,6 @@ void FFT::_detect_DTMF_freq(){
         double freq = _found_DTMF_frequencies[i].first;
         double abs = _found_DTMF_frequencies[i].second;
 
-//        std::vector<double> freq_vec, abs_vec;
-
         _freq_vec.push_back(freq);
         _abs_vec.push_back(abs);
     }
@@ -139,6 +137,6 @@ void FFT::_sort(std::vector <double> &abs_vec, std::vector <double> &freq_vec){
     _freq_from_signals.push_back(freq_vec[0]);
     _freq_from_signals.push_back(freq_vec[1]);
 
-   // std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
+    std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
 
 }
