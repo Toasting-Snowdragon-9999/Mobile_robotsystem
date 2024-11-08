@@ -50,6 +50,7 @@
 
 # Shared files
 /Docs/Shared_file.txt
+Docs/shared_file.json
 
 # Gui
 /python/gui/__pycache__/*

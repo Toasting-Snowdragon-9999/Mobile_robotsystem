@@ -1,0 +1,19 @@
+for the gazebo: 
+
+	source ~/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/setup.bash
+	export TURTLEBOT3_MODEL=burger
+	source /opt/ros/humble/setup.bash
+	source ~/git/Mobile_robotsystem/robot_code/cpp/ros2_ws_gazebo/install/setup.bash
+	ros2 launch turtlebot3_gazebo empty_world.launch.py
+	
+	ros2 pkg list | grep turtlebot3_gazebo
+
+	
+for the package: 
+	source ~/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.bash
+	echo $AMENT_PREFIX_PATH
+	export AMENT_PREFIX_PATH=~/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install:$AMENT_PREFIX_PATH
+	
+	rm -rf build/ install/ log/ && colcon build --event-handlers console_cohesion+ --packages-up-to turtlebot3_control
+	ros2 run turtlebot3_control move_turtlebot
+
