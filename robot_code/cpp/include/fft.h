@@ -1,7 +1,6 @@
 #ifndef FFT_TEST_H
 #define FFT_TEST_H
 
-
 #include <iostream>
 #include <vector>
 #include <complex>
