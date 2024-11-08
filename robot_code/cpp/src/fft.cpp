@@ -18,15 +18,15 @@ void FFT::read_from_file(const std::string &file_name) {
 
 void FFT::_fft(std::vector<std::complex<double>>& data) {
 
-    int _size_of_signal = data.size();
+    int size_of_signal = data.size();
 
-    if (_size_of_signal <= 1) return;
+    if (size_of_signal <= 1) return;
 
     // Divide the signal into Even & Odd
-    std::vector<std::complex<double>> even(_size_of_signal / 2);
-    std::vector<std::complex<double>> odd(_size_of_signal / 2);
+    std::vector<std::complex<double>> even(size_of_signal / 2);
+    std::vector<std::complex<double>> odd(size_of_signal / 2);
     
-    for (int i = 0; i < _size_of_signal / 2; ++i) {
+    for (int i = 0; i < size_of_signal / 2; ++i) {
     
         even[i] = data[i * 2];
         odd[i] = data[i * 2 + 1];
@@ -37,12 +37,12 @@ void FFT::_fft(std::vector<std::complex<double>>& data) {
     _fft(odd);
 
     // Combine data
-    for (int k = 0; k < _size_of_signal / 2; ++k) {
+    for (int k = 0; k < size_of_signal / 2; ++k) {
         
-        std::complex<double> coef = std::polar(1.0, -2 * M_PI * k / _size_of_signal) * odd[k];
+        std::complex<double> coef = std::polar(1.0, -2 * M_PI * k / size_of_signal) * odd[k];
         
         data[k] = even[k] + coef;
-        data[k + _size_of_signal / 2] = even[k] - coef;
+        data[k + size_of_signal / 2] = even[k] - coef;
     }
 }
 
@@ -76,7 +76,7 @@ void FFT::perform_fft() {
 
     _detect_DTMF_freq();
 
-    _sort_DTMF_freq();
+    _sort(_abs_vec, _freq_vec);
 
 }
 
@@ -106,18 +106,39 @@ void FFT::_detect_DTMF_freq(){
         }
     }
 
+    for(int i = 0; i < _found_DTMF_frequencies.size(); i++){
+
+        double freq = _found_DTMF_frequencies[i].first;
+        double abs = _found_DTMF_frequencies[i].second;
+
+//        std::vector<double> freq_vec, abs_vec;
+
+        _freq_vec.push_back(freq);
+        _abs_vec.push_back(abs);
+    }
 }
 
-void FFT::_sort_DTMF_freq(){
-    std::sort(_found_DTMF_frequencies.begin(), _found_DTMF_frequencies.end(),
-                [](const std::pair<double, double>& a, const std::pair<double, double>& b) {
-                    return a.second > b.second; // Sort by amplitude (second element of the pair) in descending order
-                });
+void FFT::_sort(std::vector <double> &abs_vec, std::vector <double> &freq_vec){
 
-    // Check if we found at least two frequencies
-    if (_found_DTMF_frequencies.size() >= 2) {
-        std::cout << "The two DTMF frequencies found: " << _found_DTMF_frequencies[0].first << "  " << _found_DTMF_frequencies[1].first << std::endl;
-    } else {
-        std::cout << "Not enough DTMF frequencies found." << std::endl;
+    bool swap;
+    for(int i = 0; i < abs_vec.size()-1; i++){
+        swap = false;
+        for (int j = 0; j < abs_vec.size()-1; j++){
+            if (abs_vec[j] < abs_vec[j+1]){
+                std::swap(abs_vec[j], abs_vec[j+1]);
+                std::swap(freq_vec[j],freq_vec[j+1]);
+                swap = true;
+            }
         }
+        if (!swap){
+            break;
+        }
+    }
+
+    std::vector<double> _freq_from_signals;
+    _freq_from_signals.push_back(freq_vec[0]);
+    _freq_from_signals.push_back(freq_vec[1]);
+
+   // std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
+
 }
