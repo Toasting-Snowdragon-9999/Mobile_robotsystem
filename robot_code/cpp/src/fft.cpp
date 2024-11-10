@@ -25,9 +25,9 @@ void FFT::_fft(std::vector<std::complex<double>>& data) {
     // Divide the signal into Even & Odd
     std::vector<std::complex<double>> even(size_of_signal / 2);
     std::vector<std::complex<double>> odd(size_of_signal / 2);
-    
+
     for (int i = 0; i < size_of_signal / 2; ++i) {
-    
+
         even[i] = data[i * 2];
         odd[i] = data[i * 2 + 1];
     }
@@ -38,9 +38,9 @@ void FFT::_fft(std::vector<std::complex<double>>& data) {
 
     // Combine data
     for (int k = 0; k < size_of_signal / 2; ++k) {
-        
+
         std::complex<double> coef = std::polar(1.0, -2 * M_PI * k / size_of_signal) * odd[k];
-        
+
         data[k] = even[k] + coef;
         data[k + size_of_signal / 2] = even[k] - coef;
     }
@@ -51,7 +51,7 @@ void FFT::perform_fft() {
     int log2_of_signal = std::log2(_size_of_signal);
 
     int signal_size_with_padding = std::exp2(log2_of_signal+1); // Size with zero-padding
-    
+
     std::vector<std::complex<double>> padded_data(signal_size_with_padding, {0, 0});
 
     // Copy original data to padded_data
@@ -64,9 +64,9 @@ void FFT::perform_fft() {
 
     // Process FFT results
     _half_signal_size = signal_size_with_padding / 2;
-    
+
     for (int i = 0; i < _half_signal_size; ++i) {
-    
+
         double abs = std::abs(padded_data[i]);
         _half_sampling_amplitude.push_back(abs);
 

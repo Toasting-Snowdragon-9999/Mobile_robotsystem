@@ -21,6 +21,7 @@ private:
 public:
     DFT();
     DFT(const std::vector<double> data);
+    
     void compute_dft();
     void read_from_file(const std::string &fileName);
     void frequencies_of_signal();

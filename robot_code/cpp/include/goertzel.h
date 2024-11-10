@@ -14,8 +14,24 @@
 class Goertzel
 {
 private:
+    
     double _sample_freq = 44100.0;
     int _size_of_signal;
+    
+    std::vector<double> _data;
+    std::vector<int> _DTMF_freq;
+    std::vector<double> _coefficients;
+    std::vector<double> _magnitudes;
+    std::vector<double> _freq_from_signals;
+    std::vector<int> _message_vec;
+
+    std::map<std::pair<int, int>, int> _DTMF_mapping = {
+            {{697, 1209}, 0}, {{697, 1336}, 1}, {{697, 1477}, 2}, {{697, 1633}, 3},
+            {{770, 1209}, 4}, {{770, 1336}, 5}, {{770, 1477}, 6}, {{770, 1633}, 7},
+            {{852, 1209}, 8}, {{852, 1336}, 9}, {{852, 1477}, 10}, {{852, 1633}, 11},
+            {{941, 1209}, 12}, {{941, 1336}, 13}, {{941, 1477}, 14}, {{941, 1633}, 15}
+        };
+
     
     void _init_coefficients() {
         _coefficients.resize(_DTMF_freq.size());
@@ -25,22 +41,6 @@ private:
             _coefficients[i] = 2.0 * std::cos(omega);
         }
     }
-
-    std::vector<double> _data;
-    std::vector<int> _DTMF_freq;
-    std::vector<double> _coefficients;
-    std::vector<double> _magnitudes;
-    std::vector<double> _freq_from_signals;
-
-    std::map<std::pair<int, int>, int> _DTMF_mapping = {
-            {{697, 1209}, 0}, {{697, 1336}, 1}, {{697, 1477}, 2}, {{697, 1633}, 3},
-            {{770, 1209}, 4}, {{770, 1336}, 5}, {{770, 1477}, 6}, {{770, 1633}, 7},
-            {{852, 1209}, 8}, {{852, 1336}, 9}, {{852, 1477}, 10}, {{852, 1633}, 11},
-            {{941, 1209}, 12}, {{941, 1336}, 13}, {{941, 1477}, 14}, {{941, 1633}, 15}
-        };
-
-    std::vector<int> _message_vec;
-
 
 
 public:

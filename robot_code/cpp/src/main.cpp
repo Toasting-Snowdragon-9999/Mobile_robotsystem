@@ -25,12 +25,43 @@ int main() {
 
     /*-------------------------------Goertzel-Run_Code----------------------------------*/
 
-            std::string file = "../dtmf_sounds/PI_FIRST_TONE.txt";
+            std::string sti = "../dtmf_sounds/Signals_for_Size_test/";
 
-            Goertzel goertzel;
-            goertzel.read_from_file(file);
-            goertzel.translate_signal_goertzel();
-             
+            std::vector<std::string> file = { 
+                                            "output_800.txt", "output_900.txt", "output_1000.txt", 
+                                            "output_2000.txt", "output_3000.txt", "output_4000.txt", 
+                                            "output_5000.txt", "output_6000.txt", "output_7000.txt", 
+                                            "output_8000.txt", "output_9000.txt", "output_10000.txt"
+            };
+
+            
+
+            for (int j =0 ; j < file.size(); j++){
+            DFT dft;
+                                auto start_goertzel = std::chrono::high_resolution_clock::now();
+
+//            Goertzel goertzel;
+                int sum = 0;
+                for(int i = 0 ; i < 30 ; ++i){
+                    std::string full_path_file = sti + file[j];
+
+//                  goertzel.read_from_file(file[j]);
+//                  goertzel.translate_signal_goertzel();
+
+
+
+                    dft.read_from_file(full_path_file);
+                    dft.frequencies_of_signal();
+
+                    auto stop_goertzel = std::chrono::high_resolution_clock::now();
+                    auto duration_goertzel = std::chrono::duration_cast<std::chrono::microseconds>(stop_goertzel-start_goertzel);
+
+                    sum += duration_goertzel.count();
+            }
+               // std::cout << "Time for Goertzel: " << sum/30 << " microseconds " << std::endl;
+            std::cout << sum/30 << std::endl;
+;
+            }
  
     /*-------------------------------For-loop for time_testing----------------------------------*/
 
