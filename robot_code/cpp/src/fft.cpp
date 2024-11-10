@@ -94,9 +94,13 @@ void FFT::_extract_DTMF_freq(){
     // Iterate over the target DTMF frequencies and find corresponding amplitudes
     for (double target_freq : _DTMF_frequencies) {
         bool found = false; // Flag to indicate if we found a match
+
         for (const auto& pair : frequency_amplitude_map) {
+            
             if (std::abs(pair.first - target_freq) < tolerance) {
+                
                 _found_DTMF_frequencies.emplace_back(pair.first, pair.second); // Store found frequency and amplitude
+                
                 found = true;
                 break; // Exit the loop once a match is found
             }
@@ -120,11 +124,15 @@ void FFT::_sort(std::vector <double> &abs_vec, std::vector <double> &freq_vec){
 
     bool swap;
     for(int i = 0; i < abs_vec.size()-1; i++){
+        
         swap = false;
+        
         for (int j = 0; j < abs_vec.size()-1; j++){
             if (abs_vec[j] < abs_vec[j+1]){
+        
                 std::swap(abs_vec[j], abs_vec[j+1]);
                 std::swap(freq_vec[j],freq_vec[j+1]);
+        
                 swap = true;
             }
         }
@@ -134,6 +142,7 @@ void FFT::_sort(std::vector <double> &abs_vec, std::vector <double> &freq_vec){
     }
 
     std::vector<double> _freq_from_signals;
+    
     _freq_from_signals.push_back(freq_vec[0]);
     _freq_from_signals.push_back(freq_vec[1]);
 

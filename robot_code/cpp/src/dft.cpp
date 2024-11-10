@@ -10,6 +10,7 @@ void DFT::frequencies_of_signal(){
 
     _dft_coef.resize(_size_of_signal, std::complex<double>(0.0, 0.0));
     _abs_coef.resize(_size_of_signal, 0.0);
+
     compute_dft();
     sort(_abs_coef, _DTMF_freq);
 
@@ -20,6 +21,7 @@ void DFT::compute_dft() {
     int nr_of_DTMF_freq = _DTMF_freq.size();
 
     for (int n = 0; n < nr_of_DTMF_freq; ++n) {
+        
         double omega = 2 * M_PI * _DTMF_freq[n];
         double omega_0 = (2 * M_PI) / (_size_of_signal * (1.0 / _sample_freq));
         int nr_sample = std::round(omega / omega_0);
@@ -57,11 +59,14 @@ void DFT::sort(std::vector <double> &x, std::vector <int> &y){
     // The smallest value -> largest value
     bool swap;
     for(int i = 0; i < x.size()-1; i++){
+
         swap = false;
         for (int j = 0; j < x.size()-1; j++){
+            
             if (x[j] < x[j+1]){
                 std::swap(x[j], x[j+1]);
                 std::swap(y[j],y[j+1]);
+            
                 swap = true;
             }
         }

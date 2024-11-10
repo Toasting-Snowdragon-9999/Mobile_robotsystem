@@ -14,6 +14,7 @@
 
 class FFT {
 private:
+
     int _size_of_signal = 0;
     double _half_signal_size = 0;
     double _sample_freq = 44100.0;
@@ -31,10 +32,10 @@ private:
 
 
 public:
+
     void read_from_file(const std::string &file_name);
     void perform_fft();
-
-
+    
 };
 
 #endif // FFT_TEST_H

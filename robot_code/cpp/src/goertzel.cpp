@@ -6,7 +6,6 @@ Goertzel::Goertzel(const std::vector<double> data)
         : _data(data), _size_of_signal(data.size()) {}
 
 void Goertzel::translate_signal_goertzel(){
-    _DTMF_freq = {697, 770, 852, 941, 1209, 1336, 1477, 1633};
 
     _init_coefficients();
 
@@ -14,7 +13,7 @@ void Goertzel::translate_signal_goertzel(){
 
     sort(_magnitudes, _DTMF_freq);
 
-    //detect_DTMF(_freq_from_signals[0], _freq_from_signals[1]);
+    detect_DTMF(_freq_from_signals[0], _freq_from_signals[1]);
 
 
 }
@@ -23,6 +22,7 @@ void Goertzel::compute_goertzel() {
     _magnitudes.resize(_DTMF_freq.size());
 
     for (int freq_index = 0; freq_index < _DTMF_freq.size(); ++freq_index) {
+        
         //double omega = (2.0 * M_PI * _DTMF_freq[freq_index]) / _sample_freq;
         double omega = (2.0 * M_PI) / _size_of_signal * (0.5 + (_size_of_signal * _DTMF_freq[freq_index] / _sample_freq) );
         double cosine = std::cos(omega);

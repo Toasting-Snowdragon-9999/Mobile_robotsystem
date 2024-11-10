@@ -36,22 +36,22 @@ int main() {
 
             
 
-            for (int j =0 ; j < file.size(); j++){
-            DFT dft;
-                                auto start_goertzel = std::chrono::high_resolution_clock::now();
+            for (int j = 0 ; j < file.size(); j++){
+                std::string full_path_file = sti + file[j];
 
-//            Goertzel goertzel;
+//                DFT dft;
+                Goertzel goertzel;
+
+                auto start_goertzel = std::chrono::high_resolution_clock::now();
+
                 int sum = 0;
                 for(int i = 0 ; i < 30 ; ++i){
-                    std::string full_path_file = sti + file[j];
 
-//                  goertzel.read_from_file(file[j]);
-//                  goertzel.translate_signal_goertzel();
+                  goertzel.read_from_file(full_path_file);
+                  goertzel.translate_signal_goertzel();
 
-
-
-                    dft.read_from_file(full_path_file);
-                    dft.frequencies_of_signal();
+//                    dft.read_from_file(full_path_file);
+//                    dft.frequencies_of_signal();
 
                     auto stop_goertzel = std::chrono::high_resolution_clock::now();
                     auto duration_goertzel = std::chrono::duration_cast<std::chrono::microseconds>(stop_goertzel-start_goertzel);
@@ -60,7 +60,6 @@ int main() {
             }
                // std::cout << "Time for Goertzel: " << sum/30 << " microseconds " << std::endl;
             std::cout << sum/30 << std::endl;
-;
             }
  
     /*-------------------------------For-loop for time_testing----------------------------------*/
