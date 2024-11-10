@@ -14,12 +14,31 @@ using std::string;
 
 int main()
 {
-
-	robot_command r1("-fw","100");
+	robot_command s("s");
+	robot_command r1("-fw", "100");
+	robot_command r2("-l", "45");
+	robot_command r3("-r", "180");
+	robot_command r4("-fw", "3000");
+	robot_command r5("-r", "30");
 
 	ApplicationlayerConversion Alc;
 
 	cout << "Command to bits: " << Alc.command_to_bits(r1) << endl;
+	cout << "Command to bits: " << Alc.command_to_bits(s) << endl;
+	cout << "Command to bits: " << Alc.command_to_bits(r2) << endl;
+	cout << "Command to bits: " << Alc.command_to_bits(s) << endl;
+	cout << "Command to bits: " << Alc.command_to_bits(r3) << endl;
+	cout << "Command to bits: " << Alc.command_to_bits(s) << endl;
+	cout << "Command to bits: " << Alc.command_to_bits(r4) << endl;
+	cout << "Command to bits: " << Alc.command_to_bits(s) << endl;
+	cout << "Command to bits: " << Alc.command_to_bits(r5) + "\n" << endl;
+
+	string testBits = Alc.command_to_bits(r1) + Alc.command_to_bits(s) + Alc.command_to_bits(r2) + Alc.command_to_bits(s) + Alc.command_to_bits(r3) + Alc.command_to_bits(s) + Alc.command_to_bits(r4) +Alc.command_to_bits(s) + Alc.command_to_bits(r5);
+
+	cout
+		<< "Complete string: " << testBits + "\n" << endl;
+	cout << "Correct commands: -fw 100 , -l 45 , -r 180 , -fw 3000 , -r 30\nConvert commands: ";
+	Alc.print_robot_commands(Alc.bits_to_commands(testBits));
 
 	// SharedData sd; static_cast<unsigned long>
 
