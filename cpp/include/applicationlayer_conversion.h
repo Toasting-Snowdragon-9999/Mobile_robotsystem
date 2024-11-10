@@ -5,15 +5,16 @@
 #include <unordered_map>
 #include <bitset>
 #include <iostream>
+#include <vector>
 
 using std::string;
 
 struct robot_command
 {
-    string command;
+    string direction;
     string value;
 
-    robot_command(string input_command, string inputValue) : command(input_command), value(inputValue) {}
+    robot_command(string input_command, string inputValue="0") : direction(input_command), value(inputValue) {}
 };
 
 class ApplicationlayerConversion
@@ -24,22 +25,19 @@ private:
         {"-fw", "1100"},
         {"-bw", "1101"},
         {"-r", "1110"},
-        {"-l", "1111"}};
+        {"-l", "1111"},
+        {"s","1011"}};
 
 public:
     ApplicationlayerConversion() {}
 
     string command_to_bits(const robot_command &input_command);
 
-    robot_command bits_to_command(string inputBits)
-    {
-        for (const auto &commands : _commandsMap)
-        {
-            if (commands.second == inputBits)
-            {
-            }
-        }
-    }
+    std::vector <robot_command> bits_to_command(string input_bits);
+
+    // Function to print all robot_command objects in a vector
+void print_robot_commands(const std::vector<robot_command>& command_vector);
+
 };
 
 #endif
