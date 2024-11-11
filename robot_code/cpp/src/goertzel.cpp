@@ -111,6 +111,6 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2) {
 
 //  std::cout << "Size of message vector: "<< _message_vec.size() << std::endl;
 
-    std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
+//    std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
 
 }
