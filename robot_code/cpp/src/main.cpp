@@ -1,6 +1,7 @@
 #include "fft.h"
 #include "goertzel.h"
 #include "dft.h"
+#include<unistd.h>
 
 int main() {
 
@@ -25,14 +26,15 @@ int main() {
 
     /*-------------------------------Goertzel-Run_Code----------------------------------*/
 
-            std::string sti = "../cpp/dtmf_sounds/Signals_for_Size_test/";
+            std::string sti = "../dtmf_sounds/Signals_for_Size_test/";
 
             std::vector<std::string> file = {   //"buffer_400.txt",
-                                            "output_500.txt", "output_600.txt", "output_700.txt",
-                                            "output_800.txt", "output_900.txt", "output_1000.txt", 
-                                            "output_2000.txt", "output_3000.txt", "output_4000.txt", 
-                                            "output_5000.txt", "output_6000.txt", "output_7000.txt", 
-                                            "output_8000.txt", "output_9000.txt", "output_10000.txt"
+                                            "output_500.txt", "output_600.txt", "output_700.txt", "output_800.txt", "output_900.txt", 
+                                            "output_1000.txt", "output_2000.txt", "output_3000.txt", "output_4000.txt", "output_5000.txt", 
+                                            "output_6000.txt", "output_7000.txt", "output_8000.txt", "output_9000.txt", "output_10000.txt"
+    /*For FFT Grænsen 16394*/             //"output_16000.txt", "output_16200.txt", "output_16300.txt", "output_16384.txt", "output_17000.txt", 
+                                            //"output_18000.txt", "output_19000.txt", "output_20000.txt"
+
             };
 
             
@@ -40,10 +42,10 @@ int main() {
             for (int j = 0 ; j < file.size(); j++){
                 std::string full_path_file = sti + file[j];
 
-               //DFT dft;
+                DFT dft;
                 //Goertzel goertzel;
 
- FFT fftProcessor;
+                //FFT fftProcessor;
 
                 int sum = 0;
                 for(int i = 0 ; i < 30 ; ++i){
@@ -52,20 +54,21 @@ int main() {
                     //goertzel.read_from_file(full_path_file);
                     //goertzel.translate_signal_goertzel();
 
-                    //dft.read_from_file(full_path_file);
-                    //dft.frequencies_of_signal();
+                    dft.read_from_file(full_path_file);
+                    dft.frequencies_of_signal();
 
 
-                    fftProcessor.read_from_file(full_path_file);
-                    fftProcessor.perform_fft();
+                    //fftProcessor.read_from_file(full_path_file);
+                    //fftProcessor.perform_fft();
 
                     auto stop_goertzel = std::chrono::high_resolution_clock::now();
                     auto duration_goertzel = std::chrono::duration_cast<std::chrono::microseconds>(stop_goertzel-start_goertzel);
 
                     sum += duration_goertzel.count();
-            }
+                    //sleep(1);
+                }
                 //std::cout << "Time for Goertzel: " << sum/30 << " microseconds " << std::endl;
-            std::cout << sum/30 << std::endl;
+            std::cout << sum << std::endl;
             }
  
     /*-------------------------------For-loop for time_testing----------------------------------*/

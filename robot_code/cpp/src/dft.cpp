@@ -74,5 +74,6 @@ void DFT::sort(std::vector <double> &x, std::vector <int> &y){
             break;
         }
     }
-     //std::cout << "Frequency found: " << y[0] << " and " << y[1] << std::endl;
+    
+    std::cout << "Frequency found: " << y[0] << " and " << y[1] << std::endl;
 }
