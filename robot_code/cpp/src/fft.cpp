@@ -106,7 +106,7 @@ void FFT::_extract_DTMF_freq(){
             }
         }
         if (!found) {
-            std::cout << "Frequency: " << target_freq << " not found." << std::endl;
+   //         std::cout << "Frequency: " << target_freq << " not found." << std::endl;
         }
     }
 
@@ -146,6 +146,6 @@ void FFT::_sort(std::vector <double> &abs_vec, std::vector <double> &freq_vec){
     _freq_from_signals.push_back(freq_vec[0]);
     _freq_from_signals.push_back(freq_vec[1]);
 
-    std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
+  //  std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
 
 }
