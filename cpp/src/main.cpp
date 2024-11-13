@@ -65,34 +65,34 @@ int main()
 	// 	{3, 5, 14, 1, 12, 9, 10, 13, 4, 11}
 	// };
 
-	// std::vector<std::vector<uint16_t>> robotPath = {{13, 2, 0}, {12, 5, 0}, {13, 7, 5}, {13, 4, 5}};
-	// ComProtocol testPackage(robotPath);
+	std::vector<std::vector<uint16_t>> robotPath = {{13, 2, 0}, {12, 5, 0}, {13, 7, 5}, {13, 4, 5}};
+	ComProtocol testPackage(robotPath);
 
-	// std::string binaryMsg = testPackage.decimal_seq_to_binary_msg(robotPath);
+	std::string binaryMsg = testPackage.decimal_seq_to_binary_msg(robotPath);
 
-	// std::string encodedMsg = testPackage.crc4_encode(binaryMsg);
-	// std::string encodedMsgRemainder = testPackage.find_remainder(encodedMsg);
+	std::string encodedMsg = testPackage.crc4_encode(binaryMsg);
+	std::string encodedMsgRemainder = testPackage.find_remainder(encodedMsg);
 
-	// std::string decodedMsg = testPackage.crc4_decode(encodedMsg);
-	// std::string decodedMsgRemainder = testPackage.find_remainder(decodedMsg);
+	std::string decodedMsg = testPackage.crc4_decode(encodedMsg);
+	std::string decodedMsgRemainder = testPackage.find_remainder(decodedMsg);
 
-	// testPackage.print_nested_vector(testPackage.protocol_structure(), "Test Package");
-	// std::cout << "Converted binary robot path: " << binaryMsg << endl;
-	// std::cout << "CRC4-encoded robot path: " << encodedMsg << " | CRC-remainder: " << encodedMsgRemainder << std::endl;
-	// std::cout << "CRC4-decoded robot path: " << decodedMsg << " | CRC-remainder: " << decodedMsgRemainder << std::endl;
+	testPackage.print_nested_vector(testPackage.protocol_structure(), "Test Package");
+	std::cout << "Converted binary robot path: " << binaryMsg << endl;
+	std::cout << "CRC4-encoded robot path: " << encodedMsg << " | CRC-remainder: " << encodedMsgRemainder << std::endl;
+	std::cout << "CRC4-decoded robot path: " << decodedMsg << " | CRC-remainder: " << decodedMsgRemainder << std::endl;
 
-	// if (testPackage.is_message_correct(decodedMsg))
-	// {
-	// 	std::cout << "Recieved package IS correct!" << std::endl;
-	// }
-	// else
-	// {
-	// 	std::cout << "Recieved package IS NOT correct!" << std::endl;
-	// }
+	if (testPackage.is_message_correct(decodedMsg))
+	{
+		std::cout << "Recieved package IS correct!" << std::endl;
+	}
+	else
+	{
+		std::cout << "Recieved package IS NOT correct!" << std::endl;
+	}
 
-	// std::cout << std::endl;
-	// WaveGenerator testPackageWave(testPackage.protocol_structure());
-	// testPackageWave.play_sounds();
+	std::cout << std::endl;
+	WaveGenerator testPackageWave(testPackage.protocol_structure());
+	testPackageWave.play_sounds();
 
 	// // py to cpp
 	// while (1)
