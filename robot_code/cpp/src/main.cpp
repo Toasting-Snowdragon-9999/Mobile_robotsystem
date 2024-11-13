@@ -32,8 +32,9 @@ int main() {
                                         //    "output_400.txt", "output_500.txt", "output_600.txt", "output_700.txt", "output_800.txt", "output_900.txt",
                                         //    "output_1000.txt", "output_2000.txt", "output_3000.txt", "output_4000.txt", "output_5000.txt",
                                         //    "output_6000.txt", "output_7000.txt", "output_8000.txt", "output_9000.txt", "output_10000.txt"
-    /*For FFT Grænsen 16394*/             //"output_16000.txt", "output_16200.txt", "output_16300.txt", "output_16384.txt", "output_17000.txt",
-                                            //"output_18000.txt", "output_19000.txt", "output_20000.txt", "output_21000.txt", "output_22000.txt"
+    /*For FFT Grænsen 16394*/        //
+                                             "output_16000.txt", "output_16200.txt", "output_16300.txt", "output_16384.txt", "output_17000.txt",
+                                            "output_18000.txt", "output_19000.txt", "output_20000.txt", "output_21000.txt", "output_22000.txt"
 
             };
 
