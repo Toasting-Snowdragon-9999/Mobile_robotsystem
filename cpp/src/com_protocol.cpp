@@ -90,16 +90,23 @@ string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<uint
             uint16_t toneCopy = tone;
             if (tone == 0)
             {
-                tmpTone += '0'; // If a tone is zero, no conversion is needed
+                tmpTone += "0000"; // If a tone is zero, no conversion is needed
 
-                continue;
             }
-
-            while (toneCopy > 0)
+            else
             {
-                tmpTone += (toneCopy % 2) ? '1' : '0';
 
-                toneCopy /= 2;
+                while (toneCopy > 0)
+                {
+                    tmpTone += (toneCopy % 2) ? '1' : '0';
+
+                    toneCopy /= 2;
+                }
+
+                while (tmpTone.length() < 4)
+                {
+                    tmpTone += '0';
+                }
             }
 
             std::reverse(tmpTone.begin(), tmpTone.end());
