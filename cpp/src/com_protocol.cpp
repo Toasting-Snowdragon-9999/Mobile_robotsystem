@@ -47,7 +47,7 @@ std::vector<std::vector<uint16_t>> ComProtocol::protocol_structure()
     std::string binaryRobotPath = decimal_seq_to_binary_msg(_robotPath);
     std::string remainderString = find_remainder(crc4_encode(binaryRobotPath));
     uint16_t remainderInt = static_cast<uint16_t>(std::stoi(remainderString, nullptr, 2)); // Converts remainder from 4-bit string to integer value
-    std::vector<uint16_t> remainderVecInt = {remainderInt};         // Inserts remainder integer value into a vector
+    std::vector<uint16_t> remainderVecInt = {remainderInt};                                // Inserts remainder integer value into a vector
 
     // Add all elements of data to the protocol structure (creating the entire package)
     protocolStructureVec.push_back(_preAndPostamble);
@@ -220,4 +220,8 @@ std::string ComProtocol::find_remainder(std::string dataword)
 {
     dataword = dataword.substr(dataword.size() - 4);
     return dataword;
+}
+
+std::string ComProtocol::get_binary_message_from_package(std::string binary_package)
+{
 }
