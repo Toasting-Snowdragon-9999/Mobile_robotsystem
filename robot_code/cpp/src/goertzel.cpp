@@ -13,7 +13,7 @@ void Goertzel::translate_signal_goertzel(){
 
     sort(_magnitudes, _DTMF_freq);
 
-    detect_DTMF(_freq_from_signals[0], _freq_from_signals[1]);
+    //detect_DTMF(_freq_from_signals[0], _freq_from_signals[1]);
 
 
 }

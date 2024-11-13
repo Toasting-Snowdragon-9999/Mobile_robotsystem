@@ -20,7 +20,7 @@ private:
     
     std::vector<double> _data;
     std::vector<int> _DTMF_freq = {697, 770, 852, 941, 1209, 1336, 1477, 1633};
-
+//, 770, 852, 941, 1209, 1336, 1477, 1633
     std::vector<double> _coefficients;
     std::vector<double> _magnitudes;
     std::vector<double> _freq_from_signals;
