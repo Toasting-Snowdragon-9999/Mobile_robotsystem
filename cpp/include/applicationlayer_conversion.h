@@ -33,7 +33,7 @@ public:
 
     string command_to_bits(const robot_command &input_command);
 
-    std::vector <robot_command> bits_to_command(string input_bits);
+    std::vector <robot_command> bits_to_commands(string input_bits);
 
     // Function to print all robot_command objects in a vector
 void print_robot_commands(const std::vector<robot_command>& command_vector);

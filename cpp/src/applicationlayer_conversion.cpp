@@ -36,7 +36,7 @@ string ApplicationlayerConversion::command_to_bits(const robot_command &input_co
     }
 }
 // Necessities: only the data is put as input, and the commands have to still be separated by space bits
-std::vector<robot_command> ApplicationlayerConversion::bits_to_command(string input_bits)
+std::vector<robot_command> ApplicationlayerConversion::bits_to_commands(string input_bits)
 {
     std::vector<robot_command> command_vector;
 
