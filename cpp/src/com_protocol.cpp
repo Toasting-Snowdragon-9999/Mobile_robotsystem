@@ -91,7 +91,6 @@ string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<uint
             if (tone == 0)
             {
                 tmpTone += "0000"; // If a tone is zero, no conversion is needed
-
             }
             else
             {
@@ -229,6 +228,22 @@ std::string ComProtocol::find_remainder(std::string dataword)
     return dataword;
 }
 
-std::string ComProtocol::get_binary_message_from_package(std::string binary_package)
+std::string ComProtocol::get_binary_message_from_package(std::vector<std::vector<uint16_t>> package)
 {
+    package[0].erase(package[0].begin(), package[0].begin() + 6);       // Removes preamble, length, and postamble from vector
+    package[0].erase(package[0].end() - 3, package[0].end()); // Removes postamble
+
+    std::string binaryEncodedMsg = decimal_seq_to_binary_msg(package);
+    std::string binaryDecodedMsg = crc4_decode(binaryEncodedMsg);
+
+    if (find_remainder(binaryDecodedMsg) == "0000") // If message is correct return it
+    {
+        binaryDecodedMsg.erase(binaryDecodedMsg.end() - (4 * 2), binaryDecodedMsg.end()); // Removes CRC from end of message
+        return binaryDecodedMsg;
+    }
+    else // If message is not correct return 0 and print error
+    {
+        std::cout << "The recieved message IS NOT correct" << std::endl;
+        return 0;
+    }
 }

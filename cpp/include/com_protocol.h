@@ -70,10 +70,11 @@ public:
     /// @return Type: Bool - 1 if message is correct and 0 if not
     bool is_message_correct(const string &binaryDecodedDataword);
 
-    /// @brief Derives the binary message from the whole package (removes pre- and postamble, length, and CRC)
+    /// @brief Derives the binary message from the whole package (removes pre- and postamble, length, and CRC).
     /// @param package Type: String - The full binary package with pre- and postamble, length and CRC
     /// @return Type: String - The binary message
-    std::string get_binary_message_from_package(std::string binary_package);
+    /// @note Only returns message if it is correct (CRC of decoded message is 0000)
+    std::string get_binary_message_from_package(std::vector<std::vector<uint16_t>> package);
 };
 
 #endif // COM_PROTOCOL_H

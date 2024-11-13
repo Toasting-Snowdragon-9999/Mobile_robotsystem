@@ -31,12 +31,14 @@ int main()
 	cout << "Command to bits: " << Alc.command_to_bits(s) << endl;
 	cout << "Command to bits: " << Alc.command_to_bits(r4) << endl;
 	cout << "Command to bits: " << Alc.command_to_bits(s) << endl;
-	cout << "Command to bits: " << Alc.command_to_bits(r5) + "\n" << endl;
+	cout << "Command to bits: " << Alc.command_to_bits(r5) + "\n"
+		 << endl;
 
-	string testBits = Alc.command_to_bits(r1) + Alc.command_to_bits(s) + Alc.command_to_bits(r2) + Alc.command_to_bits(s) + Alc.command_to_bits(r3) + Alc.command_to_bits(s) + Alc.command_to_bits(r4) +Alc.command_to_bits(s) + Alc.command_to_bits(r5);
+	string testBits = Alc.command_to_bits(r1) + Alc.command_to_bits(s) + Alc.command_to_bits(r2) + Alc.command_to_bits(s) + Alc.command_to_bits(r3) + Alc.command_to_bits(s) + Alc.command_to_bits(r4) + Alc.command_to_bits(s) + Alc.command_to_bits(r5);
 
 	cout
-		<< "Complete string: " << testBits + "\n" << endl;
+		<< "Complete string: " << testBits + "\n"
+		<< endl;
 	cout << "Correct commands: -fw 100 , -l 45 , -r 180 , -fw 3000 , -r 30\nConvert commands: ";
 	Alc.print_robot_commands(Alc.bits_to_commands(testBits));
 
@@ -65,6 +67,39 @@ int main()
 	// 	{3, 5, 14, 1, 12, 9, 10, 13, 4, 11}
 	// };
 
+	/* TEST SHOULD BE REMOVED */
+	// std::vector<std::vector<uint16_t>> pathTest = {{13,1,5}};
+	// ComProtocol packageVec(pathTest);
+	
+	// std::vector<std::vector<uint16_t>> package = packageVec.protocol_structure();
+	// package.erase(package.begin(), package.begin() + 2); // Removes preamble, length, and postamble from vector
+	// package.erase(package.end() - 1);
+
+	// for (const auto& innerVec : package) {
+    //     for (const auto& elem : innerVec) {
+    //         std::cout << elem << " ";
+    //     }
+    //     std::cout << std::endl; // Newline after each inner vector
+    // }
+
+	// std::string encoded = packageVec.decimal_seq_to_binary_msg(package);
+	// std::cout << "Encoded: " <<  encoded << std::endl;
+	// std::string binaryDecodedMsg = packageVec.crc4_decode(encoded);
+	// std::cout << "Decoded: " << binaryDecodedMsg << std::endl;
+
+    // if (packageVec.find_remainder(binaryDecodedMsg) == "0000") // If message is correct return it
+    // {
+    //     binaryDecodedMsg.erase(binaryDecodedMsg.end() - (4 * 2), binaryDecodedMsg.end()); // Removes CRC from end of message
+	// 	std::cout << binaryDecodedMsg << std::endl;
+    // }
+	// else
+	// {
+	// 	std::cout << "NOT CORRECT" << std::endl;
+	// }
+	/* END OF TEST */
+
+
+	
 	std::vector<std::vector<uint16_t>> robotPath = {{13, 2, 0}, {12, 5, 0}, {13, 7, 5}, {13, 4, 5}};
 	ComProtocol testPackage(robotPath);
 
@@ -90,9 +125,20 @@ int main()
 		std::cout << "Recieved package IS NOT correct!" << std::endl;
 	}
 
+	std::vector<std::vector<uint16_t>> fullPackageVector = testPackage.protocol_structure();
 	std::cout << std::endl;
-	WaveGenerator testPackageWave(testPackage.protocol_structure());
+	WaveGenerator testPackageWave(fullPackageVector);
 	testPackageWave.play_sounds();
+
+	std::vector<uint16_t> concatenated;
+    for (const auto& innerVec : fullPackageVector) {
+        concatenated.insert(concatenated.end(), innerVec.begin(), innerVec.end());
+    }
+	std::vector<std::vector<uint16_t>> finalVec = {concatenated};
+
+	std:string receivedMsg = testPackage.get_binary_message_from_package(finalVec);
+	std::cout << "Received message: " << receivedMsg << std::endl;
+	
 
 	// // py to cpp
 	// while (1)
