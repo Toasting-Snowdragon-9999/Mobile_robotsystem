@@ -6,7 +6,6 @@ DFT::DFT(const std::vector<double> data)
         : _data(data), _size_of_signal(data.size()){}
 
 void DFT::frequencies_of_signal(){
-    _DTMF_freq = {697, 770, 852, 941, 1209, 1336, 1477, 1633};
 
     _dft_coef.resize(_size_of_signal, std::complex<double>(0.0, 0.0));
     _abs_coef.resize(_size_of_signal, 0.0);

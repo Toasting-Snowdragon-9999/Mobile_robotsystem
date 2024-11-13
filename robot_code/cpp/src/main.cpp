@@ -46,22 +46,17 @@ int main() {
                 for(int i = 0 ; i < 100 ; ++i){
 
                     //DFT dft;
-                    //Goertzel goertzel;
-                    FFT fftProcessor;
+                    Goertzel goertzel;
+                    //FFT fftProcessor;
                     
-                    //goertzel.read_from_file(full_path_file);
+                    goertzel.read_from_file(full_path_file);
                     //dft.read_from_file(full_path_file);
-                    fftProcessor.read_from_file(full_path_file);
+                    //fftProcessor.read_from_file(full_path_file);
                     auto start_goertzel = std::chrono::high_resolution_clock::now();
 
-                    //goertzel.translate_signal_goertzel();
-
-
+                    goertzel.translate_signal_goertzel();
                     //dft.frequencies_of_signal();
-
-
-
-                    fftProcessor.perform_fft();
+                    //fftProcessor.perform_fft();
 
                     auto stop_goertzel = std::chrono::high_resolution_clock::now();
                     auto duration_goertzel = std::chrono::duration_cast<std::chrono::microseconds>(stop_goertzel-start_goertzel);

@@ -87,30 +87,30 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
     _freq_from_signals.push_back(y[0]);
     _freq_from_signals.push_back(y[1]);
 
-  //  std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
+    std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
 }
 
 
-void Goertzel::detect_DTMF(int freq_1, int freq_2) {
-    if (freq_1 > freq_2) {
-       std::swap(freq_1, freq_2);
-    }
+// void Goertzel::detect_DTMF(int freq_1, int freq_2) {
+//     if (freq_1 > freq_2) {
+//        std::swap(freq_1, freq_2);
+//     }
 
-    auto DTMF_freq = _DTMF_mapping.find({freq_1, freq_2});
+//     auto DTMF_freq = _DTMF_mapping.find({freq_1, freq_2});
 
-    if (DTMF_freq != _DTMF_mapping.end()) {
-        _message_vec.push_back(DTMF_freq->second);
+//     if (DTMF_freq != _DTMF_mapping.end()) {
+//         _message_vec.push_back(DTMF_freq->second);
 
-    }
-    else {
+//     }
+//     else {
 
-        std::cout<< " DTMF_Freq does not found " << std::endl;
+//         std::cout<< " DTMF_Freq does not found " << std::endl;
 
-    }
+//     }
      /* -------------------- FOR DEBUG: -----------------------*/
 
 //  std::cout << "Size of message vector: "<< _message_vec.size() << std::endl;
 
    // std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
 
-}
+//}

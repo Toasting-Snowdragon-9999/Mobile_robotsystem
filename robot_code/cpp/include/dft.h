@@ -15,7 +15,7 @@ private:
     int _size_of_signal;
 
     std::vector<double> _data;
-    std::vector<int> _DTMF_freq;
+    std::vector<int> _DTMF_freq  = {697, 770, 852, 941, 1209, 1336, 1477, 1633};
     std::vector<std::complex<double>> _dft_coef;
     std::vector<double> _abs_coef;
 
