@@ -2,18 +2,17 @@
 
 using std::string;
 
+
+
 // Necessities: the command can be -fw, -bw, -l, -r or s for space
 string ApplicationlayerConversion::command_to_bits(const robot_command &input_command)
 {
     // put command = bits and then values integers er lig med bits;
     string final_bits_converted = "";
-    if (input_command.direction == "s")
+
+    if (input_command.direction != "-fw" && input_command.direction != "-bw" && input_command.direction != "-r" && input_command.direction != "-l" && input_command.direction != "s")
     {
-        return _commandsMap.find(input_command.direction)->second;
-    }
-    else if (input_command.direction != "-fw" && input_command.direction != "-bw" && input_command.direction != "-r" && input_command.direction != "-l" && input_command.direction != "s")
-    {
-        return "Error: Input_command's directional command or space character is invalid";
+        return "Error: Input_command's directional command character is invalid";
     }
     else if (input_command.value[0] == '-')
     {
@@ -67,7 +66,7 @@ std::vector<robot_command> ApplicationlayerConversion::bits_to_commands(string i
         {
             for (const auto &commands : _commandsMap)
             {
-                if (commands.second == temp_bits && commands.first != "s")
+                if (commands.second == temp_bits)
                 {
                     input_command = commands.first;
                     is_command = true;

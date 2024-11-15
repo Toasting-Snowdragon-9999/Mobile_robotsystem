@@ -14,7 +14,7 @@ struct robot_command
     string direction;
     string value;
 
-    robot_command(string input_command, string inputValue="0") : direction(input_command), value(inputValue) {}
+    robot_command(string input_command, string inputValue = "0") : direction(input_command), value(inputValue) {}
 };
 
 class ApplicationlayerConversion
@@ -26,17 +26,17 @@ private:
         {"-bw", "1101"},
         {"-r", "1110"},
         {"-l", "1111"},
-        {"s","1011"}};
+        {"s", "1011"}};
 
 public:
     ApplicationlayerConversion() {}
 
     string command_to_bits(const robot_command &input_command);
 
-    std::vector <robot_command> bits_to_commands(string input_bits);
+    std::vector<robot_command> bits_to_commands(string input_bits);
 
     // Function to print all robot_command objects in a vector
-void print_robot_commands(const std::vector<robot_command>& command_vector);
+    void print_robot_commands(const std::vector<robot_command> &command_vector);
 
 };
 

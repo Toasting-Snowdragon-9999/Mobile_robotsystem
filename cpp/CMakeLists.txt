@@ -24,7 +24,8 @@ set(SOURCES
     src/read_shared_data.cpp
     src/wave_generator.cpp
     src/com_protocol.cpp
-    src/applicationlayer_conversion.cpp
+    src/applicationlayer.cpp
+    src/al_to_dll.cpp
 )
 
 # Headers
@@ -33,7 +34,8 @@ set(HEADERS
     include/read_shared_data.h
     include/wave_generator.h
     include/com_protocol.h
-    include/applicationlayer_conversion.h
+    include/applicationlayer.h
+    include/al_to_dll.h
 )
 
 # Add executable
