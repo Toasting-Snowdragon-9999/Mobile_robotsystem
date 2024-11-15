@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/robot_code.dir/goertzel.cpp.o.d"
   "CMakeFiles/robot_code.dir/main.cpp.o"
   "CMakeFiles/robot_code.dir/main.cpp.o.d"
+  "CMakeFiles/robot_code.dir/signal_processing.cpp.o"
+  "CMakeFiles/robot_code.dir/signal_processing.cpp.o.d"
   "robot_code"
   "robot_code.pdb"
 )

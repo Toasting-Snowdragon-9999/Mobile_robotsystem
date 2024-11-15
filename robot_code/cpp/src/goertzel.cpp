@@ -108,10 +108,16 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2) {
         std::cout<< " DTMF_Freq does not found " << std::endl;
 
     }
+
      /* -------------------- FOR DEBUG: -----------------------*/
 
   //std::cout << "Size of message vector: "<< _message_vec.size() << std::endl;
 
     std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
 
+}
+
+std::vector<int> Goertzel::get_message_vec(){
+
+    return _message_vec;
 }

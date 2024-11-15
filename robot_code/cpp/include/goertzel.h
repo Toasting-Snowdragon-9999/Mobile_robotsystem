@@ -54,6 +54,9 @@ public:
     void sort(std::vector <double> &x, std::vector <int> &y);
     void detect_DTMF(int freq_1, int freq_2);
 
+    std::vector<int> get_message_vec();
+
+
 };
 
 #endif // GOERTZEL_H

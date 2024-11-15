@@ -16,6 +16,7 @@ set(SOURCES
     src/dft.cpp
     src/goertzel.cpp
     src/fft.cpp
+    src/signal_processing.cpp
 )
 
 # Headers
@@ -23,6 +24,7 @@ set(HEADERS
     include/dft.h
     include/goertzel.h
     include/fft.h
+    include/signal_processing.h
 
 )
 

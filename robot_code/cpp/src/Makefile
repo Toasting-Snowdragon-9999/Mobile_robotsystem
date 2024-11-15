@@ -225,6 +225,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_code.dir/build.make CMakeFiles/robot_code.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+signal_processing.o: signal_processing.cpp.o
+.PHONY : signal_processing.o
+
+# target to build an object file
+signal_processing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_code.dir/build.make CMakeFiles/robot_code.dir/signal_processing.cpp.o
+.PHONY : signal_processing.cpp.o
+
+signal_processing.i: signal_processing.cpp.i
+.PHONY : signal_processing.i
+
+# target to preprocess a source file
+signal_processing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_code.dir/build.make CMakeFiles/robot_code.dir/signal_processing.cpp.i
+.PHONY : signal_processing.cpp.i
+
+signal_processing.s: signal_processing.cpp.s
+.PHONY : signal_processing.s
+
+# target to generate assembly for a file
+signal_processing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_code.dir/build.make CMakeFiles/robot_code.dir/signal_processing.cpp.s
+.PHONY : signal_processing.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -246,6 +270,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... signal_processing.o"
+	@echo "... signal_processing.i"
+	@echo "... signal_processing.s"
 .PHONY : help
 
 
