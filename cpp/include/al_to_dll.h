@@ -8,7 +8,7 @@
 
 using std::string;
 
-class Al_To_Dll
+class AlToDll
 
 {
 public:

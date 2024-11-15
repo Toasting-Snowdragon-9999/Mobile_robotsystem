@@ -1,6 +1,6 @@
 #include "al_to_dll.h"
 
-string Al_To_Dll::zero_pad(string &non_zero_padded_commands)
+string AlToDll::zero_pad(string &non_zero_padded_commands)
 {
     int string_length = non_zero_padded_commands.length();
 

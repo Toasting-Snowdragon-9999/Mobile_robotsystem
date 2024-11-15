@@ -1,11 +1,9 @@
-#include "applicationlayer_conversion.h"
+#include "applicationlayer.h"
 
 using std::string;
 
-
-
 // Necessities: the command can be -fw, -bw, -l, -r or s for space
-string ApplicationlayerConversion::command_to_bits(const robot_command &input_command)
+string ApplicationLayer::command_to_bits(const robot_command &input_command)
 {
     // put command = bits and then values integers er lig med bits;
     string final_bits_converted = "";
@@ -35,7 +33,7 @@ string ApplicationlayerConversion::command_to_bits(const robot_command &input_co
     }
 }
 // Necessities: only the data is put as input, and the commands have to still be separated by space bits
-std::vector<robot_command> ApplicationlayerConversion::bits_to_commands(string input_bits)
+std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
 {
     std::vector<robot_command> command_vector;
 
@@ -108,7 +106,7 @@ std::vector<robot_command> ApplicationlayerConversion::bits_to_commands(string i
     return command_vector;
 }
 
-void ApplicationlayerConversion::print_robot_commands(const std::vector<robot_command> &command_vector)
+void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &command_vector)
 {
     for (const auto &selection : command_vector)
     {

@@ -17,7 +17,7 @@ struct robot_command
     robot_command(string input_command, string inputValue = "0") : direction(input_command), value(inputValue) {}
 };
 
-class ApplicationlayerConversion
+class ApplicationLayer
 {
 
 private:
@@ -29,7 +29,7 @@ private:
         {"s", "1011"}};
 
 public:
-    ApplicationlayerConversion() {}
+    ApplicationLayer() {}
 
     string command_to_bits(const robot_command &input_command);
 
