@@ -27,5 +27,14 @@ string AlToDll::zero_pad(string &non_zero_padded_commands)
 
     string AlToDll::remove_zero_pad(string &possibly_zero_padded_commands)
 {
+    string non_zero_padded_commands = "";
 
+    int len = possibly_zero_padded_commands.length();
+    string how_many_zeros_str = possibly_zero_padded_commands.substr(0,nibble_size);
+
+    int how_many_zeros_int = std::stoi(how_many_zeros_str,nullptr,2);
+
+    non_zero_padded_commands = possibly_zero_padded_commands.substr(0+nibble_size,len-how_many_zeros_int);
+
+    return non_zero_padded_commands;
 }
