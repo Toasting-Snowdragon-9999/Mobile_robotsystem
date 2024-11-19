@@ -52,6 +52,7 @@
 /Docs/Shared_file.txt
 
 # QT 
+CMakeLists.txt.user
 /robot_code/cpp/CMakeLists.txt.user
 /robot_code/cpp/CMakeLists.txt.COVOTF
 /robot_code/build-cpp-Desktop-Debug/*
