@@ -2,7 +2,7 @@
 
 Goertzel::Goertzel(){}
 
-Goertzel::Goertzel(const std::vector<double> data)
+Goertzel::Goertzel(const std::vector<float> data)
         : _data(data), _size_of_signal(data.size()) {}
 
 void Goertzel::translate_signal_goertzel(){
@@ -69,7 +69,7 @@ void Goertzel::read_from_file(const std::string &file_name){
     in_file.close();
 }
 
-void Goertzel::load_data(const std::vector<double> &data){
+void Goertzel::load_data(const std::vector<float> &data){
     _data = data;
     _size_of_signal = data.size();
 }
@@ -113,6 +113,7 @@ bool Goertzel::detect_DTMF(int freq_1, int freq_2) {
 
     if (DTMF_freq != _DTMF_mapping.end()) {
         _message_vec.push_back(DTMF_freq->second);
+        std::cout << " DTMF_Freq found: " << DTMF_freq->second << std::endl;
         return true;
     }
     else {
@@ -138,6 +139,7 @@ bool Goertzel::detect_start_bit() {
     int freq_1 = 1477;
     int freq_2 = 852;
     if ((_freq_from_signals[0] == freq_1 && _freq_from_signals[1] == freq_2) || (_freq_from_signals[0] == freq_2 && _freq_from_signals[1] == freq_1)) {
+        std::cout << "Start bit detected" << std::endl;
         return true;
     }
     return false;

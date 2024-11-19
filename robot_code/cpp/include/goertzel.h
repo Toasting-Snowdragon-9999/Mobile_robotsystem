@@ -18,7 +18,7 @@ private:
     double _sample_freq = 44100.0;
     int _size_of_signal;
     
-    std::vector<double> _data;
+    std::vector<float> _data;
     std::vector<int> _DTMF_freq = {697, 770, 852, 941, 1209, 1336, 1477, 1633};
     std::vector<double> _coefficients;
     std::vector<double> _magnitudes;
@@ -39,14 +39,14 @@ private:
 public:
 
     Goertzel();
-    Goertzel(const std::vector<double> data);
+    Goertzel(const std::vector<float> data);
 
     void compute_goertzel();
     void read_from_file(const std::string &file_name);
     void translate_signal_goertzel();
     void sort(std::vector <double> &x, std::vector <int> &y);
     bool detect_DTMF(int freq_1, int freq_2);
-    void load_data(const std::vector<double> &data);
+    void load_data(const std::vector<float> &data);
     std::vector<int> get_message_vec();
     bool detect_start_bit();
 

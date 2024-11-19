@@ -39,6 +39,7 @@ set(SOURCES
     src/goertzel.cpp
     src/fft.cpp
     src/signal_processing.cpp
+    src/audio_input.cpp
 )
 
 # Headers
@@ -47,7 +48,7 @@ set(HEADERS
     include/goertzel.h
     include/fft.h
     include/signal_processing.h
-
+    include/audio_input.h
 )
 
 # Add executable

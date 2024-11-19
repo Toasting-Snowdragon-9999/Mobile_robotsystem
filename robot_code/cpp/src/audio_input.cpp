@@ -154,10 +154,11 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         if (data->iterator > 1){
             Goertzel algo;
             algo.load_data(buffer);
-            bool success = algo.translate_signal_goertzel();
+            algo.translate_signal_goertzel();
             if(algo.detect_start_bit()){
                 data->stop = true;
                 data->recorded_samples.push_back(buffer);
+                return paComplete;
             }
         }
         data->iterator++;
@@ -165,13 +166,13 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
     else{
         Goertzel algo;
         algo.load_data(buffer);
-        bool success = algo.translate_signal_goertzel();
+        algo.translate_signal_goertzel();
         if(algo.detect_start_bit()){
             data->success = true;
             data->recorded_samples.push_back(buffer);
         }
         else{
-            buffer->clear();
+            buffer.clear();
             data->success = false;
         }
     }
@@ -183,7 +184,9 @@ void AudioInput::save_to_textfile(const std::string &fileName){
     std::ofstream outFile(fileName);
 
     for (auto &sample : _mic_data.recorded_samples) {
-        outFile << sample << "\n";
+        for (auto &value : sample) {
+            outFile << value << "\n";
+        }
     }
 
     outFile.close();

@@ -15,10 +15,10 @@
 typedef float SAMPLE;
 
 struct MicSample {
-    std::vector<SAMPLE> recorded_samples;
+    std::vector<std::vector<SAMPLE>> recorded_samples;
     bool success;
     int iterator;
-    bool stop;
+    bool stop;  
 };
 
 class AudioInput {
