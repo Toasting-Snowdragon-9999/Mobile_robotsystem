@@ -50,6 +50,12 @@
 
 # Shared files
 /Docs/Shared_file.txt
+
+# QT 
+/robot_code/cpp/CMakeLists.txt.user
+/robot_code/cpp/CMakeLists.txt.COVOTF
+/robot_code/build-cpp-Desktop-Debug/*
+
 Docs/shared_file.json
 
 # Gui

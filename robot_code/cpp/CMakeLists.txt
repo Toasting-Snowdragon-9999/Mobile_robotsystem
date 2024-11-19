@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Include directories
 include_directories(include)
 
+
 # Find PortAudio explicitly
 set(PORTAUDIO_LIB_DIR "/usr/lib/x86_64-linux-gnu/")
 set(PORTAUDIO_INCLUDE_DIR "/usr/include")
@@ -34,17 +35,24 @@ find_package(SFML 2.5 COMPONENTS audio system REQUIRED)
 # Sources
 set(SOURCES
     src/main.cpp
-    src/audio_input.cpp
+    src/dft.cpp
+    src/goertzel.cpp
+    src/fft.cpp
+    src/signal_processing.cpp
 )
 
 # Headers
 set(HEADERS
-    include/audio_input.h
-    include/algorithms.h
+    include/dft.h
+    include/goertzel.h
+    include/fft.h
+    include/signal_processing.h
+
 )
 
 # Add executable
 add_executable(robot_code ${SOURCES} ${HEADERS})
+
 
 # Link libraries
 target_link_libraries(robot_code
