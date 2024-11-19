@@ -1,11 +1,43 @@
 #include "read_shared_data.h"
 
-SharedData::SharedData(){}
+SharedData::SharedData(std::string fname): _fname(fname){}
 
 std::vector<std::vector<uint16_t>> SharedData::read_shared_data(){
     this->read_data();
 	this->calculate_path();
     return _path;
+}
+
+std::vector<std::vector <std::string>> SharedData::read_json(){
+    std::vector<std::vector <std::string>> sorted_data;
+    nlohmann::json jsonData;
+
+    std::filesystem::path cwd = std::filesystem::current_path();
+    std::cout << "Current working directory: " << cwd << std::endl;    std::ifstream inputFile(_fname);
+
+    if (!inputFile.is_open()) {
+        std::cerr << "Failed to open the JSON file" << std::endl;
+    }
+
+    try {
+        inputFile >> jsonData;
+    } catch (const nlohmann::json::parse_error& e) {
+        std::cerr << "Parsing error: " << e.what() << std::endl;
+    }
+
+    inputFile.close();
+
+    std::cout << "JSON data loaded successfully:" << std::endl;
+
+    for (size_t i = 0; i < jsonData.size(); ++i) {
+        std::vector <std::string> temp;
+        temp.push_back(jsonData[i][0]);
+        int value = jsonData[i][1];
+        temp.push_back(std::to_string(value)); 
+        sorted_data.push_back(temp);
+    }
+
+    return sorted_data;
 }
 
 
@@ -21,7 +53,7 @@ void SharedData::print(){
 
 void SharedData::read_data(){
     _path.clear();
-	const char* fname = "../../Docs/shared_file.txt";
+	const char* fname = _fname.c_str();
 	std::string s;
     std::fstream(fname, std::ios::in) >> s;
     if(s.empty()){

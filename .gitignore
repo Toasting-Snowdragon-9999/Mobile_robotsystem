@@ -51,6 +51,19 @@
 # Shared files
 /Docs/Shared_file.txt
 
+# QT 
 /robot_code/cpp/CMakeLists.txt.user
 /robot_code/cpp/CMakeLists.txt.COVOTF
 /robot_code/build-cpp-Desktop-Debug/*
+
+Docs/shared_file.json
+
+# Gui
+/python/gui/__pycache__/*
+/python/packages/gui/__pycache__/*
+
+# DTMF 
+/robot_code/cpp/dtmf_sounds/*
+!/robot_code/cpp/dtmf_sounds/.gitkeep
+/cpp/dtmf_sounds/*
+!/cpp/dtmf_sounds/.gitkeep

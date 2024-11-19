@@ -1,0 +1,4 @@
+Invoking command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control': /usr/bin/cmake --build /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control -- -j16 -l16
+Invoked command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control' returned '0': /usr/bin/cmake --build /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control -- -j16 -l16
+Invoking command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control': /usr/bin/cmake --install /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control
+Invoked command in '/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control' returned '0': /usr/bin/cmake --install /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control
