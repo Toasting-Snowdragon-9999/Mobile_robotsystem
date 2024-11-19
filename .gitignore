@@ -55,7 +55,9 @@
 /robot_code/cpp/CMakeLists.txt.user
 /robot_code/cpp/CMakeLists.txt.COVOTF
 /robot_code/build-cpp-Desktop-Debug/*
-
+/robot_code/build-cpp-Desktop-Debug/*
+/robot_code/cpp/CMakeLists.txt.user
+/robot_code/cpp/CMakeLists.txt.user*
 Docs/shared_file.json
 
 # Gui
@@ -67,3 +69,8 @@ Docs/shared_file.json
 !/robot_code/cpp/dtmf_sounds/.gitkeep
 /cpp/dtmf_sounds/*
 !/cpp/dtmf_sounds/.gitkeep
+/robot_code/test.txt
+
+# ROS
+/robot_code/cpp/log/*
+/robot_code/cpp/log/install

@@ -6,6 +6,7 @@
 #include <vector>
 #include <cstring>
 #include <portaudio.h>
+#include "goertzel.h"
 
 #define NUM_SECONDS (3)
 #define NUM_CHANNELS (1)
