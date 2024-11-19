@@ -34,6 +34,7 @@ std::vector<std::vector <std::string>> SharedData::read_json(){
         temp.push_back(jsonData[i][0]);
         int value = jsonData[i][1];
         temp.push_back(std::to_string(value)); 
+        std::cout << "Command: " << jsonData[i][0] << " Value: " << jsonData[i][1] << std::endl;
         sorted_data.push_back(temp);
     }
 

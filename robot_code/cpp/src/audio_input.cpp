@@ -59,7 +59,9 @@ void AudioInput::save_to_wav(const std::string &fileName){
 
 void AudioInput::record_audio(int input_device){
     _mic_data.recorded_samples.clear();
-    
+    _mic_data.success = false;
+    _mic_data.iterator = 0;
+    _mic_data.stop = false;
     _input_parameters.device = input_device;  // Explicitly select Device #2, or you can use another device index (like 8)
     if (_input_parameters.device == paNoDevice) {
         std::cerr << "Error: No input device.\n";
@@ -94,7 +96,10 @@ void AudioInput::record_audio(int input_device){
         return;
     }
 
-    Pa_Sleep(NUM_SECONDS*10); /* Sleep for 5 seconds while the stream is running */
+    while (_mic_data.stop == false){
+        Pa_Sleep(MILLISECONDS); 
+    }
+    
 
     _err = Pa_StopStream( _stream );
     if( _err != paNoError ) {
@@ -144,16 +149,32 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         float mono_in = *in++;  /* Mono channel input */
 		buffer.push_back(mono_in);
     }
-    data->recorded_samples = buffer;
-    // // Do signal processing
-    // if(true){
-        
-    //     data->success = true;
-    // }
-    // else{
-    //     buffer->clear();
-    //     data->success = false;
-    // }
+    if(data->success){
+        data->recorded_samples.push_back(buffer);
+        if (data->iterator > 1){
+            Goertzel algo;
+            algo.load_data(buffer);
+            bool success = algo.translate_signal_goertzel();
+            if(algo.detect_start_bit()){
+                data->stop = true;
+                data->recorded_samples.push_back(buffer);
+            }
+        }
+        data->iterator++;
+    }
+    else{
+        Goertzel algo;
+        algo.load_data(buffer);
+        bool success = algo.translate_signal_goertzel();
+        if(algo.detect_start_bit()){
+            data->success = true;
+            data->recorded_samples.push_back(buffer);
+        }
+        else{
+            buffer->clear();
+            data->success = false;
+        }
+    }
 
     return paContinue;
 }

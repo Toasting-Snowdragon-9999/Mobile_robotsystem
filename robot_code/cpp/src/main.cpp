@@ -128,20 +128,18 @@ int main() {
 
 
 
-SIGNAL_PROCESSING processor;
-std::vector<int> message = {10, 1, 1, 1, 1, 1, 1, 10};
+    // SIGNAL_PROCESSING processor;
+    // std::vector<int> message = {10, 1, 1, 1, 1, 1, 1, 10};
 
-std::vector<int> binary_representation1 = processor.pre_postamble_remover(message);
+    // std::vector<int> binary_representation1 = processor.pre_postamble_remover(message);
 
-std::string binary_representation3 = processor.message_str_binary();
-std::cout << binary_representation3 << std::endl;
+    // std::string binary_representation3 = processor.message_str_binary();
+    // std::cout << binary_representation3 << std::endl;
 
-std::string binary_representation = processor.message_str_binary();
-std::cout << binary_representation << std::endl;
+    // std::string binary_representation = processor.message_str_binary();
+    // std::cout << binary_representation << std::endl;
 
-
-
-    return 0;
+    // return 0;
 
     AudioInput audio_input(SAMPLE_RATE, FRAMES_PER_BUFFER);
     audio_input.audio_open();

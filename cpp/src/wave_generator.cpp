@@ -20,9 +20,9 @@ WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence): _sequ
 
     for(int i = 0; i < sequence.size(); i++){
         std::vector<std::vector<float>> temp_vec;
-        temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][0]]);
-        temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][1]]);
-        temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][2]]);
+        temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][0]+1]); //add +1 to make dtmf from 0-15 remove the +1 to make dtmf from 1-16
+        temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][1]+1]);
+        temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][2]+1]);
         _all_frequencies_to_be_played.push_back(temp_vec);
         temp_vec.clear();
     }

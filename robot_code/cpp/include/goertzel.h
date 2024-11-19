@@ -33,14 +33,7 @@ private:
         };
 
     
-    void _init_coefficients() {
-        _coefficients.resize(_DTMF_freq.size());
-
-        for (int i = 0; i < _DTMF_freq.size(); ++i) {
-            double omega = ( (2.0 * M_PI) / _size_of_signal ) * (0.5 + (2.0 * M_PI * _DTMF_freq[i]) / _sample_freq );
-            _coefficients[i] = 2.0 * std::cos(omega);
-        }
-    }
+    void _init_coefficients();
 
 
 public:
@@ -52,9 +45,10 @@ public:
     void read_from_file(const std::string &file_name);
     void translate_signal_goertzel();
     void sort(std::vector <double> &x, std::vector <int> &y);
-    void detect_DTMF(int freq_1, int freq_2);
-
+    bool detect_DTMF(int freq_1, int freq_2);
+    void load_data(const std::vector<double> &data);
     std::vector<int> get_message_vec();
+    bool detect_start_bit();
 
 
 };
