@@ -1,5 +1,5 @@
-#ifndef APPLICATIONLAYER_CONVERSION_H
-#define APPLICATIONLAYER_CONVERSION_H
+#ifndef APPLICATIONLAYER_H
+#define APPLICATIONLAYER_H
 
 #include <string>
 #include <unordered_map>
@@ -40,4 +40,4 @@ public:
 
 };
 
-#endif
+#endif // APPLICATIONLAYER_H

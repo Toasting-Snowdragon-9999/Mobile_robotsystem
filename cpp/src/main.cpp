@@ -4,7 +4,7 @@
 #include "wave_generator.h"
 #include "com_protocol.h"
 #include "al_to_dll.h"
-#include "applicationlayer.h"
+#include "application_layer.h"
 #include <bitset>
 #include <algorithm>
 #include <string>

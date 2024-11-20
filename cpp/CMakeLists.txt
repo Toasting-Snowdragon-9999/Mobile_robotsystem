@@ -24,7 +24,7 @@ set(SOURCES
     src/read_shared_data.cpp
     src/wave_generator.cpp
     src/com_protocol.cpp
-    src/applicationlayer.cpp
+    src/application_layer.cpp
     src/al_to_dll.cpp
 )
 
@@ -34,7 +34,7 @@ set(HEADERS
     include/read_shared_data.h
     include/wave_generator.h
     include/com_protocol.h
-    include/applicationlayer.h
+    include/application_layer.h
     include/al_to_dll.h
 )
 
