@@ -3,7 +3,8 @@
 #include "read_shared_data.h"
 #include "wave_generator.h"
 #include "com_protocol.h"
-#include "applicationlayer_conversion.h"
+#include "al_to_dll.h"
+#include "applicationlayer.h"
 #include <bitset>
 #include <algorithm>
 #include <string>
@@ -21,7 +22,7 @@ int main()
 	robot_command r4("-fw", "3000");
 	robot_command r5("-r", "30");
 
-	ApplicationlayerConversion Alc;
+	ApplicationLayer Alc;
 
 	cout << "Command to bits: " << Alc.command_to_bits(r1) << endl;
 	cout << "Command to bits: " << Alc.command_to_bits(s) << endl;

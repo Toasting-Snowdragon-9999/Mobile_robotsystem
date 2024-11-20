@@ -27,7 +27,7 @@ WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence) : _seq
         int j = 0;
         for (int j = 0; j < sequence[i].size(); j++) // Keep pushing frequencies no matter how many inside
         {
-            temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][j]]);
+            temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][j]+1]);
         }
 
         _all_frequencies_to_be_played.push_back(temp_vec);
