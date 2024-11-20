@@ -14,13 +14,13 @@ string ApplicationLayer::command_to_bits(const robot_command &input_command)
         if (input_command.direction == command.first)
         {
             is_command_found = true;
-            final_bits_converted += command.first;
+            final_bits_converted += command.second;
         }
 
         if (input_command.value == command.first)
         {
             is_command_found = true;
-            final_bits_converted += command.first;
+            final_bits_converted += command.second;
         }
     }
 
