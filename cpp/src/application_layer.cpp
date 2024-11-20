@@ -8,29 +8,28 @@ string ApplicationLayer::command_to_bits(const robot_command &input_command)
     // put command = bits and then values integers er lig med bits;
     string final_bits_converted = "";
 
-    if (input_command.direction != "-fw" && input_command.direction != "-bw" && input_command.direction != "-r" && input_command.direction != "-l" && input_command.direction != "s")
+    bool is_command_found = false;
+    for (auto command : _commandsMap)
     {
-        return "Error: Input_command's directional command character is invalid";
-    }
-    else if (input_command.value[0] == '-')
-    {
-        return "Error: Input_command's value is negative, which is invalid";
-    }
-    else
-    {
-        final_bits_converted.append(_commandsMap.find(input_command.direction)->second);
-        string input_val = input_command.value;
-
-        for (int i = 0; i < input_val.length(); i++)
+        if (input_command.direction == command.first)
         {
-            unsigned long int_val = input_val[i] - '0';
-            std::bitset<4> temp{int_val};
-            string appendstring = temp.to_string();
-            final_bits_converted.append(appendstring);
+            is_command_found = true;
+            final_bits_converted += command.first;
         }
 
-        return final_bits_converted;
+        if (input_command.value == command.first)
+        {
+            is_command_found = true;
+            final_bits_converted += command.first;
+        }
     }
+
+    if (!is_command_found)
+    {
+        return "Error: Input_command is invalid and not found in mapping of commands";
+    }
+
+    return final_bits_converted;
 }
 // Necessities: only the data is put as input, and the commands have to still be separated by space bits
 std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
@@ -98,7 +97,7 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
         }
     }
 
-    //Final check
+    // Final check
     if (!input_command.empty())
     {
         command_vector.emplace_back(input_command, value);
