@@ -1,84 +1,55 @@
 #include "com_protocol.h"
 
-ComProtocol::ComProtocol(std::vector<std::vector<uint16_t>> robotPath) : _robotPath(robotPath)
+ComProtocol::ComProtocol(std::string robot_path) : _robot_path(robot_path) {}
+
+std::string ComProtocol::length_of_string(std::string s)
 {
-    uint16_t outerVecSize = _robotPath.size(); // Size of outer vector (how many vectors are in the vector)
-    uint16_t size = 0;
+    int length_of_path = s.size();
+    std::string binary_length = "";
 
-    for (uint16_t i = 0; i < outerVecSize; i++)
+    if (length_of_path == 0)
     {
-        uint16_t innerVecSize = _robotPath[i].size(); // Size of inner vector (how many elements are in the currently looked at vector)
+        binary_length += '0'; // If a tone is zero, no conversion is needed
+    }
 
-        for (uint16_t i = 0; i < innerVecSize; i++)
+    else
+    {
+        while (length_of_path > 0)
         {
-            size++;
+            binary_length += (length_of_path % 2) ? '1' : '0';
+
+            length_of_path /= 2;
         }
     }
-    size++; // Adds 1 to size to account for CRC¤, which is 1 tone
 
-    uint16_t DTMFLengthTone1 = 0;
-    uint16_t DTMFLengthTone2 = 0;
-    uint16_t DTMFLengthTone3 = 0;
-    std::string sizeString = std::to_string(size);
+    std::reverse(binary_length.begin(), binary_length.end());
 
-    if (size < 10)
-    {
-        DTMFLengthTone3 = size;
-    }
-    else if (size < 100 && size > 9)
-    {
-        DTMFLengthTone3 = sizeString[1] - '0';
-        DTMFLengthTone2 = sizeString[0] - '0';
-    }
-    else if (size < 1000 && size > 99)
-    {
-        DTMFLengthTone3 = sizeString[2] - '0';
-        DTMFLengthTone2 = sizeString[1] - '0';
-        DTMFLengthTone1 = sizeString[0] - '0';
-    }
-
-    _robotPathLength = {DTMFLengthTone1, DTMFLengthTone2, DTMFLengthTone3};
+    return binary_length;
 }
 
-std::vector<std::vector<uint16_t>> ComProtocol::protocol_structure()
+std::string ComProtocol::protocol_structure()
 {
-    std::vector<std::vector<uint16_t>> protocolStructureVec;
+    std::string length_of_path = length_of_string(_robot_path);
 
-    std::string binaryRobotPath = decimal_seq_to_binary_msg(_robotPath);
-    std::string remainderString = find_remainder(crc4_encode(binaryRobotPath));
-    uint16_t remainderInt = static_cast<uint16_t>(std::stoi(remainderString, nullptr, 2)); // Converts remainder from 4-bit string to integer value
-    std::vector<uint16_t> remainderVecInt = {remainderInt};                                // Inserts remainder integer value into a vector
+    std::stringstream ss_header_and_data;
+    ss_header_and_data << _SFD << length_of_path << _EFD << _robot_path;
 
-    // Add all elements of data to the protocol structure (creating the entire package)
-    protocolStructureVec.push_back(_preAndPostamble);
-    protocolStructureVec.push_back(_robotPathLength);
-    for (uint16_t i = 0; i < _robotPath.size(); i++)
-    {
-        protocolStructureVec.push_back(_robotPath[i]);
-    }
-    protocolStructureVec.push_back(remainderVecInt);
-    protocolStructureVec.push_back(_preAndPostamble);
+    std::string crc_remainder = crc8_encode(ss_header_and_data.str());
 
-    return protocolStructureVec;
+    std::stringstream creatingPackage;
+    creatingPackage << _pre_and_postamble
+                    << _SFD
+                    << length_of_path
+                    << _EFD
+                    << _robot_path
+                    << crc_remainder
+                    << _pre_and_postamble;
+
+    std::string fullPackage = creatingPackage.str();
+    return fullPackage;
 }
 
-void ComProtocol::print_vec_elements(std::vector<std::vector<uint16_t>> package, std::string description)
-{
-    for (size_t i = 0; i < package.size(); ++i)
-    {
-        std::cout << description << ":      ";
-
-        // Loop through the elements of the current vector
-        for (size_t j = 0; j < package[i].size(); ++j)
-        {
-            std::cout << package[i][j] << " "; // Print each element
-        }
-
-        std::cout << std::endl; // New line after each vector
-    }
-}
-
-string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<uint16_t>> &decimalSequence)
+string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence)
 {
     string binaryConvertedTone = "";
     std::string tmpTone;
@@ -124,27 +95,27 @@ string ComProtocol::exclusive_or_strings(string a, string b)
     {
         throw std::invalid_argument("Strings of XOR-operation are not same size");
     }
-    for (uint16_t i = 0; i < a.size(); i++)
+    for (int i = 0; i < a.size(); i++)
     {
         xorresult += (a[i] == b[i]) ? '0' : '1';
     }
     return xorresult;
 }
 
-string ComProtocol::crc4_encode(string binaryDataword)
+string ComProtocol::crc8_encode(string binaryDataword)
 {
-    string codeword = "10011";
+    string codeword = "110100111";
     string encodedBinaryData = binaryDataword;
 
-    uint16_t crcDegree = codeword.length() - 1;
+    int crcDegree = codeword.length() - 1;
 
-    uint16_t selectionPlusOneIdx = codeword.length();
-    uint16_t codewordLength = codeword.length();
+    int selectionPlusOneIdx = codeword.length();
+    int codewordLength = codeword.length();
 
     string binaryDatawordWithZeroes = binaryDataword + string(crcDegree, '0'); // Append CRC-Degree zeroes to data
 
     string selection = binaryDatawordWithZeroes.substr(0, codeword.length());
-    uint16_t datawordLength = binaryDatawordWithZeroes.length();
+    int datawordLength = binaryDatawordWithZeroes.length();
 
     while (selectionPlusOneIdx < datawordLength) // Binary-division
     {
@@ -167,18 +138,18 @@ string ComProtocol::crc4_encode(string binaryDataword)
     return encodedBinaryData = binaryDataword + remainder;
 }
 
-string ComProtocol::crc4_decode(string binaryEncodedDataword)
+string ComProtocol::crc8_decode(string binaryEncodedDataword)
 {
-    string codeword = "10011";
+    string codeword = "110100111";
     string decodedBinaryData = binaryEncodedDataword;
 
-    uint16_t crcDegree = codeword.length() - 1;
+    int crcDegree = codeword.length() - 1;
 
-    uint16_t selectionPlusOneIdx = codeword.length();
-    uint16_t codewordLength = codeword.length();
+    int selectionPlusOneIdx = codeword.length();
+    int codewordLength = codeword.length();
 
     string selection = binaryEncodedDataword.substr(0, codeword.length());
-    uint16_t encodedDatawordLength = binaryEncodedDataword.length();
+    int encodedDatawordLength = binaryEncodedDataword.length();
 
     while (selectionPlusOneIdx < encodedDatawordLength) // Binary-division
     {
@@ -203,40 +174,26 @@ string ComProtocol::crc4_decode(string binaryEncodedDataword)
 
 bool ComProtocol::is_message_correct(const string &binaryDecodedDataword)
 {
-    return find_remainder(binaryDecodedDataword) == "0000";
+    return find_remainder(binaryDecodedDataword) == "00000000";
 }
 
-void ComProtocol::print_nested_vector(const std::vector<std::vector<uint16_t>> &preambleSeq, const std::string &name)
-{
-    std::cout << name << ":" << std::endl;
-    std::cout << "[" << std::endl;
-    for (const std::vector<uint16_t> &innerVec : preambleSeq)
-    {
-        std::cout << "  [ ";
-        for (int num : innerVec)
-        {
-            std::cout << num << " ";
-        }
-        std::cout << "]" << std::endl;
-    }
-    std::cout << "]" << std::endl;
-}
-
+// THIS NEEDS REMODELING
 std::string ComProtocol::find_remainder(std::string dataword)
 {
-    dataword = dataword.substr(dataword.size() - 4);
+    dataword = dataword.substr(dataword.size() - 8);
     return dataword;
 }
 
-std::string ComProtocol::get_binary_message_from_package(std::vector<std::vector<uint16_t>> package)
+// THIS NEEDS REMODELING
+std::string ComProtocol::get_binary_message_from_package(std::vector<std::vector<int>> package)
 {
-    package[0].erase(package[0].begin(), package[0].begin() + 6);       // Removes preamble, length, and postamble from vector
-    package[0].erase(package[0].end() - 3, package[0].end()); // Removes postamble
+    package[0].erase(package[0].begin(), package[0].begin() + 1); // Removes preamble, length
+    package[0].erase(package[0].end() - 3, package[0].end());     // Removes postamble
 
     std::string binaryEncodedMsg = decimal_seq_to_binary_msg(package);
-    std::string binaryDecodedMsg = crc4_decode(binaryEncodedMsg);
+    std::string binaryDecodedMsg = crc8_decode(binaryEncodedMsg);
 
-    if (find_remainder(binaryDecodedMsg) == "0000") // If message is correct return it
+    if (find_remainder(binaryDecodedMsg) == "00000000") // If message is correct return it
     {
         binaryDecodedMsg.erase(binaryDecodedMsg.end() - (4 * 2), binaryDecodedMsg.end()); // Removes CRC from end of message
         return binaryDecodedMsg;

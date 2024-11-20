@@ -13,22 +13,29 @@ string ApplicationLayer::command_to_bits(const robot_command &input_command)
     bool is_command_found = false;
     for (auto command : _commandsMap)
     {
+
         if (input_command.direction == command.first)
         {
             is_command_found = true;
             final_bits_converted += command.second;
         }
+    }
 
+    string values = "";
+    for (auto command : _commandsMap)
+    {
         for (int i = 0; i < length_of_value; i++)
         {
             std::string char_to_str(1, input_command.value[i]);
             if (char_to_str == command.first)
             {
                 is_command_found = true;
-                final_bits_converted += command.second;
+                values += command.second;
             }
         }
     }
+
+    final_bits_converted += values;
 
     if (!is_command_found)
     {

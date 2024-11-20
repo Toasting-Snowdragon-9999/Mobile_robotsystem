@@ -7,6 +7,7 @@
 #include <string>
 #include <algorithm>
 #include <cstdint>
+#include <sstream>
 
 using std::cout;
 using std::endl;
@@ -16,28 +17,29 @@ class ComProtocol
 {
 
 private:
-    std::vector<uint16_t> _preAndPostamble = {10, 10, 10}; // Sequence of DTMF tones for preamble and postamble
-    std::vector<uint16_t> _robotPathLength;                // Length of data in the message itself
-    std::vector<std::vector<uint16_t>> _robotPath;         // Data formed by path for robot, created by user
+    std::string _pre_and_postamble = "111011101110"; // Sequence of DTMF tones for preamble and postamble
+    std::string _SFD = "10011001";                   // Start-of-Frame Delimiter for header
+    std::string _EFD = "01100110";                   // End-of-Frame Delimiter for header
+    std::string _robot_path;                         // Data formed by path for robot, created by user
 
 public:
     /// @brief Constructor to create instance of ComProtocol
     /// @param robotPath Type: vector of vectors { {...}, {...}, ....., {...} } - The message itself (path for robot created by user)
-    ComProtocol(std::vector<std::vector<uint16_t>> robotPath);
+    ComProtocol(std::string robotPath);
 
-    /// @brief Method for creating entire package - Adds preamble, length, data, CRC and postamble toghether in a vector of vectors
-    /// @return Type: Vectors in vector { {preamble}, {length}, {robot path}, {CRC}, {postamble} }
-    std::vector<std::vector<uint16_t>> protocol_structure();
+    /// @brief Method for finding the length of a string
+    /// @param s Type: String
+    /// @return Type: String
+    std::string length_of_string(std::string s);
 
-    /// @brief Method for testing purpose - Prints all elements for a package (vector of vectors)
-    /// @param package Type: vector of vectors { {...}, {...}, ....., {...} }
-    /// @param description Type: String "description" - Describes what the package contains
-    void print_vec_elements(std::vector<std::vector<uint16_t>> package, std::string description);
+    /// @brief Method for creating entire package - Adds preamble, header, data, CRC and postamble toghether in a bitstream
+    /// @return Type: String
+    std::string protocol_structure();
 
     /// @brief Binary conversion for CRC-check
     /// @param decimalSequence Type: vector of vectors { {...}, {...}, ....., {...} } - The original tone sequence in decimal, divided in vectors of vectors
     /// @return Type: String - The sequence in a long binary string
-    string decimal_seq_to_binary_msg(const std::vector<std::vector<uint16_t>> &decimalSequence);
+    string decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence);
 
     /// @brief Performs XOR-operation on 2 strings characterwise
     /// @param a Type: String - 1st string to perform XOR-operation on
@@ -45,20 +47,15 @@ public:
     /// @return Type: String - Result of XOR-operation
     string exclusive_or_strings(string a, string b);
 
-    /// @brief Encode binary dataword with CRC4-Codeword
+    /// @brief Encode binary dataword with CRC8-Codeword
     /// @param binaryDataword Type: String - String of binary numbers to be encoded
-    /// @return Type: String - Binary dataword with CRC4-Codeword appended
-    string crc4_encode(string binaryDataword);
+    /// @return Type: String - Binary dataword with CRC8-Codeword appended
+    string crc8_encode(string binaryDataword);
 
-    /// @brief Decodes an encoded binary dataword using CRC4 (binary division)
+    /// @brief Decodes an encoded binary dataword using CRC8 (binary division)
     /// @param binaryEncodedDataword Type: String - A binary encoded dataword
     /// @return Type: String - A binary decoded dataword
-    string crc4_decode(string binaryEncodedDataword);
-
-    /// @brief Prints nested vector
-    /// @param preambleSeq Type: vector of vectors { {...}, {...}, ....., {...} } - Decimal values for sequence
-    /// @param name Type: String - Name for the sequence
-    void print_nested_vector(const std::vector<std::vector<uint16_t>> &preambleSeq, const std::string &name = "Preamble Sequence");
+    string crc8_decode(string binaryEncodedDataword);
 
     /// @brief Finds remainder in a binary dataword (last 4 binary digits)
     /// @param dataword Type: String - A binary dataword
@@ -74,7 +71,7 @@ public:
     /// @param package Type: String - The full binary package with pre- and postamble, length and CRC
     /// @return Type: String - The binary message
     /// @note Only returns message if it is correct (CRC of decoded message is 0000)
-    std::string get_binary_message_from_package(std::vector<std::vector<uint16_t>> package);
+    std::string get_binary_message_from_package(std::vector<std::vector<int>> package);
 };
 
 #endif // COM_PROTOCOL_H
