@@ -22,11 +22,21 @@ class ApplicationLayer
 
 private:
     std::unordered_map<string, string> _commandsMap = {
-        {"-fw", "1100"},
-        {"-bw", "1101"},
-        {"-r", "1110"},
-        {"-l", "1111"},
-        {"s", "1011"}};
+        {"0", "0000"},
+        {"1", "0001"},
+        {"2", "0010"},
+        {"3", "0011"},
+        {"4", "0100"},
+        {"5", "0101"},
+        {"6", "0110"},
+        {"7", "0111"},
+        {"8", "1000"},
+        {"9", "1001"},
+        {"-fw", "1010"},
+        {"-bw", "1011"},
+        {"-r", "1100"},
+        {"-l", "1101"},
+    };
 
 public:
     ApplicationLayer() {}
@@ -37,7 +47,6 @@ public:
 
     // Function to print all robot_command objects in a vector
     void print_robot_commands(const std::vector<robot_command> &command_vector);
-
 };
 
 #endif // APPLICATIONLAYER_H
