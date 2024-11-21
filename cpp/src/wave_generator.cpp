@@ -59,7 +59,7 @@ void WaveGenerator::generate_sine_wave_pairs(){
 
                 // Generates samples for one sound at a time
                 int conversion_to_seconds = 1000;
-                std::vector<sf::Int16> samples(_sample_rate * _duration / conversion_to_seconds);
+                std::vector<sf::Int16> samples((_sample_rate * _duration) / conversion_to_seconds);
                 for (unsigned i = 0; i < samples.size(); ++i) {
                     float time = static_cast<float>(i) / _sample_rate;
                     samples[i] = static_cast<sf::Int16>(

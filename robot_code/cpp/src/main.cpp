@@ -7,7 +7,7 @@
 #include <iostream>
 #include <fstream>
 #define SAMPLE_RATE (44100)
-#define FRAMES_PER_BUFFER (1024)
+#define FRAMES_PER_BUFFER (1320)
 #define INPUT_DEVICE (14)  /* Device index for the input device 5 default*/
 
 int main() {
@@ -148,7 +148,7 @@ int main() {
     audio_input.record_audio(INPUT_DEVICE);
     audio_input.save_to_wav("../dtmf_sounds/output.wav");
     audio_input.save_to_textfile("../dtmf_sounds/output.txt");
-    audio_input.read_from_file("../dtmf_sounds/output.txt");
+    //audio_input.read_from_file("../dtmf_sounds/output.txt");
     audio_input.audio_close();
 	return 0;
 }

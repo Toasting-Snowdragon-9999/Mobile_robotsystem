@@ -13,7 +13,7 @@ int main(){
 	std::string path_gui = "../Docs/shared_file.json";
 	std::string path_debug = "../../Docs/shared_file.json";
 	SharedData sd(path_debug);
-	std::vector<std::vector<uint16_t>> sequence1 = {{10,10,1},{2,3,4},{5,3,2},{2,10,10}};
+	std::vector<std::vector<uint16_t>> sequence1 = {{14,1,2},{3,4,5},{6,7,8},{9,10,11},{12,13,1},{2,3,4},{5,6,7},{8,9,10},{11,12,14}};
 	std::vector<std::vector<uint16_t>> sequence2 = {{0,1,2},{3,4,5},{6,7,8},{9,10,11},{12,13,14},{15,15,15}};
 	try{
 		sd.read_json();

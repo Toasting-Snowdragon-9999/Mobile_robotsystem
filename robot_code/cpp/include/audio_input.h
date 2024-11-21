@@ -6,9 +6,10 @@
 #include <vector>
 #include <cstring>
 #include <portaudio.h>
+#include <chrono>
 #include "goertzel.h"
 
-#define MILLISECONDS (30)
+#define MILLISECONDS (3000)
 #define NUM_CHANNELS (1)
 #define SAMPLE_TYPE paFloat32
 
@@ -16,6 +17,8 @@ typedef float SAMPLE;
 
 struct MicSample {
     std::vector<std::vector<SAMPLE>> recorded_samples;
+    std::vector<int> recorded_DTMF_tones;
+    GoertzelResult result_in_mic;
     bool success;
     int iterator;
     bool stop;  
@@ -32,6 +35,7 @@ public:
     void audio_close();
     void save_to_textfile(const std::string &fileName);
     void read_from_file(const std::string &fileName);
+    //int dissect();
 
 private:
     int _sample_rate;
@@ -40,6 +44,7 @@ private:
     PaError _err;
     PaStreamParameters _input_parameters;
     MicSample _mic_data;
+    //bool _check_second_half(std::vector<SAMPLE>& vec);
 };
 
 static int read_mic_callback(const void *input_buffer, void *output_buffer,

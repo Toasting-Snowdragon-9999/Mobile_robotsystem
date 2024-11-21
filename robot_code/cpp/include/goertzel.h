@@ -10,6 +10,11 @@
 #include <map>
 #include <chrono>
 
+struct GoertzelResult {
+    int dtmf_tone;
+    bool garbage_flag;
+    bool tone_flag;
+};
 
 class Goertzel
 {
@@ -24,12 +29,14 @@ private:
     std::vector<double> _magnitudes;
     std::vector<double> _freq_from_signals;
     std::vector<int> _message_vec;
+    GoertzelResult _result;
+
 
     std::map<std::pair<int, int>, int> _DTMF_mapping = {
             {{697, 1209}, 0}, {{697, 1336}, 1}, {{697, 1477}, 2}, {{697, 1633}, 3},
             {{770, 1209}, 4}, {{770, 1336}, 5}, {{770, 1477}, 6}, {{770, 1633}, 7},
             {{852, 1209}, 8}, {{852, 1336}, 9}, {{852, 1477}, 10}, {{852, 1633}, 11},
-            {{941, 1209}, 12}, {{941, 1336}, 13}, {{941, 1477}, 14}, {{941, 1633}, 15}
+            {{941, 1209}, 12}, {{941, 1336}, 13}, {{941, 1477}, 14}, {{941, 1633}, 15}, {{697, 770}, -1}
         };
 
     
@@ -39,16 +46,18 @@ private:
 public:
 
     Goertzel();
+    Goertzel(GoertzelResult& r);
     Goertzel(const std::vector<float> data);
 
     void compute_goertzel();
     void read_from_file(const std::string &file_name);
-    void translate_signal_goertzel();
+    void translate_signal_goertzel(GoertzelResult& r);
     void sort(std::vector <double> &x, std::vector <int> &y);
-    bool detect_DTMF(int freq_1, int freq_2);
+    void detect_DTMF(int freq_1, int freq_2, GoertzelResult& r);
     void load_data(const std::vector<float> &data);
     std::vector<int> get_message_vec();
-    bool detect_start_bit();
+    bool detect_start_bit(std::string start_stop);
+    bool detect_escape_bit();
 
 
 };

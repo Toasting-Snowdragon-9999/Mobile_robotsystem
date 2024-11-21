@@ -33,7 +33,7 @@ void AudioInput::save_to_wav(const std::string &fileName){
     short blockAlign = numChannels * sizeof(SAMPLE);
     short bitsPerSample = 8 * sizeof(SAMPLE);
     int chunkSize = 36 + dataSize;
-
+    //double denormalize = 2147483647;
     // Write the RIFF header
     outFile.write("RIFF", 4);
     outFile.write(reinterpret_cast<const char *>(&chunkSize), 4);
@@ -62,6 +62,9 @@ void AudioInput::record_audio(int input_device){
     _mic_data.success = false;
     _mic_data.iterator = 0;
     _mic_data.stop = false;
+    _mic_data.result_in_mic.dtmf_tone = -5;
+    _mic_data.result_in_mic.garbage_flag = false;
+    _mic_data.result_in_mic.tone_flag = false;
     _input_parameters.device = input_device;  // Explicitly select Device #2, or you can use another device index (like 8)
     if (_input_parameters.device == paNoDevice) {
         std::cerr << "Error: No input device.\n";
@@ -95,11 +98,17 @@ void AudioInput::record_audio(int input_device){
         Pa_Terminate();
         return;
     }
+    auto start = std::chrono::high_resolution_clock::now();
 
     while (_mic_data.stop == false){
-        Pa_Sleep(MILLISECONDS); 
+        // Pa_Sleep(MILLISECONDS); 
     }
-    
+    auto end = std::chrono::high_resolution_clock::now();
+
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+
+    std::cout << "[AFTER] Time difference: " << duration.count() << " microseconds" << std::endl;
+
 
     _err = Pa_StopStream( _stream );
     if( _err != paNoError ) {
@@ -109,6 +118,10 @@ void AudioInput::record_audio(int input_device){
     _err = Pa_CloseStream( _stream );
     if( _err != paNoError ) {
         std::cout << "PortAudio error: " << Pa_GetErrorText( _err ) << std::endl;
+    }
+
+    for(auto a: _mic_data.recorded_DTMF_tones){
+        std::cout << a << " " << std::endl;
     }
 
 }
@@ -133,13 +146,13 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
                            PaStreamCallbackFlags status_flags,
                            void *userData ){
 
-
+    auto start = std::chrono::high_resolution_clock::now();
     MicSample *data = (MicSample*)userData; 
     const float *in = (const float*)input_buffer; /* Audio input data */
     unsigned int i;
     std::vector <float> buffer;
     (void) output_buffer; /* Prevent unused variable warning. */
-
+    float thresh_hold = 0.012;
     if( input_buffer == NULL ){
         std::cout << "Input buffer is NULL" << std::endl;
         return paContinue;
@@ -147,29 +160,34 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
     for( i = 0; i < frames_per_buffer; i++ ){
         float mono_in = *in++;  /* Mono channel input */
+        if (mono_in < thresh_hold){
+            mono_in = 0;
+        }
 		buffer.push_back(mono_in);
     }
+
     if(data->success){
-        data->recorded_samples.push_back(buffer);
-        if (data->iterator > 1){
-            Goertzel algo;
-            algo.load_data(buffer);
-            algo.translate_signal_goertzel();
-            if(algo.detect_start_bit()){
+        Goertzel algo;
+        algo.load_data(buffer);
+        algo.translate_signal_goertzel(data->result_in_mic);
+        std::cout << "Tone Flag: " << data->result_in_mic.tone_flag << std::endl;
+        std::cout << "Garbage Flag: " << data->result_in_mic.garbage_flag << std::endl;
+        if (data->result_in_mic.tone_flag && !data->result_in_mic.garbage_flag){
+            data->recorded_DTMF_tones.push_back(data->result_in_mic.dtmf_tone);
+            std::cout << "Detected DTMF tone: " << data->result_in_mic.dtmf_tone << std::endl;
+            if(algo.detect_start_bit("stop")){
                 data->stop = true;
-                data->recorded_samples.push_back(buffer);
                 return paComplete;
             }
         }
-        data->iterator++;
     }
     else{
         Goertzel algo;
         algo.load_data(buffer);
-        algo.translate_signal_goertzel();
-        if(algo.detect_start_bit()){
+        algo.translate_signal_goertzel(data->result_in_mic);
+        if(algo.detect_start_bit("start")){
             data->success = true;
-            data->recorded_samples.push_back(buffer);
+            data->recorded_DTMF_tones.push_back(data->result_in_mic.dtmf_tone);
         }
         else{
             buffer.clear();
@@ -177,8 +195,58 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         }
     }
 
+    auto end = std::chrono::high_resolution_clock::now();
+
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+
+    //std::cout << "Time difference: " << duration.count() << " microseconds" << std::endl;
+
     return paContinue;
 }
+
+// int AudioInput::dissect(){
+
+//     Goertzel algo;
+//     algo.load_data(_mic_data.recorded_samples[1]);
+//     algo.translate_signal_goertzel();
+//     if(algo.detect_start_bit("start")){
+//         std::vector<SAMPLE> temp = _mic_data.recorded_samples[1];
+//         for(int i = 0; i < 3; i++){
+//             if (_check_second_half(temp)){
+                 
+//             }
+//             else{
+//                 return temp.size();
+//             }
+            
+//         }
+//     }
+//     else{
+//         algo.load_data(_mic_data.recorded_samples[0]);
+//         algo.translate_signal_goertzel();
+//         if(algo.detect_start_bit("start")){
+            
+//         }
+//     }
+// }
+
+// bool AudioInput::_check_second_half(std::vector<SAMPLE>& vec){
+//     std::vector<SAMPLE> second_half; 
+//     for(int i = vec.size()/2; i < vec.size(); i++){
+//         second_half.push_back(vec[i]);
+//     }
+
+//     Goertzel algo;
+//     algo.load_data(second_half);
+//     algo.translate_signal_goertzel();
+//     if(algo.detect_start_bit("start")){
+//         vec = second_half;
+//         return true;
+//     }
+//     else{
+//         return false;
+//     }
+// }
 
 void AudioInput::save_to_textfile(const std::string &fileName){
     std::ofstream outFile(fileName);

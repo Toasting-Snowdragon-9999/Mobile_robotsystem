@@ -2,10 +2,13 @@
 
 Goertzel::Goertzel(){}
 
+Goertzel::Goertzel(GoertzelResult& r): _result(r){}
+
+
 Goertzel::Goertzel(const std::vector<float> data)
         : _data(data), _size_of_signal(data.size()) {}
 
-void Goertzel::translate_signal_goertzel(){
+void Goertzel::translate_signal_goertzel(GoertzelResult& r){
 
     _init_coefficients();
 
@@ -13,7 +16,7 @@ void Goertzel::translate_signal_goertzel(){
 
     sort(_magnitudes, _DTMF_freq);
 
-    detect_DTMF(_freq_from_signals[0], _freq_from_signals[1]);
+    detect_DTMF(_freq_from_signals[0], _freq_from_signals[1], r);
 
 }
 
@@ -49,6 +52,7 @@ void Goertzel::compute_goertzel() {
         double before_last_signal_square = before_last_signal * before_last_signal;
 
         _magnitudes[freq_index] = std::sqrt(last_signal_square + before_last_signal_square - last_signal * before_last_signal * coeff);
+        //std::cout << "Magnitude: " << _magnitudes[freq_index] << std::endl;
 
     }
 }
@@ -104,7 +108,7 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
 }
 
 
-bool Goertzel::detect_DTMF(int freq_1, int freq_2) {
+void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
     if (freq_1 > freq_2) {
        std::swap(freq_1, freq_2);
     }
@@ -112,14 +116,25 @@ bool Goertzel::detect_DTMF(int freq_1, int freq_2) {
     auto DTMF_freq = _DTMF_mapping.find({freq_1, freq_2});
 
     if (DTMF_freq != _DTMF_mapping.end()) {
-        _message_vec.push_back(DTMF_freq->second);
-        std::cout << " DTMF_Freq found: " << DTMF_freq->second << std::endl;
-        return true;
+        std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
+        if (DTMF_freq->second == -1){
+            r.garbage_flag = false;
+            r.tone_flag = false;
+        }
+        else{
+            r.garbage_flag = false;
+            if(r.tone_flag){
+                r.garbage_flag = true;
+            }
+            _message_vec.push_back(DTMF_freq->second);
+            r.dtmf_tone = DTMF_freq->second;
+            r.tone_flag = true;
+            std::cout << "Tone flag: " << r.tone_flag << std::endl;
+        }
     }
     else {
-
-        std::cout<< " DTMF_Freq does not found " << std::endl;
-        return false; 
+        
+        //std::cout<< " DTMF_Freq does not found " << std::endl;
     }
 
      /* -------------------- FOR DEBUG: -----------------------*/
@@ -135,11 +150,23 @@ std::vector<int> Goertzel::get_message_vec(){
     return _message_vec;
 }
 
-bool Goertzel::detect_start_bit() {
+bool Goertzel::detect_start_bit(std::string start_stop){
+    // Tone 14
     int freq_1 = 1477;
-    int freq_2 = 852;
+    int freq_2 = 941;
     if ((_freq_from_signals[0] == freq_1 && _freq_from_signals[1] == freq_2) || (_freq_from_signals[0] == freq_2 && _freq_from_signals[1] == freq_1)) {
-        std::cout << "Start bit detected" << std::endl;
+        std::cout << start_stop <<" bit detected" << std::endl;
+        return true;
+    }
+    return false;
+}
+
+bool Goertzel::detect_escape_bit(){
+    // Tone 15
+    int freq_1 = 1633;
+    int freq_2 = 941;
+    if ((_freq_from_signals[0] == freq_1 && _freq_from_signals[1] == freq_2) || (_freq_from_signals[0] == freq_2 && _freq_from_signals[1] == freq_1)) {
+        std::cout << "esc bit detected" << std::endl;
         return true;
     }
     return false;
