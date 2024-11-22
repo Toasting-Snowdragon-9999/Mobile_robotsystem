@@ -12,13 +12,13 @@ namespace CRC
 
     namespace CRC7
     {
-        string crc7_encode(string binaryDataword);
-        string crc7_decode(string binaryDataword);
+        string crc_encode(string binaryDataword);
+        string crc_decode(string binaryDataword);
     }
     namespace CRC16
     {
-        string crc16_encode(string binaryDataword);
-        string crc16_decode(string binaryDataword);
+        string crc_encode(string binaryDataword);
+        string crc_decode(string binaryDataword);
     }
 }
 
