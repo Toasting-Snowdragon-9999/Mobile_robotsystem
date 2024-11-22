@@ -26,7 +26,9 @@ set(SOURCES
     src/com_protocol.cpp
     src/application_layer.cpp
     src/al_to_dll.cpp
+    src/crc.cpp
 )
+
 
 # Headers
 set(HEADERS
@@ -36,6 +38,7 @@ set(HEADERS
     include/com_protocol.h
     include/application_layer.h
     include/al_to_dll.h
+    include/crc.h
 )
 
 # Add executable

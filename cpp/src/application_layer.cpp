@@ -120,6 +120,77 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
     return command_vector;
 }
 
+
+string ApplicationLayer::crc7_encode(string binaryDataword)
+{
+    string codeword = "110100111";
+    string encodedBinaryData = binaryDataword;
+
+    int crcDegree = codeword.length() - 1;
+
+    int selectionPlusOneIdx = codeword.length();
+    int codewordLength = codeword.length();
+
+    string binaryDatawordWithZeroes = binaryDataword + string(crcDegree, '0'); // Append CRC-Degree zeroes to data
+
+    string selection = binaryDatawordWithZeroes.substr(0, codeword.length());
+    int datawordLength = binaryDatawordWithZeroes.length();
+
+    while (selectionPlusOneIdx < datawordLength) // Binary-division
+    {
+        if (selection[0] == '1')
+        {
+            selection = exclusive_or_strings(selection, codeword);
+        }
+
+        selection = selection.substr(1) + binaryDatawordWithZeroes[selectionPlusOneIdx];
+        selectionPlusOneIdx++;
+    }
+
+    if ((selection[0] == '1')) // XOR the last selection with the codeword if needed
+    {
+        selection = exclusive_or_strings(selection, codeword);
+    }
+
+    string remainder = selection.substr(1); // Return substring since codeword is CRC-Degree+1 in size
+
+    return encodedBinaryData = binaryDataword + remainder;
+}
+
+string ApplicationLayer::crc7_decode(string binaryEncodedDataword)
+{
+    string codeword = "110100111";
+    string decodedBinaryData = binaryEncodedDataword;
+
+    int crcDegree = codeword.length() - 1;
+
+    int selectionPlusOneIdx = codeword.length();
+    int codewordLength = codeword.length();
+
+    string selection = binaryEncodedDataword.substr(0, codeword.length());
+    int encodedDatawordLength = binaryEncodedDataword.length();
+
+    while (selectionPlusOneIdx < encodedDatawordLength) // Binary-division
+    {
+        if (selection[0] == '1')
+        {
+            selection = exclusive_or_strings(selection, codeword);
+        }
+
+        selection = selection.substr(1) + binaryEncodedDataword[selectionPlusOneIdx];
+        selectionPlusOneIdx++;
+    }
+
+    if ((selection[0] == '1')) // XOR the last selection with the codeword if needed
+    {
+        selection = exclusive_or_strings(selection, codeword);
+    }
+
+    string remainder = selection.substr(1); // Return substring since codeword is CRC-Degree+1 in size
+
+    return decodedBinaryData = binaryEncodedDataword + remainder;
+}
+
 void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &command_vector)
 {
     for (const auto &selection : command_vector)
