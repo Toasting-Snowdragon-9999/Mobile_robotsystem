@@ -47,15 +47,15 @@ public:
     /// @return Type: String - Result of XOR-operation
     string exclusive_or_strings(string a, string b);
 
-    /// @brief Encode binary dataword with CRC8-Codeword
+    /// @brief Encode binary dataword with CRC16-Codeword
     /// @param binaryDataword Type: String - String of binary numbers to be encoded
-    /// @return Type: String - Binary dataword with CRC8-Codeword appended
-    string crc8_encode(string binaryDataword);
+    /// @return Type: String - Binary dataword with CRC16-Codeword appended
+    string crc16_encode(string binaryDataword);
 
-    /// @brief Decodes an encoded binary dataword using CRC8 (binary division)
+    /// @brief Decodes an encoded binary dataword using CRC16 (binary division)
     /// @param binaryEncodedDataword Type: String - A binary encoded dataword
     /// @return Type: String - A binary decoded dataword
-    string crc8_decode(string binaryEncodedDataword);
+    string crc16_decode(string binaryEncodedDataword);
 
     /// @brief Finds remainder in a binary dataword (last 4 binary digits)
     /// @param dataword Type: String - A binary dataword
@@ -77,6 +77,11 @@ public:
     /// @param received_package Type: String - The received package as a string of bits
     /// @return Type: String - The received package as a string of bits without the pre- and postamble
     std::string remove_pre_and_postamble(std::string received_package);
+
+    /// @brief Zero-pads a binary message to make it %4=0
+    /// @param binary_msg Type: String - The binary message
+    /// @return Type: String - The binary message with zero-padding
+    std::string zero_pad(std::string binary_msg);
 };
 
 #endif // COM_PROTOCOL_H

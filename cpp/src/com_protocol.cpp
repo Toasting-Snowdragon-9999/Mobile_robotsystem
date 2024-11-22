@@ -27,26 +27,41 @@ std::string ComProtocol::length_of_string(std::string s)
     return binary_length;
 }
 
+// THIS NEEDS REMODELING
 std::string ComProtocol::protocol_structure()
 {
     std::string length_of_path = length_of_string(_robot_path);
 
     std::stringstream ss_header_and_data;
     ss_header_and_data << _SFD << length_of_path << _EFD << _robot_path;
+    std::string header_and_data = ss_header_and_data.str();
 
-    std::string crc_remainder = crc8_encode(ss_header_and_data.str());
+    std::string zero_padded_header_and_data = zero_pad(header_and_data);
+
+    std::string crc_encoded = crc16_encode(zero_padded_header_and_data);
 
     std::stringstream creating_package;
     creating_package << _pre_and_postamble
-                    << _SFD
-                    << length_of_path
-                    << _EFD
-                    << _robot_path
-                    << crc_remainder
-                    << _pre_and_postamble;
+                     << crc_encoded
+                     << _pre_and_postamble;
 
     std::string full_package = creating_package.str();
     return full_package;
+}
+
+std::string ComProtocol::zero_pad(std::string binary_msg)
+{
+    int length_of_msg = binary_msg.size();
+
+    int zeros = 4 - (length_of_msg % 4);
+    if(zeros == 4) { zeros = 0; }
+
+    for(int i = 0; i < zeros; i++)
+    {
+        binary_msg += '0';
+    }
+
+    return binary_msg;
 }
 
 string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence)
@@ -102,9 +117,9 @@ string ComProtocol::exclusive_or_strings(string a, string b)
     return xorresult;
 }
 
-string ComProtocol::crc8_encode(string binaryDataword)
+string ComProtocol::crc16_encode(string binaryDataword)
 {
-    string codeword = "110100111";
+    string codeword = "11000000000000101";
     string encodedBinaryData = binaryDataword;
 
     int crcDegree = codeword.length() - 1;
@@ -138,9 +153,9 @@ string ComProtocol::crc8_encode(string binaryDataword)
     return encodedBinaryData = binaryDataword + remainder;
 }
 
-string ComProtocol::crc8_decode(string binaryEncodedDataword)
+string ComProtocol::crc16_decode(string binaryEncodedDataword)
 {
-    string codeword = "110100111";
+    string codeword = "11000000000000101";
     string decodedBinaryData = binaryEncodedDataword;
 
     int crcDegree = codeword.length() - 1;
@@ -191,9 +206,9 @@ std::string ComProtocol::get_binary_message_from_package(std::vector<std::vector
     package[0].erase(package[0].end() - 3, package[0].end());     // Removes postamble
 
     std::string binaryEncodedMsg = decimal_seq_to_binary_msg(package);
-    std::string binaryDecodedMsg = crc8_decode(binaryEncodedMsg);
+    std::string binaryDecodedMsg = crc16_decode(binaryEncodedMsg);
 
-    if (find_remainder(binaryDecodedMsg) == "00000000") // If message is correct return it
+    if (find_remainder(binaryDecodedMsg) == "0000000000000000") // If message is correct return it
     {
         binaryDecodedMsg.erase(binaryDecodedMsg.end() - (4 * 2), binaryDecodedMsg.end()); // Removes CRC from end of message
         return binaryDecodedMsg;
