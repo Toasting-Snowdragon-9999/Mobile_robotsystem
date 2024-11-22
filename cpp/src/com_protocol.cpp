@@ -1,4 +1,5 @@
 #include "com_protocol.h"
+#include "crc.h"
 
 ComProtocol::ComProtocol(std::string robot_path) : _robot_path(robot_path) {}
 
@@ -38,7 +39,7 @@ std::string ComProtocol::protocol_structure()
 
     std::string zero_padded_header_and_data = zero_pad(header_and_data);
 
-    std::string crc_encoded = crc16_encode(zero_padded_header_and_data);
+    std::string crc_encoded = CRC::CRC16::crc_encode(zero_padded_header_and_data);
 
     std::stringstream creating_package;
     creating_package << _pre_and_postamble

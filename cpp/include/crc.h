@@ -22,4 +22,4 @@ namespace CRC
     }
 }
 
-#endif
+#endif // CRC_H
