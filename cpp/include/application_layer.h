@@ -46,10 +46,6 @@ public:
 
     std::vector<robot_command> bits_to_commands(string input_bits);
 
-    string crc7_encode(string binaryDataword);
-
-    string crc7_decode(string binaryDataword);
-
     // Function to print all robot_command objects in a vector
     void print_robot_commands(const std::vector<robot_command> &command_vector);
 };
