@@ -42,9 +42,10 @@ int main()
 	
 	ComProtocol test_package(testBits);
 	std::string full_package_string = test_package.protocol_structure();
-	std::cout << full_package_string << std::endl;
+	std::cout << "Full package: " << full_package_string << std::endl;
 	
-	
+	std::string full_package_wo_pre_and_postamble = test_package.remove_pre_and_postamble(full_package_string);
+	std::cout << "Received package after removing pre- and postamble: " << full_package_wo_pre_and_postamble << std::endl;
 
 	// // py to cpp
 	// while (1)

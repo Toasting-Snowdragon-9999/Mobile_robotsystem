@@ -72,6 +72,11 @@ public:
     /// @return Type: String - The binary message
     /// @note Only returns message if it is correct (CRC of decoded message is 0000)
     std::string get_binary_message_from_package(std::vector<std::vector<int>> package);
+
+    /// @brief Method for removing the pre- and postamble from the received package
+    /// @param received_package Type: String - The received package as a string of bits
+    /// @return Type: String - The received package as a string of bits without the pre- and postamble
+    std::string remove_pre_and_postamble(std::string received_package);
 };
 
 #endif // COM_PROTOCOL_H

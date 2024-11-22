@@ -36,8 +36,8 @@ std::string ComProtocol::protocol_structure()
 
     std::string crc_remainder = crc8_encode(ss_header_and_data.str());
 
-    std::stringstream creatingPackage;
-    creatingPackage << _pre_and_postamble
+    std::stringstream creating_package;
+    creating_package << _pre_and_postamble
                     << _SFD
                     << length_of_path
                     << _EFD
@@ -45,8 +45,8 @@ std::string ComProtocol::protocol_structure()
                     << crc_remainder
                     << _pre_and_postamble;
 
-    std::string fullPackage = creatingPackage.str();
-    return fullPackage;
+    std::string full_package = creating_package.str();
+    return full_package;
 }
 
 string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence)
@@ -203,4 +203,14 @@ std::string ComProtocol::get_binary_message_from_package(std::vector<std::vector
         std::cout << "The recieved message IS NOT correct" << std::endl;
         return 0;
     }
+}
+
+std::string ComProtocol::remove_pre_and_postamble(std::string received_package)
+{
+    int length_of_pre_and_postamble = _pre_and_postamble.size();
+
+    received_package.erase(received_package.begin(), received_package.begin() + length_of_pre_and_postamble);
+    received_package.erase(received_package.end() - length_of_pre_and_postamble, received_package.end());
+
+    return received_package;
 }
