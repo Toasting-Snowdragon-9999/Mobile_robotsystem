@@ -17,10 +17,8 @@ namespace CRC
     }
     namespace CRC7
     {
-        /// @brief Encodes the codeword using CRC7-ITU-T generator polynomial
-        /// @param dataword The binary message that is to be encoded
-        /// @return codeword - The encoded dataword
-        string crc7_encode(string dataword)
+
+        string encode(string dataword)
         {
             string generator_poly = "110100111"; // Dataword CRC7-ITU-T
             string codeword = dataword;
@@ -55,11 +53,7 @@ namespace CRC
 
             return codeword = dataword + remainder;
         }
-
-        /// @brief Decodes the codeword using CRC7-ITU-T generator polynomial
-        /// @param codeword The encoded dataword
-        /// @return The last 7 bits after decoding
-        string crc7_decode(string codeword)
+        string decode(string codeword)
         {
             string generator_poly = "110100111";
             string decodedBinaryData = codeword;
@@ -95,10 +89,7 @@ namespace CRC
     }
     namespace CRC16
     {
-        /// @brief Encodes the codeword using CRC-16-IBM generator polynomial
-        /// @param dataword The binary message that is to be encoded
-        /// @return codeword - The encoded dataword
-        string crc16_encode(string dataword)
+        string encode(string dataword)
         {
             string generator_poly = "11000000000000101"; // Dataword CRC7-ITU-T
             string codeword = dataword;
@@ -133,11 +124,7 @@ namespace CRC
 
             return codeword = dataword + remainder;
         }
-
-        /// @brief Decodes the codeword using CRC-16-IBM generator polynomial
-        /// @param codeword The encoded dataword
-        /// @return The last 16 bits after decoding
-        string crc16_decode(string codeword)
+        string decode(string codeword)
         {
             string generator_poly = "11000000000000101";
             string decodedBinaryData = codeword;
