@@ -18,12 +18,12 @@ int main()
 	robot_command r1("-fw", "100");
 	robot_command r2("-l", "45");
 	robot_command r3("-r", "180");
-	robot_command r4("-fw", "3000");
+	robot_command r4("-fw", "300000");
 	robot_command r5("-r", "30");
 
 	ApplicationLayer Alc;
 
-	cout << "Command to bits: " << Alc.command_to_bits(r1) << endl;
+	cout << "Command to bits should be 1010000100000000 :		 " << Alc.command_to_bits(r1) << endl;
 	cout << "Command to bits: " << Alc.command_to_bits(r2) << endl;
 	cout << "Command to bits: " << Alc.command_to_bits(r3) << endl;
 	cout << "Command to bits: " << Alc.command_to_bits(r4) << endl;
@@ -35,7 +35,7 @@ int main()
 	cout
 		<< "Complete string: " << testBits + "\n"
 		<< endl;
-	cout << "Correct commands: -fw 100 , -l 45 , -r 180 , -fw 3000 , -r 30\nConvert commands: ";
+	cout << "The correct commands: -fw 100 , -l 45 , -r 180 , -fw 3000 , -r 30\nConverted  commands: ";
 	Alc.print_robot_commands(Alc.bits_to_commands(testBits));
 
 	// SharedData sd; static_cast<unsigned long>

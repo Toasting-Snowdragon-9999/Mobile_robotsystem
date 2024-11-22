@@ -11,6 +11,8 @@ string ApplicationLayer::command_to_bits(const robot_command &input_command)
     int length_of_value = input_command.value.length();
 
     bool is_command_found = false;
+    bool is_value_found = false;
+
     for (auto command : _commandsMap)
     {
 
@@ -22,9 +24,9 @@ string ApplicationLayer::command_to_bits(const robot_command &input_command)
     }
 
     string values = "";
-    for (auto command : _commandsMap)
+    for (int i = 0; i < length_of_value; i++)
     {
-        for (int i = 0; i < length_of_value; i++)
+        for (auto command : _commandsMap)
         {
             std::string char_to_str(1, input_command.value[i]);
             if (char_to_str == command.first)
