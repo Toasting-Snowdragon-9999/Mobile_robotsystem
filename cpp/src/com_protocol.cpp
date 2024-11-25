@@ -39,11 +39,7 @@ std::string ComProtocol::protocol_structure()
 
     std::string zero_padded_header_and_data = zero_pad(header_and_data);
 
-<<<<<<< HEAD
     std::string crc_encoded = CRC::CRC16::encode(zero_padded_header_and_data);
-=======
-    std::string crc_encoded = CRC::CRC16::encode(zero_padded_header_and_data);
->>>>>>> 88233c1 (Chaged method used for CRC in protocol_structure)
 
     std::stringstream creating_package;
     creating_package << _pre_and_postamble
