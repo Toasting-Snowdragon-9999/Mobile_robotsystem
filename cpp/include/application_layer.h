@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <memory>
 
 using std::string;
 
@@ -15,14 +16,21 @@ struct robot_command
     string direction;
     string value;
 
-    robot_command(string input_command, string inputValue = "0") : direction(input_command), value(inputValue) {}
+    robot_command(string input_command, string inputValue = "0");
 };
 
 class ApplicationLayer
 {
 
 private:
-    std::unordered_map<string, string> _commandsMap = {
+    std::unordered_map<string, string> _direction_map = {
+        {"-fw", "1010"},
+        {"-bw", "1011"},
+        {"-r", "1100"},
+        {"-l", "1101"},
+    };
+
+    std::unordered_map<string, string> _value_map = {
         {"0", "0000"},
         {"1", "0001"},
         {"2", "0010"},
@@ -33,14 +41,20 @@ private:
         {"7", "0111"},
         {"8", "1000"},
         {"9", "1001"},
-        {"-fw", "1010"},
-        {"-bw", "1011"},
-        {"-r", "1100"},
-        {"-l", "1101"},
     };
 
+    std::unordered_map<string, string> _all_commands_map;
+
+    void create_all_commands_map();
+
 public:
-    ApplicationLayer() {}
+    ApplicationLayer();
+
+    void add_direction(const string &key, const std::string &value);
+
+    void add_value(const string &key, const std::string &value);
+
+    void add_command(const string &key, const std::string &value);
 
     string command_to_bits(const robot_command &input_command);
 
