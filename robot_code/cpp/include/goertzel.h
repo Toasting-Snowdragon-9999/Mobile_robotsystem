@@ -9,6 +9,8 @@
 #include <algorithm>
 #include <map>
 #include <chrono>
+#include <iomanip>
+
 
 struct GoertzelResult {
     int dtmf_tone;
@@ -39,6 +41,12 @@ private:
             {{941, 1209}, 12}, {{941, 1336}, 13}, {{941, 1477}, 14}, {{941, 1633}, 15}, {{697, 770}, -1}
         };
 
+    std::map<int, std::pair<int, int>> _reverse_DTMF_mapping = {
+            {0, {697, 1209}}, {1, {697, 1336}}, {2, {697, 1477}}, {3, {697, 1633}},
+            {4, {770, 1209}}, {5, {770, 1336}}, {6, {770, 1477}}, {7, {770, 1633}},
+            {8, {852, 1209}}, {9, {852, 1336}}, {10, {852, 1477}}, {11, {852, 1633}},
+            {12, {941, 1209}}, {13, {941, 1336}}, {14, {941, 1477}}, {15, {941, 1633}}, {-1, {697, 770}}
+        };
     
     void _init_coefficients();
 
@@ -56,10 +64,9 @@ public:
     void detect_DTMF(int freq_1, int freq_2, GoertzelResult& r);
     void load_data(const std::vector<float> &data);
     std::vector<int> get_message_vec();
-    bool detect_start_bit(std::string start_stop);
-    bool detect_escape_bit();
-
-
+    bool detect_bit(std::string start_stop, int dtmf_tone);
+    void save_to_json(const int& key);
+    std::string generate_json_string(const int& key);
 };
 
 #endif // GOERTZEL_H

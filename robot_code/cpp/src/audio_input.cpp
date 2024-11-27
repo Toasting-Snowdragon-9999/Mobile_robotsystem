@@ -103,6 +103,7 @@ void AudioInput::record_audio(int input_device){
     while (_mic_data.stop == false){
         // Pa_Sleep(MILLISECONDS); 
     }
+    save_to_textfile("../dtmf_sounds/output.txt");
     auto end = std::chrono::high_resolution_clock::now();
 
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
@@ -146,13 +147,17 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
                            PaStreamCallbackFlags status_flags,
                            void *userData ){
 
+    int preable = 14;
+
     auto start = std::chrono::high_resolution_clock::now();
     MicSample *data = (MicSample*)userData; 
     const float *in = (const float*)input_buffer; /* Audio input data */
     unsigned int i;
     std::vector <float> buffer;
     (void) output_buffer; /* Prevent unused variable warning. */
-    float thresh_hold = 0.012;
+    float thresh_hold = 0.5;
+    // float thresh_hold = 0.010905;
+
     if( input_buffer == NULL ){
         std::cout << "Input buffer is NULL" << std::endl;
         return paContinue;
@@ -160,11 +165,17 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
     for( i = 0; i < frames_per_buffer; i++ ){
         float mono_in = *in++;  /* Mono channel input */
-        if (mono_in < thresh_hold){
+        // double denorm = mono_in * 1e9;
+        // std::cout << std::fixed << std::setprecision(2) << "Denormalized value: " << denorm << std::endl;
+        std::cout << "Mono in: " << mono_in << std::endl;
+        if (std::abs(mono_in) < thresh_hold){
             mono_in = 0;
         }
+
 		buffer.push_back(mono_in);
     }
+
+    data->recorded_samples.push_back(buffer);
 
     if(data->success){
         Goertzel algo;
@@ -175,7 +186,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         if (data->result_in_mic.tone_flag && !data->result_in_mic.garbage_flag){
             data->recorded_DTMF_tones.push_back(data->result_in_mic.dtmf_tone);
             std::cout << "Detected DTMF tone: " << data->result_in_mic.dtmf_tone << std::endl;
-            if(algo.detect_start_bit("stop")){
+            if(algo.detect_bit("stop", preable)){
                 data->stop = true;
                 return paComplete;
             }
@@ -185,7 +196,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         Goertzel algo;
         algo.load_data(buffer);
         algo.translate_signal_goertzel(data->result_in_mic);
-        if(algo.detect_start_bit("start")){
+        if(algo.detect_bit("start", preable)){
             data->success = true;
             data->recorded_DTMF_tones.push_back(data->result_in_mic.dtmf_tone);
         }
@@ -209,7 +220,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 //     Goertzel algo;
 //     algo.load_data(_mic_data.recorded_samples[1]);
 //     algo.translate_signal_goertzel();
-//     if(algo.detect_start_bit("start")){
+//     if(algo.detect_bit("start")){
 //         std::vector<SAMPLE> temp = _mic_data.recorded_samples[1];
 //         for(int i = 0; i < 3; i++){
 //             if (_check_second_half(temp)){
@@ -224,7 +235,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 //     else{
 //         algo.load_data(_mic_data.recorded_samples[0]);
 //         algo.translate_signal_goertzel();
-//         if(algo.detect_start_bit("start")){
+//         if(algo.detect_bit("start")){
             
 //         }
 //     }
@@ -239,7 +250,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 //     Goertzel algo;
 //     algo.load_data(second_half);
 //     algo.translate_signal_goertzel();
-//     if(algo.detect_start_bit("start")){
+//     if(algo.detect_bit("start")){
 //         vec = second_half;
 //         return true;
 //     }
@@ -249,10 +260,12 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 // }
 
 void AudioInput::save_to_textfile(const std::string &fileName){
+    
     std::ofstream outFile(fileName);
-
+    outFile << "Start: " << "\n";
     for (auto &sample : _mic_data.recorded_samples) {
         for (auto &value : sample) {
+            //std::cout << "Buffer value: " <<value << std::endl;
             outFile << value << "\n";
         }
     }

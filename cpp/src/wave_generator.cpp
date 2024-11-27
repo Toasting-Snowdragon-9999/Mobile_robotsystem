@@ -27,12 +27,14 @@ WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence): _sequ
         temp_vec.clear();
     }
 }
+
 void WaveGenerator::add_zeros_to_start_of_signal(){
     std::vector<std::vector<float>> temp_vec;
-    temp_vec.push_back({0,0});
-    temp_vec.push_back({0,0});
-    temp_vec.push_back({0,0});
-
+    for(int i = 0; i < 1; i++){
+        temp_vec.push_back({0,0});
+        temp_vec.push_back({0,0});
+        temp_vec.push_back({0,0});
+    }
     _all_frequencies_to_be_played.push_back(temp_vec);
 }
 void WaveGenerator::apply_fade_in(std::vector<sf::Int16>& samples, int fadeLength) {

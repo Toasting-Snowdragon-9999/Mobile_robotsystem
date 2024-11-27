@@ -8,7 +8,7 @@
 #include <fstream>
 #define SAMPLE_RATE (44100)
 #define FRAMES_PER_BUFFER (1320)
-#define INPUT_DEVICE (14)  /* Device index for the input device 5 default*/
+#define INPUT_DEVICE (15)  /* Device index for the input device 5 default*/
 
 int main() {
 

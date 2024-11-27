@@ -52,7 +52,7 @@ void Goertzel::compute_goertzel() {
         double before_last_signal_square = before_last_signal * before_last_signal;
 
         _magnitudes[freq_index] = std::sqrt(last_signal_square + before_last_signal_square - last_signal * before_last_signal * coeff);
-        //std::cout << "Magnitude: " << _magnitudes[freq_index] << std::endl;
+        std::cout << "Magnitude: " << std::setprecision(15) << _magnitudes[freq_index] << std::endl;
 
     }
 }
@@ -120,6 +120,7 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
         if (DTMF_freq->second == -1){
             r.garbage_flag = false;
             r.tone_flag = false;
+            save_to_json(DTMF_freq->second);
         }
         else{
             r.garbage_flag = false;
@@ -150,24 +151,51 @@ std::vector<int> Goertzel::get_message_vec(){
     return _message_vec;
 }
 
-bool Goertzel::detect_start_bit(std::string start_stop){
+bool Goertzel::detect_bit(std::string type, int dtmf_tone){
     // Tone 14
-    int freq_1 = 1477;
-    int freq_2 = 941;
+    std::pair<int, int> freq_pair = _reverse_DTMF_mapping[dtmf_tone];
+    int freq_1 = freq_pair.first;
+    int freq_2 = freq_pair.second;
+    std::cout << "Freq 1: " << freq_1 << " Freq 2: " << freq_2 << std::endl;
     if ((_freq_from_signals[0] == freq_1 && _freq_from_signals[1] == freq_2) || (_freq_from_signals[0] == freq_2 && _freq_from_signals[1] == freq_1)) {
-        std::cout << start_stop <<" bit detected" << std::endl;
+        std::cout << type <<" bit detected" << std::endl;
         return true;
     }
     return false;
 }
 
-bool Goertzel::detect_escape_bit(){
-    // Tone 15
-    int freq_1 = 1633;
-    int freq_2 = 941;
-    if ((_freq_from_signals[0] == freq_1 && _freq_from_signals[1] == freq_2) || (_freq_from_signals[0] == freq_2 && _freq_from_signals[1] == freq_1)) {
-        std::cout << "esc bit detected" << std::endl;
-        return true;
+std::string Goertzel::generate_json_string(const int& key) {
+    // if (values.size() != 8) {
+    //     throw std::invalid_argument("The vector must contain exactly 8 doubles.");
+    // }
+
+    std::ostringstream oss;
+    oss << "{\n";
+    oss << "  \"key\": \"" << key << "\",\n";
+    oss << "  \"magnitudes\": [";
+
+    // Serialize the vector of doubles
+    for (size_t i = 0; i < _magnitudes.size(); ++i) {
+        oss << std::fixed << std::setprecision(6) << _magnitudes[i];
+        if (i < _magnitudes.size() - 1) {
+            oss << ", ";
+        }
     }
-    return false;
+
+    oss << "]\n";
+    oss << "}";
+
+    return oss.str();
+}
+
+void Goertzel::save_to_json(const int& key) {
+    std::string jsonOutput = generate_json_string(key);
+    std::ofstream outFile("../dtmf_sounds/magnitudes.json");
+    if (outFile.is_open()) {
+        outFile << jsonOutput;
+        outFile.close();
+        std::cout << "JSON saved to output.json" << std::endl;
+    } else {
+        std::cerr << "Error: Could not open file for writing." << std::endl;
+    }
 }
