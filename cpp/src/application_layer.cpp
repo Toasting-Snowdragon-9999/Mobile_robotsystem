@@ -75,82 +75,65 @@ string ApplicationLayer::command_to_bits(const robot_command &input_command)
     return final_bits_converted;
 }
 
-// Necessities: only the data is put as input
-// std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
-// {
-//     std::vector<robot_command> command_vector;
+bool ApplicationLayer::is_value(const string &bits)
+{
+    bool is_value = false;
+    for (const auto &i : _value_map)
+    {
+        if (i.second == bits)
+        {
+            is_value = true;
+        }
+    }
+}
 
-//     string input_command = "";
-//     string value = "";
-//     size_t pos = 0;
-
-//     string space_bits = _all_commands_map["s"];
-
-//     // Erase spaces
-//     // while ((pos = input_bits.find(space_bits, pos)) != string::npos)
-//     // {
-//     //     input_bits.erase(pos, space_bits.length());
-//     // }
-
-//     bool is_command = false;
-//     bool is_command_once = false;
-//     for (int i = 0; i < input_bits.length(); i += 4)
-//     {
-//         std::string temp_bits = input_bits.substr(i, 4);
-
-//         if (i + 4 > input_bits.length())
-//         {
-//             break;
-//         }
-
-//         if (!is_command_once)
-//         {
-//             for (const auto &commands : _all_commands_map)
-//             {
-//                 if (commands.second == temp_bits)
-//                 {
-//                     input_command = commands.first;
-//                     is_command = true;
-//                     break;
-//                 }
-//             }
-//         }
-
-//         if (is_command && !is_command_once)
-//         {
-//             is_command_once = true;
-//             continue;
-//         }
-
-//         if (is_command && is_command_once)
-//         { // If space then add to vector and reset
-//             if (temp_bits == space_bits)
-//             {
-//                 command_vector.emplace_back(input_command, value); // Creates objects of the struct to append to vector
-//                 input_command = "";
-//                 value = "";
-//                 is_command = false;
-//                 is_command_once = false;
-//                 continue;
-//             }
-//             else
-//             {
-//                 int int_value = std::stoi(temp_bits, nullptr, 2);
-//                 value += std::to_string(int_value);
-//             }
-//         }
-//     }
-
-//     // Final check
-//     if (!input_command.empty())
-//     {
-//         command_vector.emplace_back(input_command, value);
-//     }
-//     return command_vector;
-// }
+bool ApplicationLayer::is_direction(const string &bits)
+{
+    bool is_direction = false;
+    for (const auto &i : _direction_map)
+    {
+        if (i.second == bits)
+        {
+            is_direction = true;
+        }
+    }
+}
 
 std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
 {
+    int i;
+    string temp_bits = input_bits.substr(0, 4);
+    string next_bits = input_bits.substr(0 + 4, 4);
+
+    std::unordered_map<std::string, std::string>::iterator iterator;
+
+    if (i + 4 > input_bits.size() - 1)
+    {
+        // yadayada
+    }
+
+    // Check if bits are a value
+    for (const auto &i : _value_map)
+    {
+        if (i.second == temp_bits)
+        {
+            iterator = _value_map.find(i.first);
+        }
+    }
+    // Check if bits are a direction
+    for (const auto &i : _direction_map)
+    {
+        if (i.second == temp_bits)
+        {
+            iterator = _direction_map.find(i.first);
+        }
+    }
+
+    // Check if next bits are a value or a direction
+    if (ApplicationLayer::is_value(temp_bits) && ApplicationLayer::is_direction(next_bits))
+    {
+        // emplace or sum shet
+    }
 
     std::vector<robot_command> command_vector;
 
@@ -158,16 +141,67 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
     string value = "";
     size_t pos = 0;
 
+    bool is_command = false;
+    bool is_command_once = false;
     for (int i = 0; i < input_bits.length(); i += 4)
     {
         std::string temp_bits = input_bits.substr(i, 4);
+        string next_bits = input_bits.substr(i + 4, 4);
 
-        std::unordered_map<string, string> value_map;
+        if (i + 4 > input_bits.length() - 1)
+        {
+            break;
+        }
 
-        value_map.insert )
+        if (!is_command_once)
+        {
+            for (const auto &commands : _all_commands_map)
+            {
+                if (commands.second == temp_bits)
+                {
+                    input_command = commands.first;
+                    is_command = true;
+                    break;
+                }
+            }
+        }
 
-        if (temp_bits)
+        if (is_command && !is_command_once)
+        {
+            is_command_once = true;
+            continue;
+        }
+
+        if (is_command && is_command_once)
+        { // If space then add to vector and reset
+            if (ApplicationLayer::is_value(temp_bits) && ApplicationLayer::is_direction(next_bits))
+            {
+                command_vector.emplace_back(input_command, value); // Creates objects of the struct to append to vector
+                input_command = "";
+                value = "";
+                is_command = false;
+                is_command_once = false;
+                continue;
+            }
+            else
+            {
+                for (const auto &command : _value_map)
+                {
+                    if (command.second == temp_bits)
+                    {
+                        value += command.first;
+                    }
+                }
+            }
+        }
     }
+
+    // Final check
+    if (!input_command.empty())
+    {
+        command_vector.emplace_back(input_command, value);
+    }
+    return command_vector;
 }
 
 void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &command_vector)

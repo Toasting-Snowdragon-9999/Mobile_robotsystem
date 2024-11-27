@@ -52,6 +52,10 @@ public:
 
     void add_direction(const string &key, const std::string &value);
 
+    bool is_value(const string &bits);
+
+    bool is_direction(const string &bits);
+
     void add_value(const string &key, const std::string &value);
 
     void add_command(const string &key, const std::string &value);
