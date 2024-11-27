@@ -39,14 +39,51 @@ std::string ComProtocol::protocol_structure()
     std::string zero_padded_header_and_data = zero_pad(header_and_data);
 
     std::string crc_encoded_header_and_data = CRC::CRC16::encode(zero_padded_header_and_data);
+    std::string nibble_stuffed_header_and_data = nibble_stuffing(crc_encoded_header_and_data);
 
     std::stringstream creating_package;
     creating_package << _pre_and_postamble
-                     << crc_encoded_header_and_data
+                     << nibble_stuffed_header_and_data
                      << _pre_and_postamble;
 
     std::string full_package = creating_package.str();
     return full_package;
+}
+
+std::string ComProtocol::nibble_stuffing(std::string package)
+{
+    int i = 0;
+    while (i <= package.size() - 4)
+    {
+        std::string nibble = package.substr(i, 4);
+        if (nibble == _pre_and_postamble || nibble == _ESC_nibble)
+        {
+            package.insert(i, _ESC_nibble);
+            i += _ESC_nibble.size();
+        }
+        i += 4; // Move to the next nibble
+    }
+
+    return package;
+}
+
+std::string ComProtocol::remove_esc_nibbles(std::string received_package)
+{
+    std::string ESC_and_pre_and_postamble = _ESC_nibble + _pre_and_postamble;
+    std::string ESC_and_ESC = _ESC_nibble + _ESC_nibble;
+
+    int i = 0;
+    while (i <= received_package.size() - 8)
+    {
+        std::string byte = received_package.substr(i, 8);
+        if (byte == ESC_and_pre_and_postamble || byte == ESC_and_ESC)
+        {
+            received_package.erase(i, _ESC_nibble.size());
+        }
+        i += 4;
+    }
+
+    return received_package;
 }
 
 std::string ComProtocol::zero_pad(std::string binary_msg)
@@ -155,6 +192,9 @@ std::string ComProtocol::get_data_from_package(std::string received_package)
 {
     // Removing the pre- and postamble from recveived package
     received_package = remove_pre_and_postamble(received_package);
+
+    // Removing ESC nibbles
+    received_package = remove_esc_nibbles(received_package);
 
     // Checking CRC (validity) of received package
     std::string crc_decoded_remainder = CRC::CRC16::decode(received_package);

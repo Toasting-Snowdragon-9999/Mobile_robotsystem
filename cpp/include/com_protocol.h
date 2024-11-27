@@ -17,10 +17,11 @@ class ComProtocol
 {
 
 private:
-    std::string _pre_and_postamble = "111011101110"; // Sequence of DTMF tones for preamble and postamble
-    std::string _SFD = "10011001";                   // Start-of-Frame Delimiter for header
-    std::string _EFD = "01100110";                   // End-of-Frame Delimiter for header
-    std::string _robot_path;                         // Data formed by path for robot, created by user
+    std::string _pre_and_postamble = "1110"; // DTMF tone for preamble and postamble
+    std::string _SFD = "10011001";           // Start-of-Frame Delimiter for header
+    std::string _EFD = "01100110";           // End-of-Frame Delimiter for header
+    std::string _ESC_nibble = "1111";         // ESC nibble
+    std::string _robot_path;                 // Data formed by path for robot, created by user
 
 public:
     /// @brief Constructor to create instance of ComProtocol
@@ -35,6 +36,16 @@ public:
     /// @brief Method for creating entire package - Adds preamble, header, data, CRC and postamble toghether in a bitstream
     /// @return Type: String
     std::string protocol_structure();
+
+    /// @brief Nibble stuffing the package with ESC nibbles
+    /// @param package Type: String - The package to be stuffed
+    /// @return Type: String - The nibble stuffed package
+    std::string nibble_stuffing(std::string package);
+
+    /// @brief Removes ESC nibbles from the received package
+    /// @param received_package Type: String - The received package as a string of bits
+    /// @return Type: String - The received package without ESC nibbles
+    std::string remove_esc_nibbles(std::string received_package);
 
     /// @brief Binary conversion for CRC-check
     /// @param decimalSequence Type: vector of vectors { {...}, {...}, ....., {...} } - The original tone sequence in decimal, divided in vectors of vectors
