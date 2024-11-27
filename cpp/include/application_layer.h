@@ -56,6 +56,8 @@ public:
 
     bool is_direction(const string &bits);
 
+    string find_key(const string &value, const std::unordered_map<string, string> map);
+
     void add_value(const string &key, const std::string &value);
 
     void add_command(const string &key, const std::string &value);

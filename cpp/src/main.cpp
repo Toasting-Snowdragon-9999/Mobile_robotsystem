@@ -51,6 +51,8 @@ int main()
 
 	test_package.get_data_from_package(full_package_string);
 
+	std::cout << "Converted bits_to_command, the correct answer is -fw:		"; Alc.print_robot_commands(Alc.bits_to_commands("101000011011100011010010"));
+
 	// // py to cpp
 	// while (1)
 	// {

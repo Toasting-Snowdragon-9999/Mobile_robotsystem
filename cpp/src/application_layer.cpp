@@ -2,7 +2,7 @@
 
 using std::string;
 
-robot_command::robot_command(string input_command, string inputValue = "0") : direction(input_command), value(inputValue) {}
+robot_command::robot_command(string input_command, string inputValue) : direction(input_command), value(inputValue) {}
 
 ApplicationLayer::ApplicationLayer() { create_all_commands_map(); }
 
@@ -85,6 +85,8 @@ bool ApplicationLayer::is_value(const string &bits)
             is_value = true;
         }
     }
+
+    return is_value;
 }
 
 bool ApplicationLayer::is_direction(const string &bits)
@@ -97,7 +99,22 @@ bool ApplicationLayer::is_direction(const string &bits)
             is_direction = true;
         }
     }
+
+    return is_direction;
 }
+
+    string ApplicationLayer::find_key(const string &value, const std::unordered_map<string, string> map)
+    {
+        string key = "";
+        for (const auto &i : _direction_map)
+        {
+            if (i.second == value)
+            {
+                key = i.first;
+            }
+        }
+        return key;
+    }
 
 std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
 {
@@ -106,34 +123,6 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
     string next_bits = input_bits.substr(0 + 4, 4);
 
     std::unordered_map<std::string, std::string>::iterator iterator;
-
-    if (i + 4 > input_bits.size() - 1)
-    {
-        // yadayada
-    }
-
-    // Check if bits are a value
-    for (const auto &i : _value_map)
-    {
-        if (i.second == temp_bits)
-        {
-            iterator = _value_map.find(i.first);
-        }
-    }
-    // Check if bits are a direction
-    for (const auto &i : _direction_map)
-    {
-        if (i.second == temp_bits)
-        {
-            iterator = _direction_map.find(i.first);
-        }
-    }
-
-    // Check if next bits are a value or a direction
-    if (ApplicationLayer::is_value(temp_bits) && ApplicationLayer::is_direction(next_bits))
-    {
-        // emplace or sum shet
-    }
 
     std::vector<robot_command> command_vector;
 
@@ -145,13 +134,21 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
     bool is_command_once = false;
     for (int i = 0; i < input_bits.length(); i += 4)
     {
+
         std::string temp_bits = input_bits.substr(i, 4);
+
+        std::cout << "Tempbits: " << temp_bits << std::endl;
+        std::cout << "Step 1" << std::endl;
+
         string next_bits = input_bits.substr(i + 4, 4);
 
-        if (i + 4 > input_bits.length() - 1)
-        {
-            break;
-        }
+        // if (i + 4 > input_bits.length() - 1)
+        // {
+        //             std::cout << "Step 1" << std::endl;
+
+        //     break;
+
+        // }
 
         if (!is_command_once)
         {
@@ -176,6 +173,9 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
         { // If space then add to vector and reset
             if (ApplicationLayer::is_value(temp_bits) && ApplicationLayer::is_direction(next_bits))
             {
+                        std::cout << "Step findkey" << std::endl;
+
+                value = ApplicationLayer::find_key(temp_bits,_value_map);
                 command_vector.emplace_back(input_command, value); // Creates objects of the struct to append to vector
                 input_command = "";
                 value = "";
@@ -189,7 +189,10 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
                 {
                     if (command.second == temp_bits)
                     {
+                                std::cout << "Step value" << std::endl;
+
                         value += command.first;
+
                     }
                 }
             }
@@ -208,7 +211,7 @@ void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &co
 {
     for (const auto &selection : command_vector)
     {
-        std::cout << selection.direction << " " << selection.value << " , ";
+        std::cout << "D: " << selection.direction << " V:" << selection.value << "      ";
     }
     std::cout << std::endl;
 }
