@@ -41,38 +41,6 @@ public:
     /// @return Type: String - The sequence in a long binary string
     string decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence);
 
-    /// @brief Performs XOR-operation on 2 strings characterwise
-    /// @param a Type: String - 1st string to perform XOR-operation on
-    /// @param b Type. String - 2nd string to perform XOR-operation on
-    /// @return Type: String - Result of XOR-operation
-    string exclusive_or_strings(string a, string b);
-
-    /// @brief Encode binary dataword with CRC16-Codeword
-    /// @param binaryDataword Type: String - String of binary numbers to be encoded
-    /// @return Type: String - Binary dataword with CRC16-Codeword appended
-    string crc16_encode(string binaryDataword);
-
-    /// @brief Decodes an encoded binary dataword using CRC16 (binary division)
-    /// @param binaryEncodedDataword Type: String - A binary encoded dataword
-    /// @return Type: String - A binary decoded dataword
-    string crc16_decode(string binaryEncodedDataword);
-
-    /// @brief Finds remainder in a binary dataword (last 4 binary digits)
-    /// @param dataword Type: String - A binary dataword
-    /// @return Type: String - Remainder of dataword (4 binary digits)
-    std::string find_remainder(std::string dataword);
-
-    /// @brief Checks if decoded CRC-message is correct (if remainder is 0000)
-    /// @param binaryDecodedDataword Type: String - A binary decoded dataword
-    /// @return Type: Bool - 1 if message is correct and 0 if not
-    bool is_message_correct(const string &binaryDecodedDataword);
-
-    /// @brief Derives the binary message from the whole package (removes pre- and postamble, length, and CRC).
-    /// @param package Type: String - The full binary package with pre- and postamble, length and CRC
-    /// @return Type: String - The binary message
-    /// @note Only returns message if it is correct (CRC of decoded message is 0000)
-    std::string get_binary_message_from_package(std::vector<std::vector<int>> package);
-
     /// @brief Method for removing the pre- and postamble from the received package
     /// @param received_package Type: String - The received package as a string of bits
     /// @return Type: String - The received package as a string of bits without the pre- and postamble
@@ -82,6 +50,16 @@ public:
     /// @param binary_msg Type: String - The binary message
     /// @return Type: String - The binary message with zero-padding
     std::string zero_pad(std::string binary_msg);
+
+    /// @brief Finds the indexes at which the length description begins and ends
+    /// @param received_package Type: String - The received package as a string of bits
+    /// @return Type: vector<int> - {start index, end index}
+    std::vector<int> find_length_pos_in_header(std::string received_package);
+
+    /// @brief Finds the data/message itself, from the received package
+    /// @param received_package Type: String - The received package as a string of bits
+    /// @return Type: String - The data itself
+    std::string get_data_from_package(std::string received_package);
 };
 
 #endif // COM_PROTOCOL_H

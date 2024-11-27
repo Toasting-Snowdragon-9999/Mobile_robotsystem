@@ -41,20 +41,15 @@ int main()
 
 	// SharedData sd; static_cast<unsigned long>
 
+	std::cout << std::endl;
 	std::string test_path = "0110001111100";
+	std::cout << "The path to be sent: \"" << test_path << "\" (length = " << test_path.size() << ")" << std::endl;
+
 	ComProtocol test_package(test_path);
 	std::string full_package_string = test_package.protocol_structure();
 	std::cout << "Full package: " << full_package_string << std::endl;
 
-	std::string full_package_wo_pre_and_postamble = test_package.remove_pre_and_postamble(full_package_string);
-	std::cout << "Received package after removing pre- and postamble: " << full_package_wo_pre_and_postamble << std::endl;
-
-	// std::string crc_encoded = CRC::CRC16::encode(test_package("10011001110101100110" + test_path));
-	std::string crc_encoded = CRC::CRC16::encode(test_path);
-	std::cout << "Test string: " << test_path << std::endl;
-
-	std::cout << "CRC16 encode: " << crc_encoded<< std::endl;
-	std::cout << "CRC16 decode: " << CRC::CRC16::decode(crc_encoded) << std::endl;
+	test_package.get_data_from_package(full_package_string);
 
 	// // py to cpp
 	// while (1)
