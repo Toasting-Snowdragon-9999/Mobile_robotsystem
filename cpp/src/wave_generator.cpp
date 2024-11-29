@@ -8,6 +8,7 @@ WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence): _sequ
     _frequency_combinations_DTMF.push_back({0,0});
     for(int i = 0; i < _low_frequencies.size(); i++){
 		std::vector<float> temp_vec;
+
 		for(int j = 0; j < _high_frequencies.size(); j++){
 			temp_vec.push_back(_low_frequencies[i]);
 			temp_vec.push_back(_high_frequencies[j]);
@@ -21,13 +22,12 @@ WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence): _sequ
 
     for(int i = 0; i < sequence.size(); i++){
         std::vector<std::vector<float>> temp_vec;
-        temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][0]+1]); //add +1 to make dtmf from 0-15 remove the +1 to make dtmf from 1-16
-        temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][1]+1]);
-        temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][2]+1]);
+        for(int j  = 0; j < sequence[i].size(); j++){
+            temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][j]+1]); //add +1 to make dtmf from 0-15 remove the +1 to make dtmf from 1-16
+        }
         _all_frequencies_to_be_played.push_back(temp_vec);
         temp_vec.clear();
     }
-    // add_start_sequence();
 }
 
 void WaveGenerator::add_start_sequence(){
