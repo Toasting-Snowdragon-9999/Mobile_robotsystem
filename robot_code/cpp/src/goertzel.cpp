@@ -52,7 +52,7 @@ void Goertzel::compute_goertzel() {
         double before_last_signal_square = before_last_signal * before_last_signal;
 
         _magnitudes[freq_index] = std::sqrt(last_signal_square + before_last_signal_square - last_signal * before_last_signal * coeff);
-        std::cout << "Magnitude: " << std::setprecision(15) << _magnitudes[freq_index] << std::endl;
+        //std::cout << "Magnitude: " << std::setprecision(15) << _magnitudes[freq_index] << std::endl;
 
     }
 }
@@ -82,11 +82,11 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
 
     bool swap;
 
-    for(int i = 0; i < x.size()-1; i++){
+    for(int i = 0; i < (x.size())/2-1; i++){
 
         swap = false;
 
-        for (int j = 0; j < x.size()-1; j++){
+        for (int j = 0; j < (x.size())/2-1; j++){
 
             if (x[j] < x[j+1]){
                 std::swap(x[j], x[j+1]);
@@ -100,12 +100,49 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
         }
     }
 
-    _freq_from_signals.push_back(y[0]);
-    _freq_from_signals.push_back(y[1]);
+    for(int i = (x.size())/2; i < x.size()-1; i++){
 
+        swap = false;
+
+        for (int j = (x.size())/2; j < x.size()-1; j++){
+
+            if (x[j] < x[j+1]){
+                std::swap(x[j], x[j+1]);
+                std::swap(y[j],y[j+1]);
+
+                swap = true;
+            }
+        }
+        if (!swap){
+            break;
+        }
+    }
+    
+    float freq_mag_threshhold_high = 15.0; // 30.0
+    float freq_mag_threshhold_low = 25.0; // 50.0
+    
+
+    if((x[0] != 0) && (x[4] != 0)){
+        if((x[0] > freq_mag_threshhold_low && x[4] > freq_mag_threshhold_high)){
+            _freq_from_signals.push_back(y[0]);
+            _freq_from_signals.push_back(y[4]);
+            //std::cout << "if statement virker " << x[0] << ", " << x[4] << std::endl;
+        }
+        else{
+            _freq_from_signals.push_back(697);
+            _freq_from_signals.push_back(852);
+            //std::cout << "if statement virker ikke " << x[0] << ", " << x[4] << std::endl;
+        }
+    }
+    else{
+        _freq_from_signals.push_back(697);
+        _freq_from_signals.push_back(770);
+    }
     //std::cout << "Frequency found: " << _freq_from_signals[0] << " and " << _freq_from_signals[1] << std::endl;
 
 }
+
+
 
 
 void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
@@ -116,11 +153,10 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
     auto DTMF_freq = _DTMF_mapping.find({freq_1, freq_2});
 
     if (DTMF_freq != _DTMF_mapping.end()) {
-        std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
+        //std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
         if (DTMF_freq->second == -1){
             r.garbage_flag = false;
             r.tone_flag = false;
-            save_to_json(DTMF_freq->second);
         }
         else{
             r.garbage_flag = false;
@@ -129,13 +165,14 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
             }
             _message_vec.push_back(DTMF_freq->second);
             r.dtmf_tone = DTMF_freq->second;
+            save_to_json(DTMF_freq->second);
             r.tone_flag = true;
-            std::cout << "Tone flag: " << r.tone_flag << std::endl;
+            //std::cout << "Tone flag: " << r.tone_flag << std::endl;
         }
     }
     else {
         
-        //std::cout<< " DTMF_Freq does not found " << std::endl;
+        //std::cout<< " DTMF_Freq not found " << std::endl;
     }
 
      /* -------------------- FOR DEBUG: -----------------------*/
@@ -156,7 +193,7 @@ bool Goertzel::detect_bit(std::string type, int dtmf_tone){
     std::pair<int, int> freq_pair = _reverse_DTMF_mapping[dtmf_tone];
     int freq_1 = freq_pair.first;
     int freq_2 = freq_pair.second;
-    std::cout << "Freq 1: " << freq_1 << " Freq 2: " << freq_2 << std::endl;
+    //std::cout << "Freq 1: " << freq_1 << " Freq 2: " << freq_2 << std::endl;
     if ((_freq_from_signals[0] == freq_1 && _freq_from_signals[1] == freq_2) || (_freq_from_signals[0] == freq_2 && _freq_from_signals[1] == freq_1)) {
         std::cout << type <<" bit detected" << std::endl;
         return true;
@@ -184,17 +221,50 @@ std::string Goertzel::generate_json_string(const int& key) {
 
     oss << "]\n";
     oss << "}";
-
+    
     return oss.str();
 }
 
 void Goertzel::save_to_json(const int& key) {
     std::string jsonOutput = generate_json_string(key);
-    std::ofstream outFile("../dtmf_sounds/magnitudes.json");
+    std::string filePath = "../dtmf_sounds/magnitudes.json";
+
+    // Read existing content
+    std::ifstream inFile(filePath);
+    std::ostringstream existingContent;
+    if (inFile.is_open()) {
+        existingContent << inFile.rdbuf();
+        inFile.close();
+    }
+
+    std::string content = existingContent.str();
+
+    // Handle JSON formatting
+    std::ostringstream updatedContent;
+    if (content.empty()) {
+        // No existing content, start a new JSON array
+        updatedContent << "[\n" << jsonOutput << "\n]";
+    } else {
+        // Remove the closing bracket of the existing array
+        size_t closingBracketPos = content.find_last_of(']');
+        if (closingBracketPos != std::string::npos) {
+            content.erase(closingBracketPos);
+        }
+
+        // Append the new JSON object
+        updatedContent << content;
+        if (content.back() != '[') {
+            updatedContent << ",\n";
+        }
+        updatedContent << jsonOutput << "\n]";
+    }
+
+    // Write back the updated JSON array
+    std::ofstream outFile(filePath);
     if (outFile.is_open()) {
-        outFile << jsonOutput;
+        outFile << updatedContent.str();
         outFile.close();
-        std::cout << "JSON saved to output.json" << std::endl;
+        std::cout << "JSON appended to " << filePath << std::endl;
     } else {
         std::cerr << "Error: Could not open file for writing." << std::endl;
     }

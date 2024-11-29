@@ -20,9 +20,10 @@ struct MicSample {
     std::vector<std::vector<SAMPLE>> recorded_samples;
     std::vector<int> recorded_DTMF_tones;
     GoertzelResult result_in_mic;
-    bool success;
     int iterator;
+    bool pre_success;
     bool stop;  
+    bool pre_1_flag;
 };
 
 class AudioInput {
@@ -36,6 +37,7 @@ public:
     void audio_close();
     void save_to_textfile(const std::string &fileName);
     void read_from_file(const std::string &fileName);
+    void initialise_flags();
     //int dissect();
 
 private:
@@ -45,7 +47,7 @@ private:
     PaError _err;
     PaStreamParameters _input_parameters;
     MicSample _mic_data;
-    //bool _check_second_half(std::vector<SAMPLE>& vec);
+      
 };
 
 static int read_mic_callback(const void *input_buffer, void *output_buffer,

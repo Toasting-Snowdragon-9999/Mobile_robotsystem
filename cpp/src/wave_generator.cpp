@@ -16,7 +16,8 @@ WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence): _sequ
 			temp_vec.clear();
 		}
 	}
-    add_zeros_to_start_of_signal();
+    // add_zeros_to_start_of_signal();
+    add_start_sequence();
 
     for(int i = 0; i < sequence.size(); i++){
         std::vector<std::vector<float>> temp_vec;
@@ -26,6 +27,15 @@ WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence): _sequ
         _all_frequencies_to_be_played.push_back(temp_vec);
         temp_vec.clear();
     }
+    // add_start_sequence();
+}
+
+void WaveGenerator::add_start_sequence(){
+    std::vector<std::vector<float>> temp_vec;
+    temp_vec.push_back({697,1336});
+    temp_vec.push_back({697,1477});
+    temp_vec.push_back({697,1633});
+    _all_frequencies_to_be_played.push_back(temp_vec);
 }
 
 void WaveGenerator::add_zeros_to_start_of_signal(){

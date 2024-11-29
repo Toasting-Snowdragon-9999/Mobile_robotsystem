@@ -16,13 +16,14 @@ struct GoertzelResult {
     int dtmf_tone;
     bool garbage_flag;
     bool tone_flag;
+    bool esc_flag;
 };
 
 class Goertzel
 {
 private:
     
-    double _sample_freq = 44100.0;
+    double _sample_freq = 16000.0;
     int _size_of_signal;
     
     std::vector<float> _data;
@@ -31,6 +32,8 @@ private:
     std::vector<double> _magnitudes;
     std::vector<double> _freq_from_signals;
     std::vector<int> _message_vec;
+    std::vector<std::string> _json_string;
+
     GoertzelResult _result;
 
 

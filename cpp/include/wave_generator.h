@@ -12,10 +12,10 @@ class WaveGenerator {
 private:
 
     // some constants
-    const unsigned _sample_rate = 44100;         // Samples per second
+    const unsigned _sample_rate = 16000;         // Samples per second
     const float _amplitude = 12500;              // Amplitude of the sine waves
-    const unsigned _duration = 300;              // Duration of the sound in seconds
-    const unsigned _time_between_sounds = 250;    // Time between each sound that is played
+    const unsigned _duration = 120;              // Duration of the sound in seconds
+    const unsigned _time_between_sounds = 120;    // Time between each sound that is played
 
     // all frquencies & combinations
     std::vector<float> _low_frequencies = {697, 770, 852, 941};
@@ -30,6 +30,7 @@ private:
     std::vector<sf::SoundBuffer> _sound_buffers;
     std::vector<sf::Sound> _sounds;
 
+    void add_start_sequence();
     void add_zeros_to_start_of_signal();
     void apply_fade_in(std::vector<sf::Int16>& samples, int fadeLength);
     void apply_fade_out(std::vector<sf::Int16>& samples, int fadeLength);
