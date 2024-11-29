@@ -38,6 +38,18 @@ namespace CRC
         /// @return The last 16 bits after decoding
         string decode(string codeword);
     }
+    namespace CRC32
+    {
+        /// @brief Encodes the codeword using IEEE 802.3 CRC-32 polynomial
+        /// @param dataword The binary message that is to be encoded
+        /// @return The encoded dataword
+        string encode(string dataword);
+
+        /// @brief Decodes the codeword using IEEE 802.3 CRC-32 polynomial
+        /// @param codeword The encoded dataword
+        /// @return The last 32 bits after decoding
+        string decode(string codeword);
+    }
 }
 
 #endif // CRC_H

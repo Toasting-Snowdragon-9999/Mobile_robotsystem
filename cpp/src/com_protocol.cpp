@@ -38,7 +38,7 @@ std::string ComProtocol::protocol_structure()
 
     std::string zero_padded_header_and_data = zero_pad(header_and_data);
 
-    std::string crc_encoded_header_and_data = CRC::CRC16::encode(zero_padded_header_and_data);
+    std::string crc_encoded_header_and_data = CRC::CRC32::encode(zero_padded_header_and_data);
     std::string nibble_stuffed_header_and_data = nibble_stuffing(crc_encoded_header_and_data);
 
     std::stringstream creating_package;
@@ -197,7 +197,7 @@ std::string ComProtocol::get_data_from_package(std::string received_package)
     received_package = remove_esc_nibbles(received_package);
 
     // Checking CRC (validity) of received package
-    std::string crc_decoded_remainder = CRC::CRC16::decode(received_package);
+    std::string crc_decoded_remainder = CRC::CRC32::decode(received_package);
     int int_crc_decoded_remainder = std::stoi(crc_decoded_remainder, nullptr, 2);
     if (int_crc_decoded_remainder != 0)
     {
