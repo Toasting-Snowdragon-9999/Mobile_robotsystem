@@ -27,6 +27,7 @@ set(SOURCES
     src/application_layer.cpp
     src/al_to_dll.cpp
     src/crc.cpp
+    src/transport_layer.cpp
 )
 
 
@@ -39,6 +40,7 @@ set(HEADERS
     include/application_layer.h
     include/al_to_dll.h
     include/crc.h
+    include/transport_layer.h
 )
 
 # Add executable

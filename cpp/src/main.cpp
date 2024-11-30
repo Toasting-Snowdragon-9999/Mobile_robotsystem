@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <string>
 #include "crc.h"
+#include "transport_layer.h"
 
 using std::cout;
 using std::endl;
@@ -16,11 +17,11 @@ using std::string;
 
 int main()
 {
-	robot_command r1("-bw", "000");
-	robot_command r2("-r", "2");
-	robot_command r3("-r", "40");
-	robot_command r4("-r", "003000");
-	robot_command r5("-r", "34");
+	robot_command r1("-fw", "100");
+	robot_command r2("-l", "45");
+	robot_command r3("-r", "180");
+	robot_command r4("-bw", "300000");
+	robot_command r5("-r", "30");
 
 	ApplicationLayer Alc;
 
@@ -38,6 +39,13 @@ int main()
 		<< endl;
 	cout << "The correct commands: -fw 100 , -l 45 , -r 180 , -bw 300000 , -r 30\nConverted  commands: \n";
 	Alc.print_robot_commands(Alc.bits_to_commands(testBits));
+
+	Transport_Layer tl;
+
+	string appendedtest = tl.add_begin_and_end("1010101010");
+
+	std::cout << "With B&E:		" << appendedtest << std::endl;
+	std::cout << "Without B&E:		" << tl.remove_begin_and_end(appendedtest) << std::endl;
 
 	// SharedData sd; static_cast<unsigned long>
 
