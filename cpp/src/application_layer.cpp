@@ -103,106 +103,58 @@ bool ApplicationLayer::is_direction(const string &bits)
     return is_direction;
 }
 
-    string ApplicationLayer::find_key(const string &value, const std::unordered_map<string, string> map)
+string ApplicationLayer::find_key(const string &value, const std::unordered_map<string, string> &map)
+{
+    for (const auto &i : map)
     {
-        string key = "";
-        for (const auto &i : _direction_map)
+        if (i.second == value)
         {
-            if (i.second == value)
-            {
-                key = i.first;
-            }
+            return i.first;
         }
-        return key;
     }
+    return "";
+}
 
 std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
 {
-    int i;
-    string temp_bits = input_bits.substr(0, 4);
-    string next_bits = input_bits.substr(0 + 4, 4);
-
-    std::unordered_map<std::string, std::string>::iterator iterator;
 
     std::vector<robot_command> command_vector;
+    std::string temp_bits;
 
-    string input_command = "";
-    string value = "";
-    size_t pos = 0;
+    string Value = "";
+    size_t length = input_bits.length();
+    string value_bits = "";
 
-    bool is_command = false;
-    bool is_command_once = false;
-    for (int i = 0; i < input_bits.length(); i += 4)
+    for (int i = 0; i <= length; i += nibble_size)
     {
+        temp_bits = input_bits.substr(i, nibble_size);
+        string commandB = find_key(temp_bits, _direction_map);
 
-        std::string temp_bits = input_bits.substr(i, 4);
-
-        std::cout << "Tempbits: " << temp_bits << std::endl;
-        std::cout << "Step 1" << std::endl;
-
-        string next_bits = input_bits.substr(i + 4, 4);
-
-        // if (i + 4 > input_bits.length() - 1)
-        // {
-        //             std::cout << "Step 1" << std::endl;
-
-        //     break;
-
-        // }
-
-        if (!is_command_once)
+        if (!commandB.empty())
         {
-            for (const auto &commands : _all_commands_map)
+            Value = "";
+            while (i + nibble_size <= length)
             {
-                if (commands.second == temp_bits)
+                string value_bits = input_bits.substr(i + nibble_size, nibble_size);
+                string valueB = find_key(value_bits, _value_map);
+
+                if (!valueB.empty())
                 {
-                    input_command = commands.first;
-                    is_command = true;
-                    break;
+                    Value += valueB;
+                    i += nibble_size;
+                }
+                else
+                {
+                    break; // If it's not a value then this should be the end of the robot command according to current command rules
                 }
             }
-        }
 
-        if (is_command && !is_command_once)
+            command_vector.emplace_back(commandB, Value); // Creates objects of the struct to append to vector
+        }
+        else
         {
-            is_command_once = true;
-            continue;
+            break;
         }
-
-        if (is_command && is_command_once)
-        { // If space then add to vector and reset
-            if (ApplicationLayer::is_value(temp_bits) && ApplicationLayer::is_direction(next_bits))
-            {
-                        std::cout << "Step findkey" << std::endl;
-
-                value = ApplicationLayer::find_key(temp_bits,_value_map);
-                command_vector.emplace_back(input_command, value); // Creates objects of the struct to append to vector
-                input_command = "";
-                value = "";
-                is_command = false;
-                is_command_once = false;
-                continue;
-            }
-            else
-            {
-                for (const auto &command : _value_map)
-                {
-                    if (command.second == temp_bits)
-                    {
-                                std::cout << "Step value" << std::endl;
-
-                        value += command.first;
-
-                    }
-                }
-            }
-        }
-    }
-
-    // Final check
-    if (!input_command.empty())
-    {
-        command_vector.emplace_back(input_command, value);
     }
     return command_vector;
 }
@@ -211,7 +163,7 @@ void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &co
 {
     for (const auto &selection : command_vector)
     {
-        std::cout << "D: " << selection.direction << " V:" << selection.value << "      ";
+        std::cout << "Command: " << selection.direction << "   Value: " << selection.value << " " << std::endl;
     }
     std::cout << std::endl;
 }
