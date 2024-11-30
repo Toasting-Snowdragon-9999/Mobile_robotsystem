@@ -53,9 +53,9 @@ std::string ComProtocol::protocol_structure()
 std::string ComProtocol::nibble_stuffing(std::string package)
 {
     int i = 0;
-    while (i <= package.size() - 4)
+    while (i <= package.size() - nibble_size)
     {
-        std::string nibble = package.substr(i, 4);
+        std::string nibble = package.substr(i, nibble_size);
         if (nibble == _pre_and_postamble || nibble == _ESC_nibble)
         {
             package.insert(i, _ESC_nibble);
@@ -73,9 +73,9 @@ std::string ComProtocol::remove_esc_nibbles(std::string received_package)
     std::string ESC_and_ESC = _ESC_nibble + _ESC_nibble;
 
     int i = 0;
-    while (i <= received_package.size() - 8)
+    while (i <= received_package.size() - byte_size)
     {
-        std::string byte = received_package.substr(i, 8);
+        std::string byte = received_package.substr(i, byte_size);
         if (byte == ESC_and_pre_and_postamble || byte == ESC_and_ESC)
         {
             received_package.erase(i, _ESC_nibble.size());
@@ -90,8 +90,8 @@ std::string ComProtocol::zero_pad(std::string binary_msg)
 {
     int length_of_msg = binary_msg.size();
 
-    int zeros = 4 - (length_of_msg % 4);
-    if (zeros == 4)
+    int zeros = nibble_size - (length_of_msg % nibble_size);
+    if (zeros == nibble_size)
     {
         zeros = 0;
     }
@@ -128,7 +128,7 @@ string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<int>
                     toneCopy /= 2;
                 }
 
-                while (tmpTone.length() < 4)
+                while (tmpTone.length() < nibble_size)
                 {
                     tmpTone += '0';
                 }

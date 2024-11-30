@@ -1,6 +1,10 @@
 #ifndef COM_PROTOCOL_H
 #define COM_PROTOCOL_H
 
+#define nibble_size 4
+#define byte_size 8
+
+
 #include <vector>
 #include <iostream>
 #include <bitset>
