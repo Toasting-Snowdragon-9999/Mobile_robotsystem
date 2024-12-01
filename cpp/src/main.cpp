@@ -42,18 +42,19 @@ int main()
 
 	Transport_Layer tl;
 
-	string appended_test = tl.add_begin_and_end(test_bits);
+	string appended_test = tl.add_header(test_bits);
 
 	std::cout << "With B&E:		" << appended_test << std::endl;
-	std::cout << "Without B&E:		" << tl.remove_begin_and_end(appended_test) << std::endl;
+	std::cout << "Without B&E:		" << tl.remove_header(appended_test) << std::endl;
 
-	auto segments_vector = tl.segment_msg(appended_test);
+	tl.segment_msg(appended_test);
+	auto segments_vector = tl.get_segments_vector();
 	std::cout << "Segmented msg:" << std::endl;
 	tl.print_segment_vector(segments_vector);
 
-	if (tl.combine_segments(segments_vector) == appended_test)
+	if (tl.combine_segments_to_string() == appended_test)
 		std::cout << "SUCCESS!!" << std::endl;
-	std::cout << "Combined msg:" << tl.combine_segments(segments_vector) << std::endl;
+	std::cout << "Combined msg:" << tl.combine_segments_to_string() << std::endl;
 
 	// SharedData sd; static_cast<unsigned long>
 
