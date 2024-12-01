@@ -32,20 +32,23 @@ int main()
 	cout << "Command to bits: " << Alc.command_to_bits(r5) + "\n"
 		 << endl;
 
-	string testBits = Alc.command_to_bits(r1) + Alc.command_to_bits(r2) + Alc.command_to_bits(r3) + Alc.command_to_bits(r4) + Alc.command_to_bits(r5);
+	string test_bits = Alc.command_to_bits(r1) + Alc.command_to_bits(r2) + Alc.command_to_bits(r3) + Alc.command_to_bits(r4) + Alc.command_to_bits(r5);
 
 	cout
-		<< "Complete string: " << testBits + "\n"
+		<< "Complete string: " << test_bits + "\n"
 		<< endl;
 	cout << "The correct commands: -fw 100 , -l 45 , -r 180 , -bw 300000 , -r 30\nConverted  commands: \n";
-	Alc.print_robot_commands(Alc.bits_to_commands(testBits));
+	Alc.print_robot_commands(Alc.bits_to_commands(test_bits));
 
 	Transport_Layer tl;
 
-	string appendedtest = tl.add_begin_and_end("1010101010");
+	string appended_test = tl.add_begin_and_end(test_bits);
 
-	std::cout << "With B&E:		" << appendedtest << std::endl;
-	std::cout << "Without B&E:		" << tl.remove_begin_and_end(appendedtest) << std::endl;
+	std::cout << "With B&E:		" << appended_test << std::endl;
+	std::cout << "Without B&E:		" << tl.remove_begin_and_end(appended_test) << std::endl;
+
+	std::cout << "Segmented msg:" << std::endl;
+	tl.print_segment_vector(tl.segment_msg(appended_test));
 
 	// SharedData sd; static_cast<unsigned long>
 

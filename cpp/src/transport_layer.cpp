@@ -40,3 +40,33 @@ string Transport_Layer::remove_begin_and_end(const string &full_binary_msg)
 
     return stripped_msg;
 }
+
+std::vector<string> Transport_Layer::segment_msg(const string &full_binary_msg)
+{
+    std::vector<string> segments_vector;
+    string unsegmented_msg = full_binary_msg;
+
+    while (unsegmented_msg.length() >= mms)
+    {
+        segments_vector.push_back(unsegmented_msg.substr(0, mms));
+        unsegmented_msg.erase(0, mms);
+    }
+
+    // Final segmentation if msg isn't divisible by the mms
+    if (!unsegmented_msg.empty())
+    {
+        segments_vector.push_back(unsegmented_msg.substr(0, unsegmented_msg.size()));
+    }
+    return segments_vector;
+}
+
+void Transport_Layer::print_segment_vector(const std::vector<string> &vector)
+{
+    int i = 0;
+    std::cout << "Number of segments: " << vector.size() << std::endl;
+    for (const string &element : vector)
+    {
+        std::cout << "Segment " << i << ":  " << element << std::endl;
+        i++;
+    }
+}
