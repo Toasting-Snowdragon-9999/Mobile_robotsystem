@@ -47,8 +47,13 @@ int main()
 	std::cout << "With B&E:		" << appended_test << std::endl;
 	std::cout << "Without B&E:		" << tl.remove_begin_and_end(appended_test) << std::endl;
 
+	auto segments_vector = tl.segment_msg(appended_test);
 	std::cout << "Segmented msg:" << std::endl;
-	tl.print_segment_vector(tl.segment_msg(appended_test));
+	tl.print_segment_vector(segments_vector);
+
+	if (tl.combine_segments(segments_vector) == appended_test)
+		std::cout << "SUCCESS!!" << std::endl;
+	std::cout << "Combined msg:" << tl.combine_segments(segments_vector) << std::endl;
 
 	// SharedData sd; static_cast<unsigned long>
 

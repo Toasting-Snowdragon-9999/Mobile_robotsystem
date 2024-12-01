@@ -30,8 +30,9 @@ string remove_begin_and_end(const string &full_binary_msg);
 
 std::vector <string> segment_msg(const string &full_binary_msg);
 
-void print_segment_vector(const std::vector<string> &vector);
+string combine_segments(const std::vector <string> &segment_vector);
 
+void print_segment_vector(const std::vector<string> &vector);
 
 };
 

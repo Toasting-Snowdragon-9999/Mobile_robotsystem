@@ -60,6 +60,15 @@ std::vector<string> Transport_Layer::segment_msg(const string &full_binary_msg)
     return segments_vector;
 }
 
+string Transport_Layer::combine_segments(const std::vector<string> &segment_vector)
+{
+    string full_binary_msg = "";
+    for (const auto &segment : segment_vector){
+        full_binary_msg += segment;
+    }
+    return full_binary_msg;
+}
+
 void Transport_Layer::print_segment_vector(const std::vector<string> &vector)
 {
     int i = 0;
