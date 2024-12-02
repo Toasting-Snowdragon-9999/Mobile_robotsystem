@@ -25,6 +25,7 @@ public:
 
     std::vector<string> get_segments_vector();
 
+
     int find_max_ones(const string &s);
 
     /// @brief Finds length of the given binary msg
@@ -67,6 +68,8 @@ public:
     /// @brief Prints out the number of segments and all segments in the private segment vector
     /// @param vector
     void print_segment_vector(const std::vector<string> &vector);
+
+
 };
 
 #endif

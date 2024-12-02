@@ -249,3 +249,7 @@ void ComProtocol::start_ack_timer()
         }
     }
 }
+
+bool ComProtocol::is_header_and_msg_correct(const string &header_and_msg){
+    return ~std::stoi(CRC::CRC32::decode(header_and_msg),nullptr,2);
+}

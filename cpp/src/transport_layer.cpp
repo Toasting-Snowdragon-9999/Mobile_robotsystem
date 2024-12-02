@@ -2,11 +2,16 @@
 
 Transport_Layer::Transport_Layer() {}
 
+/// @brief Getter method for the private segments vector
+/// @return The private segments vector
 std::vector<string> Transport_Layer::get_segments_vector()
 {
     return _segments_vector;
 }
 
+/// @brief Finds maximum consecutive ones in a string
+/// @param s
+/// @return Max number of consecutive ones
 int Transport_Layer::find_max_ones(const string &s)
 {
     int one_count = 0, max_ones = 0;

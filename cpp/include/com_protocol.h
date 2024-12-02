@@ -13,6 +13,7 @@
 #include <cstdint>
 #include <sstream>
 #include <chrono>
+#include "crc.h"
 
 using std::cout;
 using std::endl;
@@ -84,6 +85,7 @@ public:
     // Method for main
     void start_ack_timer();
 
+    bool is_header_and_msg_correct(const string &header_and_msg);
 
 };
 
