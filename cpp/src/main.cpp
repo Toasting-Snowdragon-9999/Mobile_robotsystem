@@ -35,17 +35,17 @@ int main(){
 		4, 11, 0, 1, 14, 7, 5, 3, 8, 10,
 		1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
 
-std::cout << test_sequence2.size() << std::endl;
+	std::cout << test_sequence2.size() << std::endl;
 
-try{
-	sd.read_json();
-	sd.print();
-}
-catch(SharedDataException &e){
-	if (e.error_code() == 21){
+	try{
+		sd.read_json();
+		sd.print();
 	}
-	else{std::cout << "[Error] " << e.what() << std::endl;}
-}
+	catch(SharedDataException &e){
+		if (e.error_code() == 21){
+		}
+		else{std::cout << "[Error] " << e.what() << std::endl;}
+	}
 
 	WaveGenerator sounds(initial_test);
 	sounds.play_sounds();
