@@ -1,0 +1,38 @@
+[0.112s] Invoking command in '/home/pi/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[0.489s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[0.718s] [ 20%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[24.965s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[24.966s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:16:14:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kargc[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[24.967s]    16 | int main([01;35m[Kint argc[m[K, char *argv[]) {
+[24.968s]       |          [01;35m[K~~~~^~~~[m[K
+[24.969s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:16:26:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kargv[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[24.971s]    16 | int main(int argc, [01;35m[Kchar *argv[][m[K) {
+[24.972s]       |                    [01;35m[K~~~~~~^~~~~~[m[K
+[29.990s] In file included from [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[29.991s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:[m[K At global scope:
+[29.992s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:53:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[29.993s]    53 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[29.993s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[31.215s] [ 40%] [32m[1mLinking CXX executable move_turtlebot[0m
+[32.482s] [100%] Built target move_turtlebot
+[32.562s] Invoked command in '/home/pi/ros2_ws/build/turtlebot3_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[32.644s] Invoking command in '/home/pi/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/pi/ros2_ws/build/turtlebot3_control
+[32.697s] -- Install configuration: ""
+[32.700s] -- Installing: /home/pi/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot
+[32.709s] -- Set runtime path of "/home/pi/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot" to ""
+[32.710s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/package_run_dependencies/turtlebot3_control
+[32.711s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/parent_prefix_path/turtlebot3_control
+[32.713s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.sh
+[32.714s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.dsv
+[32.716s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.sh
+[32.717s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.dsv
+[32.718s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.bash
+[32.719s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.sh
+[32.721s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.zsh
+[32.722s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.dsv
+[32.723s] -- Installing: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.dsv
+[32.724s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/packages/turtlebot3_control
+[32.725s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig.cmake
+[32.726s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig-version.cmake
+[32.727s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.xml
+[32.737s] Invoked command in '/home/pi/ros2_ws/build/turtlebot3_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/pi/ros2_ws/build/turtlebot3_control

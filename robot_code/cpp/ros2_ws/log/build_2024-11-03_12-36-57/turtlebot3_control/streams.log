@@ -1,6 +1,0 @@
-[0.008s] Invoking command in '/home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control -- -j16 -l16
-[0.027s] [0mCMake Error: The current CMakeCache.txt directory /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/CMakeCache.txt is different than the directory /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
-[0.038s] [0mCMake Error: The source directory "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/turtlebot3_control" does not exist.
-[0.038s] Specify --help for usage, or press the help button on the CMake GUI.[0m
-[0.040s] gmake: *** [Makefile:294: cmake_check_build_system] Error 1
-[0.042s] Invoked command in '/home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control -- -j16 -l16

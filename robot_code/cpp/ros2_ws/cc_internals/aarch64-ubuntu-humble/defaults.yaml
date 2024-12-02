@@ -1,3 +1,0 @@
-
-build:
-  event-handlers: ["console_cohesion+","console_package_list+"]

@@ -112,7 +112,7 @@ public:
         RCLCPP_INFO(this->get_logger(), "Rotation completed.");
     }
 
-    void run_path(std::vector<std::vector<int>> &sequence){
+    void run_path(std::vector<std::vector<std::string>> &sequence){
 
         /* maybe this works? */
         rclcpp::sleep_for(std::chrono::milliseconds(1000));
@@ -120,35 +120,35 @@ public:
 
         for(uint8_t i = 0; i < sequence.size(); i++){
 
-            int action = sequence[i][0];
-            int length = sequence[i][1] * 10 + sequence[i][2];
+            std::string action = sequence[i][0];
+            int length = stoi(sequence[i][1]);
 
             /* Debug purposes */
             std::string action_text;
-            if(action == 12){
+            if(action == "-fw"){
                 action_text = "forward";
             }
-            if(action == 13){
+            if(action == "-bw"){
                 action_text = "backward";
             }
-            if(action == 14){
+            if(action == "-r"){
                 action_text = "right";
             }
-            if(action == 15){
+            if(action == "-l"){
                 action_text = "left";
             }
             /* Debug purposes end */
 
             // If it's backwards or turn right
-            if(action == 13 || action == 14){
+            if(action == "-bw" || action == "-r"){
                 length = -length;
             }
             // If it's move -fw or move -bw
-            if(action == 12 || action == 13){
+            if(action == "-fw" || action == "-bw"){
                 move(length);
             }
             // If it's turn -l or turn -r
-            if(action == 14 || action == 15){ //apparantly 14 is right and 15 is left. OCD has left the building
+            if(action == "-l" || action == "-r"){ //apparantly 14 is right and 15 is left. OCD has left the building
                 turn(length);
             }
 
@@ -164,7 +164,7 @@ public:
 
 private:
 
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr _publisher;
+   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr _publisher;
 
     float _angular_velocity = 1.5;
     float _velocity = 0.15;

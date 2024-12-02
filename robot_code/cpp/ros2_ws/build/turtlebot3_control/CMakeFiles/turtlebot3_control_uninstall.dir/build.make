@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/turtlebot3_control
+CMAKE_SOURCE_DIR = /home/pi/ros2_ws/src/turtlebot3_control
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control
+CMAKE_BINARY_DIR = /home/pi/ros2_ws/build/turtlebot3_control
 
 # Utility rule file for turtlebot3_control_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/turtlebot3_control_uninstall.dir/compiler_depend.make
 include CMakeFiles/turtlebot3_control_uninstall.dir/progress.make
 
 CMakeFiles/turtlebot3_control_uninstall:
-	/usr/bin/cmake -P /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/usr/bin/cmake -P /home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 turtlebot3_control_uninstall: CMakeFiles/turtlebot3_control_uninstall
 turtlebot3_control_uninstall: CMakeFiles/turtlebot3_control_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/turtlebot3_control_uninstall.dir/clean:
 .PHONY : CMakeFiles/turtlebot3_control_uninstall.dir/clean
 
 CMakeFiles/turtlebot3_control_uninstall.dir/depend:
-	cd /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/turtlebot3_control /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/turtlebot3_control /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control /home/sarah/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/CMakeFiles/turtlebot3_control_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pi/ros2_ws/build/turtlebot3_control && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/ros2_ws/src/turtlebot3_control /home/pi/ros2_ws/src/turtlebot3_control /home/pi/ros2_ws/build/turtlebot3_control /home/pi/ros2_ws/build/turtlebot3_control /home/pi/ros2_ws/build/turtlebot3_control/CMakeFiles/turtlebot3_control_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/turtlebot3_control_uninstall.dir/depend
 
