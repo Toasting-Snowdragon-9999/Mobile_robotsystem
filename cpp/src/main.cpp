@@ -37,16 +37,15 @@ int main(){
 
 std::cout << test_sequence2.size() << std::endl;
 
-	std::vector<std::vector<uint16_t>> specialkidsequence = {{1}};
-	try{
-		sd.read_json();
-		sd.print();
+try{
+	sd.read_json();
+	sd.print();
+}
+catch(SharedDataException &e){
+	if (e.error_code() == 21){
 	}
-	catch(SharedDataException &e){
-		if (e.error_code() == 21){
-		}
-		else{std::cout << "[Error] " << e.what() << std::endl;}
-	}
+	else{std::cout << "[Error] " << e.what() << std::endl;}
+}
 
 	WaveGenerator sounds(initial_test);
 	sounds.play_sounds();
