@@ -25,9 +25,10 @@ set(SOURCES
     src/wave_generator.cpp
     src/data_link_layer.cpp
     src/application_layer.cpp
-    src/al_to_dll.cpp
     src/crc.cpp
     src/transport_layer.cpp
+    src/interfaces/al_to_tl.cpp
+    src/interfaces/tl_to_dll.cpp
 )
 
 
@@ -38,9 +39,11 @@ set(HEADERS
     include/wave_generator.h
     include/data_link_layer.h
     include/application_layer.h
-    include/al_to_dll.h
     include/crc.h
     include/transport_layer.h
+    include/interfaces/al_to_tl.h
+    include/interfaces/tl_to_dll.h
+
 )
 
 # Add executable

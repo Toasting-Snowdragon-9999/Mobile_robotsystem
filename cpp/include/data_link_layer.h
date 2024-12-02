@@ -1,5 +1,5 @@
-#ifndef COM_PROTOCOL_H
-#define COM_PROTOCOL_H
+#ifndef DATA_LINK_LAYER_H
+#define DATA_LINK_LAYER_H
 
 #define nibble_size 4
 #define byte_size 8

@@ -27,7 +27,6 @@ class ApplicationLayer
 {
 
 private:
-    std::vector<string> _segment_buffer;
 
     std::unordered_map<string, string> _direction_map = {
         {"-fw", "1010"},
