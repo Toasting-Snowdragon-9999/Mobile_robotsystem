@@ -2,7 +2,7 @@
 #include <fstream>
 #include "read_shared_data.h"
 #include "wave_generator.h"
-#include "com_protocol.h"
+#include "data_link_layer.h"
 #include "al_to_dll.h"
 #include "application_layer.h"
 #include <bitset>

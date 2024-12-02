@@ -85,6 +85,9 @@ public:
     // Method for main
     void start_ack_timer();
 
+    /// @brief Returns true if header and message is correct by checking CRC-remainder and false if not
+    /// @param header_and_msg
+    /// @return True or False
     bool is_header_and_msg_correct(const string &header_and_msg);
 
 };
