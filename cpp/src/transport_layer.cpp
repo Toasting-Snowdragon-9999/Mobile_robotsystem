@@ -7,6 +7,25 @@ std::vector<string> Transport_Layer::get_segments_vector()
     return _segments_vector;
 }
 
+int Transport_Layer::find_max_ones(const string &s)
+{
+    int one_count = 0, max_ones = 0;
+    for (auto character : s)
+    {
+        if (character == '1')
+        {
+            one_count++;
+            max_ones = std::max(one_count, max_ones);
+        }
+        else
+        {
+            one_count = 0;
+        }
+    }
+
+    return max_ones;
+}
+
 string Transport_Layer::find_length(const string &binary_msg)
 {
     int length_of_string = binary_msg.size();
@@ -34,40 +53,67 @@ string Transport_Layer::find_length(const string &binary_msg)
 
 string Transport_Layer::add_header(const string &binary_msg)
 {
-    return SFD + Transport_Layer::find_length(binary_msg) + EFD + binary_msg;
+    string stuffed_msg = Transport_Layer::bit_stuff(binary_msg);
+    string stuffed_length = Transport_Layer::bit_stuff(Transport_Layer::find_length(binary_msg));
+    return _SFD + stuffed_length + _EFD + stuffed_msg;
 }
 
-string Transport_Layer::remove_header(const string &full_binary_msg)
+int Transport_Layer::get_length_from_header(const string &binary_msg)
+{
+    size_t begin_length = _SFD.length();
+    size_t end_length = _EFD.length();
+
+    auto SFD_pos_start = binary_msg.find(_SFD);
+    if (SFD_pos_start == std::string::npos)
+    {
+        std::cerr << "SFD not found in the binary message";
+    }
+
+    auto EFD_pos_start = binary_msg.find(_EFD, begin_length);
+    if (EFD_pos_start == std::string::npos)
+    {
+        std::cerr << "EFD not found in the binary message";
+    }
+
+    auto length_part_start = SFD_pos_start + begin_length;
+    auto length_part_len = EFD_pos_start - length_part_start;
+
+    if (length_part_len <= 0)
+    {
+        std::cerr << "The length of the message is invalid";
+    }
+
+    string length_part = Transport_Layer::bit_unstuff(binary_msg.substr(length_part_start, length_part_len));
+
+    return std::stoi(length_part, nullptr, 2);
+}
+
+string Transport_Layer::remove_header_and_unstuff(const string &full_binary_msg)
 {
     string stripped_msg = full_binary_msg;
 
     size_t length = stripped_msg.length();
-    int begin_length = SFD.length();
-    size_t end_length = EFD.length();
+    size_t begin_length = _SFD.length();
+    size_t end_length = _EFD.length();
 
     // Remove begin byte
-    if (stripped_msg.find(SFD) != 0)
+    if (stripped_msg.find(_SFD) != 0)
     {
         std::cerr << "Beginning is not the begin-byte of transport layer message. Error has ocurred" << std::endl;
     }
     else
     {
-        stripped_msg.erase(0, SFD.length());
+        stripped_msg.erase(0, _SFD.length());
     }
 
     length = stripped_msg.length();
 
     // Remove end byte
-    if (stripped_msg.rfind(EFD) != length - end_length)
-    {
-        std::cerr << "End-byte is not final byte of transport layer message. Error has ocurred" << std::endl;
-    }
-    else
-    {
-        stripped_msg.erase(length - end_length, end_length);
-    }
+    auto end_pos_end = stripped_msg.find(_EFD) + end_length - 1;
+    auto header_length = end_pos_end + 1;
+    stripped_msg.erase(0, header_length);
 
-    return stripped_msg;
+    return Transport_Layer::bit_unstuff(stripped_msg);
 }
 
 string Transport_Layer::bit_stuff(const string &full_binary_msg)
@@ -82,7 +128,7 @@ string Transport_Layer::bit_stuff(const string &full_binary_msg)
         if (bit == '1')
         {
             consecutiveOnes++;
-            if (consecutiveOnes == 3)
+            if (consecutiveOnes == (Transport_Layer::find_max_ones(_SFD) - 1))
             {
                 stuffed += '0';
                 consecutiveOnes = 0;
@@ -106,12 +152,14 @@ string Transport_Layer::bit_unstuff(const string &full_binary_msg)
     while (i < full_binary_msg.length())
     {
         char bit = full_binary_msg[i];
-        unstuffed += bit;
 
         if (bit == '1')
         {
             consecutiveOnes++;
-            if (consecutiveOnes == 3)
+            unstuffed += bit;
+
+            /// Skip however many maximum consecutive ones are in the EFD or SFD
+            if (consecutiveOnes == Transport_Layer::find_max_ones(_SFD) - 1)
             {
                 i++; // Skip bit stuffed 0
                 if (i < full_binary_msg.length())
@@ -127,6 +175,7 @@ string Transport_Layer::bit_unstuff(const string &full_binary_msg)
         else
         {
             consecutiveOnes = 0; // Reset counter if bit = 0
+            unstuffed += bit;
         }
 
         i++;
