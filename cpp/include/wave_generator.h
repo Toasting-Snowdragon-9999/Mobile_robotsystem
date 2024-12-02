@@ -22,8 +22,8 @@ private:
     std::vector<float> _high_frequencies = {1209, 1336, 1477, 1633};
     std::vector<std::vector<float>> _frequency_combinations_DTMF;
 
-    std::vector<std::vector<uint16_t>> _sequence;
-    std::vector<std::vector<std::vector<float>>> _all_frequencies_to_be_played;
+    std::vector<uint16_t> _sequence;
+    std::vector<std::vector<float>> _all_frequencies_to_be_played;
 
     // vectors to store all sound stuff
     std::vector<std::vector<sf::Int16>> _all_samples;
@@ -42,7 +42,7 @@ private:
 public:
 
     WaveGenerator();
-    WaveGenerator(std::vector<std::vector<uint16_t>> sequence);
+    WaveGenerator(std::vector<uint16_t> &sequence);
 
     void save_to_wav_file(const std::string& filename);
     void play_sounds();
