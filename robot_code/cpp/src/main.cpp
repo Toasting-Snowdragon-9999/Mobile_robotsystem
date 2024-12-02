@@ -8,7 +8,7 @@
 #include <fstream>
 #define SAMPLE_RATE (16000)
 #define FRAMES_PER_BUFFER (480)
-#define INPUT_DEVICE (15)  /* Device index for the input device 5 default*/
+#define INPUT_DEVICE (14)  /* Device index for the input device 5 default*/
 
 int main() {
     std::vector<int> test_sequence = {14, 0, 5, 3, 5, 7, 11, 2, 8, 1, 

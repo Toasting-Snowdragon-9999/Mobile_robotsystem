@@ -117,8 +117,8 @@ void AudioInput::record_audio(int input_device){
     auto start = std::chrono::high_resolution_clock::now();
 
     while (_mic_data.stop == false){
-        Pa_Sleep(MILLISECONDS); 
-        break;
+        // Pa_Sleep(MILLISECONDS); 
+        // break;
     }
     save_to_textfile("../dtmf_sounds/output.txt");
     auto end = std::chrono::high_resolution_clock::now();
@@ -181,9 +181,9 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
     for( i = 0; i < frames_per_buffer; i++ ){
         float mono_in = *in++;  /* Mono channel input */
-        // if (std::abs(mono_in) < thresh_hold){
-        //     mono_in = 0;
-        // }
+        if (std::abs(mono_in) < thresh_hold){
+            mono_in = 0;
+        }
 
 		buffer.push_back(mono_in);
     }
@@ -199,11 +199,15 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         std::cout << "Esc Flag: " << data->result_in_mic.esc_flag << std::endl;
         std::cout << "Pre 1 flag: " << data->pre_1_flag << std::endl;
         if (data->result_in_mic.tone_flag && !data->result_in_mic.garbage_flag){
+            if (data->recorded_DTMF_tones.back() != _preamble[0]){
+                data->pre_1_flag = false;  
+            }
             data->recorded_DTMF_tones.push_back(data->result_in_mic.dtmf_tone);
             std::cout << "Detected DTMF tone: " << data->result_in_mic.dtmf_tone << std::endl;
             if(algo.detect_bit("esc", _esc_tone)){
                 data->result_in_mic.esc_flag = true;
             }
+            
             if((algo.detect_bit("stop 1", _preamble[0]) || algo.detect_bit("stop 2", _preamble[1])) && !data->result_in_mic.esc_flag){
                 if(data->result_in_mic.dtmf_tone == _preamble[0]){
                     data->pre_1_flag = true;
@@ -283,31 +287,33 @@ void AudioInput::read_from_file(const std::string &fileName){
     inFile.close();
 }
 
-TestResult AudioInput::check_sequence(std::vector<int> &tones, std::vector<int> &test_sequence){
-
-    TestResult result;
-
+void AudioInput::check_sequence(TestResult &result, std::vector<int> &tones, std::vector<int> &test_sequence){
     if (tones.size() != test_sequence.size()){
         result.error.push_back("Invalid sequence length");
         result.failure = 1;
         result.success = 0;        
-        return result;
+        return;
     }
     for (int i = 0; i < tones.size(); i++){
         if(tones[i] == test_sequence[i]){
-            result.error.push_back("Valid at index " + tostring(tone));
+            result.error.push_back("Valid at index " + std::to_string(i));
             result.success++;
         }
         else{
-            result.error.push_back("Invalid at index " + tostring(tone));
+            result.error.push_back("Invalid at index " + std::to_string(i));
             result.failure++;
         }
     }
-    return result;
 }
 
 void AudioInput::check(bool full_output, std::vector<int> &test_sequence){
-    TestResult result = check_sequence(_mic_data.recorded_DTMF_tones, test_sequence);
+    
+    TestResult result;
+    result.error.clear();
+    result.success = 0;
+    result.failure = 0;
+
+    check_sequence(result, _mic_data.recorded_DTMF_tones, test_sequence);
     if(full_output){
         for(auto& a: result.error){
             std::cout << a << std::endl;

@@ -4,7 +4,7 @@ WaveGenerator::WaveGenerator(){
 
 }
 
-WaveGenerator::WaveGenerator(std::vector<uint16_t> &sequence): _sequence(sequence){
+WaveGenerator::WaveGenerator(std::vector<int> &sequence): _sequence(sequence){
     for(int i = 0; i < _low_frequencies.size(); i++){
 		std::vector<float> temp_vec;
 

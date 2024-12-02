@@ -47,7 +47,7 @@ int main(){
 		else{std::cout << "[Error] " << e.what() << std::endl;}
 	}
 
-	WaveGenerator sounds(initial_test);
+	WaveGenerator sounds(test_sequence1);
 	sounds.play_sounds();
 	std::string filename = "../dtmf_sounds/dtmf_sounds.wav";
 	sounds.save_to_wav_file(filename);
