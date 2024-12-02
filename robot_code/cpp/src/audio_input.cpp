@@ -288,26 +288,41 @@ void AudioInput::read_from_file(const std::string &fileName){
 }
 
 void AudioInput::check_sequence(TestResult &result, std::vector<int> &tones, std::vector<int> &test_sequence){
-    if (tones.size() != test_sequence.size()){
-        result.error.push_back("Invalid sequence length");
-        result.failure = 1;
-        result.success = 0;        
-        return;
+    // if (tones.size() != test_sequence.size()){
+    //     result.error.push_back("Invalid sequence length");
+    //     result.failure = 1;
+    //     result.success = 0;        
+    //     return;
+    // }
+    
+    int zero_padding;
+    zero_padding = abs(tones.size()-test_sequence.size());
+    if (zero_padding != 0){
+        if(tones.size() > test_sequence.size()){
+            for(int i = 0; i < zero_padding; i++){
+                test_sequence.push_back(0);
+            }
+        }
+        else{
+            for(int i = 0; i < zero_padding; i++){
+                tones.push_back(0);
+            }
+        }
     }
     for (int i = 0; i < tones.size(); i++){
         if(tones[i] == test_sequence[i]){
-            result.error.push_back("Valid at index " + std::to_string(i));
+            result.error.push_back("Valid");
             result.success++;
         }
         else{
-            result.error.push_back("Invalid at index " + std::to_string(i));
+            result.error.push_back("Invalid. Correct " + std::to_string(test_sequence[i]) + " but got " + std::to_string(tones[i]));
             result.failure++;
         }
     }
 }
 
 void AudioInput::check(bool full_output, std::vector<int> &test_sequence){
-    
+
     TestResult result;
     result.error.clear();
     result.success = 0;

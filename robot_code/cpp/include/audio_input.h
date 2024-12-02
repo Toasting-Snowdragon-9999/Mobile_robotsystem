@@ -8,6 +8,7 @@
 #include <portaudio.h>
 #include <chrono>
 #include <iomanip>
+#include <cmath>
 #include "goertzel.h"
 
 #define MILLISECONDS (4000)
