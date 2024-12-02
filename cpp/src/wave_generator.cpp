@@ -4,8 +4,7 @@ WaveGenerator::WaveGenerator(){
 
 }
 
-WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence): _sequence(sequence){
-    _frequency_combinations_DTMF.push_back({0,0});
+WaveGenerator::WaveGenerator(std::vector<uint16_t> &sequence): _sequence(sequence){
     for(int i = 0; i < _low_frequencies.size(); i++){
 		std::vector<float> temp_vec;
 
@@ -17,35 +16,24 @@ WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence): _sequ
 			temp_vec.clear();
 		}
 	}
-    // add_zeros_to_start_of_signal();
+    //add_zeros_to_start_of_signal();
     add_start_sequence();
 
     for(int i = 0; i < sequence.size(); i++){
-        std::vector<std::vector<float>> temp_vec;
-        for(int j  = 0; j < sequence[i].size(); j++){
-            temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][j]+1]); //add +1 to make dtmf from 0-15 remove the +1 to make dtmf from 1-16
-        }
-        _all_frequencies_to_be_played.push_back(temp_vec);
-        temp_vec.clear();
+        _all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[sequence[i]]); //add +1 to make dtmf from 0-15 remove the +1 to make dtmf from 1-16
     }
 }
 
 void WaveGenerator::add_start_sequence(){
-    std::vector<std::vector<float>> temp_vec;
-    temp_vec.push_back({697,1336});
-    temp_vec.push_back({697,1477});
-    temp_vec.push_back({697,1633});
-    _all_frequencies_to_be_played.push_back(temp_vec);
+    _all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[0]);
+    //_all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[1]);
+    //_all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[2]);
 }
 
 void WaveGenerator::add_zeros_to_start_of_signal(){
-    std::vector<std::vector<float>> temp_vec;
-    for(int i = 0; i < 1; i++){
-        temp_vec.push_back({0,0});
-        temp_vec.push_back({0,0});
-        temp_vec.push_back({0,0});
-    }
-    _all_frequencies_to_be_played.push_back(temp_vec);
+    _all_frequencies_to_be_played.push_back({0,0});
+    _all_frequencies_to_be_played.push_back({0,0});
+    _all_frequencies_to_be_played.push_back({0,0});
 }
 void WaveGenerator::apply_fade_in(std::vector<sf::Int16>& samples, int fadeLength) {
     for (int i = 0; i < fadeLength; ++i) {
@@ -64,8 +52,8 @@ void WaveGenerator::apply_fade_out(std::vector<sf::Int16>& samples, int fadeLeng
 }
 void WaveGenerator::generate_sine_wave_pairs(){
     // Iterates through each pair of frequencies
-    for(int j = 0; j < _all_frequencies_to_be_played.size(); j++){
-        for (const auto& frequencies : _all_frequencies_to_be_played[j]) {
+    //for(int j = 0; j < _all_frequencies_to_be_played.size(); j++){
+        for (std::vector<float> frequencies : _all_frequencies_to_be_played) {
             if (frequencies.size() == 2) {
                 std::cout << "Generating samples for frequencies: " << frequencies[0] << " Hz and " << frequencies[1] << " Hz" << std::endl;
 
@@ -88,7 +76,7 @@ void WaveGenerator::generate_sine_wave_pairs(){
                 std::cerr << "Warning: Each inner vector must contain exactly two frequencies." << std::endl;
             }
         }
-    }
+    //}
     //return _all_samples;  // Return the generated samples for all pairs
 }
 void WaveGenerator::load_all_into_buffers(){
@@ -124,12 +112,9 @@ void WaveGenerator::play_sounds(){
 }
 void WaveGenerator::print_frequency_vector(){
     for(auto a: _all_frequencies_to_be_played){
-        for(auto b: a){
-            std::cout << " { " << b[0] << " Hz, " << b[1] << " Hz } ";
-        }
-        std::cout << "\n";
+        std::cout << " { " << a[0] << " Hz, " << a[1] << " Hz } ";
     }
-
+    std::cout << "\n";
 }
 
 void WaveGenerator::save_to_wav_file(const std::string& filename){
