@@ -1,6 +1,7 @@
 #ifndef APPLICATIONLAYER_H
 #define APPLICATIONLAYER_H
 
+
 #define nibble_size 4
 
 #include <string>
@@ -10,6 +11,7 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
+#include <chrono>
 
 using std::string;
 
@@ -25,6 +27,8 @@ class ApplicationLayer
 {
 
 private:
+    std::vector<string> _segment_buffer;
+
     std::unordered_map<string, string> _direction_map = {
         {"-fw", "1010"},
         {"-bw", "1011"},
@@ -70,6 +74,12 @@ public:
 
     // Function to print all robot_command objects in a vector
     void print_robot_commands(const std::vector<robot_command> &command_vector);
+
+    // Interface method
+    std::vector<string> add_segment_to_buffer(const string &encoded_segment);
+
+    void start_ack_timer ();
+
 };
 
 #endif // APPLICATIONLAYER_H

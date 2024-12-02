@@ -3,6 +3,11 @@
 
 ComProtocol::ComProtocol(std::string robot_path) : _robot_path(robot_path) {}
 
+string ComProtocol::get_ready_for_pl_path()
+{
+    return _ready_for_pl_path;
+}
+
 std::string ComProtocol::length_of_string(std::string s)
 {
     int length_of_string = s.size();
@@ -46,8 +51,9 @@ std::string ComProtocol::protocol_structure()
                      << nibble_stuffed_header_and_data
                      << _pre_and_postamble;
 
-    std::string full_package = creating_package.str();
-    return full_package;
+    _ready_for_pl_path = creating_package.str();
+
+    return ComProtocol::get_ready_for_pl_path();
 }
 
 std::string ComProtocol::nibble_stuffing(std::string package)
@@ -224,5 +230,22 @@ std::string ComProtocol::get_data_from_package(std::string received_package)
         std::cout << "The received data: " << data << std::endl;
 
         return data;
+    }
+}
+
+void ComProtocol::start_ack_timer()
+{
+    auto start = std::chrono::steady_clock::now();
+
+    while (1)
+    {
+        auto now = std::chrono::steady_clock::now();
+
+        auto elapsed = now - start;
+
+        if (elapsed >= timeout)
+        {
+            break;
+        }
     }
 }

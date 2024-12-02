@@ -159,6 +159,13 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
     return command_vector;
 }
 
+// Interface method
+std::vector<string> ApplicationLayer::add_segment_to_buffer(const string &encoded_segment)
+{
+    string to_add_segment = encoded_segment;
+    _segment_buffer.push_back(to_add_segment);
+}
+
 void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &command_vector)
 {
     for (const auto &selection : command_vector)
