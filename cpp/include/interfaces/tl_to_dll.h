@@ -1,4 +1,5 @@
 #include <vector>
+#include <deque>
 #include <string>
 
 using std::string;
@@ -6,8 +7,14 @@ using std::string;
 class TlToDll
 {
 private:
-    std::vector<string> _segment_buffer;
+    std::deque<string> _segment_buffer;
 
 public:
-    std::vector<string> add_segment_to_buffer(const string &encoded_segment);
+    // Sender
+    std::deque<string> create_buffer(const std::vector<string> &segment_buffer);
+
+    string take_segment_from_buffer();
+
+    // Receiver
+    void add_segment_to_buffer(const string &encoded_segment);
 };

@@ -51,7 +51,7 @@ public:
 
     /// @brief Segments depending on the mms and creates a private vector of segments
     /// @param full_binary_msg
-    void segment_msg(const string &full_binary_msg);
+    std::vector <string> segment_msg(const string &full_binary_msg);
 
     /// @brief Combines all segments in the private segment vector
     /// @return The recombined binary msg

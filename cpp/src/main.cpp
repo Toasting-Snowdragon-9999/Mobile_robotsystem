@@ -1,15 +1,16 @@
 #include <iostream>
 #include <fstream>
-#include "read_shared_data.h"
-#include "wave_generator.h"
-#include "data_link_layer.h"
-#include "al_to_dll.h"
-#include "application_layer.h"
 #include <bitset>
 #include <algorithm>
 #include <string>
 #include "crc.h"
+#include "read_shared_data.h"
+#include "wave_generator.h"
+#include "application_layer.h"
+#include "data_link_layer.h"
 #include "transport_layer.h"
+#include "interfaces/al_to_tl.h"
+#include "interfaces/tl_to_dll.h"
 
 using std::cout;
 using std::endl;
@@ -59,9 +60,9 @@ int main()
 			  << std::endl;
 
 	std::cout << "Bit stuffing of " << bitstuff_test << ": 		" << tl.bit_stuff(bitstuff_test) << std::endl;
-std::cout << "\nBitstream for test:	";
+	std::cout << "\nBitstream for test:	";
 	string header_test = "1010111110";
-std::cout << header_test << std::endl;
+	std::cout << header_test << std::endl;
 
 	std::cout << "Step 0: Bit stuffing of " << header_test << ": 		" << tl.bit_stuff(header_test) << std::endl;
 

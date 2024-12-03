@@ -41,8 +41,8 @@ set(HEADERS
     include/application_layer.h
     include/crc.h
     include/transport_layer.h
-    include/interfaces/al_to_tl.h
     include/interfaces/tl_to_dll.h
+    include/interfaces/al_to_tl.h
 
 )
 

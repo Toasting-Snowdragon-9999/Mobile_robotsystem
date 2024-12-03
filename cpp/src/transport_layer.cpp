@@ -189,7 +189,7 @@ string Transport_Layer::bit_unstuff(const string &full_binary_msg)
     return unstuffed;
 }
 
-void Transport_Layer::segment_msg(const string &full_binary_msg)
+std::vector <string> Transport_Layer::segment_msg(const string &full_binary_msg)
 {
     string unsegmented_msg = full_binary_msg;
 
@@ -204,6 +204,8 @@ void Transport_Layer::segment_msg(const string &full_binary_msg)
     {
         _segments_vector.push_back(unsegmented_msg.substr(0, unsegmented_msg.size()));
     }
+
+    return _segments_vector;
 }
 
 string Transport_Layer::combine_segments_to_string()
