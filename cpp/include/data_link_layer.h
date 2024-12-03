@@ -19,7 +19,7 @@ using std::cout;
 using std::endl;
 using std::string;
 
-class ComProtocol
+class DataLinkLayer
 {
 
 private:
@@ -34,9 +34,9 @@ private:
 public:
     string get_ready_for_pl_path();
 
-    /// @brief Constructor to create instance of ComProtocol
-    /// @param robotPath Type: vector of vectors { {...}, {...}, ....., {...} } - The message itself (path for robot created by user)
-    ComProtocol(string robotPath);
+    /// @brief Constructor to create instance of DataLinkLayer
+    /// @param robotPath - Path for robot created by user
+    DataLinkLayer(string robotPath);
 
     /// @brief Method for finding the length of a string
     /// @param s Type: String

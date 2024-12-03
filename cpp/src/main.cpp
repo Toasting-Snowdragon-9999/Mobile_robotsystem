@@ -32,7 +32,7 @@ int main()
 
 	ApplicationLayer Alc;
 
-	// FYI *There exists both command_to_bits and command_vector_to bitstream*
+	// FYI *There exists both command_to_bits and command_vector_to_bitstream*
 
 	string test_bits = Alc.command_vector_to_bitstream(test_bit_vec);
 
@@ -60,15 +60,16 @@ int main()
 	// cout << "Segmented msg:" << endl;
 	// tl.print_segment_vector(segments_vector);
 
+
 	// Interface from Transport Layer to Data Link Layer
 
 	TlToDll inter_2;
 
 	inter_2.add_segments_to_buffer(segment_vector);
 
-	// Interface from Transport Layer to Data Link Layer
+	DataLinkLayer dll(inter_2.take_segment_from_buffer());
 
-
+	dll.protocol_structure();
 
 	string bitstuff_test = "1111101011111010111111";
 

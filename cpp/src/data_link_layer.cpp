@@ -1,14 +1,14 @@
 #include "data_link_layer.h"
 #include "crc.h"
 
-ComProtocol::ComProtocol(std::string robot_path) : _robot_path(robot_path) {}
+DataLinkLayer::DataLinkLayer(std::string robot_path) : _robot_path(robot_path) {}
 
-string ComProtocol::get_ready_for_pl_path()
+string DataLinkLayer::get_ready_for_pl_path()
 {
     return _ready_for_pl_path;
 }
 
-std::string ComProtocol::length_of_string(std::string s)
+std::string DataLinkLayer::length_of_string(std::string s)
 {
     int length_of_string = s.size();
     std::string binary_length = "";
@@ -33,7 +33,7 @@ std::string ComProtocol::length_of_string(std::string s)
     return binary_length;
 }
 
-std::string ComProtocol::protocol_structure()
+std::string DataLinkLayer::protocol_structure()
 {
     std::string length_of_path = length_of_string(_robot_path);
 
@@ -53,10 +53,10 @@ std::string ComProtocol::protocol_structure()
 
     _ready_for_pl_path = creating_package.str();
 
-    return ComProtocol::get_ready_for_pl_path();
+    return DataLinkLayer::get_ready_for_pl_path();
 }
 
-std::string ComProtocol::nibble_stuffing(std::string package)
+std::string DataLinkLayer::nibble_stuffing(std::string package)
 {
     int i = 0;
     while (i <= package.size() - nibble_size)
@@ -73,7 +73,7 @@ std::string ComProtocol::nibble_stuffing(std::string package)
     return package;
 }
 
-std::string ComProtocol::remove_esc_nibbles(std::string received_package)
+std::string DataLinkLayer::remove_esc_nibbles(std::string received_package)
 {
     std::string ESC_and_pre_and_postamble = _ESC_nibble + _pre_and_postamble;
     std::string ESC_and_ESC = _ESC_nibble + _ESC_nibble;
@@ -92,7 +92,7 @@ std::string ComProtocol::remove_esc_nibbles(std::string received_package)
     return received_package;
 }
 
-std::string ComProtocol::zero_pad(std::string binary_msg)
+std::string DataLinkLayer::zero_pad(std::string binary_msg)
 {
     int length_of_msg = binary_msg.size();
 
@@ -110,7 +110,7 @@ std::string ComProtocol::zero_pad(std::string binary_msg)
     return binary_msg;
 }
 
-string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence)
+string DataLinkLayer::decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence)
 {
     string binaryConvertedTone = "";
     std::string tmpTone;
@@ -149,7 +149,7 @@ string ComProtocol::decimal_seq_to_binary_msg(const std::vector<std::vector<int>
     return binaryConvertedTone;
 }
 
-std::string ComProtocol::remove_pre_and_postamble(std::string received_package)
+std::string DataLinkLayer::remove_pre_and_postamble(std::string received_package)
 {
     int length_of_pre_and_postamble = _pre_and_postamble.size();
 
@@ -159,7 +159,7 @@ std::string ComProtocol::remove_pre_and_postamble(std::string received_package)
     return received_package;
 }
 
-std::vector<int> ComProtocol::find_length_pos_in_header(std::string received_package)
+std::vector<int> DataLinkLayer::find_length_pos_in_header(std::string received_package)
 {
     int SFD_length = _SFD.size();
     int EFD_length = _EFD.size();
@@ -194,7 +194,7 @@ std::vector<int> ComProtocol::find_length_pos_in_header(std::string received_pac
     return position_of_length;
 }
 
-std::string ComProtocol::get_data_from_package(std::string received_package)
+std::string DataLinkLayer::get_data_from_package(std::string received_package)
 {
     // Removing the pre- and postamble from recveived package
     received_package = remove_pre_and_postamble(received_package);
@@ -233,7 +233,7 @@ std::string ComProtocol::get_data_from_package(std::string received_package)
     }
 }
 
-void ComProtocol::start_ack_timer()
+void DataLinkLayer::start_ack_timer()
 {
     auto start = std::chrono::steady_clock::now();
 
@@ -250,6 +250,6 @@ void ComProtocol::start_ack_timer()
     }
 }
 
-bool ComProtocol::is_header_and_msg_correct(const string &header_and_msg){
+bool DataLinkLayer::is_header_and_msg_correct(const string &header_and_msg){
     return ~std::stoi(CRC::CRC32::decode(header_and_msg),nullptr,2);
 }
