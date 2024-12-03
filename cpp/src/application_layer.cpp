@@ -75,6 +75,19 @@ string ApplicationLayer::command_to_bits(const robot_command &input_command)
     return final_bits_converted;
 }
 
+string ApplicationLayer::command_vector_to_bitstream(std::vector<robot_command> &command_vector)
+{
+
+    string bitstream = "";
+
+    for (const auto &command : command_vector)
+    {
+        bitstream += command_to_bits(command);
+    }
+
+    return bitstream;
+}
+
 bool ApplicationLayer::is_value(const string &bits)
 {
     bool is_value = false;
@@ -159,7 +172,6 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
     return command_vector;
 }
 
-
 void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &command_vector)
 {
     for (const auto &selection : command_vector)
@@ -167,4 +179,9 @@ void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &co
         std::cout << "Command: " << selection.direction << "   Value: " << selection.value << " " << std::endl;
     }
     std::cout << std::endl;
+}
+
+string ApplicationLayer::encode_message(const string &message)
+{
+    return CRC::CRC32::encode(message);
 }

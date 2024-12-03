@@ -18,74 +18,90 @@ using std::string;
 
 int main()
 {
-	// robot_command r1("-fw", "100");
-	// robot_command r2("-l", "45");
-	// robot_command r3("-r", "180");
-	// robot_command r4("-bw", "300000");
-	// robot_command r5("-r", "30");
 
-	// ApplicationLayer Alc;
+	// ======================================================
+	// SENDER
+	// ======================================================
+	robot_command r1("-fw", "325");
+	robot_command r2("-l", "6");
+	robot_command r3("-r", "21");
+	robot_command r4("-bw", "15");
+	robot_command r5("-r", "3");
 
-	// cout << "Command to bits: " << Alc.command_to_bits(r1) << endl;
-	// cout << "Command to bits: " << Alc.command_to_bits(r2) << endl;
-	// cout << "Command to bits: " << Alc.command_to_bits(r3) << endl;
-	// cout << "Command to bits: " << Alc.command_to_bits(r4) << endl;
-	// cout << "Command to bits: " << Alc.command_to_bits(r5) + "\n"
-	// 	 << endl;
+	std::vector<robot_command> test_bit_vec = {r1, r2, r3, r4, r5};
 
-	// string test_bits = Alc.command_to_bits(r1) + Alc.command_to_bits(r2) + Alc.command_to_bits(r3) + Alc.command_to_bits(r4) + Alc.command_to_bits(r5);
+	ApplicationLayer Alc;
 
-	// cout
-	// 	<< "Complete string: " << test_bits + "\n"
-	// 	<< endl;
-	// cout << "The correct commands: -fw 100 , -l 45 , -r 180 , -bw 300000 , -r 30\nConverted  commands: \n";
-	// Alc.print_robot_commands(Alc.bits_to_commands(test_bits));
+	// FYI *There exists both command_to_bits and command_vector_to bitstream*
+
+	string test_bits = Alc.command_vector_to_bitstream(test_bit_vec);
+
+	cout
+		<< "Command_vector_to_bitstream: " << test_bits + "\n"
+		<< endl;
+
+	string encoded_test_bits = Alc.encode_message(test_bits);
+	cout
+		<< "CRC encoded message: " << encoded_test_bits + "\n"
+		<< endl;
+
+	// Interface from Application Layer to Transport Layer
+
+	AlToTl inter_1;
+
+	inter_1.add_string_to_buffer(encoded_test_bits);
 
 	Transport_Layer tl;
 
-	// string appended_test = tl.add_header(test_bits);
+	string tl_header_test_bits = tl.add_header(inter_1.get_buffer());
 
-	// tl.segment_msg(appended_test);
-	// auto segments_vector = tl.get_segments_vector();
-	// std::cout << "Segmented msg:" << std::endl;
+	auto segment_vector = tl.segment_msg(tl_header_test_bits);
+
+	// cout << "Segmented msg:" << endl;
 	// tl.print_segment_vector(segments_vector);
 
-	// if (tl.combine_segments_to_string() == appended_test)
-	// 	std::cout << "SUCCESS!!" << std::endl;
-	// std::cout << "Combined msg:" << tl.combine_segments_to_string() << std::endl;
+	// Interface from Transport Layer to Data Link Layer
+
+	TlToDll inter_2;
+
+	inter_2.add_segments_to_buffer(segment_vector);
+
+	// Interface from Transport Layer to Data Link Layer
+
+
 
 	string bitstuff_test = "1111101011111010111111";
 
-	std::cout << "Max consecutive ones of " << bitstuff_test << ": " << tl.find_max_ones(bitstuff_test)
-			  << std::endl;
+	cout << "Max consecutive ones of " << bitstuff_test << ": " << tl.find_max_ones(bitstuff_test)
+		 << endl;
 
-	std::cout << "Bit stuffing of " << bitstuff_test << ": 		" << tl.bit_stuff(bitstuff_test) << std::endl;
-	std::cout << "\nBitstream for test:	";
+	cout << "Bit stuffing of " << bitstuff_test << ": 		" << tl.bit_stuff(bitstuff_test) << endl;
+	cout << "\nBitstream for test:	";
 	string header_test = "1010111110";
-	std::cout << header_test << std::endl;
+	cout << header_test << endl;
 
-	std::cout << "Step 0: Bit stuffing of " << header_test << ": 		" << tl.bit_stuff(header_test) << std::endl;
+	cout << "Step 0: Bit stuffing of " << header_test << ": 		" << tl.bit_stuff(header_test) << endl;
 
 	string test_with_header = tl.add_header(header_test);
 
-	std::cout << "Step 1: Add header after bitstuffing of " << header_test << ": 		" << test_with_header << std::endl;
-	std::cout << "Step 2: Length of header " << test_with_header << " | Should be 10: 		" << tl.get_length_from_header(test_with_header) << std::endl;
+	cout << "Step 1: Add header after bitstuffing of " << header_test << ": 		" << test_with_header << endl;
+	cout << "Step 2: Length of header " << test_with_header << " | Should be 10: 		" << tl.get_length_from_header(test_with_header) << endl;
 
-	std::cout << "Step 3: Remove after unstuffing of " << test_with_header << ": 		" << tl.remove_header_and_unstuff(test_with_header) << std::endl;
+	cout << "Step 3: Remove after unstuffing of " << test_with_header << ": 		" << tl.remove_header_and_unstuff(test_with_header) << endl;
 
 	// SharedData sd; static_cast<unsigned long>
 
-	// std::cout << std::endl;    int i;
+	// cout << endl;    int i;
 	// std::string test_path = "0110001111100";
-	// std::cout << "The path to be sent: \"" << test_path << "\" (length = " << test_path.size() << ")" << std::endl;
+	// cout << "The path to be sent: \"" << test_path << "\" (length = " << test_path.size() << ")" << endl;
 
 	// ComProtocol test_package(test_path);
 	// std::string full_package_string = test_package.protocol_structure();
-	// std::cout << "Full package: " << full_package_string << std::endl;
+	// cout << "Full package: " << full_package_string << endl;
 
 	// test_package.get_data_from_package(full_package_string);
 
-	// std::cout << "Converted bits_to_command, the correct answer is -fw:		"; Alc.print_robot_commands(Alc.bits_to_commands("1010000100001011100011010010"));
+	// cout << "Converted bits_to_command, the correct answer is -fw:		"; Alc.print_robot_commands(Alc.bits_to_commands("1010000100001011100011010010"));
 
 	// // py to cpp
 	// while (1)
@@ -102,7 +118,7 @@ int main()
 	// 		}
 	// 		else
 	// 		{
-	// 			std::cout << "[Error] " << e.what() << std::endl;
+	// 			cout << "[Error] " << e.what() << endl;
 	// 		}
 	// 	}
 	// }

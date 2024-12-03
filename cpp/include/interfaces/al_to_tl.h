@@ -15,7 +15,7 @@ private:
     string _buffer = "";
 
 public:
-    void update_buffer(const string &binary_msg);
+    void add_string_to_buffer(const string &binary_msg);
 
     string get_buffer();
 };

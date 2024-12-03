@@ -18,7 +18,7 @@ namespace CRC
     {
         /// @brief Encodes the codeword using CRC7-ITU-T generator polynomial
         /// @param dataword The binary message that is to be encoded
-        /// @return The encoded dataword
+        /// @return The codeword (encoded dataword)
         string encode(string dataword);
 
         /// @brief Decodes the codeword using CRC7-ITU-T generator polynomial
@@ -30,7 +30,7 @@ namespace CRC
     {
         /// @brief Encodes the codeword using CRC-16-IBM generator polynomial
         /// @param dataword The binary message that is to be encoded
-        /// @return The encoded dataword
+        /// @return The codeword (encoded dataword)
         string encode(string dataword);
 
         /// @brief Decodes the codeword using CRC-16-IBM generator polynomial
@@ -42,7 +42,7 @@ namespace CRC
     {
         /// @brief Encodes the codeword using IEEE 802.3 CRC-32 polynomial
         /// @param dataword The binary message that is to be encoded
-        /// @return The encoded dataword
+        /// @return The codeword (encoded dataword)
         string encode(string dataword);
 
         /// @brief Decodes the codeword using IEEE 802.3 CRC-32 polynomial

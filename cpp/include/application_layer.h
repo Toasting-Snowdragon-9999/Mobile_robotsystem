@@ -1,7 +1,6 @@
 #ifndef APPLICATIONLAYER_H
 #define APPLICATIONLAYER_H
 
-
 #define nibble_size 4
 
 #include <string>
@@ -12,6 +11,7 @@
 #include <algorithm>
 #include <memory>
 #include <chrono>
+#include "crc.h"
 
 using std::string;
 
@@ -27,7 +27,6 @@ class ApplicationLayer
 {
 
 private:
-
     std::unordered_map<string, string> _direction_map = {
         {"-fw", "1010"},
         {"-bw", "1011"},
@@ -69,16 +68,16 @@ public:
 
     string command_to_bits(const robot_command &input_command);
 
+    string command_vector_to_bitstream(std::vector <robot_command> &command_vector);
+
     std::vector<robot_command> bits_to_commands(string input_bits);
 
     // Function to print all robot_command objects in a vector
     void print_robot_commands(const std::vector<robot_command> &command_vector);
 
-    // Interface method
-    std::vector<string> add_segment_to_buffer(const string &encoded_segment);
+    string encode_message(const string &message);
 
-    void start_ack_timer ();
-
+    void start_ack_timer();
 };
 
 #endif // APPLICATIONLAYER_H
