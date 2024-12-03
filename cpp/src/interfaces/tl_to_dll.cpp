@@ -1,6 +1,6 @@
 #include "interfaces/tl_to_dll.h"
 
-std::deque<string> TlToDll::create_buffer(const std::vector<string> &segment_buffer)
+std::deque<string> TlToDll::add_segments_buffer(const std::vector<string> &segment_buffer)
 {
     _segment_buffer = std::deque<string>(segment_buffer.begin(),segment_buffer.end());
 

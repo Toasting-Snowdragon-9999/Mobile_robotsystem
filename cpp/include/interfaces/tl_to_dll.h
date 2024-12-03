@@ -11,7 +11,7 @@ private:
 
 public:
     // Sender
-    std::deque<string> create_buffer(const std::vector<string> &segment_buffer);
+    std::deque<string> add_segments_buffer(const std::vector<string> &segment_buffer);
 
     string take_segment_from_buffer();
 
