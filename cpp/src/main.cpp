@@ -25,6 +25,6 @@ int main() {
 		1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
 
     PhysicalLayer pl;
-    pl.listen();
+    pl.listen(false);
 	return 0;
 }

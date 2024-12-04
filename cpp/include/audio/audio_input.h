@@ -11,16 +11,11 @@
 #include <cmath>
 #include "algorithms/goertzel.h"
 
+#define MILLISECONDS (4000)
 #define NUM_CHANNELS (1)
 #define SAMPLE_TYPE paFloat32
-typedef float SAMPLE;
 
-namespace Globals {
-    const float thresh_hold = 0.15; //0.5
-    const std::vector <int> preamble = {14, 0};
-    const int esc_tone = 15;
-    static std::vector <float> buffer;
-}
+typedef float SAMPLE;
 
 struct TestResult{
     std::vector <std::string> error;
@@ -36,32 +31,32 @@ struct MicSample {
     bool pre_success;
     bool stop;  
     bool pre_1_flag;
+    bool hyperx;
 };
 
 class AudioInput {
 public:
-    AudioInput(int sample_rate, int frames_per_buffer, int time_ms=0);
+    AudioInput(int sample_rate, int frames_per_buffer);
     ~AudioInput();
     void list_audio_devices();
-    void record_audio(int input_device);
+    void record_audio(int input_device, bool hyperx);
     void save_to_wav(const std::string &fileName);
     void audio_open();
     void audio_close();
     void save_to_textfile(const std::string &fileName);
     void read_from_file(const std::string &fileName);
-    void check(bool print, std::vector<int> &test_sequence);
+    void initialise_flags(bool hx);
+    int check(bool print, std::vector<int> &test_sequence);
     void check_sequence(TestResult &result, std::vector<int> &tones, std::vector<int> &test_sequence);
     std::vector<int> get_recorded_DTMF_tones();
 
 private:
     int _sample_rate;
     int _frames_per_buffer;
-    int _ms;
     PaStream *_stream = nullptr;
     PaError _err;
     PaStreamParameters _input_parameters;
     MicSample _mic_data;
-    void initialise_flags();
 
 };
 

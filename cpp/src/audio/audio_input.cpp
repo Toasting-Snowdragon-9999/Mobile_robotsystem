@@ -1,6 +1,6 @@
 #include "audio/audio_input.h"
 
-AudioInput::AudioInput(int sample_rate, int frames_per_buffer, int time_ms): _sample_rate(sample_rate), _frames_per_buffer(frames_per_buffer), _ms(time_ms){}
+AudioInput::AudioInput(int sample_rate, int frames_per_buffer): _sample_rate(sample_rate), _frames_per_buffer(frames_per_buffer){}
 
 AudioInput::~AudioInput(){}
 
@@ -57,27 +57,27 @@ void AudioInput::save_to_wav(const std::string &fileName){
     outFile.close();
 }
 
-void AudioInput::initialise_flags(){
+void AudioInput::initialise_flags(bool hx){
     _mic_data.recorded_samples.clear();
     _mic_data.iterator = 0;
     _mic_data.pre_success = false;
     _mic_data.pre_1_flag = false;
     _mic_data.stop = false;
-    
+    _mic_data.hyperx = hx;
+
     _mic_data.result_in_mic.dtmf_tone = -5;
     _mic_data.result_in_mic.garbage_flag = false;
     _mic_data.result_in_mic.tone_flag = false;
     _mic_data.result_in_mic.esc_flag = false;
 }
 
-void AudioInput::record_audio(int input_device){
-    initialise_flags();
+void AudioInput::record_audio(int input_device, bool hx){
+    initialise_flags(hx);
     _input_parameters.device = input_device;  // Explicitly select Device #2, or you can use another device index (like 8)
     if (_input_parameters.device == paNoDevice) {
         std::cerr << "Error: No input device.\n";
         return;
     }
-    std::cout << "Input device: " << input_device << "\n";
 
     _input_parameters.channelCount = NUM_CHANNELS;               // Mono input
     _input_parameters.sampleFormat = SAMPLE_TYPE;       // 32-bit floating point
@@ -115,20 +115,18 @@ void AudioInput::record_audio(int input_device){
         Pa_Terminate();
         return;
     }
-    // auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
 
     while (_mic_data.stop == false){
-        if(_ms > 0){
-            Pa_Sleep(_ms); 
-            break;
-        }
+        // Pa_Sleep(25*1000); 
+        // break;
     }
     save_to_textfile("../dtmf_sounds/output.txt");
-    // auto end = std::chrono::high_resolution_clock::now();
+    auto end = std::chrono::high_resolution_clock::now();
 
-    // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
-    // std::cout << "[AFTER] Time difference: " << duration.count() << " microseconds" << std::endl;
+    std::cout << "[AFTER] Time difference: " << duration.count() << " microseconds" << std::endl;
 
 
     _err = Pa_StopStream( _stream );
@@ -167,11 +165,20 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
                            PaStreamCallbackFlags status_flags,
                            void *userData ){
 
-    // auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
     MicSample *data = (MicSample*)userData; 
     const float *in = (const float*)input_buffer; /* Audio input data */
     unsigned int i;
+    std::vector <float> buffer;
     (void) output_buffer; /* Prevent unused variable warning. */
+    float multiplier = 0.0;
+    bool hyperx = data->hyperx;
+    if(hyperx){
+        multiplier = 0.5;
+    }
+    float thresh_hold = 0.5*(1 - multiplier);
+    std::vector <int> _preamble = {14, 0};
+    int _esc_tone = 15;  
 
     if( input_buffer == NULL ){
         std::cout << "Input buffer is NULL" << std::endl;
@@ -180,75 +187,80 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
     for( i = 0; i < frames_per_buffer; i++ ){
         float mono_in = *in++;  /* Mono channel input */
-        if (std::abs(mono_in) < Globals::thresh_hold){
+        if (std::abs(mono_in) < thresh_hold){
             mono_in = 0;
         }
-        // if (std::abs(mono_in) > Globals::thresh_hold){
-        //     std::cout << "Sound in: " << mono_in << std::endl;
-        // }
-		Globals::buffer.push_back(mono_in);
+
+		buffer.push_back(mono_in);
     }
 
-    data->recorded_samples.push_back(Globals::buffer);
+    data->recorded_samples.push_back(buffer);
 
     if(data->pre_success){
-        Goertzel algo;
-        algo.load_data(Globals::buffer);
+        Goertzel algo(hyperx);
+        algo.load_data(buffer);
         algo.translate_signal_goertzel(data->result_in_mic);
+        std::cout << "Tone Flag: " << data->result_in_mic.tone_flag << std::endl;
+        std::cout << "Garbage Flag: " << data->result_in_mic.garbage_flag << std::endl;
+        std::cout << "Esc Flag: " << data->result_in_mic.esc_flag << std::endl;
+        std::cout << "Pre 1 flag: " << data->pre_1_flag << std::endl;
         if (data->result_in_mic.tone_flag && !data->result_in_mic.garbage_flag){
-            std::cout << "DTMF Tone: " << data->result_in_mic.dtmf_tone << std::endl;
-            if (data->recorded_DTMF_tones.back() != Globals::preamble[0]){
+            if (data->recorded_DTMF_tones.back() != _preamble[0]){
                 data->pre_1_flag = false;  
             }
             data->recorded_DTMF_tones.push_back(data->result_in_mic.dtmf_tone);
-            if(algo.detect_bit("esc", Globals::esc_tone)){
+            std::cout << "Detected DTMF tone: " << data->result_in_mic.dtmf_tone << std::endl;
+            if(algo.detect_bit("esc", _esc_tone)){
                 data->result_in_mic.esc_flag = true;
             }
             
-            if((algo.detect_bit("stop 1", Globals::preamble[0]) || algo.detect_bit("stop 2", Globals::preamble[1])) && !data->result_in_mic.esc_flag){
-                if(data->result_in_mic.dtmf_tone == Globals::preamble[0]){
+            if((algo.detect_bit("stop 1", _preamble[0]) || algo.detect_bit("stop 2", _preamble[1])) && !data->result_in_mic.esc_flag){
+                if(data->result_in_mic.dtmf_tone == _preamble[0]){
                     data->pre_1_flag = true;
                 }
-                else if(data->result_in_mic.dtmf_tone == Globals::preamble[1] && data->pre_1_flag){
+                else if(data->result_in_mic.dtmf_tone == _preamble[1] && data->pre_1_flag){
                     data->stop = true;
                     return paComplete;
                 }
             }
             
-            if(data->recorded_DTMF_tones.back() != Globals::esc_tone){
+            if(data->recorded_DTMF_tones.back() != _esc_tone){
                 data->result_in_mic.esc_flag = false;
             } 
         }
     }
     else{
-        Goertzel algo;
-        algo.load_data(Globals::buffer);
+        Goertzel algo(hyperx);
+        algo.load_data(buffer);
         algo.translate_signal_goertzel(data->result_in_mic);
-        if((algo.detect_bit("start 1", Globals::preamble[0]) || algo.detect_bit("start 2", Globals::preamble[1])) && (data->result_in_mic.tone_flag && !data->result_in_mic.garbage_flag)){
-            if(data->pre_1_flag && data->result_in_mic.dtmf_tone == Globals::preamble[1]){
+        std::cout << "pre 1 Flag: " << data->pre_1_flag << std::endl;
+        if((algo.detect_bit("start 1", _preamble[0]) || algo.detect_bit("start 2", _preamble[1])) && (data->result_in_mic.tone_flag && !data->result_in_mic.garbage_flag)){
+            if(data->pre_1_flag && data->result_in_mic.dtmf_tone == _preamble[1]){
                 data->pre_success = true;
                 data->pre_1_flag = false;
                 data->recorded_DTMF_tones.push_back(data->result_in_mic.dtmf_tone);
             }
-            else if(data->result_in_mic.dtmf_tone == Globals::preamble[0]){
+            else if(data->result_in_mic.dtmf_tone == _preamble[0]){
                 data->pre_1_flag = true;
                 data->recorded_DTMF_tones.push_back(data->result_in_mic.dtmf_tone);
             }
 
         }
         else{
-           if((data->result_in_mic.dtmf_tone != Globals::preamble[0] && data->result_in_mic.dtmf_tone != Globals::preamble[1] && data->result_in_mic.dtmf_tone != -1)  && !data->result_in_mic.garbage_flag){
+           if((data->result_in_mic.dtmf_tone != _preamble[0] && data->result_in_mic.dtmf_tone != _preamble[1] && data->result_in_mic.dtmf_tone != -1)  && !data->result_in_mic.garbage_flag){
+                std::cout << "Garbage tone detected: " << data->result_in_mic.dtmf_tone << std::endl;
+                std::cout << "Garbage flag: " << data->result_in_mic.garbage_flag << std::endl;
                 data->pre_1_flag = false;
                 data->recorded_DTMF_tones.clear();
            }
-            Globals::buffer.clear();
+            buffer.clear();
             data->pre_success = false;
         }
     }
 
-    // auto end = std::chrono::high_resolution_clock::now();
+    auto end = std::chrono::high_resolution_clock::now();
 
-    // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
     //std::cout << "Time difference: " << duration.count() << " microseconds" << std::endl;
 
@@ -282,6 +294,12 @@ void AudioInput::read_from_file(const std::string &fileName){
 }
 
 void AudioInput::check_sequence(TestResult &result, std::vector<int> &tones, std::vector<int> &test_sequence){
+    // if (tones.size() != test_sequence.size()){
+    //     result.error.push_back("Invalid sequence length");
+    //     result.failure = 1;
+    //     result.success = 0;        
+    //     return;
+    // }
     
     int zero_padding;
     zero_padding = abs(tones.size()-test_sequence.size());
@@ -309,7 +327,7 @@ void AudioInput::check_sequence(TestResult &result, std::vector<int> &tones, std
     }
 }
 
-void AudioInput::check(bool full_output, std::vector<int> &test_sequence){
+int AudioInput::check(bool full_output, std::vector<int> &test_sequence){
 
     TestResult result;
     result.error.clear();
@@ -324,10 +342,9 @@ void AudioInput::check(bool full_output, std::vector<int> &test_sequence){
     }
     std::cout << "Amount of Success: " << result.success << std::endl;
     std::cout << "Amount of Failure: " << result.failure << std::endl;
+    return result.failure;
 }
 
 std::vector<int> AudioInput::get_recorded_DTMF_tones(){
     return _mic_data.recorded_DTMF_tones;
 }
-
-

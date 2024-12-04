@@ -2,7 +2,9 @@
 
 Goertzel::Goertzel(){}
 
-Goertzel::Goertzel(GoertzelResult& r): _result(r){}
+Goertzel::Goertzel(bool hyperx): _hyperx(hyperx){}
+
+Goertzel::Goertzel(GoertzelResult& r, bool hyperx): _result(r){}
 
 
 Goertzel::Goertzel(const std::vector<float> data)
@@ -117,21 +119,25 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
             break;
         }
     }
+    if(_hyperx){
+        multiplier = 1.5;
+    }
+    else{
+        multiplier = 0;
+    }
+    float freq_mag_threshhold_high = 15.0/(1+multiplier); // 30.0
+    float freq_mag_threshhold_low = 25.0/(1+multiplier); // 50.0
     
-    float freq_mag_threshhold_high = 15.0/2.0; // 30.0
-    float freq_mag_threshhold_low = 25.0/2.0; // 50.0
-    
-
     if((x[0] != 0) && (x[4] != 0)){
         if((x[0] > freq_mag_threshhold_low && x[4] > freq_mag_threshhold_high)){
             _freq_from_signals.push_back(y[0]);
             _freq_from_signals.push_back(y[4]);
-            // std::cout << "if statement virker " << x[0] << ", " << x[4] << std::endl;
+            //std::cout << "if statement virker " << x[0] << ", " << x[4] << std::endl;
         }
         else{
             _freq_from_signals.push_back(697);
             _freq_from_signals.push_back(852);
-            // std::cout << "if statement virker ikke " << x[0] << ", " << x[4] << std::endl;
+            //std::cout << "if statement virker ikke " << x[0] << ", " << x[4] << std::endl;
         }
     }
     else{
@@ -153,7 +159,7 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
     auto DTMF_freq = _DTMF_mapping.find({freq_1, freq_2});
 
     if (DTMF_freq != _DTMF_mapping.end()) {
-        std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
+        //std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
         if (DTMF_freq->second == -1){
             r.garbage_flag = false;
             r.tone_flag = false;
@@ -165,15 +171,26 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
             }
             _message_vec.push_back(DTMF_freq->second);
             r.dtmf_tone = DTMF_freq->second;
-            save_to_json(DTMF_freq->second);
+            // save_to_json(DTMF_freq->second);
             r.tone_flag = true;
             //std::cout << "Tone flag: " << r.tone_flag << std::endl;
         }
     }
-    else {}
+    else {
+        
+        //std::cout<< " DTMF_Freq not found " << std::endl;
+    }
+
+     /* -------------------- FOR DEBUG: -----------------------*/
+
+    //std::cout << "Size of message vector: "<< _message_vec.size() << std::endl;
+
+    //std::cout << "Content of message vector: "<< _message_vec[0] << std::endl;
+
 }
 
 std::vector<int> Goertzel::get_message_vec(){
+
     return _message_vec;
 }
 
@@ -184,7 +201,7 @@ bool Goertzel::detect_bit(std::string type, int dtmf_tone){
     int freq_2 = freq_pair.second;
     //std::cout << "Freq 1: " << freq_1 << " Freq 2: " << freq_2 << std::endl;
     if ((_freq_from_signals[0] == freq_1 && _freq_from_signals[1] == freq_2) || (_freq_from_signals[0] == freq_2 && _freq_from_signals[1] == freq_1)) {
-        // std::cout << type <<" bit detected" << std::endl;
+        std::cout << type <<" bit detected" << std::endl;
         return true;
     }
     return false;
@@ -253,7 +270,7 @@ void Goertzel::save_to_json(const int& key) {
     if (outFile.is_open()) {
         outFile << updatedContent.str();
         outFile.close();
-        // std::cout << "JSON appended to " << filePath << std::endl;
+        std::cout << "JSON appended to " << filePath << std::endl;
     } else {
         std::cerr << "Error: Could not open file for writing." << std::endl;
     }

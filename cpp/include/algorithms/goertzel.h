@@ -25,7 +25,8 @@ private:
     
     double _sample_freq = 16000.0;
     int _size_of_signal;
-    
+    bool _hyperx = false;
+    double multiplier;
     std::vector<float> _data;
     std::vector<int> _DTMF_freq = {697, 770, 852, 941, 1209, 1336, 1477, 1633};
     std::vector<double> _coefficients;
@@ -57,7 +58,8 @@ private:
 public:
 
     Goertzel();
-    Goertzel(GoertzelResult& r);
+    Goertzel(GoertzelResult& r, bool hyperx=false);
+    Goertzel(bool hyperx=false);
     Goertzel(const std::vector<float> data);
 
     void compute_goertzel();
