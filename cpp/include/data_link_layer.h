@@ -27,9 +27,9 @@ private:
     string _SFD = "10011001";           // Start-of-Frame Delimiter for header
     string _EFD = "01100110";           // End-of-Frame Delimiter for header
     string _ESC_nibble = "1111";        // ESC nibble
-    string _robot_path;                 // Data formed by path for robot, created by user
+    string _robot_path = "";                 // Data formed by path for robot, created by user
     string _ready_for_pl_path = "";     // Path that's ready to send to physical layer
-
+    bool _is_ack_received = false;
 
 public:
     string get_ready_for_pl_path();
@@ -43,7 +43,7 @@ public:
     /// @return Type: String
     string length_of_string(string s);
 
-    /// @brief Method for creating entire package - Adds preamble, header, data, CRC and postamble together in a bitstream
+    /// @brief Method for creating entire package - Adds preamble, header, data, CRC, ESC-nibbles, and postamble together in a bitstream
     /// @return The full package while it's saved as a private variable
     string protocol_structure();
 
@@ -89,6 +89,12 @@ public:
     /// @param header_and_msg
     /// @return True or False
     bool is_header_and_msg_correct(const string &header_and_msg);
+
+    void stop_and_wait_arq();
+
+    bool is_ack_received();
+
+    void set_ack_received(const bool &boolean);
 
 };
 

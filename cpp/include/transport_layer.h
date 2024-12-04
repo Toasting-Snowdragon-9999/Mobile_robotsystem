@@ -2,7 +2,7 @@
 #define TRANSPORT_LAYER_H
 
 #define nibble_size 4
-#define mms nibble_size * 8 // (Maximum Segment Size)
+#define mms 32 // (Maximum Segment Size)
 
 #include <string>
 #include <iostream>

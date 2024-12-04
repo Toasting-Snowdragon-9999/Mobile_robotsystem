@@ -5,7 +5,9 @@ DataLinkLayer::DataLinkLayer(std::string robot_path) : _robot_path(robot_path) {
 
 string DataLinkLayer::get_ready_for_pl_path()
 {
-    return _ready_for_pl_path;
+    string to_send = _ready_for_pl_path;
+    _ready_for_pl_path.clear();
+    return to_send;
 }
 
 std::string DataLinkLayer::length_of_string(std::string s)
@@ -250,6 +252,20 @@ void DataLinkLayer::start_ack_timer()
     }
 }
 
-bool DataLinkLayer::is_header_and_msg_correct(const string &header_and_msg){
-    return ~std::stoi(CRC::CRC32::decode(header_and_msg),nullptr,2);
+bool DataLinkLayer::is_header_and_msg_correct(const string &header_and_msg)
+{
+    return ~std::stoi(CRC::CRC32::decode(header_and_msg), nullptr, 2);
 }
+
+bool DataLinkLayer::is_ack_received()
+{
+    return _is_ack_received;
+}
+
+void DataLinkLayer::set_ack_received(const bool &boolean){
+
+    _is_ack_received = boolean;
+
+}
+
+

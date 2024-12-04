@@ -11,6 +11,7 @@
 #include "transport_layer.h"
 #include "interfaces/al_to_tl.h"
 #include "interfaces/tl_to_dll.h"
+#include "interfaces/dll_to_pl.h"
 
 using std::cout;
 using std::endl;
@@ -60,7 +61,6 @@ int main()
 	// cout << "Segmented msg:" << endl;
 	// tl.print_segment_vector(segments_vector);
 
-
 	// Interface from Transport Layer to Data Link Layer
 
 	TlToDll inter_2;
@@ -70,6 +70,16 @@ int main()
 	DataLinkLayer dll(inter_2.take_segment_from_buffer());
 
 	dll.protocol_structure();
+
+	DllToPl inter_3;
+
+	// 	while (dll.is_ack_received() == false)
+	// {
+	// 	//inter_3.add_ready_msg(dll.get_ready_for_pl_path());
+
+	// }
+
+
 
 	string bitstuff_test = "1111101011111010111111";
 
