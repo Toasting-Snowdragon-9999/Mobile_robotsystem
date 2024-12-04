@@ -100,6 +100,11 @@ int main()
 
 	cout << "Step 3: Remove after unstuffing of " << test_with_header << ": 		" << tl.remove_header_and_unstuff(test_with_header) << endl;
 
+	std::string test_string_dll = "101011110110011101110";
+	DataLinkLayer lucas_dll(test_string_dll);
+	std::string sending_package = lucas_dll.protocol_structure();
+	lucas_dll.get_data_from_package(sending_package);
+
 	// SharedData sd; static_cast<unsigned long>
 
 	// cout << endl;    int i;

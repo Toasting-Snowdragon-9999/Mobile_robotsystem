@@ -23,12 +23,12 @@ class DataLinkLayer
 {
 
 private:
-    string _pre_and_postamble = "1110"; // DTMF tone for preamble and postamble
-    string _SFD = "10011001";           // Start-of-Frame Delimiter for header
-    string _EFD = "01100110";           // End-of-Frame Delimiter for header
-    string _ESC_nibble = "1111";        // ESC nibble
-    string _robot_path = "";                 // Data formed by path for robot, created by user
-    string _ready_for_pl_path = "";     // Path that's ready to send to physical layer
+    string _pre_and_postamble = "11101110"; // DTMF tone for preamble and postamble
+    string _SFD = "11110";                  // Start-of-Frame Delimiter for header
+    string _EFD = _SFD;                     // End-of-Frame Delimiter for header
+    string _ESC_nibble = "1111";            // ESC nibble
+    string _robot_path = "";                // Data formed by path for robot, created by user
+    string _ready_for_pl_path = "";         // Path that's ready to send to physical layer
     bool _is_ack_received = false;
 
 public:
@@ -38,9 +38,9 @@ public:
     /// @param robotPath - Path for robot created by user
     DataLinkLayer(string robotPath);
 
-    /// @brief Method for finding the length of a string
+    /// @brief Method for finding the length of a string in binary
     /// @param s Type: String
-    /// @return Type: String
+    /// @return Type: String - Length in binary
     string length_of_string(string s);
 
     /// @brief Method for creating entire package - Adds preamble, header, data, CRC, ESC-nibbles, and postamble together in a bitstream
@@ -96,6 +96,14 @@ public:
 
     void set_ack_received(const bool &boolean);
 
+    /// @brief Finds maximum consecutive ones in a string
+    /// @param s
+    /// @return Max number of consecutive ones
+    int find_max_ones(const string &s);
+
+    string bit_stuff(const string &header);
+
+    string bit_unstuff(const string &header);
 };
 
 #endif // COM_PROTOCOL_H

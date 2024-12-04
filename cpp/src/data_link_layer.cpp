@@ -37,17 +37,25 @@ std::string DataLinkLayer::length_of_string(std::string s)
 
 std::string DataLinkLayer::protocol_structure()
 {
+    // Finding length of data and bit stuffing if nessecary
     std::string length_of_path = length_of_string(_robot_path);
+    std::string stuffed_length = bit_stuff(length_of_path);
 
+    // Creating header+data
     std::stringstream ss_header_and_data;
-    ss_header_and_data << _SFD << length_of_path << _EFD << _robot_path;
+    ss_header_and_data << _SFD << stuffed_length << _EFD << _robot_path;
     std::string header_and_data = ss_header_and_data.str();
 
+    // Zero-padding header+data if nessecary
     std::string zero_padded_header_and_data = zero_pad(header_and_data);
 
+    // CRC encoding header+data
     std::string crc_encoded_header_and_data = CRC::CRC32::encode(zero_padded_header_and_data);
+    
+    // Nibble stuffing CRC encoded header+data
     std::string nibble_stuffed_header_and_data = nibble_stuffing(crc_encoded_header_and_data);
 
+    // Creating final package
     std::stringstream creating_package;
     creating_package << _pre_and_postamble
                      << nibble_stuffed_header_and_data
@@ -179,7 +187,7 @@ std::vector<int> DataLinkLayer::find_length_pos_in_header(std::string received_p
     int end_idx_of_SFD = index_SFD + SFD_length - 1;
 
     // Finding index of EFD in the received package
-    std::size_t index_EFD = received_package.find(_EFD);
+    std::size_t index_EFD = received_package.find(_EFD, end_idx_of_SFD);
     if (index_EFD != std::string::npos)
     {
         std::cout << "SFD \"" << _SFD << "\" found at index: " << index_EFD << std::endl;
@@ -198,7 +206,7 @@ std::vector<int> DataLinkLayer::find_length_pos_in_header(std::string received_p
 
 std::string DataLinkLayer::get_data_from_package(std::string received_package)
 {
-    // Removing the pre- and postamble from recveived package
+    // Removing the pre- and postamble from received package
     received_package = remove_pre_and_postamble(received_package);
 
     // Removing ESC nibbles
@@ -210,7 +218,7 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
     if (int_crc_decoded_remainder != 0)
     {
         std::cout << "Received package IS NOT correct. CRC remainder not equal to 0." << std::endl;
-        return 0;
+        return "";
     }
     else
     {
@@ -219,7 +227,8 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
         // Getting length of data
         std::vector<int> length_pos = find_length_pos_in_header(received_package);
         std::string binary_length_of_data = received_package.substr(length_pos[0], length_pos[1] - length_pos[0] + 1);
-        int int_length_of_data = std::stoi(binary_length_of_data, nullptr, 2);
+        std::string unstuffed_binary_length = bit_unstuff(binary_length_of_data); // Making sure to unstuff the length
+        int int_length_of_data = std::stoi(unstuffed_binary_length, nullptr, 2);
         std::cout << "Length of data: " << int_length_of_data << std::endl;
 
         // Retrieving the data from the received package
@@ -268,4 +277,90 @@ void DataLinkLayer::set_ack_received(const bool &boolean){
 
 }
 
+int DataLinkLayer::find_max_ones(const string &s)
+{
+    int one_count = 0, max_ones = 0;
+    for (auto character : s)
+    {
+        if (character == '1')
+        {
+            one_count++;
+            max_ones = std::max(one_count, max_ones);
+        }
+        else
+        {
+            one_count = 0;
+        }
+    }
+
+    return max_ones;
+}
+
+string DataLinkLayer::bit_stuff(const string &header)
+{
+    std::string stuffed = "";
+    int consecutiveOnes = 0;
+
+    for (char bit : header)
+    {
+        stuffed += bit;
+
+        if (bit == '1')
+        {
+            consecutiveOnes++;
+            if (consecutiveOnes == (DataLinkLayer::find_max_ones(_SFD) - 1))
+            {
+                stuffed += '0';
+                consecutiveOnes = 0;
+            }
+        }
+        else
+        {
+            consecutiveOnes = 0; // Reset counter if bit = 0
+        }
+    }
+
+    return stuffed;
+}
+
+string DataLinkLayer::bit_unstuff(const string &header)
+{
+    std::string unstuffed = "";
+    int consecutiveOnes = 0;
+    size_t i = 0;
+
+    while (i < header.length())
+    {
+        char bit = header[i];
+
+        if (bit == '1')
+        {
+            consecutiveOnes++;
+            unstuffed += bit;
+
+            /// Skip however many maximum consecutive ones are in the EFD or SFD
+            if (consecutiveOnes == DataLinkLayer::find_max_ones(_SFD) - 1)
+            {
+                i++; // Skip bit stuffed 0
+                if (i < header.length())
+                {
+                    if (header[i] != '0')
+                    {
+                        std::cerr << "Error: Expected '0' after three consecutive '1's at position " << i << std::endl;
+                    }
+                }
+                consecutiveOnes = 0;
+            }
+        }
+        else
+        {
+            consecutiveOnes = 0; // Reset counter if bit = 0
+            unstuffed += bit;
+        }
+
+        i++;
+    }
+
+    return unstuffed;
+}
 
