@@ -1,3 +1,0 @@
-/home/ayman/semester_3/Mobile_robotsystem/robot_code/cpp/src/CMakeFiles/robot_code.dir
-/home/ayman/semester_3/Mobile_robotsystem/robot_code/cpp/src/CMakeFiles/edit_cache.dir
-/home/ayman/semester_3/Mobile_robotsystem/robot_code/cpp/src/CMakeFiles/rebuild_cache.dir
