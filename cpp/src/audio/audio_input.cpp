@@ -78,7 +78,7 @@ void AudioInput::record_audio(int input_device){
         return;
     }
     std::cout << "Input device: " << input_device << "\n";
-    
+
     _input_parameters.channelCount = NUM_CHANNELS;               // Mono input
     _input_parameters.sampleFormat = SAMPLE_TYPE;       // 32-bit floating point
     _input_parameters.suggestedLatency = Pa_GetDeviceInfo(_input_parameters.device)->defaultLowInputLatency;
@@ -180,6 +180,8 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
     for( i = 0; i < frames_per_buffer; i++ ){
         float mono_in = *in++;  /* Mono channel input */
+        std::cout << mono_in << std::endl;
+
         if (std::abs(mono_in) < Globals::thresh_hold){
             mono_in = 0;
         }
@@ -193,6 +195,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         algo.load_data(Globals::buffer);
         algo.translate_signal_goertzel(data->result_in_mic);
         if (data->result_in_mic.tone_flag && !data->result_in_mic.garbage_flag){
+            std::cout << "DTMF Tone: " << data->result_in_mic.dtmf_tone << std::endl;
             if (data->recorded_DTMF_tones.back() != Globals::preamble[0]){
                 data->pre_1_flag = false;  
             }
