@@ -118,12 +118,12 @@ void AudioInput::record_audio(int input_device){
     // auto start = std::chrono::high_resolution_clock::now();
 
     while (_mic_data.stop == false){
-        if(_ms > 500){
+        if(_ms > 0){
             Pa_Sleep(_ms); 
             break;
         }
     }
-    // save_to_textfile("../dtmf_sounds/output.txt");
+    save_to_textfile("../dtmf_sounds/output.txt");
     // auto end = std::chrono::high_resolution_clock::now();
 
     // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
@@ -180,15 +180,16 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
     for( i = 0; i < frames_per_buffer; i++ ){
         float mono_in = *in++;  /* Mono channel input */
-        std::cout << mono_in << std::endl;
-
         if (std::abs(mono_in) < Globals::thresh_hold){
             mono_in = 0;
         }
+        // if (std::abs(mono_in) > Globals::thresh_hold){
+        //     std::cout << "Sound in: " << mono_in << std::endl;
+        // }
 		Globals::buffer.push_back(mono_in);
     }
 
-    //data->recorded_samples.push_back(Globals::buffer);
+    data->recorded_samples.push_back(Globals::buffer);
 
     if(data->pre_success){
         Goertzel algo;

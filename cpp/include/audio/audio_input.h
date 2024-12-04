@@ -16,7 +16,7 @@
 typedef float SAMPLE;
 
 namespace Globals {
-    const float thresh_hold = 0.5;
+    const float thresh_hold = 0.15; //0.5
     const std::vector <int> preamble = {14, 0};
     const int esc_tone = 15;
     static std::vector <float> buffer;

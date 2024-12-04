@@ -118,20 +118,20 @@ void Goertzel::sort(std::vector <double> &x, std::vector <int> &y){
         }
     }
     
-    float freq_mag_threshhold_high = 15.0; // 30.0
-    float freq_mag_threshhold_low = 25.0; // 50.0
+    float freq_mag_threshhold_high = 15.0/2.0; // 30.0
+    float freq_mag_threshhold_low = 25.0/2.0; // 50.0
     
 
     if((x[0] != 0) && (x[4] != 0)){
         if((x[0] > freq_mag_threshhold_low && x[4] > freq_mag_threshhold_high)){
             _freq_from_signals.push_back(y[0]);
             _freq_from_signals.push_back(y[4]);
-            //std::cout << "if statement virker " << x[0] << ", " << x[4] << std::endl;
+            // std::cout << "if statement virker " << x[0] << ", " << x[4] << std::endl;
         }
         else{
             _freq_from_signals.push_back(697);
             _freq_from_signals.push_back(852);
-            //std::cout << "if statement virker ikke " << x[0] << ", " << x[4] << std::endl;
+            // std::cout << "if statement virker ikke " << x[0] << ", " << x[4] << std::endl;
         }
     }
     else{
@@ -153,7 +153,7 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
     auto DTMF_freq = _DTMF_mapping.find({freq_1, freq_2});
 
     if (DTMF_freq != _DTMF_mapping.end()) {
-        //std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
+        std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
         if (DTMF_freq->second == -1){
             r.garbage_flag = false;
             r.tone_flag = false;
@@ -165,7 +165,7 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
             }
             _message_vec.push_back(DTMF_freq->second);
             r.dtmf_tone = DTMF_freq->second;
-            // save_to_json(DTMF_freq->second);
+            save_to_json(DTMF_freq->second);
             r.tone_flag = true;
             //std::cout << "Tone flag: " << r.tone_flag << std::endl;
         }
@@ -253,7 +253,7 @@ void Goertzel::save_to_json(const int& key) {
     if (outFile.is_open()) {
         outFile << updatedContent.str();
         outFile.close();
-        std::cout << "JSON appended to " << filePath << std::endl;
+        // std::cout << "JSON appended to " << filePath << std::endl;
     } else {
         std::cerr << "Error: Could not open file for writing." << std::endl;
     }

@@ -23,8 +23,8 @@ def compute_fft(data, sample_rate):
 
 def main():
     # Paths to signal and noise files
-    signal_file = "sequence_with_too_many_6.txt"  # Replace with the actual file path
-    noise_file = "white_noise.txt"    # Replace with the actual file path
+    signal_file = "test_test.txt"  # Replace with the actual file path
+    noise_file = "noise.txt"    # Replace with the actual file path
 
     # Load signal and noise data
     signal_data = load_data(signal_file)

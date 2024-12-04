@@ -7,7 +7,7 @@
 #include "audio/audio_input.h"
 #define SAMPLE_RATE (16000)
 #define FRAMES_PER_BUFFER (480)
-#define INPUT_DEVICE (14) 
+#define INPUT_DEVICE (13) 
 
 class PhysicalLayer{
 
