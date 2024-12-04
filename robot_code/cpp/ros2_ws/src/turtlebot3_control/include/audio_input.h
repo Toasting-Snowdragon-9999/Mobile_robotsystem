@@ -6,15 +6,22 @@
 #include <vector>
 #include <cstring>
 #include <portaudio.h>
+#include <cmath>
 #include <chrono>
 #include <iomanip>
 #include "goertzel.h"
 
-#define MILLISECONDS (3000)
+#define MILLISECONDS (4000)
 #define NUM_CHANNELS (1)
 #define SAMPLE_TYPE paFloat32
 
 typedef float SAMPLE;
+
+struct TestResult{
+    std::vector <std::string> error;
+    int success;
+    int failure;
+};
 
 struct MicSample {
     std::vector<std::vector<SAMPLE>> recorded_samples;
@@ -38,7 +45,8 @@ public:
     void save_to_textfile(const std::string &fileName);
     void read_from_file(const std::string &fileName);
     void initialise_flags();
-    //int dissect();
+    void check(bool print, std::vector<int> &test_sequence);
+    void check_sequence(TestResult &result, std::vector<int> &tones, std::vector<int> &test_sequence);
 
 private:
     int _sample_rate;

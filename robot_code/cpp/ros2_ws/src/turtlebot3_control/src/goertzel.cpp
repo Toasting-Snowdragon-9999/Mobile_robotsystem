@@ -165,7 +165,7 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
             }
             _message_vec.push_back(DTMF_freq->second);
             r.dtmf_tone = DTMF_freq->second;
-            save_to_json(DTMF_freq->second);
+            //save_to_json(DTMF_freq->second);
             r.tone_flag = true;
             //std::cout << "Tone flag: " << r.tone_flag << std::endl;
         }
@@ -195,7 +195,7 @@ bool Goertzel::detect_bit(std::string type, int dtmf_tone){
     int freq_2 = freq_pair.second;
     //std::cout << "Freq 1: " << freq_1 << " Freq 2: " << freq_2 << std::endl;
     if ((_freq_from_signals[0] == freq_1 && _freq_from_signals[1] == freq_2) || (_freq_from_signals[0] == freq_2 && _freq_from_signals[1] == freq_1)) {
-        std::cout << type <<" bit detected" << std::endl;
+        //std::cout << type <<" bit detected" << std::endl;
         return true;
     }
     return false;
@@ -227,7 +227,7 @@ std::string Goertzel::generate_json_string(const int& key) {
 
 void Goertzel::save_to_json(const int& key) {
     std::string jsonOutput = generate_json_string(key);
-    std::string filePath = "../dtmf_sounds/magnitudes.json";
+    std::string filePath = "/home/pi/ros2_ws/dtmf_sounds/magnitudes.json";
 
     // Read existing content
     std::ifstream inFile(filePath);
@@ -264,7 +264,7 @@ void Goertzel::save_to_json(const int& key) {
     if (outFile.is_open()) {
         outFile << updatedContent.str();
         outFile.close();
-        std::cout << "JSON appended to " << filePath << std::endl;
+        //std::cout << "JSON appended to " << filePath << std::endl;
     } else {
         std::cerr << "Error: Could not open file for writing." << std::endl;
     }
