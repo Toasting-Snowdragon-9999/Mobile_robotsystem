@@ -1,11 +1,11 @@
-#include "data_link_layer.h"
+#include "communication_protocol/data_link_layer.h"
 #include "crc.h"
 
 DataLinkLayer::DataLinkLayer(std::string robot_path) : _robot_path(robot_path) {}
 
-string DataLinkLayer::get_ready_for_pl_path()
+std::string DataLinkLayer::get_ready_for_pl_path()
 {
-    string to_send = _ready_for_pl_path;
+    std::string to_send = _ready_for_pl_path;
     _ready_for_pl_path.clear();
     return to_send;
 }
@@ -120,9 +120,9 @@ std::string DataLinkLayer::zero_pad(std::string binary_msg)
     return binary_msg;
 }
 
-string DataLinkLayer::decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence)
+std::string DataLinkLayer::decimal_seq_to_binary_msg(const std::vector<std::vector<int>> &decimalSequence)
 {
-    string binaryConvertedTone = "";
+    std::string binaryConvertedTone = "";
     std::string tmpTone;
 
     for (auto pair : decimalSequence)
@@ -261,7 +261,7 @@ void DataLinkLayer::start_ack_timer()
     }
 }
 
-bool DataLinkLayer::is_header_and_msg_correct(const string &header_and_msg)
+bool DataLinkLayer::is_header_and_msg_correct(const std::string &header_and_msg)
 {
     return ~std::stoi(CRC::CRC32::decode(header_and_msg), nullptr, 2);
 }
@@ -277,7 +277,7 @@ void DataLinkLayer::set_ack_received(const bool &boolean){
 
 }
 
-int DataLinkLayer::find_max_ones(const string &s)
+int DataLinkLayer::find_max_ones(const std::string &s)
 {
     int one_count = 0, max_ones = 0;
     for (auto character : s)
@@ -296,7 +296,7 @@ int DataLinkLayer::find_max_ones(const string &s)
     return max_ones;
 }
 
-string DataLinkLayer::bit_stuff(const string &header)
+std::string DataLinkLayer::bit_stuff(const std::string &header)
 {
     std::string stuffed = "";
     int consecutiveOnes = 0;
@@ -323,7 +323,7 @@ string DataLinkLayer::bit_stuff(const string &header)
     return stuffed;
 }
 
-string DataLinkLayer::bit_unstuff(const string &header)
+std::string DataLinkLayer::bit_unstuff(const std::string &header)
 {
     std::string unstuffed = "";
     int consecutiveOnes = 0;

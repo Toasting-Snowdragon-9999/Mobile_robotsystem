@@ -44,6 +44,7 @@ set(SHARED_SOURCES
     src/communication_protocol/transport_layer.cpp
     src/interfaces/al_to_tl.cpp
     src/interfaces/tl_to_dll.cpp
+    src/interfaces/dll_to_pl.cpp
 )
 
 # GUI executable sources

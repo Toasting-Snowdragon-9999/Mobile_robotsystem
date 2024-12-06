@@ -1,8 +1,7 @@
-#include "application_layer.h"
+#include "communication_protocol/application_layer.h"
 
-using std::string;
 
-robot_command::robot_command(string input_command, string inputValue) : direction(input_command), value(inputValue) {}
+robot_command::robot_command(std::string input_command, std::string inputValue) : direction(input_command), value(inputValue) {}
 
 ApplicationLayer::ApplicationLayer() { create_all_commands_map(); }
 
@@ -13,28 +12,28 @@ void ApplicationLayer::create_all_commands_map()
     _all_commands_map.insert(_value_map.begin(), _value_map.end());
 };
 
-void ApplicationLayer::add_direction(const string &key, const std::string &value)
+void ApplicationLayer::add_direction(const std::string &key, const std::string &value)
 {
     _direction_map[key] = value;
     _all_commands_map[key] = value;
 }
 
-void ApplicationLayer::add_value(const string &key, const std::string &value)
+void ApplicationLayer::add_value(const std::string &key, const std::string &value)
 {
     _value_map[key] = value;
     _all_commands_map[key] = value;
 }
 
-void ApplicationLayer::add_command(const string &key, const std::string &value)
+void ApplicationLayer::add_command(const std::string &key, const std::string &value)
 {
     _value_map[key] = value;
     _all_commands_map[key] = value;
 }
 
-string ApplicationLayer::command_to_bits(const robot_command &input_command)
+std::string ApplicationLayer::command_to_bits(const robot_command &input_command)
 {
     // put command = bits and then values integers er lig med bits;
-    string final_bits_converted = "";
+    std::string final_bits_converted = "";
 
     int length_of_value = input_command.value.length();
 
@@ -51,7 +50,7 @@ string ApplicationLayer::command_to_bits(const robot_command &input_command)
         }
     }
 
-    string values = "";
+    std::string values = "";
     for (int i = 0; i < length_of_value; i++)
     {
         for (auto command : _all_commands_map)
@@ -75,10 +74,10 @@ string ApplicationLayer::command_to_bits(const robot_command &input_command)
     return final_bits_converted;
 }
 
-string ApplicationLayer::command_vector_to_bitstream(std::vector<robot_command> &command_vector)
+std::string ApplicationLayer::command_vector_to_bitstream(std::vector<robot_command> &command_vector)
 {
 
-    string bitstream = "";
+    std::string bitstream = "";
 
     for (const auto &command : command_vector)
     {
@@ -88,7 +87,7 @@ string ApplicationLayer::command_vector_to_bitstream(std::vector<robot_command> 
     return bitstream;
 }
 
-bool ApplicationLayer::is_value(const string &bits)
+bool ApplicationLayer::is_value(const std::string &bits)
 {
     bool is_value = false;
     for (const auto &i : _value_map)
@@ -102,7 +101,7 @@ bool ApplicationLayer::is_value(const string &bits)
     return is_value;
 }
 
-bool ApplicationLayer::is_direction(const string &bits)
+bool ApplicationLayer::is_direction(const std::string &bits)
 {
     bool is_direction = false;
     for (const auto &i : _direction_map)
@@ -116,7 +115,7 @@ bool ApplicationLayer::is_direction(const string &bits)
     return is_direction;
 }
 
-string ApplicationLayer::find_key(const string &value, const std::unordered_map<string, string> &map)
+std::string ApplicationLayer::find_key(const std::string &value, const std::unordered_map<std::string, std::string> &map)
 {
     for (const auto &i : map)
     {
@@ -128,28 +127,28 @@ string ApplicationLayer::find_key(const string &value, const std::unordered_map<
     return "";
 }
 
-std::vector<robot_command> ApplicationLayer::bits_to_commands(string input_bits)
+std::vector<robot_command> ApplicationLayer::bits_to_commands(std::string input_bits)
 {
 
     std::vector<robot_command> command_vector;
     std::string temp_bits;
 
-    string Value = "";
+    std::string Value = "";
     size_t length = input_bits.length();
-    string value_bits = "";
+    std::string value_bits = "";
 
     for (int i = 0; i <= length; i += nibble_size)
     {
         temp_bits = input_bits.substr(i, nibble_size);
-        string commandB = find_key(temp_bits, _direction_map);
+        std::string commandB = find_key(temp_bits, _direction_map);
 
         if (!commandB.empty())
         {
             Value = "";
             while (i + nibble_size <= length)
             {
-                string value_bits = input_bits.substr(i + nibble_size, nibble_size);
-                string valueB = find_key(value_bits, _value_map);
+                std::string value_bits = input_bits.substr(i + nibble_size, nibble_size);
+                std::string valueB = find_key(value_bits, _value_map);
 
                 if (!valueB.empty())
                 {
@@ -181,7 +180,7 @@ void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &co
     std::cout << std::endl;
 }
 
-string ApplicationLayer::encode_message(const string &message)
+std::string ApplicationLayer::encode_message(const std::string &message)
 {
     return CRC::CRC32::encode(message);
 }

@@ -16,9 +16,6 @@
 #include "interfaces/tl_to_dll.h"
 #include "interfaces/dll_to_pl.h"
 
-using std::cout;
-using std::endl;
-using std::string;
 
 int main()
 {
@@ -39,16 +36,16 @@ int main()
 
 	// FYI *There exists both command_to_bits and command_vector_to_bitstream*
 
-	string test_bits = Alc.command_vector_to_bitstream(test_bit_vec);
+	std::string test_bits = Alc.command_vector_to_bitstream(test_bit_vec);
 
-	cout
+	std::cout
 		<< "Command_vector_to_bitstream: " << test_bits + "\n"
-		<< endl;
+		<< std::endl;
 
-	string encoded_test_bits = Alc.encode_message(test_bits);
-	cout
+	std::string encoded_test_bits = Alc.encode_message(test_bits);
+	std::cout
 		<< "CRC encoded message: " << encoded_test_bits + "\n"
-		<< endl;
+		<< std::endl;
 
 	// Interface from Application Layer to Transport Layer
 
@@ -58,11 +55,11 @@ int main()
 
 	Transport_Layer tl;
 
-	string tl_header_test_bits = tl.add_header(inter_1.get_buffer());
+	std::string tl_header_test_bits = tl.add_header(inter_1.get_buffer());
 
 	auto segment_vector = tl.segment_msg(tl_header_test_bits);
 
-	// cout << "Segmented msg:" << endl;
+	// std::cout << "Segmented msg:" << std::endl;
 	// tl.print_segment_vector(segments_vector);
 
 	// Interface from Transport Layer to Data Link Layer
@@ -85,7 +82,7 @@ int main()
 
 	inter_3.add_ready_msg(dll.get_ready_for_pl_path());
 
-	string msg_to_send = inter_3.get_ready_msg();
+	std::string msg_to_send = inter_3.get_ready_msg();
 
 
 
@@ -93,24 +90,24 @@ int main()
 // SENDER
 // ======================================================
 
-	string bitstuff_test = "1111101011111010111111";
+	std::string bitstuff_test = "1111101011111010111111";
 
-	cout << "Max consecutive ones of " << bitstuff_test << ": " << tl.find_max_ones(bitstuff_test)
-		 << endl;
+	std::cout << "Max consecutive ones of " << bitstuff_test << ": " << tl.find_max_ones(bitstuff_test)
+		 << std::endl;
 
-	cout << "Bit stuffing of " << bitstuff_test << ": 		" << tl.bit_stuff(bitstuff_test) << endl;
-	cout << "\nBitstream for test:	";
-	string header_test = "1010111110";
-	cout << header_test << endl;
+	std::cout << "Bit stuffing of " << bitstuff_test << ": 		" << tl.bit_stuff(bitstuff_test) << std::endl;
+	std::cout << "\nBitstream for test:	";
+	std::string header_test = "1010111110";
+	std::cout << header_test << std::endl;
 
-	cout << "Step 0: Bit stuffing of " << header_test << ": 		" << tl.bit_stuff(header_test) << endl;
+	std::cout << "Step 0: Bit stuffing of " << header_test << ": 		" << tl.bit_stuff(header_test) << std::endl;
 
-	string test_with_header = tl.add_header(header_test);
+	std::string test_with_header = tl.add_header(header_test);
 
-	cout << "Step 1: Add header after bitstuffing of " << header_test << ": 		" << test_with_header << endl;
-	cout << "Step 2: Length of header " << test_with_header << " | Should be 10: 		" << tl.get_length_from_header(test_with_header) << endl;
+	std::cout << "Step 1: Add header after bitstuffing of " << header_test << ": 		" << test_with_header << std::endl;
+	std::cout << "Step 2: Length of header " << test_with_header << " | Should be 10: 		" << tl.get_length_from_header(test_with_header) << std::endl;
 
-	cout << "Step 3: Remove after unstuffing of " << test_with_header << ": 		" << tl.remove_header_and_unstuff(test_with_header) << endl;
+	std::cout << "Step 3: Remove after unstuffing of " << test_with_header << ": 		" << tl.remove_header_and_unstuff(test_with_header) << std::endl;
 
 	std::string test_string_dll = "101011110110011101110";
 	DataLinkLayer lucas_dll(test_string_dll);
@@ -119,17 +116,17 @@ int main()
 
 	// SharedData sd; static_cast<unsigned long>
 
-	// cout << endl;    int i;
+	// std::cout << std::endl;    int i;
 	// std::string test_path = "0110001111100";
-	// cout << "The path to be sent: \"" << test_path << "\" (length = " << test_path.size() << ")" << endl;
+	// std::cout << "The path to be sent: \"" << test_path << "\" (length = " << test_path.size() << ")" << std::endl;
 
 	// ComProtocol test_package(test_path);
 	// std::string full_package_string = test_package.protocol_structure();
-	// cout << "Full package: " << full_package_string << endl;
+	// std::cout << "Full package: " << full_package_string << std::endl;
 
 	// test_package.get_data_from_package(full_package_string);
 
-	// cout << "Converted bits_to_command, the correct answer is -fw:		"; Alc.print_robot_commands(Alc.bits_to_commands("1010000100001011100011010010"));
+	// std::cout << "Converted bits_to_command, the correct answer is -fw:		"; Alc.print_robot_commands(Alc.bits_to_commands("1010000100001011100011010010"));
 
 	// // py to cpp
 	// while (1)
@@ -146,14 +143,14 @@ int main()
 	// 		}
 	// 		else
 	// 		{
-	// 			cout << "[Error] " << e.what() << endl;
+	// 			std::cout << "[Error] " << e.what() << std::endl;
 	// 		}
 	// 	}
 	// }
 	// py to cpp ended
 /*
 	// std::filesystem::path currentPath = std::filesystem::current_path();
-    // std::cout << "Current working directory: " << currentPath << std::endl;
+    // std::std::cout << "Current working directory: " << currentPath << std::std::endl;
 	// return 0;
 	std::string path_gui = "../Docs/shared_file.json";
 	std::string path_debug = "../../Docs/shared_file.json";
@@ -180,7 +177,7 @@ int main()
 		4, 11, 0, 1, 14, 7, 5, 3, 8, 10,
 		1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
 
-	std::cout << test_sequence2.size() << std::endl;
+	std::std::cout << test_sequence2.size() << std::std::endl;
 
 	try{
 		sd.read_json();
@@ -189,7 +186,7 @@ int main()
 	catch(SharedDataException &e){
 		if (e.error_code() == 21){
 		}
-		else{std::cout << "[Error] " << e.what() << std::endl;}
+		else{std::std::cout << "[Error] " << e.what() << std::std::endl;}
 	}
 
 	PhysicalLayer pl;

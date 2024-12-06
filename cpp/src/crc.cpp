@@ -2,9 +2,9 @@
 
 namespace CRC
 {
-    string exclusive_or_strings(string a, string b)
+    std::string exclusive_or_strings(std::string a, std::string b)
     {
-        string xorresult = "";
+        std::string xorresult = "";
         if (a.size() != b.size())
         {
             throw std::invalid_argument("Strings of XOR-operation are not same size");
@@ -18,19 +18,19 @@ namespace CRC
     namespace CRC7
     {
 
-        string encode(string dataword)
+        std::string encode(std::string dataword)
         {
-            string generator_poly = "110100111"; // Dataword CRC7-ITU-T
-            string codeword = dataword;
+            std::string generator_poly = "110100111"; // Dataword CRC7-ITU-T
+            std::string codeword = dataword;
 
             int crcDegree = generator_poly.length() - 1;
 
             int selectionPlusOneIdx = generator_poly.length();
             int generator_polyLength = generator_poly.length();
 
-            string binaryDatawordWithZeroes = dataword + string(crcDegree, '0'); // Append CRC-Degree zeroes to data
+            std::string binaryDatawordWithZeroes = dataword + std::string(crcDegree, '0'); // Append CRC-Degree zeroes to data
 
-            string selection = binaryDatawordWithZeroes.substr(0, generator_poly.length());
+            std::string selection = binaryDatawordWithZeroes.substr(0, generator_poly.length());
             int datawordLength = binaryDatawordWithZeroes.length();
 
             while (selectionPlusOneIdx < datawordLength) // Binary-division
@@ -49,21 +49,21 @@ namespace CRC
                 selection = CRC::exclusive_or_strings(selection, generator_poly);
             }
 
-            string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
+            std::string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
 
             return codeword = dataword + remainder;
         }
-        string decode(string codeword)
+        std::string decode(std::string codeword)
         {
-            string generator_poly = "110100111";
-            string decodedBinaryData = codeword;
+            std::string generator_poly = "110100111";
+            std::string decodedBinaryData = codeword;
 
             int crcDegree = generator_poly.length() - 1;
 
             int selectionPlusOneIdx = generator_poly.length();
             int generator_polyLength = generator_poly.length();
 
-            string selection = codeword.substr(0, generator_poly.length());
+            std::string selection = codeword.substr(0, generator_poly.length());
             int encodedDatawordLength = codeword.length();
 
             while (selectionPlusOneIdx < encodedDatawordLength) // Binary-division
@@ -82,26 +82,26 @@ namespace CRC
                 selection = CRC::exclusive_or_strings(selection, generator_poly);
             }
 
-            string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
+            std::string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
 
             return remainder;
         }
     }
     namespace CRC16
     {
-        string encode(string dataword)
+        std::string encode(std::string dataword)
         {
-            string generator_poly = "11000000000000101"; // Dataword CRC7-ITU-T
-            string codeword = dataword;
+            std::string generator_poly = "11000000000000101"; // Dataword CRC7-ITU-T
+            std::string codeword = dataword;
 
             int crcDegree = generator_poly.length() - 1;
 
             int selectionPlusOneIdx = generator_poly.length();
             int generator_polyLength = generator_poly.length();
 
-            string binaryDatawordWithZeroes = dataword + string(crcDegree, '0'); // Append CRC-Degree zeroes to data
+            std::string binaryDatawordWithZeroes = dataword + std::string(crcDegree, '0'); // Append CRC-Degree zeroes to data
 
-            string selection = binaryDatawordWithZeroes.substr(0, generator_poly.length());
+            std::string selection = binaryDatawordWithZeroes.substr(0, generator_poly.length());
             int datawordLength = binaryDatawordWithZeroes.length();
 
             while (selectionPlusOneIdx < datawordLength) // Binary-division
@@ -120,21 +120,21 @@ namespace CRC
                 selection = CRC::exclusive_or_strings(selection, generator_poly);
             }
 
-            string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
+            std::string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
 
             return codeword = dataword + remainder;
         }
-        string decode(string codeword)
+        std::string decode(std::string codeword)
         {
-            string generator_poly = "11000000000000101";
-            string decodedBinaryData = codeword;
+            std::string generator_poly = "11000000000000101";
+            std::string decodedBinaryData = codeword;
 
             int crcDegree = generator_poly.length() - 1;
 
             int selectionPlusOneIdx = generator_poly.length();
             int generator_polyLength = generator_poly.length();
 
-            string selection = codeword.substr(0, generator_poly.length());
+            std::string selection = codeword.substr(0, generator_poly.length());
             int encodedDatawordLength = codeword.length();
 
             while (selectionPlusOneIdx < encodedDatawordLength) // Binary-division
@@ -153,7 +153,7 @@ namespace CRC
                 selection = CRC::exclusive_or_strings(selection, generator_poly);
             }
 
-            string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
+            std::string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
 
             return remainder;
         }
@@ -161,19 +161,19 @@ namespace CRC
     }
     namespace CRC32
     {
-        string encode(string dataword)
+        std::string encode(std::string dataword)
         {
-            string generator_poly = "100000100110000010001110110110111"; // IEEE 802.3 CRC-32 polynomial
-            string codeword = dataword;
+            std::string generator_poly = "100000100110000010001110110110111"; // IEEE 802.3 CRC-32 polynomial
+            std::string codeword = dataword;
 
             int crcDegree = generator_poly.length() - 1;
 
             int selectionPlusOneIdx = generator_poly.length();
             int generator_polyLength = generator_poly.length();
 
-            string binaryDatawordWithZeroes = dataword + string(crcDegree, '0'); // Append CRC-Degree zeroes to data
+            std::string binaryDatawordWithZeroes = dataword + std::string(crcDegree, '0'); // Append CRC-Degree zeroes to data
 
-            string selection = binaryDatawordWithZeroes.substr(0, generator_poly.length());
+            std::string selection = binaryDatawordWithZeroes.substr(0, generator_poly.length());
             int datawordLength = binaryDatawordWithZeroes.length();
 
             while (selectionPlusOneIdx < datawordLength) // Binary-division
@@ -192,21 +192,21 @@ namespace CRC
                 selection = CRC::exclusive_or_strings(selection, generator_poly);
             }
 
-            string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
+            std::string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
 
             return codeword = dataword + remainder;
         }
-        string decode(string codeword)
+        std::string decode(std::string codeword)
         {
-            string generator_poly = "100000100110000010001110110110111"; // IEEE 802.3 CRC-32 polynomial
-            string decodedBinaryData = codeword;
+            std::string generator_poly = "100000100110000010001110110110111"; // IEEE 802.3 CRC-32 polynomial
+            std::string decodedBinaryData = codeword;
 
             int crcDegree = generator_poly.length() - 1;
 
             int selectionPlusOneIdx = generator_poly.length();
             int generator_polyLength = generator_poly.length();
 
-            string selection = codeword.substr(0, generator_poly.length());
+            std::string selection = codeword.substr(0, generator_poly.length());
             int encodedDatawordLength = codeword.length();
 
             while (selectionPlusOneIdx < encodedDatawordLength) // Binary-division
@@ -225,7 +225,7 @@ namespace CRC
                 selection = CRC::exclusive_or_strings(selection, generator_poly);
             }
 
-            string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
+            std::string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
 
             return remainder;
         }

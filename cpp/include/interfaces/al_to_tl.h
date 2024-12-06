@@ -7,17 +7,16 @@
 
 #define nibble_size 4
 
-using std::string;
 
 class AlToTl
 {
 private:
-    string _buffer = "";
+    std::string _buffer = "";
 
 public:
-    void add_string_to_buffer(const string &binary_msg);
+    void add_string_to_buffer(const std::string &binary_msg);
 
-    string get_buffer();
+    std::string get_buffer();
 };
 
 #endif // AL_TO_DLL_H

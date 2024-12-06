@@ -1,10 +1,10 @@
-#include "transport_layer.h"
+#include "communication_protocol/transport_layer.h"
 
 Transport_Layer::Transport_Layer() {}
 
 /// @brief Getter method for the private segments vector
 /// @return The private segments vector
-std::vector<string> Transport_Layer::get_segments_vector()
+std::vector<std::string> Transport_Layer::get_segments_vector()
 {
     return _segments_vector;
 }
@@ -12,7 +12,7 @@ std::vector<string> Transport_Layer::get_segments_vector()
 /// @brief Finds maximum consecutive ones in a string
 /// @param s
 /// @return Max number of consecutive ones
-int Transport_Layer::find_max_ones(const string &s)
+int Transport_Layer::find_max_ones(const std::string &s)
 {
     int one_count = 0, max_ones = 0;
     for (auto character : s)
@@ -31,10 +31,10 @@ int Transport_Layer::find_max_ones(const string &s)
     return max_ones;
 }
 
-string Transport_Layer::find_length(const string &binary_msg)
+std::string Transport_Layer::find_length(const std::string &binary_msg)
 {
     int length_of_string = binary_msg.size();
-    string binary_length = "";
+    std::string binary_length = "";
 
     if (length_of_string == 0)
     {
@@ -56,14 +56,14 @@ string Transport_Layer::find_length(const string &binary_msg)
     return binary_length;
 }
 
-string Transport_Layer::add_header(const string &binary_msg)
+std::string Transport_Layer::add_header(const std::string &binary_msg)
 {
-    string stuffed_msg = Transport_Layer::bit_stuff(binary_msg);
-    string stuffed_length = Transport_Layer::bit_stuff(Transport_Layer::find_length(binary_msg));
+    std::string stuffed_msg = Transport_Layer::bit_stuff(binary_msg);
+    std::string stuffed_length = Transport_Layer::bit_stuff(Transport_Layer::find_length(binary_msg));
     return _SFD + stuffed_length + _EFD + stuffed_msg;
 }
 
-int Transport_Layer::get_length_from_header(const string &binary_msg)
+int Transport_Layer::get_length_from_header(const std::string &binary_msg)
 {
     size_t begin_length = _SFD.length();
     size_t end_length = _EFD.length();
@@ -88,14 +88,14 @@ int Transport_Layer::get_length_from_header(const string &binary_msg)
         std::cerr << "The length of the message is invalid";
     }
 
-    string length_part = Transport_Layer::bit_unstuff(binary_msg.substr(length_part_start, length_part_len));
+    std::string length_part = Transport_Layer::bit_unstuff(binary_msg.substr(length_part_start, length_part_len));
 
     return std::stoi(length_part, nullptr, 2);
 }
 
-string Transport_Layer::remove_header_and_unstuff(const string &full_binary_msg)
+std::string Transport_Layer::remove_header_and_unstuff(const std::string &full_binary_msg)
 {
-    string stripped_msg = full_binary_msg;
+    std::string stripped_msg = full_binary_msg;
 
     size_t length = stripped_msg.length();
     size_t begin_length = _SFD.length();
@@ -121,7 +121,7 @@ string Transport_Layer::remove_header_and_unstuff(const string &full_binary_msg)
     return Transport_Layer::bit_unstuff(stripped_msg);
 }
 
-string Transport_Layer::bit_stuff(const string &full_binary_msg)
+std::string Transport_Layer::bit_stuff(const std::string &full_binary_msg)
 {
     std::string stuffed = "";
     int consecutiveOnes = 0;
@@ -148,7 +148,7 @@ string Transport_Layer::bit_stuff(const string &full_binary_msg)
     return stuffed;
 }
 
-string Transport_Layer::bit_unstuff(const string &full_binary_msg)
+std::string Transport_Layer::bit_unstuff(const std::string &full_binary_msg)
 {
     std::string unstuffed = "";
     int consecutiveOnes = 0;
@@ -189,9 +189,9 @@ string Transport_Layer::bit_unstuff(const string &full_binary_msg)
     return unstuffed;
 }
 
-std::vector <string> Transport_Layer::segment_msg(const string &full_binary_msg)
+std::vector <std::string> Transport_Layer::segment_msg(const std::string &full_binary_msg)
 {
-    string unsegmented_msg = full_binary_msg;
+    std::string unsegmented_msg = full_binary_msg;
 
     while (unsegmented_msg.length() >= mms)
     {
@@ -208,9 +208,9 @@ std::vector <string> Transport_Layer::segment_msg(const string &full_binary_msg)
     return _segments_vector;
 }
 
-string Transport_Layer::combine_segments_to_string()
+std::string Transport_Layer::combine_segments_to_string()
 {
-    string full_binary_msg = "";
+    std::string full_binary_msg = "";
     for (const auto &segment : _segments_vector)
     {
         full_binary_msg += segment;
@@ -218,23 +218,23 @@ string Transport_Layer::combine_segments_to_string()
     return full_binary_msg;
 }
 
-void Transport_Layer::add_segment(const string &segment)
+void Transport_Layer::add_segment(const std::string &segment)
 {
     _segments_vector.push_back(segment);
 }
 
-string Transport_Layer::get_next_segment()
+std::string Transport_Layer::get_next_segment()
 {
-    string next_segment = _segments_vector[0];
+    std::string next_segment = _segments_vector[0];
     _segments_vector.erase(_segments_vector.begin());
     return next_segment;
 }
 
-void Transport_Layer::print_segment_vector(const std::vector<string> &vector)
+void Transport_Layer::print_segment_vector(const std::vector<std::string> &vector)
 {
     int i = 0;
     std::cout << "Number of segments: " << vector.size() << std::endl;
-    for (const string &element : vector)
+    for (const std::string &element : vector)
     {
         std::cout << "Segment " << i << ":  " << element << std::endl;
         i++;
