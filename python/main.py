@@ -1,5 +1,6 @@
-import os
-from packages.share_data import SharedData
+import os, sys
+from PySide6.QtWidgets import QApplication
+from gui.mainwindow import MainWindow
 
 def path():
     try:
@@ -12,7 +13,7 @@ def path():
         # Walk through the home directory and subdirectories to find 'Mobile_robotsystem'
         for root, dirs, files in os.walk(home_dir):
             if 'Mobile_robotsystem' in dirs:
-                target_dir = os.path.join(root, 'Mobile_robotsystem')
+                target_dir = os.path.join(root, 'Mobile_robotsystem//python')
                 break
 
         # Check if the target directory was found
@@ -26,36 +27,23 @@ def path():
         print(f"Failed to change directory: {e}")
         return
 
-def main(): 
-    
-    path()
-    print(os.getcwd())
-    data = [
-        [11, 8, 5],
-        [14, 7, 7],
-        [11, 9, 9],
-        [13, 6, 9],
-        [11, 1, 0],
-        [14, 3, 0],
-        [11, 0, 2],
-        [13, 9, 1],
-        [11, 2, 3],
-        [14, 8, 3]
-    ]
-    shared_data = SharedData()
-    bits = shared_data.calculate_bit_string(data)
-    value = shared_data.bits_to_int(bits)
-    print (f"Value: {value}")
+def clear_file():
+    path = "..//Docs//shared_file.txt"
     try:
-        shared_data.save_to_file(value)
-        bits2 = shared_data.int_to_bit(value)
-        value2 = shared_data.bits_to_int(bits2)
-        if bits2 == bits and value == value2:
-            print("success")
-        else:
-            print("failure")
-    except SharedData.SharedDataException as e:
-        print(f"Error: {e}")
+        with open(path, 'w') as file:
+            file.write(" ")
+            print(os.getcwd(), " ", path)
+    except Exception as e:
+        print(f"Failed to clear file: {e}")
+        return
+
+def main(): 
+    path()
+    clear_file()
+    app = QApplication([])
+    widget = MainWindow()
+    widget.show()
+    sys.exit(app.exec())
 
 if __name__ == '__main__':
     main()

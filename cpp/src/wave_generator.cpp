@@ -1,47 +1,40 @@
 #include "wave_generator.h"
 
-WaveGenerator::WaveGenerator()
-{
+
+WaveGenerator::WaveGenerator(){
+
 }
 
-WaveGenerator::WaveGenerator(std::vector<std::vector<uint16_t>> sequence) : _sequence(sequence)
-{
-    _frequency_combinations_DTMF.push_back({0,0});
-    for (int i = 0; i < _low_frequencies.size(); i++)
-    {
-        std::vector<float> temp_vec;
-        for (int j = 0; j < _high_frequencies.size(); j++)
-        {
-            temp_vec.push_back(_low_frequencies[i]);
-            temp_vec.push_back(_high_frequencies[j]);
+WaveGenerator::WaveGenerator(std::vector<int> &sequence): _sequence(sequence){
+    for(int i = 0; i < _low_frequencies.size(); i++){
+		std::vector<float> temp_vec;
 
-            _frequency_combinations_DTMF.push_back(temp_vec);
-            temp_vec.clear();
-        }
-    }
-    add_zeros_to_start_of_signal();
+		for(int j = 0; j < _high_frequencies.size(); j++){
+			temp_vec.push_back(_low_frequencies[i]);
+			temp_vec.push_back(_high_frequencies[j]);
 
-    for (int i = 0; i < sequence.size(); i++)
-    {
-        std::vector<std::vector<float>> temp_vec;
-        int j = 0;
-        for (int j = 0; j < sequence[i].size(); j++) // Keep pushing frequencies no matter how many inside
-        {
-            temp_vec.push_back(_frequency_combinations_DTMF[sequence[i][j]+1]);
-        }
+			_frequency_combinations_DTMF.push_back(temp_vec);
+			temp_vec.clear();
+		}
+	}
+    //add_zeros_to_start_of_signal();
+    add_start_sequence();
 
-        _all_frequencies_to_be_played.push_back(temp_vec);
-        temp_vec.clear();
+    for(int i = 0; i < sequence.size(); i++){
+        _all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[sequence[i]]); //add +1 to make dtmf from 0-15 remove the +1 to make dtmf from 1-16
     }
 }
-void WaveGenerator::add_zeros_to_start_of_signal()
-{
-    std::vector<std::vector<float>> temp_vec;
-    temp_vec.push_back({0, 0});
-    temp_vec.push_back({0, 0});
-    temp_vec.push_back({0, 0});
 
-    _all_frequencies_to_be_played.push_back(temp_vec);
+void WaveGenerator::add_start_sequence(){
+    _all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[0]);
+    //_all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[1]);
+    //_all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[2]);
+}
+
+void WaveGenerator::add_zeros_to_start_of_signal(){
+    _all_frequencies_to_be_played.push_back({0,0});
+    _all_frequencies_to_be_played.push_back({0,0});
+    _all_frequencies_to_be_played.push_back({0,0});
 }
 void WaveGenerator::apply_fade_in(std::vector<sf::Int16> &samples, int fadeLength)
 {
@@ -65,19 +58,17 @@ void WaveGenerator::apply_fade_out(std::vector<sf::Int16> &samples, int fadeLeng
 void WaveGenerator::generate_sine_wave_pairs()
 {
     // Iterates through each pair of frequencies
-    for (int j = 0; j < _all_frequencies_to_be_played.size(); j++)
-    {
-        for (const auto &frequencies : _all_frequencies_to_be_played[j])
-        {
-            if (frequencies.size() == 2)
-            {
+
+    //for(int j = 0; j < _all_frequencies_to_be_played.size(); j++){
+        for (std::vector<float> frequencies : _all_frequencies_to_be_played) {
+            if (frequencies.size() == 2) {
                 std::cout << "Generating samples for frequencies: " << frequencies[0] << " Hz and " << frequencies[1] << " Hz" << std::endl;
 
                 // Generates samples for one sound at a time
                 int conversion_to_seconds = 1000;
-                std::vector<sf::Int16> samples(_sample_rate * _duration / conversion_to_seconds);
-                for (unsigned i = 0; i < samples.size(); ++i)
-                {
+
+                std::vector<sf::Int16> samples((_sample_rate * _duration) / conversion_to_seconds);
+                for (unsigned i = 0; i < samples.size(); ++i) {
                     float time = static_cast<float>(i) / _sample_rate;
                     samples[i] = static_cast<sf::Int16>(
                         _amplitude * (std::sin(2 * M_PI * frequencies[0] * time) + std::sin(2 * M_PI * frequencies[1] * time)));
@@ -94,8 +85,9 @@ void WaveGenerator::generate_sine_wave_pairs()
                 std::cerr << "Warning: Each inner vector must contain exactly two frequencies." << std::endl;
             }
         }
-    }
-    // return _all_samples;  // Return the generated samples for all pairs
+
+    //}
+    //return _all_samples;  // Return the generated samples for all pairs
 }
 void WaveGenerator::load_all_into_buffers()
 {
@@ -121,8 +113,9 @@ void WaveGenerator::create_sounds_from_buffers()
         _sounds.push_back(std::move(sound));
     }
 }
-void WaveGenerator::play_sounds()
-{
+
+
+void WaveGenerator::play_sounds(){
     generate_sine_wave_pairs();
     load_all_into_buffers();
     create_sounds_from_buffers();
@@ -135,15 +128,42 @@ void WaveGenerator::play_sounds()
         sf::sleep(sf::milliseconds(_duration + _time_between_sounds));
     }
 }
-void WaveGenerator::print_frequency_vector()
-{
-    for (auto a : _all_frequencies_to_be_played)
-    {
-        for (auto b : a)
-        {
-            std::cout << " { " << b[0] << " Hz, " << b[1] << " Hz } ";
+
+void WaveGenerator::print_frequency_vector(){
+    for(auto a: _all_frequencies_to_be_played){
+        std::cout << " { " << a[0] << " Hz, " << a[1] << " Hz } ";
+    }
+    std::cout << "\n";
+}
+
+void WaveGenerator::save_to_wav_file(const std::string& filename){
+    std::vector<sf::Int16> combined_samples;
+
+    // Number of samples for the silence (delay between sounds)
+    int silence_duration_in_samples = (_sample_rate * _time_between_sounds) / 1000;  // Convert ms to number of samples
+    std::vector<sf::Int16> silence(silence_duration_in_samples, 0);  // Silence is represented by 0-valued samples
+
+    // Combine all the samples with silence in between
+    for (size_t i = 0; i < _all_samples.size(); ++i) {
+        combined_samples.insert(combined_samples.end(), _all_samples[i].begin(), _all_samples[i].end());
+
+        if (i != _all_samples.size() - 1) {
+            combined_samples.insert(combined_samples.end(), silence.begin(), silence.end());
         }
-        std::cout << "\n";
+    }
+    SF_INFO sfinfo;
+    sfinfo.channels = 1;  // Mono (can be changed to 2 for stereo if needed)
+    sfinfo.samplerate = _sample_rate;
+    sfinfo.format = SF_FORMAT_WAV | SF_FORMAT_PCM_16; // This sets the file format to wav and 16-bit PCM (Pulse Code Modulation), it was recommended.
+    SNDFILE* outFile = sf_open(filename.c_str(), SFM_WRITE, &sfinfo);
+    if (!outFile) {
+        std::cerr << "Error: could not open file for writing: " << sf_strerror(outFile) << std::endl; //Should throw a custom WaveGenError
+        return;
+    }
+    std::cout << combined_samples.size() << std::endl;
+    sf_count_t count = sf_write_short(outFile, combined_samples.data(), combined_samples.size()); // Here sf_write_short is used to write to 16-bit register for sound storage, thats means each sample is 16 bits aka a short int.
+    if (count != combined_samples.size()) {
+        std::cerr << "Error: only wrote " << count << " samples out of " << combined_samples.size() << std::endl;
     }
 }
 

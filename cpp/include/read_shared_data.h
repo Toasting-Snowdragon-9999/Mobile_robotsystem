@@ -1,3 +1,6 @@
+#ifndef READ_SHARED_DATA_H
+#define READ_SHARED_DATA_H
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -7,6 +10,9 @@
 #include <sstream>
 #include <stdlib.h>
 #include <cstdint>
+#include <nlohmann/json.hpp>
+#include <filesystem>   
+
 class SharedDataException : public std::runtime_error {
     public:
         int _error_code;
@@ -21,6 +27,7 @@ class SharedDataException : public std::runtime_error {
             if (_error_code != 0) {
                 oss << " (Error code: " << _error_code << ")";
             }
+            
             static std::string full_error;
             full_error = oss.str(); // Update static variable with new message
             return full_error.c_str(); // Return pointer to the message
@@ -30,26 +37,34 @@ class SharedDataException : public std::runtime_error {
 class SharedData{
     public:
 
-        SharedData();
-        std::vector<std::vector<uint16_t>> read_shared_data();
+        SharedData(std::string fname);
         /**
-         * @brief printing method.
+         * @brief This method reads from the shared_file.txt found in Docs and then makes some bit shifting and AND operation to split it into a list of lists of each 3 uint16 commands.
+         *
+         * @param nothing.
+         * @return std::vector<std::vector<uint16_t>>
+         */
+        std::vector<std::vector<uint16_t>> read_shared_data();
+        std::vector<std::vector <std::string> > read_json();
+        /**
+         * @brief printing method for printint the data vector like [[command1, command2, command3] , [command4, command5, command6]].
          *
          * @param nothing.
          * @return Nothing.
          */
         void print();
         /**
-         * @brief Getter method for .
+         * @brief Getter method for the data vector.
          *
          * @param nothing.
-         * @return Nothing.
+         * @return std::vector<std::vector<uint16_t>>.
          */
-        double get_data();
+        std::vector<std::vector<uint16_t>> get_data();
 
     private:
         __uint128_t _data;
         std::vector<std::vector<uint16_t>> _path;
+        std::string _fname;
 
         /**
          * @brief Read data method, used for reading the data from a shared files.
@@ -58,6 +73,13 @@ class SharedData{
          * @return Nothing.
          */
         void read_data();
+        /**
+         * @brief Read data method, used for reading the data from a shared files.
+         *
+         * @param vec a list on the form std::vector<std::vector<uint16_t>>& which is a reference to a vector.
+         * @param value a list on the form std::vector<uint16_t> that should be the first element in the vec.
+         * @return Nothing.
+         */
         void push_to_front(std::vector<std::vector<uint16_t>>& vec, std::vector<uint16_t> value);
         /**
          * @brief returning the an array of the full path.
@@ -65,8 +87,9 @@ class SharedData{
          * @param nothing.
          * @return Nothing.
          */
-        std::vector<std::vector<int>> get_path();
         void sort(std::vector<std::vector<uint16_t>>& unsorted);
         void calculate_path();
         __uint128_t string_to_uint128(const std::string& str);
 };
+
+#endif

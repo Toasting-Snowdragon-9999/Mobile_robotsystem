@@ -31,21 +31,6 @@ set(SOURCES
     src/interfaces/tl_to_dll.cpp
 )
 
-
-# Headers
-set(HEADERS
-    include/hello_world.h
-    include/read_shared_data.h
-    include/wave_generator.h
-    include/data_link_layer.h
-    include/application_layer.h
-    include/crc.h
-    include/transport_layer.h
-    include/interfaces/tl_to_dll.h
-    include/interfaces/al_to_tl.h
-
-)
-
 # Add executable
 add_executable(mobile_system ${SOURCES} ${HEADERS})
 
@@ -54,3 +39,4 @@ target_link_libraries(mobile_system
     PRIVATE sfml-audio sfml-system
     ${SNDFILE_LIBRARIES}
 )
+
