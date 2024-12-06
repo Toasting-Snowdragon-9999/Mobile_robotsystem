@@ -20,7 +20,7 @@ class DataLinkLayer
 {
 
 private:
-    std::string _pre_and_postamble = "11101110"; // DTMF tone for preamble and postamble
+    std::string _pre_and_postamble = "11100000"; // DTMF tone for preamble and postamble
     std::string _SFD = "11110";                  // Start-of-Frame Delimiter for header
     std::string _EFD = _SFD;                     // End-of-Frame Delimiter for header
     std::string _ESC_nibble = "1111";            // ESC nibble
@@ -77,7 +77,7 @@ public:
     /// @brief Finds the data/message itself, from the received package
     /// @param received_package Type: String - The received package as a string of bits
     /// @return Type: String - The data itself
-    std::string get_data_from_package(std::string received_package);
+    std::string get_data_from_package();
 
     // Method for main
     void start_ack_timer();

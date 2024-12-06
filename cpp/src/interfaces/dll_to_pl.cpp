@@ -1,6 +1,6 @@
 #include "interfaces/dll_to_pl.h"
 
-std::string DllToPl::add_ready_msg(const std::string &msg_to_send)
+void DllToPl::add_ready_msg(const std::string &msg_to_send)
 {
 
     _ready_msg = msg_to_send;

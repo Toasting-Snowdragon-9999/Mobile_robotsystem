@@ -12,6 +12,7 @@
 #include <cstdint>
 #include <nlohmann/json.hpp>
 #include <filesystem>   
+#include "communication_protocol/application_layer.h"
 
 class SharedDataException : public std::runtime_error {
     public:

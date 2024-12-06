@@ -4,11 +4,11 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include<string>
+#include <string>
 
 
-class SIGNAL_PROCESSING
-{
+class SignalProcessing{
+
 private:
     
     std::vector<int> _message_vec_int;
@@ -21,9 +21,11 @@ private:
     };
 
 public:
-
-std::vector<int> pre_postamble_remover(std::vector<int> message_vec);
-std::string message_str_binary();
+    SignalProcessing();
+    SignalProcessing(std::vector<int> message_vec_int);
+    std::vector<int> pre_postamble_remover(std::vector<int> message_vec);
+    std::string message_str_binary();
+    std::vector<int> convert_to_dtmf(std::string message_str);
 
 
 };
