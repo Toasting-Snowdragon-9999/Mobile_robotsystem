@@ -6,7 +6,8 @@ DataLinkLayer::DataLinkLayer(std::string robot_path) : _robot_path(robot_path) {
 std::string DataLinkLayer::get_ready_for_pl_path()
 {
     std::string to_send = _ready_for_pl_path;
-    _ready_for_pl_path.clear();
+    // _ready_for_pl_path.clear();
+    std::cout << "Inside function " << to_send << std::endl;
     return to_send;
 }
 
@@ -51,7 +52,7 @@ std::string DataLinkLayer::protocol_structure()
 
     // CRC encoding header+data
     std::string crc_encoded_header_and_data = CRC::CRC32::encode(zero_padded_header_and_data);
-    
+
     // Nibble stuffing CRC encoded header+data
     std::string nibble_stuffed_header_and_data = nibble_stuffing(crc_encoded_header_and_data);
 
@@ -63,7 +64,7 @@ std::string DataLinkLayer::protocol_structure()
 
     _ready_for_pl_path = creating_package.str();
 
-    return DataLinkLayer::get_ready_for_pl_path();
+    return _ready_for_pl_path;
 }
 
 std::string DataLinkLayer::nibble_stuffing(std::string package)
@@ -271,10 +272,10 @@ bool DataLinkLayer::is_ack_received()
     return _is_ack_received;
 }
 
-void DataLinkLayer::set_ack_received(const bool &boolean){
+void DataLinkLayer::set_ack_received(const bool &boolean)
+{
 
     _is_ack_received = boolean;
-
 }
 
 int DataLinkLayer::find_max_ones(const std::string &s)
@@ -363,4 +364,3 @@ std::string DataLinkLayer::bit_unstuff(const std::string &header)
 
     return unstuffed;
 }
-

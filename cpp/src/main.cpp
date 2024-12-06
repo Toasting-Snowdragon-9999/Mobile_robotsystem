@@ -16,13 +16,12 @@
 #include "interfaces/tl_to_dll.h"
 #include "interfaces/dll_to_pl.h"
 
-
 int main()
 {
 
-// ======================================================
-// SENDER
-// ======================================================
+	// ======================================================
+	// SENDER
+	// ======================================================
 
 	robot_command r1("-fw", "325");
 	robot_command r2("-l", "6");
@@ -70,30 +69,26 @@ int main()
 
 	DataLinkLayer dll(inter_2.take_segment_from_buffer());
 
-	dll.protocol_structure();
-
 	DllToPl inter_3;
 
 	// 	while (dll.is_ack_received() == false)
 	// {
 	// 	//inter_3.add_ready_msg(dll.get_ready_for_pl_path());
 
-	// }
+	// }'
 
-	inter_3.add_ready_msg(dll.get_ready_for_pl_path());
+	inter_3.add_ready_msg(dll.protocol_structure());
 
 	std::string msg_to_send = inter_3.get_ready_msg();
 
-
-
-// ======================================================
-// SENDER
-// ======================================================
+	// ======================================================
+	// SENDER
+	// ======================================================
 
 	std::string bitstuff_test = "1111101011111010111111";
 
 	std::cout << "Max consecutive ones of " << bitstuff_test << ": " << tl.find_max_ones(bitstuff_test)
-		 << std::endl;
+			  << std::endl;
 
 	std::cout << "Bit stuffing of " << bitstuff_test << ": 		" << tl.bit_stuff(bitstuff_test) << std::endl;
 	std::cout << "\nBitstream for test:	";
@@ -112,6 +107,10 @@ int main()
 	std::string test_string_dll = "101011110110011101110";
 	DataLinkLayer lucas_dll(test_string_dll);
 	std::string sending_package = lucas_dll.protocol_structure();
+
+	std::cout
+		<< " Test 5 "
+		<< std::endl;
 	lucas_dll.get_data_from_package(sending_package);
 
 	// SharedData sd; static_cast<unsigned long>
@@ -148,49 +147,49 @@ int main()
 	// 	}
 	// }
 	// py to cpp ended
-/*
-	// std::filesystem::path currentPath = std::filesystem::current_path();
-    // std::std::cout << "Current working directory: " << currentPath << std::std::endl;
-	// return 0;
-	std::string path_gui = "../Docs/shared_file.json";
-	std::string path_debug = "../../Docs/shared_file.json";
-	SharedData sd(path_debug);
+	/*
+		// std::filesystem::path currentPath = std::filesystem::current_path();
+		// std::std::cout << "Current working directory: " << currentPath << std::std::endl;
+		// return 0;
+		std::string path_gui = "../Docs/shared_file.json";
+		std::string path_debug = "../../Docs/shared_file.json";
+		SharedData sd(path_debug);
 
-	std::vector<uint16_t> initial_test = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+		std::vector<uint16_t> initial_test = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
-	std::vector<int> test_sequence1 = // 50 numbers
-		{14, 0, 5, 3, 5, 7, 11, 2, 8, 1,
-		6, 4, 10, 9, 13, 12, 11, 14, 7,
-		6, 3, 8, 5, 2, 10, 11, 9, 0, 12,
-		4, 13, 1, 15, 14, 0, 2, 5, 8, 11,
-		10, 9, 0, 13, 12, 3, 4, 15, 1, 14, 0};
+		std::vector<int> test_sequence1 = // 50 numbers
+			{14, 0, 5, 3, 5, 7, 11, 2, 8, 1,
+			6, 4, 10, 9, 13, 12, 11, 14, 7,
+			6, 3, 8, 5, 2, 10, 11, 9, 0, 12,
+			4, 13, 1, 15, 14, 0, 2, 5, 8, 11,
+			10, 9, 0, 13, 12, 3, 4, 15, 1, 14, 0};
 
-	std::vector<int> test_sequence2 = // 100 numbers
-		{14, 0, 5, 3, 5, 7, 11, 2, 8, 1,
-		6, 4, 10, 9, 13, 12, 15, 14, 7,
-		6, 3, 8, 5, 2, 10, 11, 9, 0, 12,
-		4, 13, 1, 15, 14, 0, 2, 5, 8, 11,
-		10, 9, 0, 13, 12, 3, 4, 15, 1, 7,
-		8, 7, 5, 10, 6, 3, 11, 14, 2, 9,
-		4, 13, 7, 0, 8, 12, 6, 15, 1, 2,
-		10, 11, 9, 3, 5, 13, 7, 8, 6, 12,
-		4, 11, 0, 1, 14, 7, 5, 3, 8, 10,
-		1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
+		std::vector<int> test_sequence2 = // 100 numbers
+			{14, 0, 5, 3, 5, 7, 11, 2, 8, 1,
+			6, 4, 10, 9, 13, 12, 15, 14, 7,
+			6, 3, 8, 5, 2, 10, 11, 9, 0, 12,
+			4, 13, 1, 15, 14, 0, 2, 5, 8, 11,
+			10, 9, 0, 13, 12, 3, 4, 15, 1, 7,
+			8, 7, 5, 10, 6, 3, 11, 14, 2, 9,
+			4, 13, 7, 0, 8, 12, 6, 15, 1, 2,
+			10, 11, 9, 3, 5, 13, 7, 8, 6, 12,
+			4, 11, 0, 1, 14, 7, 5, 3, 8, 10,
+			1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
 
-	std::std::cout << test_sequence2.size() << std::std::endl;
+		std::std::cout << test_sequence2.size() << std::std::endl;
 
-	try{
-		sd.read_json();
-		sd.print();
-	}
-	catch(SharedDataException &e){
-		if (e.error_code() == 21){
+		try{
+			sd.read_json();
+			sd.print();
 		}
-		else{std::std::cout << "[Error] " << e.what() << std::std::endl;}
-	}
+		catch(SharedDataException &e){
+			if (e.error_code() == 21){
+			}
+			else{std::std::cout << "[Error] " << e.what() << std::std::endl;}
+		}
 
-	PhysicalLayer pl;
-    pl.listen(false);
-*/
+		PhysicalLayer pl;
+		pl.listen(false);
+	*/
 	return 0;
 }
