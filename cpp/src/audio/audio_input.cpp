@@ -176,7 +176,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
     if(hyperx){
         multiplier = 0.5;
     }
-    float thresh_hold = 0.5*(1 - multiplier);
+    float thresh_hold = 0.5*(1 - multiplier);   
     std::vector <int> _preamble = {14, 0};
     int _esc_tone = 15;  
 
