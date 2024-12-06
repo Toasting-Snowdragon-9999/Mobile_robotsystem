@@ -9,6 +9,16 @@
 #include "audio/audio_input.h"
 #include "audio/wave_generator.h"
 
+#include "communication_protocol/application_layer.h"
+#include "communication_protocol/data_link_layer.h"
+#include "communication_protocol/transport_layer.h"
+#include "communication_protocol/physical_layer.h"
+
+#include "interfaces/al_to_tl.h"
+#include "interfaces/tl_to_dll.h"
+#include "interfaces/dll_to_pl.h"
+#include "interfaces/signal_processing.h"
+
 // Definitions
 #define SAMPLE_RATE (16000) // Value chosen because of microphone/drivers
 #define FRAMES_PER_BUFFER (480)
@@ -40,10 +50,19 @@ int main(int argc, char *argv[]) {
         {14, 0, 15, 15, 4, 1, 14, 15, 15, 5, 8, 15, 15,
         5, 1, 9, 2, 3, 5, 10, 1, 5, 12, 0, 10, 14, 0};
 
+    robot_command r1("-fw", "325");
+	robot_command r2("-l", "6");
+	robot_command r3("-r", "21");
+	robot_command r4("-bw", "15");
+	robot_command r5("-r", "3");
+
+	std::vector<robot_command> test_bit_vec = {r1, r2, r3, r4, r5};
+
     // -- Play sounds --
     //WaveGenerator sounds(test_sequence2);
     //sounds.play_sounds();
 
+/*
 
     // --- Audio recording and signal processing ---
     AudioInput audio_input(SAMPLE_RATE, FRAMES_PER_BUFFER);
@@ -55,6 +74,31 @@ int main(int argc, char *argv[]) {
     //audio_input.save_to_textfile("../dtmf_sounds.txt");
     //audio_input.check(true, test_sequence2);
     audio_input.audio_close();
+
+*/
+
+    std::vector<int> ack = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
+	PhysicalLayer pl;
+	std::vector<int> dtmf_sounds = pl.listen(false);
+
+	SignalProcessing sp(dtmf_sounds);
+	std::string binary_msg = sp.message_str_binary();
+
+	DataLinkLayer dl_layer(binary_msg);
+	std::string package = dl_layer.get_data_from_package();
+
+	TlToDll i_tl;
+	i_tl.add_segment_to_buffer(package);
+	std::string segment = i_tl.take_segment_from_buffer();
+
+	AlToTl i_al;
+	i_al.add_string_to_buffer(segment);
+	std::string buffer = i_al.get_buffer();
+
+	ApplicationLayer app_layer;
+	std::vector<robot_command> commands = app_layer.bits_to_commands(buffer);
+
+
 
     // --- Turtlebot control ---
     rclcpp::init(argc, argv);
@@ -72,11 +116,32 @@ int main(int argc, char *argv[]) {
 
     // --- Play sounds ---
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    if(!audio_input.check(true, tihi)){
-        WaveGenerator sounds(ja);
-        sounds.play_sounds();
+
+    for(auto i = 0; i < test_bit_vec.size(); i++){
+        std::cout << std::to_string(i) + " Sent: " + test_bit_vec[i].direction + ", " + test_bit_vec[i].value << std::endl;
+
+    }
+    for(auto i = 0; i < test_bit_vec.size(); i++){
+        std::cout << std::to_string(i) + " Received: " + commands[i].direction + ", " + commands[i].value << std::endl;
     }
 
+
+    bool ack_check = false;
+    if(test_bit_vec.size() == commands.size()){
+        for(auto i = 0; i < commands.size(); i++){
+            if((test_bit_vec[i].direction == commands[i].direction) && (test_bit_vec[i].value == commands[i].value)){
+                ack_check = true;
+            } else{
+                ack_check = false;
+                break;
+            }
+        }
+    } else{
+        std::cout << "Not the same size" << std::endl;
+    }
+    if(ack_check){
+        pl.yell(ack);
+    }
     rclcpp::shutdown();
     return 0;
 }
