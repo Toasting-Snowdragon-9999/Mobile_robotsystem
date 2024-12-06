@@ -23,13 +23,12 @@ set(SOURCES
     src/hello_world.cpp
     src/read_shared_data.cpp
     src/wave_generator.cpp
-)
-
-# Headers
-set(HEADERS
-    include/hello_world.h
-    include/read_shared_data.h
-    include/wave_generator.h
+    src/data_link_layer.cpp
+    src/application_layer.cpp
+    src/crc.cpp
+    src/transport_layer.cpp
+    src/interfaces/al_to_tl.cpp
+    src/interfaces/tl_to_dll.cpp
 )
 
 # Add executable
