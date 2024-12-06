@@ -109,7 +109,7 @@ int main(){
 	}
 
 	PhysicalLayer pl;
-    pl.yell(test);
+    pl.yell(dtmf);
 
 	return 0;
 }
