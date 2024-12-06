@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp" "CMakeFiles/move_turtlebot.dir/src/goertzel.cpp.o" "gcc" "CMakeFiles/move_turtlebot.dir/src/goertzel.cpp.o.d"
   "/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp" "CMakeFiles/move_turtlebot.dir/src/main.cpp.o" "gcc" "CMakeFiles/move_turtlebot.dir/src/main.cpp.o.d"
   "/home/pi/ros2_ws/src/turtlebot3_control/src/move_turtlebot.cpp" "CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o" "gcc" "CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o.d"
+  "/home/pi/ros2_ws/src/turtlebot3_control/src/wave_generator.cpp" "CMakeFiles/move_turtlebot.dir/src/wave_generator.cpp.o" "gcc" "CMakeFiles/move_turtlebot.dir/src/wave_generator.cpp.o.d"
   )
 
 # Targets to which this target links.

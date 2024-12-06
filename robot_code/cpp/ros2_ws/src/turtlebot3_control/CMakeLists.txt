@@ -14,6 +14,9 @@ endif()
 
 include_directories(include)
 
+# For SFML (sine waves)
+find_package(SFML 2.5 COMPONENTS audio system REQUIRED)
+
 # For ROS2
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -54,12 +57,14 @@ set(SOURCES
     src/move_turtlebot.cpp
     src/goertzel.cpp
     src/audio_input.cpp
+    src/wave_generator.cpp
 )
 
 # Headers
 set(HEADERS
     include/goertzel.h
     include/audio_input.h
+    include/wave_generator.h
 )
 
 # Add executable

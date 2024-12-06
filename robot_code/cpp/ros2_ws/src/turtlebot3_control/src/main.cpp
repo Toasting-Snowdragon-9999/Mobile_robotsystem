@@ -7,6 +7,7 @@
 #include "move_turtlebot.cpp"  // Include header for movement control
 #include "goertzel.h"
 #include "audio_input.h"
+#include "wave_generator.h"
 
 // Definitions
 #define SAMPLE_RATE (16000) // Value chosen because of microphone/drivers
@@ -34,6 +35,11 @@ int main(int argc, char *argv[]) {
         4, 11, 0, 1, 14, 7, 5, 3, 8, 10,
         1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
 
+    // -- Play sounds --
+    WaveGenerator sounds(test_sequence2);
+    sounds.play_sounds();
+
+/*
     // --- Audio recording and signal processing ---
     AudioInput audio_input(SAMPLE_RATE, FRAMES_PER_BUFFER);
     audio_input.audio_open();
@@ -44,7 +50,7 @@ int main(int argc, char *argv[]) {
     //audio_input.save_to_textfile("../dtmf_sounds.txt");
     audio_input.check(true, test_sequence2);
     audio_input.audio_close();
-
+*/
     // --- Turtlebot control ---
     rclcpp::init(argc, argv);
     auto node = std::make_shared<MoveTurtlebot>();

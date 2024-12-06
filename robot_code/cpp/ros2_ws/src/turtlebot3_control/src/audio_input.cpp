@@ -187,7 +187,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
 		buffer.push_back(mono_in);
     }
-
+/*
     data->recorded_samples.push_back(buffer);
 
     if(data->pre_success){
@@ -257,7 +257,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
     //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
     //std::cout << "Time difference: " << duration.count() << " microseconds" << std::endl;
-
+*/
     return paContinue;
 }
 

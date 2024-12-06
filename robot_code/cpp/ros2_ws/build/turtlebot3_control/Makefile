@@ -306,6 +306,30 @@ src/move_turtlebot.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/move_turtlebot.dir/build.make CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.s
 .PHONY : src/move_turtlebot.cpp.s
 
+src/wave_generator.o: src/wave_generator.cpp.o
+.PHONY : src/wave_generator.o
+
+# target to build an object file
+src/wave_generator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/move_turtlebot.dir/build.make CMakeFiles/move_turtlebot.dir/src/wave_generator.cpp.o
+.PHONY : src/wave_generator.cpp.o
+
+src/wave_generator.i: src/wave_generator.cpp.i
+.PHONY : src/wave_generator.i
+
+# target to preprocess a source file
+src/wave_generator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/move_turtlebot.dir/build.make CMakeFiles/move_turtlebot.dir/src/wave_generator.cpp.i
+.PHONY : src/wave_generator.cpp.i
+
+src/wave_generator.s: src/wave_generator.cpp.s
+.PHONY : src/wave_generator.s
+
+# target to generate assembly for a file
+src/wave_generator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/move_turtlebot.dir/build.make CMakeFiles/move_turtlebot.dir/src/wave_generator.cpp.s
+.PHONY : src/wave_generator.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -334,6 +358,9 @@ help:
 	@echo "... src/move_turtlebot.o"
 	@echo "... src/move_turtlebot.i"
 	@echo "... src/move_turtlebot.s"
+	@echo "... src/wave_generator.o"
+	@echo "... src/wave_generator.i"
+	@echo "... src/wave_generator.s"
 .PHONY : help
 
 
