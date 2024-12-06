@@ -19,6 +19,7 @@ How do I get set up?
 
 
     PortAudio: (might not work in WSL)
+    
         install follow these steps: 
         "sudo apt update
         sudo apt install build-essential libasound2-dev libjack-jackd2-dev"
@@ -28,6 +29,8 @@ How do I get set up?
         "cd bin
         ./pa_devs
         ./pa_minlat"
+
+        Finally write: "sudo apt install portaudio19-dev"
         
 
 
