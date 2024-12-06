@@ -57,7 +57,7 @@ void WaveGenerator::generate_sine_wave_pairs() {
                                            std::sin(2 * M_PI * frequencies[1] * time));
             }
 
-            int fade_length = (_sample_rate * 100) / 1000;  // 100 ms fade
+            int fade_length = (_sample_rate * (_duration/10)) / 1000;  // 1/10 of the duration
             apply_fade_in(samples, fade_length);
             apply_fade_out(samples, fade_length);
 

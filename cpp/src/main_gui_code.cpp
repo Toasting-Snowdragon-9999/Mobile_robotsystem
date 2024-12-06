@@ -9,14 +9,14 @@
 
 // ===================================================
 #include "read_shared_data.h"
-#include "audio/sfml_wave_generator.h"
-#include "crc.h"
+// #include "audio/wave_generator.h"
 
 // =======================Communication Layers============================
 #include "communication_protocol/application_layer.h"
 #include "communication_protocol/data_link_layer.h"
 #include "communication_protocol/transport_layer.h"
 #include "communication_protocol/physical_layer.h"
+#include "communication_protocol/crc.h"
 
 // =======================Inerfaces============================
 #include "interfaces/al_to_tl.h"

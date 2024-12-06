@@ -9,7 +9,7 @@
 
 // ===================================================
 #include "read_shared_data.h"
-#include "crc.h"
+#include "communication_protocol/crc.h"
 
 // =======================Communication Layers============================
 #include "communication_protocol/application_layer.h"

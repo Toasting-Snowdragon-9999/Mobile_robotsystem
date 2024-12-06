@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <memory>
 #include <chrono>
-#include "crc.h"
+#include "communication_protocol/crc.h"
 
 
 struct robot_command

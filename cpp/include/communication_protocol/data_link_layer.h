@@ -13,7 +13,7 @@
 #include <cstdint>
 #include <sstream>
 #include <chrono>
-#include "crc.h"
+#include "communication_protocol/crc.h"
 
 
 class DataLinkLayer

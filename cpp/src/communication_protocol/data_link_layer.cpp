@@ -1,5 +1,5 @@
 #include "communication_protocol/data_link_layer.h"
-#include "crc.h"
+#include "communication_protocol/crc.h"
 
 DataLinkLayer::DataLinkLayer(std::string robot_path) : _robot_path(robot_path) {}
 

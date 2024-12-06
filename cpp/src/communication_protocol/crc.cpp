@@ -1,4 +1,4 @@
-#include "crc.h"
+#include "communication_protocol/crc.h"
 
 namespace CRC
 {
