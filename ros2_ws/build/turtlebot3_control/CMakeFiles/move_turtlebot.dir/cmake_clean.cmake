@@ -1,8 +1,14 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/move_turtlebot.dir/src/audio_input.cpp.o"
+  "CMakeFiles/move_turtlebot.dir/src/audio_input.cpp.o.d"
+  "CMakeFiles/move_turtlebot.dir/src/goertzel.cpp.o"
+  "CMakeFiles/move_turtlebot.dir/src/goertzel.cpp.o.d"
   "CMakeFiles/move_turtlebot.dir/src/main.cpp.o"
   "CMakeFiles/move_turtlebot.dir/src/main.cpp.o.d"
   "CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o"
   "CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o.d"
+  "CMakeFiles/move_turtlebot.dir/src/wave_generator.cpp.o"
+  "CMakeFiles/move_turtlebot.dir/src/wave_generator.cpp.o.d"
   "move_turtlebot"
   "move_turtlebot.pdb"
 )

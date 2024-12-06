@@ -1,8 +1,8 @@
-# Install script for directory: /home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/turtlebot3_control
+# Install script for directory: /home/pi/ros2_ws/src/turtlebot3_control
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control")
+  set(CMAKE_INSTALL_PREFIX "/home/pi/ros2_ws/install/turtlebot3_control")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -49,12 +49,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot3_control/move_turtlebot"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot3_control" TYPE EXECUTABLE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/move_turtlebot")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot3_control" TYPE EXECUTABLE FILES "/home/pi/ros2_ws/build/turtlebot3_control/move_turtlebot")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot3_control/move_turtlebot" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot3_control/move_turtlebot")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot3_control/move_turtlebot"
-         OLD_RPATH "/opt/ros/humble/lib:"
+         OLD_RPATH "/opt/ros/humble/lib:/usr/local/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot3_control/move_turtlebot")
@@ -63,11 +63,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/turtlebot3_control")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/turtlebot3_control")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/turtlebot3_control")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/turtlebot3_control")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -75,7 +75,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control/environment" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control/environment" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -83,42 +83,42 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control/environment" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control/environment" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/local_setup.bash")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/local_setup.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/local_setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/local_setup.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/package.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_environment_hooks/package.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_index/share/ament_index/resource_index/packages/turtlebot3_control")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_index/share/ament_index/resource_index/packages/turtlebot3_control")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control/cmake" TYPE FILE FILES
-    "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_core/turtlebot3_controlConfig.cmake"
-    "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/ament_cmake_core/turtlebot3_controlConfig-version.cmake"
+    "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_core/turtlebot3_controlConfig.cmake"
+    "/home/pi/ros2_ws/build/turtlebot3_control/ament_cmake_core/turtlebot3_controlConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/src/turtlebot3_control/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot3_control" TYPE FILE FILES "/home/pi/ros2_ws/src/turtlebot3_control/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -129,5 +129,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/build/turtlebot3_control/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/pi/ros2_ws/build/turtlebot3_control/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

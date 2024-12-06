@@ -1,0 +1,62 @@
+[0.113s] Invoking command in '/home/pi/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[0.483s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[0.714s] [ 16%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/goertzel.cpp.o[0m
+[7.139s] In file included from [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:1[m[K:
+[7.140s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/goertzel.h:[m[K In constructor ‘[01m[KGoertzel::Goertzel(std::vector<float>)[m[K’:
+[7.141s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/goertzel.h:29:24:[m[K [01;35m[Kwarning: [m[K‘[01m[KGoertzel::_data[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[7.142s]    29 |     std::vector<float> [01;35m[K_data[m[K;
+[7.143s]       |                        [01;35m[K^~~~~[m[K
+[7.144s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/goertzel.h:27:9:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kint Goertzel::_size_of_signal[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[7.146s]    27 |     int [01;35m[K_size_of_signal[m[K;
+[7.147s]       |         [01;35m[K^~~~~~~~~~~~~~~[m[K
+[7.149s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:8:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[7.150s]     8 | [01;35m[KGoertzel[m[K::Goertzel(const std::vector<float> data)
+[7.151s]       | [01;35m[K^~~~~~~~[m[K
+[7.153s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::_init_coefficients()[m[K’:
+[7.155s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:26:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[7.156s]    26 |     for (int i = 0; [01;35m[Ki < _DTMF_freq.size()[m[K; ++i) {
+[7.158s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[7.159s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::compute_goertzel()[m[K’:
+[7.161s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:35:41:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[7.162s]    35 |     for (int freq_index = 0; [01;35m[Kfreq_index < _DTMF_freq.size()[m[K; ++freq_index) {
+[7.164s]       |                              [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[7.165s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::sort(std::vector<double>&, std::vector<int>&)[m[K’:
+[7.166s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:85:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[7.167s]    85 |     for(int i = 0; [01;35m[Ki < (x.size())/2-1[m[K; i++){
+[7.168s]       |                    [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[7.170s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:89:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[7.171s]    89 |         for (int j = 0; [01;35m[Kj < (x.size())/2-1[m[K; j++){
+[7.172s]       |                         [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[7.178s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:103:33:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[7.179s]   103 |     for(int i = (x.size())/2; [01;35m[Ki < x.size()-1[m[K; i++){
+[7.180s]       |                               [01;35m[K~~^~~~~~~~~~~~[m[K
+[7.181s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:107:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[7.183s]   107 |         for (int j = (x.size())/2; [01;35m[Kj < x.size()-1[m[K; j++){
+[7.184s]       |                                    [01;35m[K~~^~~~~~~~~~~~[m[K
+[7.205s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:[m[K In member function ‘[01m[Kbool Goertzel::detect_bit(std::string, int)[m[K’:
+[7.207s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:192:39:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktype[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[7.208s]   192 | bool Goertzel::detect_bit([01;35m[Kstd::string type[m[K, int dtmf_tone){
+[7.209s]       |                           [01;35m[K~~~~~~~~~~~~^~~~[m[K
+[10.694s] [ 33%] [32m[1mLinking CXX executable move_turtlebot[0m
+[13.690s] [100%] Built target move_turtlebot
+[13.886s] Invoked command in '/home/pi/ros2_ws/build/turtlebot3_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[13.966s] Invoking command in '/home/pi/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/pi/ros2_ws/build/turtlebot3_control
+[14.018s] -- Install configuration: ""
+[14.020s] -- Installing: /home/pi/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot
+[14.038s] -- Set runtime path of "/home/pi/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot" to ""
+[14.040s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/package_run_dependencies/turtlebot3_control
+[14.041s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/parent_prefix_path/turtlebot3_control
+[14.042s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.sh
+[14.044s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.dsv
+[14.045s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.sh
+[14.047s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.dsv
+[14.048s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.bash
+[14.049s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.sh
+[14.050s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.zsh
+[14.052s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.dsv
+[14.053s] -- Installing: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.dsv
+[14.055s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/packages/turtlebot3_control
+[14.056s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig.cmake
+[14.057s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig-version.cmake
+[14.058s] -- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.xml
+[14.066s] Invoked command in '/home/pi/ros2_ws/build/turtlebot3_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/pi/ros2_ws/build/turtlebot3_control

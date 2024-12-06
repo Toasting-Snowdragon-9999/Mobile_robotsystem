@@ -2,7 +2,7 @@
 
 # since this file is sourced use either the provided AMENT_CURRENT_PREFIX
 # or fall back to the destination set at configure time
-: ${AMENT_CURRENT_PREFIX:="/home/chris/git/Mobile_robotsystem/robot_code/cpp/ros2_ws/install/turtlebot3_control"}
+: ${AMENT_CURRENT_PREFIX:="/home/pi/ros2_ws/install/turtlebot3_control"}
 if [ ! -d "$AMENT_CURRENT_PREFIX" ]; then
   if [ -z "$COLCON_CURRENT_PREFIX" ]; then
     echo "The compile time prefix path '$AMENT_CURRENT_PREFIX' doesn't " \

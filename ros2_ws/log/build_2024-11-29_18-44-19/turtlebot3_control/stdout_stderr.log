@@ -1,0 +1,22 @@
+[35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[ 20%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:19:39:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KAudioInput::AudioInput(int)[m[K’
+   19 |     AudioInput audio_input(SAMPLE_RATE[01;31m[K)[m[K;
+      |                                       [01;31m[K^[m[K
+In file included from [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:31:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KAudioInput::AudioInput(int, int)[m[K’
+   31 |     [01;36m[KAudioInput[m[K(int sample_rate, int frames_per_buffer);
+      |     [01;36m[K^~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:31:5:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 1 provided
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:29:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[KAudioInput::AudioInput(const AudioInput&)[m[K’
+   29 | class [01;36m[KAudioInput[m[K {
+      |       [01;36m[K^~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:29:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kint[m[K’ to ‘[01m[Kconst AudioInput&[m[K’
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:[m[K At global scope:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:53:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+   53 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+      |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

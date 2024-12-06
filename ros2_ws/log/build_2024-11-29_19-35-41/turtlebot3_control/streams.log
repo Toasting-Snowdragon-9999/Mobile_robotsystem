@@ -1,0 +1,29 @@
+[0.391s] Invoking command in '/home/pi/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[1.104s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[1.782s] [ 20%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[31.801s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[31.804s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:41:20:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kstd::vector<std::vector<int> >[m[K’ to ‘[01m[Kstd::vector<std::vector<std::__cxx11::basic_string<char> > >&[m[K’
+[31.805s]    41 |     node->run_path([01;31m[Ktable_sequence[m[K);
+[31.807s]       |                    [01;31m[K^~~~~~~~~~~~~~[m[K
+[31.808s]       |                    [01;31m[K|[m[K
+[31.810s]       |                    [01;31m[Kstd::vector<std::vector<int> >[m[K
+[31.812s] In file included from [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:7[m[K:
+[31.814s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/move_turtlebot.cpp:115:58:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kvoid MoveTurtlebot::run_path(std::vector<std::vector<std::__cxx11::basic_string<char> > >&)[m[K’
+[31.816s]   115 | void run_path([01;36m[Kstd::vector<std::vector<std::string>> &sequence[m[K){
+[31.817s]       |               [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[31.818s] 
+[31.820s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:43:23:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kreturn[m[K’
+[31.821s]    43 |     rclcpp::shutdown()
+[31.823s]       |                       [01;31m[K^[m[K
+[31.824s]       |                       [32m[K;[m[K
+[31.826s]    44 |     [32m[Kreturn[m[K 0;
+[31.830s]       |     [32m[K~~~~~~[m[K             
+[37.234s] In file included from [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[37.235s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:[m[K At global scope:
+[37.237s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:53:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[37.238s]    53 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[37.242s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[38.778s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+[38.781s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+[38.784s] gmake: *** [Makefile:146: all] Error 2
+[38.799s] Invoked command in '/home/pi/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/ros2_ws/build/turtlebot3_control -- -j4 -l4
