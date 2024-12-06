@@ -108,10 +108,17 @@ int main()
 	DataLinkLayer lucas_dll(test_string_dll);
 	std::string sending_package = lucas_dll.protocol_structure();
 
-	std::cout
-		<< " Test 5 "
-		<< std::endl;
 	lucas_dll.get_data_from_package(sending_package);
+
+	lucas_dll.timer();
+	if (lucas_dll.get_timeout())
+	{
+		std::cout << "Timer has run out" << std::endl;
+	}
+	else
+	{
+		std::cout << "Timer has NOT run out" << std::endl;
+	}
 
 	// SharedData sd; static_cast<unsigned long>
 

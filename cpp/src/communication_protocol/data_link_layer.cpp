@@ -245,23 +245,6 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
     }
 }
 
-void DataLinkLayer::start_ack_timer()
-{
-    auto start = std::chrono::steady_clock::now();
-
-    while (1)
-    {
-        auto now = std::chrono::steady_clock::now();
-
-        auto elapsed = now - start;
-
-        if (elapsed >= timeout)
-        {
-            break;
-        }
-    }
-}
-
 bool DataLinkLayer::is_header_and_msg_correct(const std::string &header_and_msg)
 {
     return ~std::stoi(CRC::CRC32::decode(header_and_msg), nullptr, 2);
@@ -363,4 +346,26 @@ std::string DataLinkLayer::bit_unstuff(const std::string &header)
     }
 
     return unstuffed;
+}
+
+void DataLinkLayer::timer()
+{
+    auto start = std::chrono::steady_clock::now(); // start timer
+
+    while (1)
+    {
+        auto now = std::chrono::steady_clock::now(); // checks current time
+
+        // if timer has run out set timeout to true
+        if (now - start >= timeout_time)
+        {
+            _timeout.store(true);
+            break;
+        }
+    }
+}
+
+bool DataLinkLayer::get_timeout()
+{
+    return _timeout.load();
 }
