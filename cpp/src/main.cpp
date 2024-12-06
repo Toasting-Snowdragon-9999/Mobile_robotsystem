@@ -15,6 +15,7 @@
 #include "interfaces/al_to_tl.h"
 #include "interfaces/tl_to_dll.h"
 #include "interfaces/dll_to_pl.h"
+#include "communication_protocol/timer.h"
 
 int main()
 {
@@ -110,8 +111,10 @@ int main()
 
 	lucas_dll.get_data_from_package(sending_package);
 
-	lucas_dll.timer();
-	if (lucas_dll.get_timeout())
+	Timer t;
+
+	t.start_timer();
+	if (t.get_timeout())
 	{
 		std::cout << "Timer has run out" << std::endl;
 	}

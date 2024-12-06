@@ -3,7 +3,6 @@
 
 #define nibble_size 4
 #define byte_size 8
-#define timeout_time std::chrono::seconds(5)
 
 #include <vector>
 #include <iostream>
@@ -28,7 +27,6 @@ private:
     std::string _robot_path = "";                // Data formed by path for robot, created by user
     std::string _ready_for_pl_path = "";         // Path that's ready to send to physical layer
     bool _is_ack_received = false;
-    std::atomic<bool> _timeout{false}; // Atomic bool to keep track of whether the timer has run out
 
 public:
     std::string get_ready_for_pl_path();
@@ -101,13 +99,7 @@ public:
 
     std::string bit_unstuff(const std::string &header);
 
-    /// @brief Timer that checks whether the timeout time has been reached
-    /// @note Wrties true to private variable _timeout if timeout time has been reached
-    void timer();
 
-    /// @brief Getter method for getting the timeout boolean
-    /// @return Type - atomic bool
-    bool get_timeout();
 };
 
 #endif // COM_PROTOCOL_H
