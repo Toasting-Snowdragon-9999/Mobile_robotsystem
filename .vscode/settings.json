@@ -52,5 +52,5 @@
 >>>>>>> GUI_Development
     },
     "cmake.sourceDirectory": "/home/chris/git/Mobile_robotsystem/cpp",
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "enabled"
 }
