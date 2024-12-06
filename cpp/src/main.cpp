@@ -17,7 +17,7 @@
 #include "communication_protocol/transport_layer.h"
 #include "communication_protocol/physical_layer.h"
 
-// =======================Inerfaces============================
+// =======================Interfaces============================
 #include "interfaces/al_to_tl.h"
 #include "interfaces/tl_to_dll.h"
 #include "interfaces/dll_to_pl.h"
@@ -38,19 +38,21 @@ int main()
 	
 	DataLinkLayer dl_layer(binary_msg);
 	std::string package = dl_layer.get_data_from_package();
+	
+	if(!package.empty()){
+		TlToDll i_tl;
+		i_tl.add_segment_to_buffer(package);
+		std::string segment = i_tl.take_segment_from_buffer();
 
-	TlToDll i_tl;
-	i_tl.add_segment_to_buffer(package);
-	std::string segment = i_tl.take_segment_from_buffer();
+		AlToTl i_al;
+		i_al.add_string_to_buffer(segment);
+		std::string buffer = i_al.get_buffer();	
 
-	AlToTl i_al;
-	i_al.add_string_to_buffer(segment);
-	std::string buffer = i_al.get_buffer();	
+		ApplicationLayer app_layer;
+		std::vector<robot_command> commands = app_layer.bits_to_commands(buffer);
 
-	ApplicationLayer app_layer;
-	std::vector<robot_command> commands = app_layer.bits_to_commands(buffer);
-
-	pl.yell(ack);
+		pl.yell(ack);
+	}
 
 // ======================================================
 // SENDER

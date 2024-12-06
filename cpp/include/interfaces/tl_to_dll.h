@@ -1,3 +1,6 @@
+#ifndef TL_TO_DLL_H
+#define TL_TO_DLL_H
+
 #include <vector>
 #include <deque>
 #include <string>
@@ -17,3 +20,5 @@ public:
     // Receiver
     void add_segment_to_buffer(const std::string &encoded_segment);
 };
+
+#endif

@@ -1,5 +1,7 @@
-#include <string>
+#ifndef DLL_TO_PL_H
+#define DLL_TO_PL_H
 
+#include <string>
 
 class DllToPl
 {
@@ -11,3 +13,5 @@ public:
 
     std::string get_ready_msg();
 };
+
+#endif
