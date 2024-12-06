@@ -25,9 +25,7 @@
 #include "interfaces/signal_processing.h"
 
 int main(){
-	// std::filesystem::path currentPath = std::filesystem::current_path();
-    // std::cout << "Current working directory: " << currentPath << std::endl;
-	// return 0;
+	/*
 	std::string path_gui = "../Docs/shared_file.json";
 	std::string path_debug = "../../Docs/shared_file.json";
 	SharedData sd(path_debug);
@@ -55,7 +53,7 @@ int main(){
 		1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
 
 	std::vector<int> test = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
-
+	*/
 	robot_command r1("-fw", "325");
 	robot_command r2("-l", "6");
 	robot_command r3("-r", "21");
