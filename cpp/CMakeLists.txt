@@ -35,12 +35,12 @@ pkg_check_modules(SNDFILE REQUIRED sndfile)
 set(SHARED_SOURCES
     src/algorithms/goertzel.cpp
     src/audio/audio_input.cpp
-    src/audio/wave_generator.cpp
+    src/audio/sfml_wave_generator.cpp
     src/communication_protocol/physical_layer.cpp
     src/communication_protocol/data_link_layer.cpp
     src/communication_protocol/application_layer.cpp
-    src/crc.cpp
-    src/communication_protocol/transport_layer.cpp
+    src/communication_protocol/transport_layer.cpp 
+    src/communication_protocol/crc.cpp
     src/interfaces/al_to_tl.cpp
     src/interfaces/tl_to_dll.cpp
     src/interfaces/dll_to_pl.cpp

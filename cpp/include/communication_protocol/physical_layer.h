@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <iostream>
-#include "audio/wave_generator.h"
+#include "audio/sfml_wave_generator.h"
 #include "audio/audio_input.h"
 #define SAMPLE_RATE (16000)
 #define FRAMES_PER_BUFFER (480)

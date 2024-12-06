@@ -1,8 +1,7 @@
-#include "audio/wave_generator.h"
+#include "audio/sfml_wave_generator.h"
 
 
 WaveGenerator::WaveGenerator(){
-
 }
 
 WaveGenerator::WaveGenerator(std::vector<int> &sequence): _sequence(sequence){

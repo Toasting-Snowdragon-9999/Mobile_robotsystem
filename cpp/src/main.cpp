@@ -9,7 +9,6 @@
 
 // ===================================================
 #include "read_shared_data.h"
-#include "audio/wave_generator.h"
 #include "crc.h"
 
 // =======================Communication Layers============================

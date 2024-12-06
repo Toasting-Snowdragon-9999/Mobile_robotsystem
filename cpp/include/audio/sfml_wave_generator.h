@@ -16,7 +16,7 @@ private:
     const unsigned _sample_rate = 16000;         // Samples per second
     const float _amplitude = 12500;              // Amplitude of the sine waves
     const unsigned _duration = 120;              // Duration of the sound in seconds
-    const unsigned _time_between_sounds = 60;    // Time between each sound that is played
+    const unsigned _time_between_sounds = 120;    // Time between each sound that is played
 
     // all frquencies & combinations
     std::vector<float> _low_frequencies = {697, 770, 852, 941};
