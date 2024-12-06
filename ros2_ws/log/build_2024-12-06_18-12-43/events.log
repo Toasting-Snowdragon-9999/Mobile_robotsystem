@@ -1,0 +1,71 @@
+[0.000000] (-) TimerEvent: {}
+[0.003634] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.004919] (-) JobUnselected: {'identifier': 'cpp_srvcli'}
+[0.006378] (turtlebot3_control) JobQueued: {'identifier': 'turtlebot3_control', 'dependencies': OrderedDict()}
+[0.007296] (turtlebot3_control) JobStarted: {'identifier': 'turtlebot3_control'}
+[0.090750] (turtlebot3_control) JobProgress: {'identifier': 'turtlebot3_control', 'progress': 'cmake'}
+[0.098540] (turtlebot3_control) JobProgress: {'identifier': 'turtlebot3_control', 'progress': 'build'}
+[0.098987] (-) TimerEvent: {}
+[0.105706] (turtlebot3_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control', '--', '-j4', '-l4'], 'cwd': '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'pi'), ('SSH_CLIENT', '10.126.74.9 2794 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/pi'), ('OLDPWD', '/home/pi/Mobile_robotsystem'), ('SSH_TTY', '/dev/pts/3'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/pi/turtlebot3_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'pi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/home/pi/turtlebot3_ws/install/turtlebot3:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_bringup:/home/pi/turtlebot3_ws/install/turtlebot3_node:/home/pi/turtlebot3_ws/install/turtlebot3_example:/home/pi/turtlebot3_ws/install/turtlebot3_description:/home/pi/turtlebot3_ws/install/ld08_driver:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.126.74.9 2794 10.126.128.42 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('LDS_MODEL', 'LDS-02'), ('PYTHONPATH', '/home/pi/turtlebot3_ws/build/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:/home/pi/turtlebot3_ws/build/turtlebot3_example:/home/pi/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/pi/turtlebot3_ws/install/turtlebot3:/home/pi/turtlebot3_ws/install/turtlebot3_bringup:/home/pi/turtlebot3_ws/install/turtlebot3_node:/home/pi/turtlebot3_ws/install/turtlebot3_description:/home/pi/turtlebot3_ws/install/ld08_driver:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble')]), 'shell': False}
+[0.199366] (-) TimerEvent: {}
+[0.300631] (-) TimerEvent: {}
+[0.402068] (-) TimerEvent: {}
+[0.503410] (-) TimerEvent: {}
+[0.570966] (turtlebot3_control) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o\x1b[0m\n'}
+[0.603772] (-) TimerEvent: {}
+[0.606305] (turtlebot3_control) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o\x1b[0m\n'}
+[0.704158] (-) TimerEvent: {}
+[0.725491] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp:1:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kwave_generator.h: No such file or directory\n'}
+[0.726725] (turtlebot3_control) StderrLine: {'line': b'    1 | #include \x1b[01;31m\x1b[K"wave_generator.h"\x1b[m\x1b[K\n'}
+[0.727846] (turtlebot3_control) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[0.728755] (turtlebot3_control) StderrLine: {'line': b'compilation terminated.\n'}
+[0.804414] (-) TimerEvent: {}
+[0.808188] (turtlebot3_control) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:132: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o] Error 1\n'}
+[0.809968] (turtlebot3_control) StderrLine: {'line': b'gmake[2]: *** Waiting for unfinished jobs....\n'}
+[0.904693] (-) TimerEvent: {}
+[1.006520] (-) TimerEvent: {}
+[1.108755] (-) TimerEvent: {}
+[1.210149] (-) TimerEvent: {}
+[1.311385] (-) TimerEvent: {}
+[1.412712] (-) TimerEvent: {}
+[1.514093] (-) TimerEvent: {}
+[1.615429] (-) TimerEvent: {}
+[1.716671] (-) TimerEvent: {}
+[1.817920] (-) TimerEvent: {}
+[1.919334] (-) TimerEvent: {}
+[2.021358] (-) TimerEvent: {}
+[2.123114] (-) TimerEvent: {}
+[2.224619] (-) TimerEvent: {}
+[2.325847] (-) TimerEvent: {}
+[2.427166] (-) TimerEvent: {}
+[2.528481] (-) TimerEvent: {}
+[2.629745] (-) TimerEvent: {}
+[2.730985] (-) TimerEvent: {}
+[2.832214] (-) TimerEvent: {}
+[2.933468] (-) TimerEvent: {}
+[3.034693] (-) TimerEvent: {}
+[3.136020] (-) TimerEvent: {}
+[3.237213] (-) TimerEvent: {}
+[3.338470] (-) TimerEvent: {}
+[3.439829] (-) TimerEvent: {}
+[3.541111] (-) TimerEvent: {}
+[3.642365] (-) TimerEvent: {}
+[3.743678] (-) TimerEvent: {}
+[3.844961] (-) TimerEvent: {}
+[3.946383] (-) TimerEvent: {}
+[4.047750] (-) TimerEvent: {}
+[4.148904] (-) TimerEvent: {}
+[4.250228] (-) TimerEvent: {}
+[4.351558] (-) TimerEvent: {}
+[4.385873] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:8:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kgoertzel.h: No such file or directory\n'}
+[4.386966] (turtlebot3_control) StderrLine: {'line': b'    8 | #include \x1b[01;31m\x1b[K"goertzel.h"\x1b[m\x1b[K\n'}
+[4.387830] (turtlebot3_control) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.388544] (turtlebot3_control) StderrLine: {'line': b'compilation terminated.\n'}
+[4.451993] (-) TimerEvent: {}
+[4.472219] (turtlebot3_control) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1\n'}
+[4.474986] (turtlebot3_control) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2\n'}
+[4.477446] (turtlebot3_control) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[4.494610] (turtlebot3_control) CommandEnded: {'returncode': 2}
+[4.553914] (-) TimerEvent: {}
+[4.607494] (turtlebot3_control) JobEnded: {'identifier': 'turtlebot3_control', 'rc': 2}
+[4.620943] (-) EventReactorShutdown: {}

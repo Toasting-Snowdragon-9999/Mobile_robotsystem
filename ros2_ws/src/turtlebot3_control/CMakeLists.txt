@@ -12,7 +12,10 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-include_directories(include)
+include_directories(
+    ../../../cpp/include
+    ../../../cpp/src
+)
 
 # For SFML (sine waves)
 find_package(SFML 2.5 COMPONENTS audio system REQUIRED)
@@ -55,37 +58,29 @@ endif()
 set(SOURCES
     src/main.cpp
     src/move_turtlebot.cpp
-    src/goertzel.cpp
-    src/audio_input.cpp
-    src/wave_generator.cpp
+    ../../../cpp/src/algorithms/goertzel.cpp
+    ../../../cpp/src/audio/audio_input.cpp
+    ../../../cpp/src/audio/wave_generator.cpp
 )
 
 # Headers
-set(HEADERS
-    include/goertzel.h
-    include/audio_input.h
-    include/wave_generator.h
-)
+#set(HEADERS
+#    ../../../../cpp/include/algorithms/goertzel.h
+#    ../../../../cpp/include/audio/audio_input.h
+#    ../../../../cpp/include/audio/wave_generator.h
+#)
 
 # Add executable
 add_executable(move_turtlebot ${SOURCES})
 
 ament_target_dependencies(move_turtlebot
-#target_link_libraries(move_turtlebot
     rclcpp
     geometry_msgs
     nav_msgs
     rosidl_default_runtime
-#new
-#    sfml_audio
-#    sfml_system
-#    ${PORTAUDIO_LIBRARIES}
-#    tf2
-#    tf2_geometry_msgs
 )
 
 target_link_libraries(move_turtlebot
-#    PRIVATE
         sfml-audio
         sfml-system
         ${PORTAUDIO_LIBRARIES}
@@ -98,17 +93,6 @@ target_include_directories(move_turtlebot
     PRIVATE
         ${PORTAUDIO_INCLUDE_DIRS}
 )
-
-# ROS2 libraries
-#target_link_libraries(move_turtlebot
-#    PRIVATE
-#        sfml_audio
-#        sfml_system
-#        ${PORTAUDIO_LIBRARIES}
-#    PUBLIC
-#        tf2::tf2
-#        tf2_geometry_msgs::tf2_geometry_msgs
-#)
 
 install(TARGETS
   move_turtlebot

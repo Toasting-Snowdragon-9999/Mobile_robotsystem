@@ -1,0 +1,19 @@
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kalgorithms/goertzel.h: No such file or directory
+    1 | #include [01;31m[K"algorithms/goertzel.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:104: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kaudio/audio_input.h: No such file or directory
+    1 | #include [01;31m[K"audio/audio_input.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:118: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp.o] Error 1
+In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:12:10:[m[K [01;31m[Kfatal error: [m[Kalgorithms/goertzel.h: No such file or directory
+   12 | #include [01;31m[K"algorithms/goertzel.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

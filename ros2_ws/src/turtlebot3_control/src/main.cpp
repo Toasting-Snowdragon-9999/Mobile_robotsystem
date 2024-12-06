@@ -5,9 +5,9 @@
 
 // Own files
 #include "move_turtlebot.cpp"  // Include header for movement control
-#include "goertzel.h"
-#include "audio_input.h"
-#include "wave_generator.h"
+#include "algorithms/goertzel.h"
+#include "audio/audio_input.h"
+#include "audio/wave_generator.h"
 
 // Definitions
 #define SAMPLE_RATE (16000) // Value chosen because of microphone/drivers
@@ -36,6 +36,9 @@ int main(int argc, char *argv[]) {
         1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
 
     std::vector<int> ja = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
+    std::vector<int> tihi =
+        {14, 0, 15, 15, 4, 1, 14, 15, 15, 5, 8, 15, 15,
+        5, 1, 9, 2, 3, 5, 10, 1, 5, 12, 0, 10, 14, 0};
 
     // -- Play sounds --
     //WaveGenerator sounds(test_sequence2);
@@ -47,7 +50,7 @@ int main(int argc, char *argv[]) {
     audio_input.audio_open();
     audio_input.list_audio_devices();
     std::cout << "Recording audio..." << std::endl;
-    audio_input.record_audio(INPUT_DEVICE);
+    audio_input.record_audio(INPUT_DEVICE, false);
     //audio_input.save_to_wav("../dtmf_sounds/output.wav");
     //audio_input.save_to_textfile("../dtmf_sounds.txt");
     //audio_input.check(true, test_sequence2);
@@ -68,7 +71,8 @@ int main(int argc, char *argv[]) {
     node->run_path(table_sequence);*/
 
     // --- Play sounds ---
-    if(!audio_input.check(true, ja)){
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    if(!audio_input.check(true, tihi)){
         WaveGenerator sounds(ja);
         sounds.play_sounds();
     }

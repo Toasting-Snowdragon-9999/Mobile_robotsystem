@@ -1,0 +1,105 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML
+-- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /opt/ros/humble/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found tf2: 0.25.8 (/opt/ros/humble/share/tf2/cmake)
+-- Found tf2_geometry_msgs: 0.25.8 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+-- Found Eigen3: TRUE (found version "3.4.0") 
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+-- Found PortAudio: /usr/local/lib/libportaudio.so
+-- Found PortAudio headers: /usr/local/include
+-- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML
+-- SFML found: 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control
+[ 16%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp.o[0m
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:8:10:[m[K [01;31m[Kfatal error: [m[Kgoertzel.h: No such file or directory
+    8 | #include [01;31m[K"goertzel.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:[m[K In function ‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:164:60:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime_info[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  164 |                            [01;35m[Kconst PaStreamCallbackTimeInfo* time_info[m[K,
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:165:50:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus_flags[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  165 |                            [01;35m[KPaStreamCallbackFlags status_flags[m[K,
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:[m[K In member function ‘[01m[Kvoid AudioInput::check_sequence(TestResult&, std::vector<int>&, std::vector<int>&)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:318:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  318 |     for (int i = 0; [01;35m[Ki < tones.size()[m[K; i++){
+      |                     [01;35m[K~~^~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In constructor ‘[01m[KGoertzel::Goertzel(GoertzelResult&, bool)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:7:44:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Khyperx[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+    7 | Goertzel::Goertzel(GoertzelResult& r, [01;35m[Kbool hyperx[m[K): _result(r){}
+      |                                       [01;35m[K~~~~~^~~~~~[m[K
+In file included from [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:1[m[K:
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:[m[K In constructor ‘[01m[KGoertzel::Goertzel(std::vector<float>)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:30:24:[m[K [01;35m[Kwarning: [m[K‘[01m[KGoertzel::_data[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   30 |     std::vector<float> [01;35m[K_data[m[K;
+      |                        [01;35m[K^~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:27:9:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kint Goertzel::_size_of_signal[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   27 |     int [01;35m[K_size_of_signal[m[K;
+      |         [01;35m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:10:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   10 | [01;35m[KGoertzel[m[K::Goertzel(const std::vector<float> data)
+      | [01;35m[K^~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::_init_coefficients()[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   28 |     for (int i = 0; [01;35m[Ki < _DTMF_freq.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::compute_goertzel()[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:37:41:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   37 |     for (int freq_index = 0; [01;35m[Kfreq_index < _DTMF_freq.size()[m[K; ++freq_index) {
+      |                              [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::sort(std::vector<double>&, std::vector<int>&)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:87:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   87 |     for(int i = 0; [01;35m[Ki < (x.size())/2-1[m[K; i++){
+      |                    [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:91:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   91 |         for (int j = 0; [01;35m[Kj < (x.size())/2-1[m[K; j++){
+      |                         [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:105:33:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  105 |     for(int i = (x.size())/2; [01;35m[Ki < x.size()-1[m[K; i++){
+      |                               [01;35m[K~~^~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:109:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  109 |         for (int j = (x.size())/2; [01;35m[Kj < x.size()-1[m[K; j++){
+      |                                    [01;35m[K~~^~~~~~~~~~~~[m[K
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
