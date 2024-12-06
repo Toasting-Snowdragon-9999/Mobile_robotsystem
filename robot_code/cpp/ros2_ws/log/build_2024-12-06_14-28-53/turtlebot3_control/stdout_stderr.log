@@ -1,0 +1,40 @@
+[35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[ 16%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/audio_input.cpp.o[0m
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:[m[K In function ‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:175:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kdata[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  175 |     MicSample *[01;35m[Kdata[m[K = (MicSample*)userData;
+      |                [01;35m[K^~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:182:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[K_esc_tone[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  182 |     int [01;35m[K_esc_tone[m[K = 15;
+      |         [01;35m[K^~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:170:60:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime_info[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  170 |                      [01;35m[Kconst PaStreamCallbackTimeInfo* time_info[m[K,
+      |                      [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:171:50:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus_flags[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  171 |                            [01;35m[KPaStreamCallbackFlags status_flags[m[K,
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:[m[K In member function ‘[01m[Kvoid AudioInput::check_sequence(TestResult&, std::vector<int>&, std::vector<int>&)[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:319:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  319 |     for (int i = 0; [01;35m[Ki < tones.size()[m[K; i++){
+      |                     [01;35m[K~~^~~~~~~~~~~~~~[m[K
+[ 33%] [32m[1mLinking CXX executable move_turtlebot[0m
+[100%] Built target move_turtlebot
+-- Install configuration: ""
+-- Installing: /home/pi/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot
+-- Set runtime path of "/home/pi/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot" to ""
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/package_run_dependencies/turtlebot3_control
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/parent_prefix_path/turtlebot3_control
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.sh
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.sh
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.dsv
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.bash
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.sh
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.zsh
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.dsv
+-- Installing: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.dsv
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/packages/turtlebot3_control
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig.cmake
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig-version.cmake
+-- Up-to-date: /home/pi/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.xml

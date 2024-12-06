@@ -45,7 +45,7 @@ public:
     void save_to_textfile(const std::string &fileName);
     void read_from_file(const std::string &fileName);
     void initialise_flags();
-    void check(bool print, std::vector<int> &test_sequence);
+    bool check(bool print, std::vector<int> &test_sequence);
     void check_sequence(TestResult &result, std::vector<int> &tones, std::vector<int> &test_sequence);
 
 private:

@@ -35,11 +35,13 @@ int main(int argc, char *argv[]) {
         4, 11, 0, 1, 14, 7, 5, 3, 8, 10,
         1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
 
-    // -- Play sounds --
-    WaveGenerator sounds(test_sequence2);
-    sounds.play_sounds();
+    std::vector<int> ja = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
 
-/*
+    // -- Play sounds --
+    //WaveGenerator sounds(test_sequence2);
+    //sounds.play_sounds();
+
+
     // --- Audio recording and signal processing ---
     AudioInput audio_input(SAMPLE_RATE, FRAMES_PER_BUFFER);
     audio_input.audio_open();
@@ -48,9 +50,9 @@ int main(int argc, char *argv[]) {
     audio_input.record_audio(INPUT_DEVICE);
     //audio_input.save_to_wav("../dtmf_sounds/output.wav");
     //audio_input.save_to_textfile("../dtmf_sounds.txt");
-    audio_input.check(true, test_sequence2);
+    //audio_input.check(true, test_sequence2);
     audio_input.audio_close();
-*/
+
     // --- Turtlebot control ---
     rclcpp::init(argc, argv);
     auto node = std::make_shared<MoveTurtlebot>();
@@ -64,6 +66,12 @@ int main(int argc, char *argv[]) {
     std::vector<std::vector<std::string>> table_sequence = {{"-fw", "40"}, {"-l", "90"}, {"-l", "45"}, {"-fw", "25"}, {"-r", "90"}, {"-fw", "30"}};
 
     node->run_path(table_sequence);*/
+
+    // --- Play sounds ---
+    if(!audio_input.check(true, ja)){
+        WaveGenerator sounds(ja);
+        sounds.play_sounds();
+    }
 
     rclcpp::shutdown();
     return 0;

@@ -72,7 +72,8 @@ void AudioInput::initialise_flags(){
 
 void AudioInput::record_audio(int input_device){
     initialise_flags();
-    _input_parameters.device = input_device;  // Explicitly select Device #2, or you can use another device index (like 8)
+    std::cout << "SATTE INPUT DEVICE: " << input_device << std::endl;
+    _input_parameters.device = 2;//input_device;  // Explicitly select Device #2, or you can use another device index (like 8)
     if (_input_parameters.device == paNoDevice) {
         std::cerr << "Error: No input device.\n";
         return;
@@ -181,13 +182,14 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
 
     for( i = 0; i < frames_per_buffer; i++ ){
         float mono_in = *in++;  /* Mono channel input */
+	//std::cout <<  mono_in << std::endl;
         if (std::abs(mono_in) < thresh_hold){
             mono_in = 0;
         }
 
 		buffer.push_back(mono_in);
     }
-/*
+
     data->recorded_samples.push_back(buffer);
 
     if(data->pre_success){
@@ -257,7 +259,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
     //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
     //std::cout << "Time difference: " << duration.count() << " microseconds" << std::endl;
-*/
+
     return paContinue;
 }
 
@@ -321,7 +323,7 @@ void AudioInput::check_sequence(TestResult &result, std::vector<int> &tones, std
     }
 }
 
-void AudioInput::check(bool full_output, std::vector<int> &test_sequence){
+bool AudioInput::check(bool full_output, std::vector<int> &test_sequence){
 
     TestResult result;
     result.error.clear();
@@ -334,8 +336,10 @@ void AudioInput::check(bool full_output, std::vector<int> &test_sequence){
             std::cout << a << std::endl;
         }
     }
+
     std::cout << "Amount of Success: " << result.success << std::endl;
     std::cout << "Amount of Failure: " << result.failure << std::endl;
+    return result.failure;
 }
 
 
