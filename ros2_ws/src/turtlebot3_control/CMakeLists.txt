@@ -56,19 +56,26 @@ endif()
 
 # Sources
 set(SOURCES
+    # Robot
     src/main.cpp
     src/move_turtlebot.cpp
-    ../../../cpp/src/algorithms/goertzel.cpp
+    # Audio
     ../../../cpp/src/audio/audio_input.cpp
     ../../../cpp/src/audio/wave_generator.cpp
+    # Signal Processing
+    ../../../cpp/src/algorithms/goertzel.cpp
+    # Communication Protocol
+    ../../../cpp/src/communication_protocol/physical_layer.cpp
+    ../../../cpp/src/communication_protocol/data_link_layer.cpp
+    ../../../cpp/src/communication_protocol/application_layer.cpp
+    ../../../cpp/src/communication_protocol/transport_layer.cpp
+    ../../../cpp/src/communication_protocol/crc.cpp
+    # Interfaces
+    ../../../cpp/src/interfaces/al_to_tl.cpp
+    ../../../cpp/src/interfaces/tl_to_dll.cpp
+    ../../../cpp/src/interfaces/dll_to_pl.cpp
+    ../../../cpp/src/interfaces/signal_processing.cpp
 )
-
-# Headers
-#set(HEADERS
-#    ../../../../cpp/include/algorithms/goertzel.h
-#    ../../../../cpp/include/audio/audio_input.h
-#    ../../../../cpp/include/audio/wave_generator.h
-#)
 
 # Add executable
 add_executable(move_turtlebot ${SOURCES})
