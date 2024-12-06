@@ -2,13 +2,14 @@
 #include <deque>
 #include <string>
 
-
 class TlToDll
 {
 private:
     std::deque<std::string> _segment_buffer;
 
 public:
+    std::deque<std::string> get_segment_buffer();
+
     // Sender
     std::deque<std::string> add_segments_to_buffer(const std::vector<std::string> &segment_buffer);
 
@@ -16,4 +17,8 @@ public:
 
     // Receiver
     void add_segment_to_buffer(const std::string &encoded_segment);
+
+    std::string get_first_segment_from_buffer();
+
+    void remove_first_segment_from_buffer();
 };

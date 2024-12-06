@@ -2,7 +2,7 @@
 
 std::deque<std::string> TlToDll::add_segments_to_buffer(const std::vector<std::string> &segment_buffer)
 {
-    _segment_buffer = std::deque<std::string>(segment_buffer.begin(),segment_buffer.end());
+    _segment_buffer = std::deque<std::string>(segment_buffer.begin(), segment_buffer.end());
 
     return _segment_buffer;
 }
@@ -24,4 +24,19 @@ std::string TlToDll::take_segment_from_buffer()
     }
 
     return select_segment;
+}
+
+std::string TlToDll::get_first_segment_from_buffer()
+{
+    return _segment_buffer[0];
+}
+
+void TlToDll::remove_first_segment_from_buffer()
+{
+    return _segment_buffer.pop_front();
+}
+
+
+std::deque<std::string> TlToDll::get_segment_buffer(){
+    return _segment_buffer;
 }
