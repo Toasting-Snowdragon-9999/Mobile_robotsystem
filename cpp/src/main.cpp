@@ -123,7 +123,7 @@ int main()
 
 	DataLinkLayer dllr1(package_to_send);
 	std::string received_package = dllr1.get_data_from_package(package_to_send);
-	std::cout << "Is message correct: " << dllr1.get_is_msg_correct() << std::endl;
+
 	// Send ACK to Computer again if received msg is correct
 	if (dllr1.get_is_msg_correct())
 	{
@@ -132,14 +132,40 @@ int main()
 		// YELL(ACK)
 		// YELL(ACK)
 	}
-	if(!received_package.empty()){
+
+	Transport_Layer tlR;
+	// If received msg was a duplicate, the empty() will catch it here
+	if (!received_package.empty())
+	{
 		TlToDll inter_dll_tl;
 		inter_dll_tl.add_segment_to_buffer(received_package);
+		tlR.add_segment(inter_dll_tl.take_segment_from_buffer());
 
+		std::string combined_string = tlR.combine_segments_to_string();
 
+		// Check if the SFD and EFD are found in the header of the
+		if (tlR.get_length_from_header(combined_string) != 0)
+		{
+
+			if (tlR.get_length_from_header(combined_string) == combined_string.length())
+			{
+
+				AlToTl altlr;
+
+				altlr.add_string_to_buffer(combined_string);
+
+				std::string msg_for_robot = altlr.get_buffer();
+
+				ApplicationLayer AlR;
+
+				auto final_final_commands_vec = AlR.bits_to_commands(msg_for_robot);
+
+				AlR.print_robot_commands(final_final_commands_vec);
+			}
+		}
 	}
 
-	std::cout << "Received package is: " << received_package << std::endl;
+	std::cout << "Everything is hopefully above " << std::endl;
 
 	return 0;
 }

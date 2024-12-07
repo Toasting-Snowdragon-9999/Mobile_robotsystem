@@ -1,6 +1,5 @@
 #include "communication_protocol/application_layer.h"
 
-
 robot_command::robot_command(std::string input_command, std::string inputValue) : direction(input_command), value(inputValue) {}
 
 ApplicationLayer::ApplicationLayer() { create_all_commands_map(); }
