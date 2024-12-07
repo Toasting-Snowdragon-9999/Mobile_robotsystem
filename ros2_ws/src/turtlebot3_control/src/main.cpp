@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 	std::vector<robot_command> test_bit_vec = {r1, r2, r3, r4, r5};
 
     std::vector<int> ack = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
-	PhysicalLayer pl;
+	PhysicalLayer pl(SAMPLE_RATE, INPUT_DEVICE);
 	std::vector<int> dtmf_sounds = pl.listen(false);
 	
 	SignalProcessing sp(dtmf_sounds);
@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
 		}
 		else{
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-			std::vector<robot_command> comd2 = app_layer.bits_to_commands(final_package);
+			std::vector<robot_command> commands = app_layer.bits_to_commands(final_package);
 			pl.yell(ack);
 		}
 	}
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
     std::vector<std::vector<std::string>> table_sequence = {{"-fw", "40"}, {"-l", "90"}, {"-l", "45"}, {"-fw", "25"}, {"-r", "90"}, {"-fw", "30"}};
 
     node->run_path(table_sequence);*/
-
+/*
     // --- Play sounds ---
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
@@ -96,6 +96,7 @@ int main(int argc, char *argv[]) {
     }
 
     bool ack_check = false;
+*/
 /*
     if(test_bit_vec.size() == commands.size()){
         for(auto i = 0; i < commands.size(); i++){
