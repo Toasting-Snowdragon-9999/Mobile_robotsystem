@@ -36,11 +36,26 @@ std::string DataLinkLayer::length_of_string(std::string s)
     return binary_length;
 }
 
-std::string DataLinkLayer::protocol_structure()
+std::string DataLinkLayer::seq_protocol_structure()
 {
     // Finding length of data and bit stuffing if nessecary
     std::string length_of_path = length_of_string(_robot_path);
     std::string stuffed_length = bit_stuff(length_of_path);
+
+    // Calculating and adding sequnece no.
+    std::string seqNo;
+    if (received_ack_no == _ackNo[0])
+    {
+        seqNo = _seqNo[0];
+    }
+    else if (received_ack_no == _ackNo[1])
+    {
+        seqNo = _seqNo[1];
+    }
+    else
+    {
+        std::cout << "ERROR: AckNo does not match" << std::endl;
+    }
 
     // Creating header+data
     std::stringstream ss_header_and_data;
@@ -59,6 +74,62 @@ std::string DataLinkLayer::protocol_structure()
     // Creating final package
     std::stringstream creating_package;
     creating_package << _pre_and_postamble
+                     << seqNo
+                     << nibble_stuffed_header_and_data
+                     << _pre_and_postamble;
+
+    _ready_for_pl_path = creating_package.str();
+
+    return _ready_for_pl_path;
+}
+
+std::string DataLinkLayer::ack_protocol_structure()
+{
+    // Finding length of data and bit stuffing if nessecary
+    std::string length_of_path = length_of_string(_robot_path);
+    std::string stuffed_length = bit_stuff(length_of_path);
+
+    // Calculating and adding AckNo
+    std::string ackNo;
+    if (received_ack_no != previous_seq_no)
+    {
+        if (received_ack_no == _seqNo[0])
+        {
+            ackNo = _ackNo[1];
+        }
+        else if (received_ack_no == _seqNo[1])
+        {
+            ackNo = _ackNo[0];
+        }
+        else
+        {
+            std::cout << "ERROR: SeqNo does not match. Recevied SeqNo: " << received_ack_no << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << "ERROR: Package already received previously" << std::endl;
+        return "";
+    }
+
+    // Creating header+data
+    std::stringstream ss_header_and_data;
+    ss_header_and_data << _SFD << stuffed_length << _EFD << _robot_path;
+    std::string header_and_data = ss_header_and_data.str();
+
+    // Zero-padding header+data if nessecary
+    std::string zero_padded_header_and_data = zero_pad(header_and_data);
+
+    // CRC encoding header+data
+    std::string crc_encoded_header_and_data = CRC::CRC32::encode(zero_padded_header_and_data);
+
+    // Nibble stuffing CRC encoded header+data
+    std::string nibble_stuffed_header_and_data = nibble_stuffing(crc_encoded_header_and_data);
+
+    // Creating final package
+    std::stringstream creating_package;
+    creating_package << _pre_and_postamble
+                     << ackNo
                      << nibble_stuffed_header_and_data
                      << _pre_and_postamble;
 
@@ -213,6 +284,11 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
     // Removing ESC nibbles
     received_package = remove_esc_nibbles(received_package);
 
+    // Removing AckNo and temporarily sacving received AckNo
+    int ackNo_size = received_ack_no.size();
+    std::string temp_received_ack_no = received_package.substr(0, ackNo_size);
+    received_package.erase(received_package.begin(), received_package.begin() + ackNo_size);
+
     // Checking CRC (validity) of received package
     std::string crc_decoded_remainder = CRC::CRC32::decode(received_package);
     int int_crc_decoded_remainder = std::stoi(crc_decoded_remainder, nullptr, 2);
@@ -223,9 +299,10 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
     }
     else
     {
-
-
         std::cout << "Received package is correct. CRC remainder equals 0." << std::endl;
+
+        // Updating recevied AckNo variable
+        received_ack_no = temp_received_ack_no;
 
         // Getting length of data
         std::vector<int> length_pos = find_length_pos_in_header(received_package);
@@ -251,8 +328,6 @@ bool DataLinkLayer::is_header_and_msg_correct(const std::string &header_and_msg)
 {
     return ~std::stoi(CRC::CRC32::decode(header_and_msg), nullptr, 2);
 }
-
-
 
 bool DataLinkLayer::get_ack_received()
 {

@@ -16,7 +16,8 @@
 #include <thread>
 #include "crc.h"
 
-std::string previous_ACK;
+static std::string previous_seq_no = "1001";
+static std::string received_ack_no = "0000";
 
 class DataLinkLayer
 {
@@ -29,8 +30,8 @@ private:
     std::string _robot_path = "";                // Data formed by path for robot, created by user
     std::string _ready_for_pl_path = "";         // Path that's ready to send to physical layer
     bool _is_ack_received = false;
-    std::string _ACK0 = "0000";
-    std::string _ACK1 = "1111";
+    std::vector<std::string> _ackNo = {"0000", "0001"};
+    std::vector<std::string> _seqNo = {"1000", "1001"};
 
 public:
     std::string get_ready_for_pl_path();
@@ -44,9 +45,13 @@ public:
     /// @return Type: String - Length in binary
     std::string length_of_string(std::string s);
 
-    /// @brief Method for creating entire package - Adds preamble, header, data, CRC, ESC-nibbles, and postamble together in a bitstream
+    /// @brief Method for creating entire package with sequence no. - Adds preamble, header, data, CRC, ESC-nibbles, and postamble together in a bitstream
     /// @return The full package while it's saved as a private variable
-    std::string protocol_structure();
+    std::string seq_protocol_structure();
+
+    /// @brief Method for creating entire package with ACK - Adds preamble, header, data, CRC, ESC-nibbles, and postamble together in a bitstream
+    /// @return The full package while it's saved as a private variable
+    std::string ack_protocol_structure();
 
     /// @brief Nibble stuffing the package with ESC nibbles
     /// @param package Type: String - The package to be stuffed
@@ -103,8 +108,7 @@ public:
 
     std::string bit_unstuff(const std::string &header);
 
-    std::string send_ack(std::string );
-
+    std::string send_ack(std::string);
 };
 
 #endif // COM_PROTOCOL_H

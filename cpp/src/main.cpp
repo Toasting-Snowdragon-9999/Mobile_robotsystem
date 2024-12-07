@@ -60,11 +60,16 @@ int main()
 
 	int j = 0;
 
+	std::string msg_to_send = "";
+
 	while (!inter_2.get_segment_buffer().empty())
 	{
 		std::cout << "How many segments left in buffer before iteration: " << inter_2.get_segment_buffer().size() << std::endl;
 		DataLinkLayer dll(inter_2.get_first_segment_from_buffer());
-		std::string msg_to_send = dll.protocol_structure();
+		msg_to_send = dll.seq_protocol_structure();
+
+		std::cout << "Sequence " << j << std::endl;
+		j++;
 
 		// Alt andet for at sende til Physical Layer
 		// Alt andet for at sende til Physical Layer
@@ -77,6 +82,8 @@ int main()
 			// LISTENING PHYSICAL LAYER FOR ACK
 			// LISTENING PHYSICAL LAYER FOR ACK
 			// LISTENING PHYSICAL LAYER FOR ACK
+
+			dll.set_ack_received(true);
 
 			if (dll.get_ack_received())
 			{
@@ -100,13 +107,21 @@ int main()
 	// Receiver
 	// ======================================================
 
-	std::string test_r = "1010000100000000";
+	// DataLinkLayer dllr(msg_to_send);
 
-	DataLinkLayer dllr(test_r);
+	// std::string tr_with = dllr.ack_protocol_structure();
 
-	std::string tr_with = dllr.protocol_structure();
+	// std::string received_frame = dllr.get_data_from_package(tr_with);
+	// std::cout << "Received frame: " << received_frame << std::endl;
 
-	dllr.get_data_from_package(tr_with);
+	DataLinkLayer dlls1(segment_vector[0]);
+	std::string package_to_send = dlls1.seq_protocol_structure();
+	std::cout << "Package to send is: " << package_to_send << std::endl;
+
+	DataLinkLayer dllr1(package_to_send);
+	std::string received_package = dllr1.get_data_from_package(package_to_send);
+	std::cout << "Received package is: " << received_package << std::endl;
+
 
 
 
