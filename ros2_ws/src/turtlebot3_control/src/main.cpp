@@ -23,7 +23,7 @@
 #define SAMPLE_RATE (16000) // Value chosen because of microphone/drivers
 #define FRAMES_PER_BUFFER (480)
 #define INPUT_DEVICE (2) // Insert device #
-#define LENGTH_FACTOR
+#define LENGTH_FACTOR 10
 
 int main(int argc, char *argv[]) {
 
@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
 		p51, p52, p53, p54, p55, p56, p57, p58, p59, p60,
 		p61
 	};
-
+/*
         robot_command r1("-fw", "325");
 	robot_command r2("-l", "6");
 	robot_command r3("-r", "21");
@@ -148,13 +148,13 @@ int main(int argc, char *argv[]) {
 			std::cerr << "CRC check failed" << std::endl;
 		}
 		else{
-            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 	    commands = app_layer.bits_to_commands(final_package);
 			pl.yell(ack);
 		}
 	}
 
-
+*/
     // --- Turtlebot control ---
     rclcpp::init(argc, argv);
     auto node = std::make_shared<MoveTurtlebot>();
@@ -166,8 +166,8 @@ int main(int argc, char *argv[]) {
 
     /*std::vector<std::vector<int>> sequence = {{12, 2, 0}, {13, 2, 0}, {14, 9, 0}, {15, 9, 0}};
     std::vector<std::vector<std::string>> table_sequence = {{"-fw", "40"}, {"-l", "90"}, {"-l", "45"}, {"-fw", "25"}, {"-r", "90"}, {"-fw", "30"}};
-
-    node->run_path(table_sequence);*/
+*/
+    node->run_path(robtek);
 
     // --- Print commands ---
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
@@ -176,12 +176,12 @@ int main(int argc, char *argv[]) {
         std::cout << i << + " Sent: " << test_bit_vec[i].direction << ", " << test_bit_vec[i].value << std::endl;
 
    }
-*/
     std::cout << commands.size() << std::endl;
     for(auto i = 0; i < commands.size(); i++){
         std::cout << i << " Received: " << commands[i].direction << ", " << commands[i].value << std::endl;
     }
 
+*/
     bool ack_check = false;
 /*
     if(test_bit_vec.size() == commands.size()){

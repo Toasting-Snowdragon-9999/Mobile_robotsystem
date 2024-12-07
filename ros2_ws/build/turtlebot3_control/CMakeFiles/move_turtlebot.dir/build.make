@@ -313,8 +313,6 @@ move_turtlebot: /opt/ros/humble/lib/librosidl_typesupport_cpp.so
 move_turtlebot: /opt/ros/humble/lib/librosidl_runtime_c.so
 move_turtlebot: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
 move_turtlebot: /opt/ros/humble/lib/librosidl_typesupport_introspection_cpp.so
-move_turtlebot: /usr/lib/aarch64-linux-gnu/libsfml-audio.so.2.5.1
-move_turtlebot: /usr/lib/aarch64-linux-gnu/libsfml-system.so.2.5.1
 move_turtlebot: /usr/local/lib/libportaudio.so
 move_turtlebot: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_c.so
 move_turtlebot: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_c.so

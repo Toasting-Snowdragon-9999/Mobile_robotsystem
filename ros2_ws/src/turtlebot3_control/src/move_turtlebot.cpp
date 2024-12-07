@@ -12,6 +12,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
+#include "communication_protocol/application_layer.cpp"
 
 using namespace std::chrono_literals;
 
@@ -112,16 +113,16 @@ public:
         RCLCPP_INFO(this->get_logger(), "Rotation completed.");
     }
 
-    void run_path(std::vector<std::vector<std::string>> &sequence){
+    void run_path(std::vector<robot_command> &sequence){
 
         /* maybe this works? */
         rclcpp::sleep_for(std::chrono::milliseconds(1000));
         /* */
 
-        for(uint8_t i = 0; i < sequence.size(); i++){
+        for(auto command : sequence){
 
-            std::string action = sequence[i][0];
-            int length = stoi(sequence[i][1]);
+            std::string action = command.direction;
+            int length = std::stoi(command.value);
 
             /* Debug purposes */
             std::string action_text;

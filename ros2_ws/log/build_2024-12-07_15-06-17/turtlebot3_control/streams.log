@@ -1,0 +1,26 @@
+[0.113s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[0.507s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[0.816s] [  6%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o[0m
+[6.475s] [ 13%] [32m[1mLinking CXX executable move_turtlebot[0m
+[9.910s] [100%] Built target move_turtlebot
+[9.995s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[10.077s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control
+[10.132s] -- Install configuration: ""
+[10.135s] -- Installing: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot
+[10.157s] -- Set runtime path of "/home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot" to ""
+[10.159s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/package_run_dependencies/turtlebot3_control
+[10.160s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/parent_prefix_path/turtlebot3_control
+[10.162s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.sh
+[10.163s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.dsv
+[10.164s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.sh
+[10.166s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.dsv
+[10.167s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.bash
+[10.167s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.sh
+[10.169s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.zsh
+[10.170s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.dsv
+[10.171s] -- Installing: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.dsv
+[10.172s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/packages/turtlebot3_control
+[10.173s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig.cmake
+[10.174s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig-version.cmake
+[10.175s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.xml
+[10.186s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control

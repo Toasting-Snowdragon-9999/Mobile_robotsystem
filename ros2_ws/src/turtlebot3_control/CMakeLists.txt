@@ -88,8 +88,6 @@ ament_target_dependencies(move_turtlebot
 )
 
 target_link_libraries(move_turtlebot
-        sfml-audio
-        sfml-system
         ${PORTAUDIO_LIBRARIES}
         tf2::tf2
         tf2_geometry_msgs::tf2_geometry_msgs

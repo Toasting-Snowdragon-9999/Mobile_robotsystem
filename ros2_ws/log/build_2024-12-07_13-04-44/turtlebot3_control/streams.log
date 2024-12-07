@@ -1,0 +1,108 @@
+[0.897s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[2.060s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[2.731s] [  6%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[2.736s] [ 13%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/physical_layer.cpp.o[0m
+[2.750s] [ 20%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp.o[0m
+[2.752s] [ 26%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o[0m
+[9.802s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:25:[m[K [01;35m[Kwarning: [m[K"INPUT_DEVICE" redefined
+[9.804s]    25 | #define INPUT_DEVICE (2) // Insert device #
+[9.806s]       | 
+[9.817s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:15[m[K:
+[9.819s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/communication_protocol/physical_layer.h:10:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[9.821s]    10 | #define INPUT_DEVICE (14)
+[9.836s]       | 
+[10.423s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:[m[K In member function ‘[01m[Kstd::string DataLinkLayer::nibble_stuffing(std::string)[m[K’:
+[10.425s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:74:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.427s]    74 |     while (i <= package.size() - nibble_size)
+[10.430s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:[m[K In member function ‘[01m[Kstd::string DataLinkLayer::remove_esc_nibbles(std::string)[m[K’:
+[10.446s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:94:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.448s]    94 |     while (i <= received_package.size() - byte_size)
+[10.539s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:[m[K In member function ‘[01m[Kstd::vector<int> DataLinkLayer::find_length_pos_in_header(std::string)[m[K’:
+[10.542s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:177:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KEFD_length[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[10.544s]   177 |     int [01;35m[KEFD_length[m[K = _EFD.size();
+[10.554s]       |         [01;35m[K^~~~~~~~~~[m[K
+[11.468s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:[m[K In member function ‘[01m[Kstd::vector<robot_command> ApplicationLayer::bits_to_commands(std::string)[m[K’:
+[11.474s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:141:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.477s]   141 |     for (int i = 0; [01;35m[Ki <= length[m[K; i += nibble_size)
+[11.489s]       |                     [01;35m[K~~^~~~~~~~~[m[K
+[11.492s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:150:36:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.494s]   150 |             while ([01;35m[Ki + nibble_size <= length[m[K)
+[11.497s]       |                    [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[13.611s] [ 33%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp.o[0m
+[15.537s] [ 40%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp.o[0m
+[16.750s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/communication_protocol/physical_layer.h:7[m[K,
+[16.752s]                  from [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/physical_layer.cpp:1[m[K:
+[16.754s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[16.756s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[16.758s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[17.596s] [ 46%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/interfaces/al_to_tl.cpp.o[0m
+[20.364s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::exclusive_or_strings(std::string, std::string)[m[K’:
+[20.367s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:12:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[20.369s]    12 |         for (int i = 0; [01;35m[Ki < a.size()[m[K; i++)
+[21.470s]       |                         [01;35m[K~~^~~~~~~~~~[m[K
+[21.475s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC7::encode(std::string)[m[K’:
+[21.477s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:29:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.480s]    29 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[21.491s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[21.494s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC7::decode(std::string)[m[K’:
+[21.497s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:61:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcDegree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.516s]    61 |             int [01;35m[KcrcDegree[m[K = generator_poly.length() - 1;
+[21.518s]       |                 [01;35m[K^~~~~~~~~[m[K
+[21.521s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:64:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.523s]    64 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[21.526s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[21.536s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC16::encode(std::string)[m[K’:
+[21.538s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:100:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.540s]   100 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[21.543s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[21.563s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC16::decode(std::string)[m[K’:
+[21.565s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:132:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcDegree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.567s]   132 |             int [01;35m[KcrcDegree[m[K = generator_poly.length() - 1;
+[21.569s]       |                 [01;35m[K^~~~~~~~~[m[K
+[21.571s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:135:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.578s]   135 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[21.582s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[21.584s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC32::encode(std::string)[m[K’:
+[21.586s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:172:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.588s]   172 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[21.590s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[21.592s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC32::decode(std::string)[m[K’:
+[21.594s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:204:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcDegree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.603s]   204 |             int [01;35m[KcrcDegree[m[K = generator_poly.length() - 1;
+[21.605s]       |                 [01;35m[K^~~~~~~~~[m[K
+[21.607s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:207:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.610s]   207 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[21.612s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[21.615s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:[m[K In member function ‘[01m[Kint Transport_Layer::get_length_from_header(const string&)[m[K’:
+[21.617s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:69:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kend_length[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.619s]    69 |     size_t [01;35m[Kend_length[m[K = _EFD.length();
+[21.621s]       |            [01;35m[K^~~~~~~~~~[m[K
+[21.623s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:[m[K In member function ‘[01m[Kstd::string Transport_Layer::remove_header_and_unstuff(const string&)[m[K’:
+[21.625s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:100:12:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Klength[m[K’ set but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable-Wunused-but-set-variable]8;;[m[K]
+[21.627s]   100 |     size_t [01;35m[Klength[m[K = stripped_msg.length();
+[21.629s]       |            [01;35m[K^~~~~~[m[K
+[21.632s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:101:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbegin_length[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[21.634s]   101 |     size_t [01;35m[Kbegin_length[m[K = _SFD.length();
+[21.636s]       |            [01;35m[K^~~~~~~~~~~~[m[K
+[22.340s] [ 53%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/interfaces/tl_to_dll.cpp.o[0m
+[22.895s] [ 60%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/interfaces/dll_to_pl.cpp.o[0m
+[22.920s] [ 66%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/interfaces/signal_processing.cpp.o[0m
+[41.536s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[41.537s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:89:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_command>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[41.539s]    89 |     for(auto i = 0; [01;35m[Ki < test_bit_vec.size()[m[K; i++){
+[41.540s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~[m[K
+[41.575s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:93:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kcommands[m[K’ was not declared in this scope
+[41.576s]    93 |     std::cout << [01;31m[Kcommands[m[K.size() << std::endl;
+[41.577s]       |                  [01;31m[K^~~~~~~~[m[K
+[41.579s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:98:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kack_check[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[41.580s]    98 |     bool [01;35m[Kack_check[m[K = false;
+[41.581s]       |          [01;35m[K^~~~~~~~~[m[K
+[47.402s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[47.404s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:[m[K At global scope:
+[47.405s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[47.406s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[47.407s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[48.971s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+[48.974s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+[48.976s] gmake: *** [Makefile:146: all] Error 2
+[48.996s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
