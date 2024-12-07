@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
 
 	DataLinkLayer dl_layer(binary_msg);
 	std::string package = dl_layer.get_data_from_package();
-
+/*
 	TlToDll i_tl;
 	i_tl.add_segment_to_buffer(package);
 	std::string segment = i_tl.take_segment_from_buffer();
@@ -94,10 +94,10 @@ int main(int argc, char *argv[]) {
 	AlToTl i_al;
 	i_al.add_string_to_buffer(segment);
 	std::string buffer = i_al.get_buffer();
-
+*/
+std::cout << "Package: \n" << package << std::endl;
 	ApplicationLayer app_layer;
-	std::vector<robot_command> commands = app_layer.bits_to_commands(buffer);
-
+	std::vector<robot_command> commands = app_layer.bits_to_commands(package);
 
 
     // --- Turtlebot control ---
@@ -118,15 +118,16 @@ int main(int argc, char *argv[]) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
     for(auto i = 0; i < test_bit_vec.size(); i++){
-        std::cout << std::to_string(i) + " Sent: " + test_bit_vec[i].direction + ", " + test_bit_vec[i].value << std::endl;
+        std::cout << i << + " Sent: " << test_bit_vec[i].direction << ", " << test_bit_vec[i].value << std::endl;
 
     }
-    for(auto i = 0; i < test_bit_vec.size(); i++){
-        std::cout << std::to_string(i) + " Received: " + commands[i].direction + ", " + commands[i].value << std::endl;
+    std::cout << commands.size() << std::endl;
+    for(auto i = 0; i < commands.size(); i++){
+        std::cout << i << " Received: " << commands[i].direction << ", " << commands[i].value << std::endl;
     }
-
 
     bool ack_check = false;
+/*
     if(test_bit_vec.size() == commands.size()){
         for(auto i = 0; i < commands.size(); i++){
             if((test_bit_vec[i].direction == commands[i].direction) && (test_bit_vec[i].value == commands[i].value)){
@@ -139,7 +140,8 @@ int main(int argc, char *argv[]) {
     } else{
         std::cout << "Not the same size" << std::endl;
     }
-    if(ack_check){
+*/
+    if(!ack_check){
         pl.yell(ack);
     }
     rclcpp::shutdown();

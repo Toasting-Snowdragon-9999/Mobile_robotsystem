@@ -1,0 +1,36 @@
+[0.108s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[0.493s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[0.786s] [  6%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[0.791s] [ 13%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/physical_layer.cpp.o[0m
+[8.520s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/communication_protocol/physical_layer.h:7[m[K,
+[8.523s]                  from [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/physical_layer.cpp:1[m[K:
+[8.526s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[8.528s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[8.530s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[30.895s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[30.896s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[30.897s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[30.898s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[40.573s] [ 20%] [32m[1mLinking CXX executable move_turtlebot[0m
+[43.927s] [100%] Built target move_turtlebot
+[44.008s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[44.087s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control
+[44.139s] -- Install configuration: ""
+[44.141s] -- Installing: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot
+[44.164s] -- Set runtime path of "/home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/lib/turtlebot3_control/move_turtlebot" to ""
+[44.165s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/package_run_dependencies/turtlebot3_control
+[44.166s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/parent_prefix_path/turtlebot3_control
+[44.167s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.sh
+[44.169s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/ament_prefix_path.dsv
+[44.171s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.sh
+[44.172s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/environment/path.dsv
+[44.173s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.bash
+[44.174s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.sh
+[44.175s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.zsh
+[44.176s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/local_setup.dsv
+[44.178s] -- Installing: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.dsv
+[44.179s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/ament_index/resource_index/packages/turtlebot3_control
+[44.180s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig.cmake
+[44.181s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/cmake/turtlebot3_controlConfig-version.cmake
+[44.181s] -- Up-to-date: /home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control/share/turtlebot3_control/package.xml
+[44.192s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --install /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control
