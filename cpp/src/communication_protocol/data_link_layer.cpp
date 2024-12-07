@@ -3,9 +3,13 @@
 
 DataLinkLayer::DataLinkLayer(std::string binary_msg) : _binary_msg(binary_msg) {}
 
-bool DataLinkLayer::get_is_msg_correct() {return _is_msg_correct;}
+DataLinkLayer::DataLinkLayer() {
+    _binary_msg = "";
+}
 
-void DataLinkLayer::set_is_msg_correct(const bool &input){_is_msg_correct = input;}
+bool DataLinkLayer::get_is_msg_correct() { return _is_msg_correct; }
+
+void DataLinkLayer::set_is_msg_correct(const bool &input) { _is_msg_correct = input; }
 
 std::string DataLinkLayer::get_ready_for_pl_path()
 {
@@ -141,7 +145,6 @@ std::string DataLinkLayer::ack_protocol_structure()
 
     // Make is_msg_correct false by default again for next sequence
     _is_msg_correct = false;
-
 
     return _ready_for_pl_path;
 }
@@ -309,7 +312,7 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
     {
         std::cout << "Received package is correct. CRC remainder equals 0." << std::endl;
 
-        //Update boolean for msg to send ACK
+        // Update boolean for msg to send ACK
         _is_msg_correct = true;
 
         // Updating received AckNo variable

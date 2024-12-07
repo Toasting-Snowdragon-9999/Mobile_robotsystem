@@ -103,9 +103,9 @@ int main()
 	// SENDER
 	// ======================================================
 
-	// ======================================================
-	// Receiver
-	// ======================================================
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// RECEIVER
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	// DataLinkLayer dllr(msg_to_send);
 
@@ -115,6 +115,9 @@ int main()
 	// std::cout << "Received frame: " << received_frame << std::endl;
 
 	DataLinkLayer dlls1(segment_vector[0]);
+	// Creating empty object to send ACK later on
+	DataLinkLayer dllack;
+
 	std::string package_to_send = dlls1.seq_protocol_structure();
 	std::cout << "Package to send is: " << package_to_send << std::endl;
 
@@ -122,7 +125,18 @@ int main()
 	std::string received_package = dllr1.get_data_from_package(package_to_send);
 	std::cout << "Is message correct: " << dllr1.get_is_msg_correct() << std::endl;
 	// Send ACK to Computer again if received msg is correct
-	if(dllr1.get_is_msg_correct()){
+	if (dllr1.get_is_msg_correct())
+	{
+		std::string ack = dllack.ack_protocol_structure();
+		// YELL(ACK)
+		// YELL(ACK)
+		// YELL(ACK)
+	}
+	if(!received_package.empty()){
+		TlToDll inter_dll_tl;
+		inter_dll_tl.add_segment_to_buffer(received_package);
+
+
 	}
 
 	std::cout << "Received package is: " << received_package << std::endl;

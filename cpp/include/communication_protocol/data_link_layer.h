@@ -45,6 +45,11 @@ public:
     /// @param robotPath - Path for robot created by user
     DataLinkLayer(std::string binary_msg);
 
+    /// @brief Empty constructor
+    /// @note This constructor is defined primarily for the ACK
+    DataLinkLayer();
+
+
     /// @brief Method for finding the length of a string in binary
     /// @param s Type: String
     /// @return Type: String - Length in binary
