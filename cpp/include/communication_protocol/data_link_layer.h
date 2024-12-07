@@ -27,7 +27,7 @@ private:
     std::string _SFD = "11110";                  // Start-of-Frame Delimiter for header
     std::string _EFD = _SFD;                     // End-of-Frame Delimiter for header
     std::string _ESC_nibble = "1111";            // ESC nibble
-    std::string _robot_path = "";                // Data formed by path for robot, created by user
+    std::string _binary_msg = "";                // Data formed by path for robot, created by user
     std::string _ready_for_pl_path = "";         // Path that's ready to send to physical layer
     bool _is_ack_received = false;
     std::vector<std::string> _ackNo = {"0000", "0001"};
@@ -43,7 +43,7 @@ public:
 
     /// @brief Constructor to create instance of DataLinkLayer
     /// @param robotPath - Path for robot created by user
-    DataLinkLayer(std::string robotPath);
+    DataLinkLayer(std::string binary_msg);
 
     /// @brief Method for finding the length of a string in binary
     /// @param s Type: String

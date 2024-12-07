@@ -1,7 +1,7 @@
 #include "communication_protocol/data_link_layer.h"
 #include "crc.h"
 
-DataLinkLayer::DataLinkLayer(std::string robot_path) : _robot_path(robot_path) {}
+DataLinkLayer::DataLinkLayer(std::string binary_msg) : _binary_msg(binary_msg) {}
 
 bool DataLinkLayer::get_is_msg_correct() {return _is_msg_correct;}
 
@@ -43,7 +43,7 @@ std::string DataLinkLayer::length_of_string(std::string s)
 std::string DataLinkLayer::seq_protocol_structure()
 {
     // Finding length of data and bit stuffing if nessecary
-    std::string length_of_path = length_of_string(_robot_path);
+    std::string length_of_path = length_of_string(_binary_msg);
     std::string stuffed_length = bit_stuff(length_of_path);
 
     // Calculating and adding sequnece no.
@@ -63,7 +63,7 @@ std::string DataLinkLayer::seq_protocol_structure()
 
     // Creating header+data
     std::stringstream ss_header_and_data;
-    ss_header_and_data << _SFD << stuffed_length << _EFD << _robot_path;
+    ss_header_and_data << _SFD << stuffed_length << _EFD << _binary_msg;
     std::string header_and_data = ss_header_and_data.str();
 
     // Zero-padding header+data if nessecary
@@ -90,7 +90,7 @@ std::string DataLinkLayer::seq_protocol_structure()
 std::string DataLinkLayer::ack_protocol_structure()
 {
     // Finding length of data and bit stuffing if nessecary
-    std::string length_of_path = length_of_string(_robot_path);
+    std::string length_of_path = length_of_string(_binary_msg);
     std::string stuffed_length = bit_stuff(length_of_path);
 
     // Calculating and adding AckNo
@@ -118,7 +118,7 @@ std::string DataLinkLayer::ack_protocol_structure()
 
     // Creating header+data
     std::stringstream ss_header_and_data;
-    ss_header_and_data << _SFD << stuffed_length << _EFD << _robot_path;
+    ss_header_and_data << _SFD << stuffed_length << _EFD << _binary_msg;
     std::string header_and_data = ss_header_and_data.str();
 
     // Zero-padding header+data if nessecary
