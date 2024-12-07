@@ -34,18 +34,9 @@ int main()
 
 	ApplicationLayer Alc;
 
-	// FYI *There exists both command_to_bits and command_vector_to_bitstream*
-
 	std::string test_bits = Alc.command_vector_to_bitstream(test_bit_vec);
 
-	std::cout
-		<< "Command_vector_to_bitstream: " << test_bits + "\n"
-		<< std::endl;
-
 	std::string encoded_test_bits = Alc.encode_message(test_bits);
-	std::cout
-		<< "CRC encoded message: " << encoded_test_bits + "\n"
-		<< std::endl;
 
 	// Interface from Application Layer to Transport Layer
 
@@ -59,30 +50,42 @@ int main()
 
 	auto segment_vector = tl.segment_msg(tl_header_test_bits);
 
-	// std::cout << "Segmented msg:" << std::endl;
-	// tl.print_segment_vector(segments_vector);
-
 	// Interface from Transport Layer to Data Link Layer
 
 	TlToDll inter_2;
 
 	inter_2.add_segments_to_buffer(segment_vector);
 
-	DataLinkLayer dll(inter_2.take_segment_from_buffer());
+	Timer timer;
 
-	DllToPl inter_3;
+	int j = 0;
 
-	// 	while (dll.is_ack_received() == false)
-	// {
-	// 	//inter_3.add_ready_msg(dll.get_ready_for_pl_path());
+	while (!inter_2.get_segment_buffer().empty())
+	{
+		std::cout << "How many segments left in buffer before iteration: " << inter_2.get_segment_buffer().size() << std::endl;
+		DataLinkLayer dll(inter_2.get_first_segment_from_buffer());
+		std::string msg_to_send = dll.protocol_structure();
 
-	// }'
+		// Alt andet for at sende til Physical Layer
+		// Alt andet for at sende til Physical Layer
+		// Alt andet for at sende til Physical Layer
 
-	inter_3.add_ready_msg(dll.protocol_structure());
+		timer.start_timer();
 
-	std::string msg_to_send = inter_3.get_ready_msg();
+		while (!timer.get_timeout())
+		{
+			if (dll.is_ack_received())
+			{
+				inter_2.remove_first_segment_from_buffer();
+				timer.~Timer();
+				break;
+			}
+			std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Avoid busy waiting
+		}
+		timer.~Timer();
+	}
 
-
+	// Interface from Data Link Layer to Physical Layer
 
 	// ======================================================
 	// SENDER
