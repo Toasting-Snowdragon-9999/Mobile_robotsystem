@@ -194,7 +194,7 @@ std::string ApplicationLayer::check_crc(const std::string &message)
     }
     else
     {
-        return "Error: CRC check failed";
+        return "";
     }
 }
 

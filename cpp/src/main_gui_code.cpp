@@ -101,35 +101,17 @@ int main(){
 
 	dll.protocol_structure();
 
-	DllToPl inter_3;
+	DllToPl i_dl_pl;
 
-	inter_3.add_ready_msg(dll.get_ready_for_pl_path());
+	i_dl_pl.add_ready_msg(dll.get_ready_for_pl_path());
 
-	std::string msg_to_send = inter_3.get_ready_msg();
+	std::string msg_to_send = i_dl_pl.get_ready_msg();
 
 	std::cout << "Message to send: " << msg_to_send << std::endl;
 
 	SignalProcessing sp;
 	std::vector<int> dtmf = sp.convert_to_dtmf(msg_to_send);
-	SignalProcessing sp2(dtmf);
-	std::cout << sp2.message_str_binary() << std::endl;
-	for (auto i : dtmf){
-		std::cout << i << std::endl;
-	}
-	DataLinkLayer dl_new = DataLinkLayer();
-	std::string package = dl_new.get_data_from_package(msg_to_send);
-
-	Transport_Layer Tl;
-	std::string final_package = tl.remove_header_and_unstuff(package);
-	ApplicationLayer app_layer;
-	std::string final_final_package = app_layer.check_crc(final_package);
-
-	std::vector<robot_command> comd2 = Alc.bits_to_commands(final_final_package);
-	std::cout << "Package: " << final_final_package << std::endl;
-	for(int i = 0; i < comd2.size(); i++){
-		std::cout << "Commands: " << comd2[i].direction << std::endl;
-	}
-	return 1;
+	
 	PhysicalLayer pl;
     pl.yell(dtmf);
 	return 0;

@@ -6,7 +6,9 @@
 #include <filesystem>
 #include <string>
 #include <vector>
-
+#include <chrono>
+#include <memory>
+#include <thread>
 // ===================================================
 #include "read_shared_data.h"
 #include "communication_protocol/crc.h"
@@ -25,14 +27,10 @@
 
 int main()
 {
-
-// ======================================================
-// SENDER
-// ======================================================
 	std::vector<int> ack = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
 	PhysicalLayer pl;
 	std::vector<int> dtmf_sounds = pl.listen(false);
-	
+
 	SignalProcessing sp(dtmf_sounds);
 	std::string binary_msg = sp.message_str_binary();
 	
@@ -48,94 +46,19 @@ int main()
 		i_al.add_string_to_buffer(segment);
 		std::string buffer = i_al.get_buffer();	
 
+		Transport_Layer tp_layer;
+		std::string package_no_header = tp_layer.remove_header_and_unstuff(buffer);
+		
 		ApplicationLayer app_layer;
-		std::vector<robot_command> commands = app_layer.bits_to_commands(buffer);
-
-		pl.yell(ack);
-	}
-
-// ======================================================
-// SENDER
-// ======================================================
-
-
-
-	// SharedData sd; static_cast<unsigned long>
-
-	// std::cout << std::endl;    int i;
-	// std::string test_path = "0110001111100";
-	// std::cout << "The path to be sent: \"" << test_path << "\" (length = " << test_path.size() << ")" << std::endl;
-
-	// ComProtocol test_package(test_path);
-	// std::string full_package_string = test_package.protocol_structure();
-	// std::cout << "Full package: " << full_package_string << std::endl;
-
-	// test_package.get_data_from_package(full_package_string);
-
-	// std::cout << "Converted bits_to_command, the correct answer is -fw:		"; Alc.print_robot_commands(Alc.bits_to_commands("1010000100001011100011010010"));
-
-	// // py to cpp
-	// while (1)
-	// {
-	// 	try
-	// 	{
-	// 		sd.read_shared_data();
-	// 		sd.print();
-	// 	}
-	// 	catch (SharedDataException &e)
-	// 	{
-	// 		if (e.error_code() == 21)
-	// 		{
-	// 		}
-	// 		else
-	// 		{
-	// 			std::cout << "[Error] " << e.what() << std::endl;
-	// 		}
-	// 	}
-	// }
-	// py to cpp ended
-/*
-	// std::filesystem::path currentPath = std::filesystem::current_path();
-    // std::std::cout << "Current working directory: " << currentPath << std::std::endl;
-	// return 0;
-	std::string path_gui = "../Docs/shared_file.json";
-	std::string path_debug = "../../Docs/shared_file.json";
-	SharedData sd(path_debug);
-
-	std::vector<uint16_t> initial_test = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-
-	std::vector<int> test_sequence1 = // 50 numbers
-		{14, 0, 5, 3, 5, 7, 11, 2, 8, 1,
-		6, 4, 10, 9, 13, 12, 11, 14, 7,
-		6, 3, 8, 5, 2, 10, 11, 9, 0, 12,
-		4, 13, 1, 15, 14, 0, 2, 5, 8, 11,
-		10, 9, 0, 13, 12, 3, 4, 15, 1, 14, 0};
-
-	std::vector<int> test_sequence2 = // 100 numbers
-		{14, 0, 5, 3, 5, 7, 11, 2, 8, 1,
-		6, 4, 10, 9, 13, 12, 15, 14, 7,
-		6, 3, 8, 5, 2, 10, 11, 9, 0, 12,
-		4, 13, 1, 15, 14, 0, 2, 5, 8, 11,
-		10, 9, 0, 13, 12, 3, 4, 15, 1, 7,
-		8, 7, 5, 10, 6, 3, 11, 14, 2, 9,
-		4, 13, 7, 0, 8, 12, 6, 15, 1, 2,
-		10, 11, 9, 3, 5, 13, 7, 8, 6, 12,
-		4, 11, 0, 1, 14, 7, 5, 3, 8, 10,
-		1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
-
-	std::std::cout << test_sequence2.size() << std::std::endl;
-
-	try{
-		sd.read_json();
-		sd.print();
-	}
-	catch(SharedDataException &e){
-		if (e.error_code() == 21){
+		std::string final_package = app_layer.check_crc(package_no_header);
+		if(final_package.empty()){
+			std::cerr << "CRC check failed" << std::endl;
 		}
-		else{std::std::cout << "[Error] " << e.what() << std::std::endl;}
+		else{
+			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			std::vector<robot_command> comd2 = app_layer.bits_to_commands(final_package);
+			pl.yell(ack);
+		}
 	}
-
-	
-*/
 	return 0;
 }

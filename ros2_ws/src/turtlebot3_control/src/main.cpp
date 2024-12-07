@@ -26,30 +26,6 @@
 
 int main(int argc, char *argv[]) {
 
-    std::vector<int> test_sequence1 = // 50 numbers
-        {14, 0, 5, 3, 5, 7, 11, 2, 8, 1,
-         6, 4, 10, 9, 13, 12, 11, 14, 7,
-         6, 3, 8, 5, 2, 10, 11, 9, 0, 12,
-         4, 13, 1, 15, 14, 0, 2, 5, 8, 11,
-         10, 9, 0, 13, 12, 3, 4, 15, 1, 14, 0};
-
-    std::vector<int> test_sequence2 = // 100 numbers
-        {14, 0, 5, 3, 5, 7, 11, 2, 8, 1,
-        6, 4, 10, 9, 13, 12, 15, 14, 7,
-        6, 3, 8, 5, 2, 10, 11, 9, 0, 12,
-        4, 13, 1, 15, 14, 0, 2, 5, 8, 11,
-        10, 9, 0, 13, 12, 3, 4, 15, 1, 7,
-        8, 7, 5, 10, 6, 3, 11, 14, 2, 9,
-        4, 13, 7, 0, 8, 12, 6, 15, 1, 2,
-        10, 11, 9, 3, 5, 13, 7, 8, 6, 12,
-        4, 11, 0, 1, 14, 7, 5, 3, 8, 10,
-        1, 2, 11, 13, 12, 9, 6, 15, 0, 14, 0};
-
-    std::vector<int> ja = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
-    std::vector<int> tihi =
-        {14, 0, 15, 15, 4, 1, 14, 15, 15, 5, 8, 15, 15,
-        5, 1, 9, 2, 3, 5, 10, 1, 5, 12, 0, 10, 14, 0};
-
     robot_command r1("-fw", "325");
 	robot_command r2("-l", "6");
 	robot_command r3("-r", "21");
@@ -58,46 +34,39 @@ int main(int argc, char *argv[]) {
 
 	std::vector<robot_command> test_bit_vec = {r1, r2, r3, r4, r5};
 
-    // -- Play sounds --
-    //WaveGenerator sounds(test_sequence2);
-    //sounds.play_sounds();
-
-/*
-
-    // --- Audio recording and signal processing ---
-    AudioInput audio_input(SAMPLE_RATE, FRAMES_PER_BUFFER);
-    audio_input.audio_open();
-    audio_input.list_audio_devices();
-    std::cout << "Recording audio..." << std::endl;
-    audio_input.record_audio(INPUT_DEVICE, false);
-    //audio_input.save_to_wav("../dtmf_sounds/output.wav");
-    //audio_input.save_to_textfile("../dtmf_sounds.txt");
-    //audio_input.check(true, test_sequence2);
-    audio_input.audio_close();
-
-*/
-
     std::vector<int> ack = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
 	PhysicalLayer pl;
 	std::vector<int> dtmf_sounds = pl.listen(false);
-
+	
 	SignalProcessing sp(dtmf_sounds);
 	std::string binary_msg = sp.message_str_binary();
+	
+	DataLinkLayer dl_layer;
+	std::string package = dl_layer.get_data_from_package(binary_msg);
 
-	DataLinkLayer dl_layer(binary_msg);
-	std::string package = dl_layer.get_data_from_package();
-/*
-	TlToDll i_tl;
-	i_tl.add_segment_to_buffer(package);
-	std::string segment = i_tl.take_segment_from_buffer();
+    if(!package.empty()){
+		TlToDll i_tl;
+		i_tl.add_segment_to_buffer(package);
+		std::string segment = i_tl.take_segment_from_buffer();
 
-	AlToTl i_al;
-	i_al.add_string_to_buffer(segment);
-	std::string buffer = i_al.get_buffer();
-*/
-std::cout << "Package: \n" << package << std::endl;
-	ApplicationLayer app_layer;
-	std::vector<robot_command> commands = app_layer.bits_to_commands(package);
+		AlToTl i_al;
+		i_al.add_string_to_buffer(segment);
+		std::string buffer = i_al.get_buffer();	
+
+		Transport_Layer tp_layer;
+		std::string package_no_header = tp_layer.remove_header_and_unstuff(buffer);
+		
+		ApplicationLayer app_layer;
+		std::string final_package = app_layer.check_crc(package_no_header);
+		if(final_package.empty()){
+			std::cerr << "CRC check failed" << std::endl;
+		}
+		else{
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			std::vector<robot_command> comd2 = app_layer.bits_to_commands(final_package);
+			pl.yell(ack);
+		}
+	}
 
 
     // --- Turtlebot control ---
@@ -141,9 +110,7 @@ std::cout << "Package: \n" << package << std::endl;
         std::cout << "Not the same size" << std::endl;
     }
 */
-    if(!ack_check){
-        pl.yell(ack);
-    }
+
     rclcpp::shutdown();
     return 0;
 }
