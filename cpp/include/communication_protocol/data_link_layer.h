@@ -32,8 +32,13 @@ private:
     bool _is_ack_received = false;
     std::vector<std::string> _ackNo = {"0000", "0001"};
     std::vector<std::string> _seqNo = {"1000", "1001"};
+    bool _is_msg_correct = false;
 
 public:
+    bool get_is_msg_correct();
+
+    void set_is_msg_correct(const bool &input);
+
     std::string get_ready_for_pl_path();
 
     /// @brief Constructor to create instance of DataLinkLayer

@@ -3,6 +3,10 @@
 
 DataLinkLayer::DataLinkLayer(std::string robot_path) : _robot_path(robot_path) {}
 
+bool DataLinkLayer::get_is_msg_correct() {return _is_msg_correct;}
+
+void DataLinkLayer::set_is_msg_correct(const bool &input){_is_msg_correct = input;}
+
 std::string DataLinkLayer::get_ready_for_pl_path()
 {
     std::string to_send = _ready_for_pl_path;
@@ -134,6 +138,10 @@ std::string DataLinkLayer::ack_protocol_structure()
                      << _pre_and_postamble;
 
     _ready_for_pl_path = creating_package.str();
+
+    // Make is_msg_correct false by default again for next sequence
+    _is_msg_correct = false;
+
 
     return _ready_for_pl_path;
 }
@@ -284,7 +292,7 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
     // Removing ESC nibbles
     received_package = remove_esc_nibbles(received_package);
 
-    // Removing AckNo and temporarily sacving received AckNo
+    // Removing AckNo and temporarily saving received AckNo
     int ackNo_size = received_ack_no.size();
     std::string temp_received_ack_no = received_package.substr(0, ackNo_size);
     received_package.erase(received_package.begin(), received_package.begin() + ackNo_size);
@@ -301,7 +309,10 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
     {
         std::cout << "Received package is correct. CRC remainder equals 0." << std::endl;
 
-        // Updating recevied AckNo variable
+        //Update boolean for msg to send ACK
+        _is_msg_correct = true;
+
+        // Updating received AckNo variable
         received_ack_no = temp_received_ack_no;
 
         // Getting length of data

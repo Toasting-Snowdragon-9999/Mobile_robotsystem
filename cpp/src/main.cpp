@@ -120,10 +120,14 @@ int main()
 
 	DataLinkLayer dllr1(package_to_send);
 	std::string received_package = dllr1.get_data_from_package(package_to_send);
+	std::cout << "Is message correct: " << dllr1.get_is_msg_correct() << std::endl;
+	// Send ACK to Computer again if received msg is correct
+	if(dllr1.get_is_msg_correct()){
+		std::
+
+	}
+
 	std::cout << "Received package is: " << received_package << std::endl;
-
-
-
 
 	return 0;
 }
