@@ -71,9 +71,9 @@ std::string DataLinkLayer::protocol_structure()
 std::string DataLinkLayer::nibble_stuffing(std::string package)
 {
     int i = 0;
-    while (i <= package.size() - nibble_size)
+    while (i <= package.size() - NIBBLE_SIZE)
     {
-        std::string nibble = package.substr(i, nibble_size);
+        std::string nibble = package.substr(i, NIBBLE_SIZE);
         if (nibble == _pre_and_postamble || nibble == _ESC_nibble)
         {
             package.insert(i, _ESC_nibble);
@@ -108,8 +108,8 @@ std::string DataLinkLayer::zero_pad(std::string binary_msg)
 {
     int length_of_msg = binary_msg.size();
 
-    int zeros = nibble_size - (length_of_msg % nibble_size);
-    if (zeros == nibble_size)
+    int zeros = NIBBLE_SIZE - (length_of_msg % NIBBLE_SIZE);
+    if (zeros == NIBBLE_SIZE)
     {
         zeros = 0;
     }
@@ -146,7 +146,7 @@ std::string DataLinkLayer::decimal_seq_to_binary_msg(const std::vector<std::vect
                     toneCopy /= 2;
                 }
 
-                while (tmpTone.length() < nibble_size)
+                while (tmpTone.length() < NIBBLE_SIZE)
                 {
                     tmpTone += '0';
                 }

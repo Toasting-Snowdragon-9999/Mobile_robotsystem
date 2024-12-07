@@ -13,7 +13,8 @@ std::vector<std::vector <std::string>> SharedData::read_json(){
     nlohmann::json jsonData;
 
     std::filesystem::path cwd = std::filesystem::current_path();
-    std::cout << "Current working directory: " << cwd << std::endl;    std::ifstream inputFile(_fname);
+    std::cout << "Current working directory: " << cwd << std::endl;    
+    std::ifstream inputFile(_fname);
 
     if (!inputFile.is_open()) {
         std::cerr << "Failed to open the JSON file" << std::endl;
@@ -28,13 +29,13 @@ std::vector<std::vector <std::string>> SharedData::read_json(){
     inputFile.close();
 
     std::cout << "JSON data loaded successfully:" << std::endl;
-
+    std::cout << "Json size: ";
+    std::cout << jsonData.size() << std::endl;  
     for (size_t i = 0; i < jsonData.size(); ++i) {
         std::vector <std::string> temp;
         temp.push_back(jsonData[i][0]);
         int value = jsonData[i][1];
         temp.push_back(std::to_string(value)); 
-        std::cout << "Command: " << jsonData[i][0] << " Value: " << jsonData[i][1] << std::endl;
         sorted_data.push_back(temp);
     }
 

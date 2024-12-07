@@ -8,7 +8,7 @@
 
 class WaveGenerator {
 private:
-    const unsigned _sample_rate = 48000;         // Samples per second
+    unsigned _sample_rate;         // Samples per second
     const float _amplitude = 0.5;              // Amplitude of the sine waves
     const unsigned _duration = 120;              // Duration of each tone in milliseconds
     const unsigned _time_between_sounds = 60;    // Time between each sound that is played (milliseconds)
@@ -29,7 +29,7 @@ private:
 
 public:
     WaveGenerator();
-    WaveGenerator(std::vector<int>& sequence);
+    WaveGenerator(std::vector<int>& sequence, int sample_rate);
     ~WaveGenerator();
 
     void play_sounds();

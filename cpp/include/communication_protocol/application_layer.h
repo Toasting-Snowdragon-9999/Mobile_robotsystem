@@ -1,7 +1,7 @@
 #ifndef APPLICATIONLAYER_H
 #define APPLICATIONLAYER_H
 
-#define nibble_size 4
+#define NIBBLE_SIZE (4)
 
 #include <string>
 #include <unordered_map>
@@ -81,6 +81,8 @@ public:
     std::string decode_message(const std::string &message);
 
     std::string check_crc(const std::string &message);
+
+    std::vector<robot_command> python_to_cpp(std::vector<std::vector<std::string>> python_string);
 };
 
 #endif // APPLICATIONLAYER_H

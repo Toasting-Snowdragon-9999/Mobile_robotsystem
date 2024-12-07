@@ -14,7 +14,7 @@ PhysicalLayer::~PhysicalLayer(){
 
 void PhysicalLayer::yell(std::vector<int> message){
     
-    WaveGenerator sounds(message);
+    WaveGenerator sounds(message, _sample_rate);
     sounds.play_sounds();
 }
 

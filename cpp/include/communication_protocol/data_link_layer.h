@@ -1,7 +1,7 @@
 #ifndef DATA_LINK_LAYER_H
 #define DATA_LINK_LAYER_H
 
-#define nibble_size 4
+#define NIBBLE_SIZE (4)
 #define byte_size 8
 #define timeout std::chrono::seconds(10)
 
