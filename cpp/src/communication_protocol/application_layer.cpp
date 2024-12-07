@@ -213,3 +213,15 @@ std::vector<robot_command> ApplicationLayer::python_to_cpp(std::vector<std::vect
     }
     return command_vector;
 }
+
+std::vector<std::vector<std::string>> ApplicationLayer::cpp_to_robot(std::vector<robot_command> python_path){
+    std::vector<std::vector<std::string>> python_string;
+    for (const auto &command : python_path)
+    {
+        std::vector<std::string> temp_command;
+        temp_command.push_back(command.direction);
+        temp_command.push_back(command.value);
+        python_string.push_back(temp_command);
+    }
+    return python_string;
+}

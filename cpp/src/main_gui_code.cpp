@@ -23,8 +23,10 @@
 #include "interfaces/tl_to_dll.h"
 #include "interfaces/dll_to_pl.h"
 #include "interfaces/signal_processing.h"
+#define LENGTH_FACTOR 10
 
 int main(){
+
 	std::cout << "Hello World!" << std::endl;
 	
 	std::string path_gui = "../Docs/shared_file.json";

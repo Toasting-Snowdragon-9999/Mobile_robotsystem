@@ -83,6 +83,8 @@ public:
     std::string check_crc(const std::string &message);
 
     std::vector<robot_command> python_to_cpp(std::vector<std::vector<std::string>> python_string);
+
+    std::vector<std::vector<std::string>> cpp_to_robot(std::vector<robot_command>python_path);
 };
 
 #endif // APPLICATIONLAYER_H
