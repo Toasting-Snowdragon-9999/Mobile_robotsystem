@@ -135,13 +135,15 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(std::string input_
 
     std::string Value = "";
     size_t length = input_bits.length();
+    std::cout << "Length of input bits: " << length << std::endl;
     std::string value_bits = "";
 
     for (int i = 0; i <= length; i += nibble_size)
     {
         temp_bits = input_bits.substr(i, nibble_size);
         std::string commandB = find_key(temp_bits, _direction_map);
-
+        std::cout << "CommandB: ";
+        std::cout << commandB << std::endl; 
         if (!commandB.empty())
         {
             Value = "";
@@ -149,7 +151,9 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(std::string input_
             {
                 std::string value_bits = input_bits.substr(i + nibble_size, nibble_size);
                 std::string valueB = find_key(value_bits, _value_map);
-
+                std::cout << "ValueB: ";    
+                std::cout << valueB << std::endl;
+                std::cout << "Value_bits: " << value_bits << std::endl;
                 if (!valueB.empty())
                 {
                     Value += valueB;
@@ -180,7 +184,26 @@ void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &co
     std::cout << std::endl;
 }
 
+std::string ApplicationLayer::check_crc(const std::string &message)
+{
+
+    std::string remainder = CRC::CRC32::decode(message);
+    if (std::stoi(remainder, nullptr, 2) == 0)
+    {
+        return message.substr(0, message.size() - remainder.size());
+    }
+    else
+    {
+        return "Error: CRC check failed";
+    }
+}
+
 std::string ApplicationLayer::encode_message(const std::string &message)
 {
     return CRC::CRC32::encode(message);
+}
+
+std::string ApplicationLayer::decode_message(const std::string &message)
+{
+    return CRC::CRC32::decode(message);
 }

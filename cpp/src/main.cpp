@@ -36,9 +36,9 @@ int main()
 	SignalProcessing sp(dtmf_sounds);
 	std::string binary_msg = sp.message_str_binary();
 	
-	DataLinkLayer dl_layer(binary_msg);
-	std::string package = dl_layer.get_data_from_package();
-	
+	DataLinkLayer dl_layer;
+	std::string package = dl_layer.get_data_from_package(binary_msg);
+
 	if(!package.empty()){
 		TlToDll i_tl;
 		i_tl.add_segment_to_buffer(package);

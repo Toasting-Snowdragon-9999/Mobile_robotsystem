@@ -15,7 +15,6 @@
 #include <chrono>
 #include "communication_protocol/crc.h"
 
-
 class DataLinkLayer
 {
 
@@ -29,11 +28,13 @@ private:
     bool _is_ack_received = false;
 
 public:
-    std::string get_ready_for_pl_path();
+    DataLinkLayer();
 
     /// @brief Constructor to create instance of DataLinkLayer
     /// @param robotPath - Path for robot created by user
     DataLinkLayer(std::string robotPath);
+
+    std::string get_ready_for_pl_path();
 
     /// @brief Method for finding the length of a string in binary
     /// @param s Type: String
@@ -77,7 +78,7 @@ public:
     /// @brief Finds the data/message itself, from the received package
     /// @param received_package Type: String - The received package as a string of bits
     /// @return Type: String - The data itself
-    std::string get_data_from_package();
+    std::string get_data_from_package(std::string received_package);
 
     // Method for main
     void start_ack_timer();

@@ -1,6 +1,8 @@
 #include "communication_protocol/data_link_layer.h"
 #include "communication_protocol/crc.h"
 
+DataLinkLayer::DataLinkLayer() {}
+
 DataLinkLayer::DataLinkLayer(std::string robot_path) : _robot_path(robot_path) {}
 
 std::string DataLinkLayer::get_ready_for_pl_path()
@@ -204,16 +206,17 @@ std::vector<int> DataLinkLayer::find_length_pos_in_header(std::string received_p
     return position_of_length;
 }
 
-std::string DataLinkLayer::get_data_from_package()
+
+std::string DataLinkLayer::get_data_from_package(std::string received_package)
 {
     // Removing the pre- and postamble from received package
-    _robot_path = remove_pre_and_postamble(_robot_path);
+    received_package = remove_pre_and_postamble(received_package);
 
     // Removing ESC nibbles
-    _robot_path = remove_esc_nibbles(_robot_path);
+    received_package = remove_esc_nibbles(received_package);
 
     // Checking CRC (validity) of received package
-    std::string crc_decoded_remainder = CRC::CRC32::decode(_robot_path);
+    std::string crc_decoded_remainder = CRC::CRC32::decode(received_package);
     int int_crc_decoded_remainder = std::stoi(crc_decoded_remainder, nullptr, 2);
     if (int_crc_decoded_remainder != 0)
     {
@@ -225,8 +228,8 @@ std::string DataLinkLayer::get_data_from_package()
         std::cout << "Received package is correct. CRC remainder equals 0." << std::endl;
 
         // Getting length of data
-        std::vector<int> length_pos = find_length_pos_in_header(_robot_path);
-        std::string binary_length_of_data = _robot_path.substr(length_pos[0], length_pos[1] - length_pos[0] + 1);
+        std::vector<int> length_pos = find_length_pos_in_header(received_package);
+        std::string binary_length_of_data = received_package.substr(length_pos[0], length_pos[1] - length_pos[0] + 1);
         std::string unstuffed_binary_length = bit_unstuff(binary_length_of_data); // Making sure to unstuff the length
         int int_length_of_data = std::stoi(unstuffed_binary_length, nullptr, 2);
         std::cout << "Length of data: " << int_length_of_data << std::endl;
@@ -237,7 +240,7 @@ std::string DataLinkLayer::get_data_from_package()
         int size_of_length_description = binary_length_of_data.size();
 
         int start_idx = size_of_SFD + size_of_length_description + size_of_EFD;
-        std::string data = _robot_path.substr(start_idx, int_length_of_data);
+        std::string data = received_package.substr(start_idx, int_length_of_data);
         std::cout << "The received data: " << data << std::endl;
 
         return data;

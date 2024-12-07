@@ -77,6 +77,10 @@ public:
     std::string encode_message(const std::string &message);
 
     void start_ack_timer();
+
+    std::string decode_message(const std::string &message);
+
+    std::string check_crc(const std::string &message);
 };
 
 #endif // APPLICATIONLAYER_H
