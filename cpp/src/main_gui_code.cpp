@@ -111,8 +111,11 @@ int main(){
 
 	SignalProcessing sp;
 	std::vector<int> dtmf = sp.convert_to_dtmf(msg_to_send);
-	
-	PhysicalLayer pl;
+	for(auto v : dtmf){
+		std::cout << v << " ";
+
+	}
+	PhysicalLayer pl(16000, 14);
     pl.yell(dtmf);
 	return 0;
 }
