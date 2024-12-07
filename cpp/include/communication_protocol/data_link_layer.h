@@ -16,6 +16,8 @@
 #include <thread>
 #include "crc.h"
 
+std::string previous_ACK;
+
 class DataLinkLayer
 {
 
@@ -27,6 +29,8 @@ private:
     std::string _robot_path = "";                // Data formed by path for robot, created by user
     std::string _ready_for_pl_path = "";         // Path that's ready to send to physical layer
     bool _is_ack_received = false;
+    std::string _ACK0 = "0000";
+    std::string _ACK1 = "1111";
 
 public:
     std::string get_ready_for_pl_path();
@@ -86,7 +90,7 @@ public:
 
     void stop_and_wait_arq();
 
-    bool is_ack_received();
+    bool get_ack_received();
 
     void set_ack_received(const bool &boolean);
 
@@ -99,6 +103,7 @@ public:
 
     std::string bit_unstuff(const std::string &header);
 
+    std::string send_ack(std::string );
 
 };
 

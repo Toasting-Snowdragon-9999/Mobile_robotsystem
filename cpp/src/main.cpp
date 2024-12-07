@@ -74,9 +74,14 @@ int main()
 
 		while (!timer.get_timeout())
 		{
-			if (dll.is_ack_received())
+			// LISTENING PHYSICAL LAYER FOR ACK
+			// LISTENING PHYSICAL LAYER FOR ACK
+			// LISTENING PHYSICAL LAYER FOR ACK
+
+			if (dll.get_ack_received())
 			{
 				inter_2.remove_first_segment_from_buffer();
+
 				timer.~Timer();
 				break;
 			}
@@ -90,6 +95,20 @@ int main()
 	// ======================================================
 	// SENDER
 	// ======================================================
+
+	// ======================================================
+	// Receiver
+	// ======================================================
+
+	std::string test_r = "1010000100000000";
+
+	DataLinkLayer dllr(test_r);
+
+	std::string tr_with = dllr.protocol_structure();
+
+	dllr.get_data_from_package(tr_with);
+
+
 
 	return 0;
 }

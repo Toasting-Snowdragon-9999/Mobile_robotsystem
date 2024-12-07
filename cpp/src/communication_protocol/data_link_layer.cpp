@@ -223,6 +223,8 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
     }
     else
     {
+
+
         std::cout << "Received package is correct. CRC remainder equals 0." << std::endl;
 
         // Getting length of data
@@ -250,7 +252,9 @@ bool DataLinkLayer::is_header_and_msg_correct(const std::string &header_and_msg)
     return ~std::stoi(CRC::CRC32::decode(header_and_msg), nullptr, 2);
 }
 
-bool DataLinkLayer::is_ack_received()
+
+
+bool DataLinkLayer::get_ack_received()
 {
     return _is_ack_received;
 }
