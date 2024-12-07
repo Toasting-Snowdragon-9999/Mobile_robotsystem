@@ -78,7 +78,9 @@ void AudioInput::record_audio(int input_device, bool hx){
         std::cerr << "Error: No input device.\n";
         return;
     }
-
+    
+    const PaDeviceInfo* deviceInfo = Pa_GetDeviceInfo(_input_parameters.device);
+    std::cout << "Device name #" << ": " << deviceInfo->name << "\n";
     _input_parameters.channelCount = NUM_CHANNELS;               // Mono input
     _input_parameters.sampleFormat = SAMPLE_TYPE;       // 32-bit floating point
     _input_parameters.suggestedLatency = Pa_GetDeviceInfo(_input_parameters.device)->defaultLowInputLatency;
@@ -118,8 +120,6 @@ void AudioInput::record_audio(int input_device, bool hx){
     auto start = std::chrono::high_resolution_clock::now();
 
     while (_mic_data.stop == false){
-        // Pa_Sleep(25*1000); 
-        // break;
     }
     save_to_textfile("../dtmf_sounds/output.txt");
     auto end = std::chrono::high_resolution_clock::now();
@@ -142,6 +142,7 @@ void AudioInput::record_audio(int input_device, bool hx){
     for(auto a: _mic_data.recorded_DTMF_tones){
         std::cout << a << " " << std::endl;
     }
+    
 
 }
 
@@ -174,9 +175,9 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
     float multiplier = 0.0;
     bool hyperx = data->hyperx;
     if(hyperx){
-        multiplier = 0.5;
+        multiplier = 0.2;
     }
-    float thresh_hold = 0.5*(1 - multiplier);   
+    float thresh_hold = 0.5*(1 - multiplier);
     std::vector <int> _preamble = {14, 0};
     int _esc_tone = 15;  
 
@@ -190,6 +191,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         if (std::abs(mono_in) < thresh_hold){
             mono_in = 0;
         }
+        std::cout << "mono in: " << mono_in << std::endl;
 
 		buffer.push_back(mono_in);
     }
@@ -197,7 +199,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
     data->recorded_samples.push_back(buffer);
 
     if(data->pre_success){
-        Goertzel algo(hyperx);
+        Goertzel algo(hyperx, 16000);
         algo.load_data(buffer);
         algo.translate_signal_goertzel(data->result_in_mic);
         std::cout << "Tone Flag: " << data->result_in_mic.tone_flag << std::endl;

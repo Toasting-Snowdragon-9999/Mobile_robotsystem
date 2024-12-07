@@ -135,29 +135,24 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(std::string input_
 
     std::string Value = "";
     size_t length = input_bits.length();
-    std::cout << "Length of input bits: " << length << std::endl;
     std::string value_bits = "";
 
-    for (int i = 0; i <= length; i += nibble_size)
+    for (int i = 0; i <= length; i += NIBBLE_SIZE)
     {
-        temp_bits = input_bits.substr(i, nibble_size);
+        temp_bits = input_bits.substr(i, NIBBLE_SIZE);
         std::string commandB = find_key(temp_bits, _direction_map);
-        std::cout << "CommandB: ";
         std::cout << commandB << std::endl; 
         if (!commandB.empty())
         {
             Value = "";
-            while (i + nibble_size <= length)
+            while (i + NIBBLE_SIZE <= length)
             {
-                std::string value_bits = input_bits.substr(i + nibble_size, nibble_size);
+                std::string value_bits = input_bits.substr(i + NIBBLE_SIZE, NIBBLE_SIZE);
                 std::string valueB = find_key(value_bits, _value_map);
-                std::cout << "ValueB: ";    
-                std::cout << valueB << std::endl;
-                std::cout << "Value_bits: " << value_bits << std::endl;
                 if (!valueB.empty())
                 {
                     Value += valueB;
-                    i += nibble_size;
+                    i += NIBBLE_SIZE;
                 }
                 else
                 {
@@ -206,4 +201,15 @@ std::string ApplicationLayer::encode_message(const std::string &message)
 std::string ApplicationLayer::decode_message(const std::string &message)
 {
     return CRC::CRC32::decode(message);
+}
+
+
+std::vector<robot_command> ApplicationLayer::python_to_cpp(std::vector<std::vector<std::string>> python_string){
+    std::vector<robot_command> command_vector;
+    for (const auto &command : python_string)
+    {
+        robot_command temp_command(command[0], command[1]);
+        command_vector.push_back(temp_command);
+    }
+    return command_vector;
 }

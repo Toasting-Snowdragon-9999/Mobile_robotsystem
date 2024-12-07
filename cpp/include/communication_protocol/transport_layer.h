@@ -1,7 +1,7 @@
 #ifndef TRANSPORT_LAYER_H
 #define TRANSPORT_LAYER_H
 
-#define nibble_size 4
+#define NIBBLE_SIZE (4)
 #define mms 32 // (Maximum Segment Size)
 
 #include <string>

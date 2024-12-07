@@ -5,7 +5,7 @@ WaveGenerator::WaveGenerator() {
     add_start_sequence();
 }
 
-WaveGenerator::WaveGenerator(std::vector<int>& sequence) : _sequence(sequence) {
+WaveGenerator::WaveGenerator(std::vector<int>& sequence, int sample_rate) : _sequence(sequence), _sample_rate(sample_rate) {
     initialize_frequency_combinations();
     add_start_sequence();
 
@@ -29,6 +29,8 @@ void WaveGenerator::initialize_frequency_combinations() {
 
 void WaveGenerator::add_start_sequence() {
     _all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[0]);
+    _all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[1]);
+    _all_frequencies_to_be_played.push_back(_frequency_combinations_DTMF[2]);
 }
 
 void WaveGenerator::apply_fade_in(std::vector<float>& samples, int fadeLength) {
