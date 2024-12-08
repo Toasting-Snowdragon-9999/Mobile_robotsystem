@@ -27,7 +27,8 @@
 
 int main()
 {
-	std::vector<int> ack = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
+	std::string ack_commands = "1";
+
 	PhysicalLayer pl;
 	std::vector<int> dtmf_sounds = pl.listen(false);
 
@@ -57,7 +58,13 @@ int main()
 		else{
 			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 			std::vector<robot_command> comd2 = app_layer.bits_to_commands(final_package);
-			pl.yell(ack);
+			
+			DataLinkLayer dll_ack(ack_commands);
+			dll_ack.protocol_structure();
+			std::string message_ready = dll_ack.get_ready_for_pl_path();
+			SignalProcessing sp;
+			std::vector<int> dtmf_ack = sp.convert_to_dtmf(message_ready);
+			pl.yell(dtmf_ack);
 		}
 	}
 	return 0;

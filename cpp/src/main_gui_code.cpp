@@ -27,8 +27,7 @@
 
 int main(){
 
-	std::cout << "Hello World!" << std::endl;
-	
+	std::string ack = "1";
 	std::string path_gui = "../Docs/shared_file.json";
 	std::string path_debug = "../../Docs/shared_file.json";
 	SharedData sd(path_gui);
@@ -57,49 +56,58 @@ int main(){
 
 	// Interface from Application Layer to Transport Layer
 
-	AlToTl inter_1;
+	AlToTl i_al_tl;
 
-	inter_1.add_string_to_buffer(encoded_test_bits);
+	i_al_tl.add_string_to_buffer(encoded_test_bits);
 
 	Transport_Layer tl;
 
-	std::string tl_header_test_bits = tl.add_header(inter_1.get_buffer());
+	std::string tl_header_test_bits = tl.add_header(i_al_tl.get_buffer());
 
-	// auto segment_vector = tl.segment_msg(tl_header_test_bits);
+	auto segment_vector = tl.segment_msg(tl_header_test_bits);
 
-	// TlToDll inter_2;
+	TlToDll i_tl_dll;
 
-	// inter_2.add_segments_to_buffer(segment_vector);
+	i_tl_dll.add_segments_to_buffer(segment_vector);
 
-	// DataLinkLayer dll(inter_2.take_segment_from_buffer());
+	while(!i_tl_dll.is_buffer_empty()){
 
-	DataLinkLayer dll(tl_header_test_bits);
+		std::string segment = i_tl_dll.take_segment_from_buffer();
 
+		DataLinkLayer dll(segment);
 
-	dll.protocol_structure();
+		dll.protocol_structure();
 
-	DllToPl i_dl_pl;
+		DllToPl i_dl_pl;
 
-	i_dl_pl.add_ready_msg(dll.get_ready_for_pl_path());
+		i_dl_pl.add_ready_msg(dll.get_ready_for_pl_path());
 
-	std::string msg_to_send = i_dl_pl.get_ready_msg();
+		std::string msg_to_send = i_dl_pl.get_ready_msg();
 
-	std::cout << "Message to send: " << msg_to_send << std::endl;
+		std::cout << "Message to send: " << msg_to_send << std::endl;
 
-	SignalProcessing sp;
-	std::vector<int> dtmf = sp.convert_to_dtmf(msg_to_send);
-	for(auto v : dtmf){
-		std::cout << v << " ";
+		SignalProcessing sp;
+		std::vector<int> dtmf = sp.convert_to_dtmf(msg_to_send);
+		for(auto v : dtmf){
+			std::cout << v << " ";
+		}
+		PhysicalLayer pl(16000, 7);
+		pl.yell(dtmf);
+		
+		PhysicalLayer pl2(16000, 16);
+		std::vector <int> samples = pl2.listen(true);
+		
+		SignalProcessing sp_ack(samples);
+		std::string binary_msg = sp_ack.message_str_binary();
+
+		DataLinkLayer dl_layer;
+		std::string package = dl_layer.get_data_from_package(binary_msg);
+
+		if(package == ack){	
+			i_tl_dll.remove_segment_from_buffer();
+		}
+
 	}
-	PhysicalLayer pl(16000, 7);
-    pl.yell(dtmf);
-	
-	PhysicalLayer pl2(16000, 16);
-	std::vector <int> samples = pl2.listen(true);
-	for(auto a : samples){
-		std::cout << a << " ";	
-	}
-	std::cout << "" << std::endl;
 	return 0;
 }
 

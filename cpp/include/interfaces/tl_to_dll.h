@@ -19,6 +19,10 @@ public:
 
     // Receiver
     void add_segment_to_buffer(const std::string &encoded_segment);
+
+    void remove_segment_from_buffer();
+
+    bool is_buffer_empty();
 };
 
 #endif

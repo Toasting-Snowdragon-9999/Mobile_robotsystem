@@ -19,9 +19,21 @@ std::string TlToDll::take_segment_from_buffer()
     if (!_segment_buffer.empty())
     {
         std::string select_segment = _segment_buffer[0];
-        _segment_buffer.pop_front();
         return select_segment;
     }
 
     return select_segment;
+}
+
+void TlToDll::remove_segment_from_buffer()
+{
+    if (!_segment_buffer.empty())
+    {
+        _segment_buffer.pop_front();
+    }
+}
+
+bool TlToDll::is_buffer_empty()
+{
+    return _segment_buffer.empty();
 }
