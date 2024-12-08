@@ -40,8 +40,10 @@ int main(){
 		}
 		else{std::cout << "[Error] " << e.what() << std::endl;}
 	}
+	std::vector<std::vector<std::string>>test = {{"-fw","2"}};
+
 	ApplicationLayer app_layer;
-	std::vector<robot_command> commands = app_layer.python_to_cpp(python_path);
+	std::vector<robot_command> commands = app_layer.python_to_cpp(test);
 	app_layer.print_robot_commands(commands);
 	std::string test_bits = app_layer.command_vector_to_bitstream(commands);
 
@@ -62,7 +64,7 @@ int main(){
 	i_tl_dll.add_segments_to_buffer(segment_vector);
 
 	while(!i_tl_dll.is_buffer_empty()){
-
+		
 		std::string segment = i_tl_dll.take_segment_from_buffer();
 
 		DataLinkLayer dll(segment);
@@ -89,11 +91,11 @@ int main(){
 		std::vector <int> samples = pl2.listen(true);
 		SignalProcessing sp_ack(samples);
 		std::string binary_msg = sp_ack.message_str_binary();
-
 		DataLinkLayer dl_layer;
 		std::string package = dl_layer.get_data_from_package(binary_msg);
 
 		if(package == ack){	
+			std::cout << "Acknowledge received" << std::endl;
 			i_tl_dll.remove_segment_from_buffer();
 		}
 

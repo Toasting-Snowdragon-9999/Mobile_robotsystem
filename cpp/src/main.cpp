@@ -40,16 +40,16 @@ int main()
 		std::string package = dl_layer.get_data_from_package(binary_msg);
 
 		if(!package.empty()){
+			PhysicalLayer transmitter(48000, 2); 
 			i_tl.add_segment_to_buffer(package);
 		
 			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-			
 			DataLinkLayer dll_ack(ack_commands);
 			dll_ack.protocol_structure();
 			std::string message_ready = dll_ack.get_ready_for_pl_path();
 			SignalProcessing sp;
 			std::vector<int> dtmf_ack = sp.convert_to_dtmf(message_ready);
-			pl.yell(dtmf_ack);
+			transmitter.yell(dtmf_ack);
 		}
 	}
 	Transport_Layer tp_layer;
