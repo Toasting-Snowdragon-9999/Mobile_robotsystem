@@ -44,13 +44,13 @@ set(SHARED_SOURCES
 
 # GUI executable sources
 set(GUI_SOURCES
-    src/main_gui_code.cpp
+    src/pc_main.cpp
     src/read_shared_data.cpp
 )
 
 # Robot executable sources
 set(ROBOT_SOURCES
-    src/main.cpp
+    src/robot_main.cpp
 )
 
 # Add executables

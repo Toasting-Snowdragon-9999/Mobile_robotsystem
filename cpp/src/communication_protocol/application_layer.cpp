@@ -187,20 +187,6 @@ void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &co
     std::cout << std::endl;
 }
 
-std::string ApplicationLayer::check_crc(const std::string &message)
-{
-
-    std::string remainder = CRC::CRC32::decode(message);
-    if (std::stoi(remainder, nullptr, 2) == 0)
-    {
-        return message.substr(0, message.size() - remainder.size());
-    }
-    else
-    {
-        return "";
-    }
-}
-
 std::string ApplicationLayer::encode_message(const std::string &message)
 {
     return CRC::CRC32::encode(message);

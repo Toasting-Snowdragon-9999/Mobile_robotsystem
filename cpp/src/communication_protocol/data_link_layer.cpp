@@ -1,14 +1,12 @@
 #include "communication_protocol/data_link_layer.h"
 #include "communication_protocol/crc.h"
 
-DataLinkLayer::DataLinkLayer() {}
-
-DataLinkLayer::DataLinkLayer(std::string binary_msg) : _binary_msg(binary_msg) {}
-
 DataLinkLayer::DataLinkLayer()
 {
     _binary_msg = "";
 }
+
+DataLinkLayer::DataLinkLayer(std::string binary_msg) : _binary_msg(binary_msg) {}
 
 void DataLinkLayer::change_ack_indx_sender_sider()
 {
@@ -33,13 +31,6 @@ bool DataLinkLayer::get_is_msg_correct() { return _is_msg_correct; }
 
 void DataLinkLayer::set_is_msg_correct(const bool &input) { _is_msg_correct = input; }
 
-std::string DataLinkLayer::get_ready_for_pl_path()
-{
-    std::string to_send = _ready_for_pl_path;
-    // _ready_for_pl_path.clear();
-    std::cout << "Inside function " << to_send << std::endl;
-    return to_send;
-}
 
 std::string DataLinkLayer::length_of_string(std::string s)
 {
@@ -352,6 +343,7 @@ std::string DataLinkLayer::sender_side_get_data_from_package(std::string receive
         _is_msg_correct = true;
 
         // Updating received AckNo variable
+        set_ack_received(true);
         received_ack_no = temp_received_ack_no;
 
         // Getting length of data

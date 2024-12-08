@@ -65,6 +65,7 @@ bool Transport_Layer::is_combined_msg_complete(const std::string &combined_msg)
     if (get_length_from_header(combined_msg) == no_header_msg.length())
     {
         std::cout << "Something right" << std::endl;
+        _combined_msg_flag = true;
         return 1;
     }
 
@@ -73,6 +74,11 @@ bool Transport_Layer::is_combined_msg_complete(const std::string &combined_msg)
         std::cout << "Something wrong" << std::endl;
         return 0;
     }
+}
+
+bool Transport_Layer::get_combined_msg_flag()
+{
+    return _combined_msg_flag;
 }
 
 /// @brief Getter method for the private segments vector

@@ -18,11 +18,12 @@ private:
     std::string _SFD = "11110";
     std::string _EFD = _SFD;
     std::vector<std::string> _segments_vector;
+    bool _combined_msg_flag = false;
 
 public:
     Transport_Layer();
 
-
+    bool get_combined_msg_flag();
 
     std::vector<std::string> get_segments_vector();
 

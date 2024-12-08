@@ -49,11 +49,7 @@ public:
 
     void set_is_msg_correct(const bool &input);
 
-    std::string get_ready_for_pl_path();
-
     void change_ack_indx_sender_sider();
-
-    std::string get_ready_for_pl_path();
 
     /// @brief Method for finding the length of a string in binary
     /// @param s Type: String
