@@ -146,10 +146,28 @@ void AudioInput::record_audio(int input_device, bool hx){
 
 }
 
-void AudioInput::audio_close(){
+void AudioInput::audio_close() {
+    if (_stream != NULL) {
+        // Stop the stream if it is running
+        if (Pa_IsStreamActive(_stream) == 1) { // Check if the stream is active
+            _err = Pa_StopStream(_stream);
+            if (_err != paNoError) {
+                std::cerr << "PortAudio error (StopStream): " << Pa_GetErrorText(_err) << std::endl;
+            }
+        }
+
+        // Close the stream
+        _err = Pa_CloseStream(_stream);
+        if (_err != paNoError) {
+            std::cerr << "PortAudio error (CloseStream): " << Pa_GetErrorText(_err) << std::endl;
+        }
+        _stream = NULL; // Clear the stream pointer
+    }
+
+    // Terminate PortAudio
     _err = Pa_Terminate();
-    if( _err != paNoError ) {
-        std::cout << "PortAudio error: " << Pa_GetErrorText( _err ) << std::endl;
+    if (_err != paNoError) {
+        std::cerr << "PortAudio error (Terminate): " << Pa_GetErrorText(_err) << std::endl;
     }
 }
 

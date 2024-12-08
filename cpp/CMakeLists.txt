@@ -24,12 +24,6 @@ else()
     message(STATUS "Found PortAudio headers: ${PORTAUDIO_INCLUDE_DIRS}")
 endif()
 
-# Find SFML for sine waves
-find_package(SFML 2.5 COMPONENTS audio system REQUIRED)
-
-# Find sndfile
-# find_package(PkgConfig REQUIRED)
-# pkg_check_modules(SNDFILE REQUIRED sndfile)
 
 # Shared sources
 set(SHARED_SOURCES
@@ -65,18 +59,12 @@ add_executable(gui_code ${GUI_SOURCES} ${SHARED_SOURCES})
 # Link libraries for robot_code
 target_link_libraries(robot_code
     PRIVATE 
-        sfml-audio 
-        sfml-system
-        # ${SNDFILE_LIBRARIES}
         ${PORTAUDIO_LIBRARIES}  # Link PortAudio
 )
 
 # Link libraries for gui_code
 target_link_libraries(gui_code
     PRIVATE 
-        sfml-audio 
-        sfml-system
-        # ${SNDFILE_LIBRARIES}
         ${PORTAUDIO_LIBRARIES}  # Link PortAudio
 )
 
