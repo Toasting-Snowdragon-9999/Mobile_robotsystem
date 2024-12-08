@@ -18,12 +18,12 @@
 #include "communication_protocol/data_link_layer.h"
 #include "communication_protocol/transport_layer.h"
 #include "communication_protocol/physical_layer.h"
+#include "communication_protocol/timer.h"
 
 // =======================Interfaces============================
 #include "interfaces/al_to_tl.h"
 #include "interfaces/tl_to_dll.h"
 #include "interfaces/dll_to_pl.h"
-#include "communication_protocol/timer.h"
 #include "interfaces/signal_processing.h"
 
 #define SAMPLING_FREQ 16000

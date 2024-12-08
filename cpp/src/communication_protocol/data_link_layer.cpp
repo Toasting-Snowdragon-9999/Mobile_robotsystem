@@ -381,7 +381,14 @@ std::string DataLinkLayer::receiver_side_get_data_from_package(std::string recei
     received_package.erase(received_package.begin(), received_package.begin() + seqNo_size);
 
     // Checking CRC (validity) of received package
-    std::string crc_decoded_remainder = CRC::CRC32::decode(received_package);
+    std::string crc_decoded_remainder;
+    try{
+        crc_decoded_remainder = CRC::CRC32::decode(received_package);
+    }
+    catch(const std::exception& e){
+        std::cerr << e.what() << '\n';
+        return "";
+    }
     int int_crc_decoded_remainder = std::stoi(crc_decoded_remainder, nullptr, 2);
     if (int_crc_decoded_remainder != 0)
     {
