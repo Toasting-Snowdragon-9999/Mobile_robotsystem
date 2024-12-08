@@ -3,8 +3,28 @@
 
 DataLinkLayer::DataLinkLayer(std::string binary_msg) : _binary_msg(binary_msg) {}
 
-DataLinkLayer::DataLinkLayer() {
+DataLinkLayer::DataLinkLayer()
+{
     _binary_msg = "";
+}
+
+void DataLinkLayer::change_ack_indx_sender_sider()
+{
+
+    auto ackindx = std::find(_ackNo.begin(), _ackNo.end(), received_ack_no);
+    if (ackindx == _ackNo.begin())
+    {
+        ackindx = _ackNo.end() - 1;
+    }
+    else if (ackindx == _ackNo.end() - 1)
+    {
+        ackindx = _ackNo.begin();
+    }
+    else
+    {
+        std::cerr << "ACK isn't something it's supposed to be. Check stoopid.";
+    }
+    received_ack_no = *ackindx;
 }
 
 bool DataLinkLayer::get_is_msg_correct() { return _is_msg_correct; }
@@ -55,13 +75,17 @@ std::string DataLinkLayer::seq_protocol_structure()
     if (received_ack_no == _ackNo[0])
     {
         seqNo = _seqNo[0];
+        std::cout << "Received_AckNo: " << received_ack_no << std::endl;
     }
     else if (received_ack_no == _ackNo[1])
     {
         seqNo = _seqNo[1];
+        std::cout << "Received_AckNo: " << received_ack_no << std::endl;
     }
     else
     {
+        std::cout << "Received_AckNo: " << seqNo << std::endl;
+
         std::cout << "ERROR: AckNo does not match" << std::endl;
     }
 
@@ -99,23 +123,32 @@ std::string DataLinkLayer::ack_protocol_structure()
 
     // Calculating and adding AckNo
     std::string ackNo;
-    if (received_ack_no != previous_seq_no)
+    if (received_seq_no != previous_seq_no)
     {
-        if (received_ack_no == _seqNo[0])
+        previous_seq_no = received_seq_no;
+
+        if (received_seq_no == _seqNo[0])
         {
             ackNo = _ackNo[1];
+            std::cout << "Received_SeqNo: " << received_seq_no << std::endl;
         }
-        else if (received_ack_no == _seqNo[1])
+        else if (received_seq_no == _seqNo[1])
         {
             ackNo = _ackNo[0];
+            std::cout << "Received_SeqNo: " << received_seq_no << std::endl;
         }
         else
         {
-            std::cout << "ERROR: SeqNo does not match. Recevied SeqNo: " << received_ack_no << std::endl;
+            std::cout << "Received_SeqNo: " << received_seq_no << std::endl;
+
+            std::cout << "ERROR: AckNo does not match" << std::endl;
         }
     }
     else
     {
+        std::cout << "Received_SeqNo: " << received_seq_no << std::endl;
+        std::cout << "Previous sequenceNo: " << previous_seq_no << std::endl;
+
         std::cout << "ERROR: Package already received previously" << std::endl;
         return "";
     }
@@ -261,7 +294,7 @@ std::vector<int> DataLinkLayer::find_length_pos_in_header(std::string received_p
     std::size_t index_SFD = received_package.find(_SFD);
     if (index_SFD != std::string::npos)
     {
-        std::cout << "SFD \"" << _SFD << "\" found at index: " << index_SFD << std::endl;
+        // std::cout << "SFD \"" << _SFD << "\" found at index: " << index_SFD << std::endl;
     }
     else
     {
@@ -273,7 +306,7 @@ std::vector<int> DataLinkLayer::find_length_pos_in_header(std::string received_p
     std::size_t index_EFD = received_package.find(_EFD, end_idx_of_SFD);
     if (index_EFD != std::string::npos)
     {
-        std::cout << "SFD \"" << _SFD << "\" found at index: " << index_EFD << std::endl;
+        // std::cout << "SFD \"" << _SFD << "\" found at index: " << index_EFD << std::endl;
     }
     else
     {
@@ -281,13 +314,13 @@ std::vector<int> DataLinkLayer::find_length_pos_in_header(std::string received_p
     }
     int start_idx_of_EFD = index_EFD;
 
-    std::cout << "Length is at index: " << end_idx_of_SFD + 1 << "-" << start_idx_of_EFD - 1 << std::endl;
+    // std::cout << "Length is at index: " << end_idx_of_SFD + 1 << "-" << start_idx_of_EFD - 1 << std::endl;
     std::vector<int> position_of_length = {end_idx_of_SFD + 1, start_idx_of_EFD - 1};
 
     return position_of_length;
 }
 
-std::string DataLinkLayer::get_data_from_package(std::string received_package)
+std::string DataLinkLayer::sender_side_get_data_from_package(std::string received_package)
 {
     // Removing the pre- and postamble from received package
     received_package = remove_pre_and_postamble(received_package);
@@ -310,7 +343,7 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
     }
     else
     {
-        std::cout << "Received package is correct. CRC remainder equals 0." << std::endl;
+        // std::cout << "Received package is correct. CRC remainder equals 0." << std::endl;
 
         // Update boolean for msg to send ACK
         _is_msg_correct = true;
@@ -323,7 +356,7 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
         std::string binary_length_of_data = received_package.substr(length_pos[0], length_pos[1] - length_pos[0] + 1);
         std::string unstuffed_binary_length = bit_unstuff(binary_length_of_data); // Making sure to unstuff the length
         int int_length_of_data = std::stoi(unstuffed_binary_length, nullptr, 2);
-        std::cout << "Length of data: " << int_length_of_data << std::endl;
+        // std::cout << "Length of data: " << int_length_of_data << std::endl;
 
         // Retrieving the data from the received package
         int size_of_SFD = _SFD.size();
@@ -332,7 +365,58 @@ std::string DataLinkLayer::get_data_from_package(std::string received_package)
 
         int start_idx = size_of_SFD + size_of_length_description + size_of_EFD;
         std::string data = received_package.substr(start_idx, int_length_of_data);
-        std::cout << "The received data: " << data << std::endl;
+        // std::cout << "The received data: " << data << std::endl;
+
+        return data;
+    }
+}
+
+std::string DataLinkLayer::receiver_side_get_data_from_package(std::string received_package)
+{
+    // Removing the pre- and postamble from received package
+    received_package = remove_pre_and_postamble(received_package);
+
+    // Removing ESC nibbles
+    received_package = remove_esc_nibbles(received_package);
+
+    // Removing AckNo and temporarily saving received AckNo
+    int seqNo_size = received_seq_no.size();
+    std::string temp_received_seq_no = received_package.substr(0, seqNo_size);
+    received_package.erase(received_package.begin(), received_package.begin() + seqNo_size);
+
+    // Checking CRC (validity) of received package
+    std::string crc_decoded_remainder = CRC::CRC32::decode(received_package);
+    int int_crc_decoded_remainder = std::stoi(crc_decoded_remainder, nullptr, 2);
+    if (int_crc_decoded_remainder != 0)
+    {
+        std::cout << "Received package IS NOT correct. CRC remainder not equal to 0." << std::endl;
+        return "";
+    }
+    else
+    {
+        // std::cout << "Received package is correct. CRC remainder equals 0." << std::endl;
+
+        // Update boolean for msg to send ACK
+        _is_msg_correct = true;
+
+        // Updating received AckNo variable
+        received_seq_no = temp_received_seq_no;
+
+        // Getting length of data
+        std::vector<int> length_pos = find_length_pos_in_header(received_package);
+        std::string binary_length_of_data = received_package.substr(length_pos[0], length_pos[1] - length_pos[0] + 1);
+        std::string unstuffed_binary_length = bit_unstuff(binary_length_of_data); // Making sure to unstuff the length
+        int int_length_of_data = std::stoi(unstuffed_binary_length, nullptr, 2);
+        // std::cout << "Length of data: " << int_length_of_data << std::endl;
+
+        // Retrieving the data from the received package
+        int size_of_SFD = _SFD.size();
+        int size_of_EFD = _EFD.size();
+        int size_of_length_description = binary_length_of_data.size();
+
+        int start_idx = size_of_SFD + size_of_length_description + size_of_EFD;
+        std::string data = received_package.substr(start_idx, int_length_of_data);
+        // std::cout << "The received data: " << data << std::endl;
 
         return data;
     }

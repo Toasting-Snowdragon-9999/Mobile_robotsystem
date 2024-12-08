@@ -7,7 +7,13 @@ class TlToDll
 private:
     std::deque<std::string> _segment_buffer;
 
+    bool _all_segments_received = false;
+
 public:
+    bool get_all_segments_received();
+
+    void set_all_segments_received(const bool &input);
+
     std::deque<std::string> get_segment_buffer();
 
     // Sender

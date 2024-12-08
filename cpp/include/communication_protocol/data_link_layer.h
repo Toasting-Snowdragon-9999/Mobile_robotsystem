@@ -18,6 +18,7 @@
 
 static std::string previous_seq_no = "1001";
 static std::string received_ack_no = "0000";
+static std::string received_seq_no = "1000";
 
 class DataLinkLayer
 {
@@ -41,6 +42,8 @@ public:
 
     std::string get_ready_for_pl_path();
 
+    void change_ack_indx_sender_sider();
+
     /// @brief Constructor to create instance of DataLinkLayer
     /// @param robotPath - Path for robot created by user
     DataLinkLayer(std::string binary_msg);
@@ -48,7 +51,6 @@ public:
     /// @brief Empty constructor
     /// @note This constructor is defined primarily for the ACK
     DataLinkLayer();
-
 
     /// @brief Method for finding the length of a string in binary
     /// @param s Type: String
@@ -96,7 +98,12 @@ public:
     /// @brief Finds the data/message itself, from the received package
     /// @param received_package Type: String - The received package as a string of bits
     /// @return Type: String - The data itself
-    std::string get_data_from_package(std::string received_package);
+    std::string sender_side_get_data_from_package(std::string received_package);
+
+    /// @brief Finds the data/message itself, from the received package
+    /// @param received_package Type: String - The received package as a string of bits
+    /// @return Type: String - The data itself
+    std::string receiver_side_get_data_from_package(std::string received_package);
 
     /// @brief Returns true if header and message is correct by checking CRC-remainder and false if not
     /// @param header_and_msg

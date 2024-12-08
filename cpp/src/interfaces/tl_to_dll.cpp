@@ -1,5 +1,15 @@
 #include "interfaces/tl_to_dll.h"
 
+bool TlToDll::get_all_segments_received()
+{
+    return _all_segments_received;
+}
+
+void TlToDll::set_all_segments_received(const bool &input)
+{
+    _all_segments_received = input;
+}
+
 std::deque<std::string> TlToDll::add_segments_to_buffer(const std::vector<std::string> &segment_buffer)
 {
     _segment_buffer = std::deque<std::string>(segment_buffer.begin(), segment_buffer.end());

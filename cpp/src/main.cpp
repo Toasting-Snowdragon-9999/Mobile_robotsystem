@@ -38,6 +38,12 @@ int main()
 
 	std::string encoded_test_bits = Alc.encode_message(test_bits);
 
+	std::cout << "Test bits length" << encoded_test_bits.length() << std::endl;
+
+	Transport_Layer testertl;
+
+	std::cout << "Tester length: " << testertl.find_length(encoded_test_bits) << std::endl;
+
 	// Interface from Application Layer to Transport Layer
 
 	AlToTl inter_1;
@@ -56,46 +62,56 @@ int main()
 
 	inter_2.add_segments_to_buffer(segment_vector);
 
+	int i = 0;
+
+	for (auto segment : segment_vector)
+	{
+		std::cout << "Segment" << i << " " << segment << std::endl;
+		i++;
+	}
+
 	Timer timer;
 
 	int j = 0;
 
 	std::string msg_to_send = "";
 
-	while (!inter_2.get_segment_buffer().empty())
-	{
-		std::cout << "How many segments left in buffer before iteration: " << inter_2.get_segment_buffer().size() << std::endl;
-		DataLinkLayer dll(inter_2.get_first_segment_from_buffer());
-		msg_to_send = dll.seq_protocol_structure();
+	// while (!inter_2.get_segment_buffer().empty())
+	// {
+	// 	std::cout << "How many segments left in buffer before iteration: " << inter_2.get_segment_buffer().size() << std::endl;
+	// 	DataLinkLayer dll(inter_2.get_first_segment_from_buffer());
+	// 	msg_to_send = dll.seq_protocol_structure();
+	// LISTEN FOR NEXT SEGMENT
+	// LISTEN FOR NEXT SEGMENT
+	// LISTEN FOR NEXT SEGMENT
+	// 	std::cout << "Sequence " << j << std::endl;
+	// 	j++;
 
-		std::cout << "Sequence " << j << std::endl;
-		j++;
+	// 	// Alt andet for at sende til Physical Layer
+	// 	// Alt andet for at sende til Physical Layer
+	// 	// Alt andet for at sende til Physical Layer
 
-		// Alt andet for at sende til Physical Layer
-		// Alt andet for at sende til Physical Layer
-		// Alt andet for at sende til Physical Layer
+	// 	timer.start_timer();
 
-		timer.start_timer();
+	// 	while (!timer.get_timeout())
+	// 	{
+	// 		// LISTENING PHYSICAL LAYER FOR ACK
+	// 		// LISTENING PHYSICAL LAYER FOR ACK
+	// 		// LISTENING PHYSICAL LAYER FOR ACK
 
-		while (!timer.get_timeout())
-		{
-			// LISTENING PHYSICAL LAYER FOR ACK
-			// LISTENING PHYSICAL LAYER FOR ACK
-			// LISTENING PHYSICAL LAYER FOR ACK
+	// 		dll.set_ack_received(true);
 
-			dll.set_ack_received(true);
+	// 		if (dll.get_ack_received())
+	// 		{
+	// 			inter_2.remove_first_segment_from_buffer();
 
-			if (dll.get_ack_received())
-			{
-				inter_2.remove_first_segment_from_buffer();
-
-				timer.~Timer();
-				break;
-			}
-			std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Avoid busy waiting
-		}
-		timer.~Timer();
-	}
+	// 			timer.~Timer();
+	// 			break;
+	// 		}
+	// 		std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Avoid busy waiting
+	// 	}
+	// 	timer.~Timer();
+	// }
 
 	// Interface from Data Link Layer to Physical Layer
 
@@ -114,53 +130,123 @@ int main()
 	// std::string received_frame = dllr.get_data_from_package(tr_with);
 	// std::cout << "Received frame: " << received_frame << std::endl;
 
-	DataLinkLayer dlls1(segment_vector[0]);
-	// Creating empty object to send ACK later on
-	DataLinkLayer dllack;
-
-	std::string package_to_send = dlls1.seq_protocol_structure();
-	std::cout << "Package to send is: " << package_to_send << std::endl;
-
-	DataLinkLayer dllr1(package_to_send);
-	std::string received_package = dllr1.get_data_from_package(package_to_send);
-
-	// Send ACK to Computer again if received msg is correct
-	if (dllr1.get_is_msg_correct())
-	{
-		std::string ack = dllack.ack_protocol_structure();
-		// YELL(ACK)
-		// YELL(ACK)
-		// YELL(ACK)
-	}
+	int k = 0;
 
 	Transport_Layer tlR;
-	// If received msg was a duplicate, the empty() will catch it here
-	if (!received_package.empty())
+
+	for (const auto &segment : segment_vector)
 	{
-		TlToDll inter_dll_tl;
-		inter_dll_tl.add_segment_to_buffer(received_package);
-		tlR.add_segment(inter_dll_tl.take_segment_from_buffer());
+		DataLinkLayer dlls1(segment); // Initialize DataLinkLayer with the current segment
+		// Creating empty object to send ACK later on
+		DataLinkLayer dllack;
 
-		std::string combined_string = tlR.combine_segments_to_string();
+		std::cout << "Test 0 " << std::endl;
+		std::string package_to_send = dlls1.seq_protocol_structure();
+		std::cout << "Package to send is: " << package_to_send << std::endl;
 
-		// Check if the SFD and EFD are found in the header of the
-		if (tlR.get_length_from_header(combined_string) != 0)
+		std::cout << "Test 1 " << std::endl;
+
+		DataLinkLayer dllr1(package_to_send);
+		std::string received_package = dllr1.receiver_side_get_data_from_package(package_to_send);
+
+		std::cout << "Test 2 " << std::endl;
+
+		// Send ACK to Computer again if received msg is correct
+		if (dllr1.get_is_msg_correct())
 		{
+			std::string ack = dllack.ack_protocol_structure();
 
-			if (tlR.get_length_from_header(combined_string) == combined_string.length())
+			std::cout << "Test 2.1 " << std::endl;
+
+			dllack.change_ack_indx_sender_sider();
+			std::cout << "Test 2.2 " << std::endl;
+
+			// Change ACKno on sender side
+
+			// YELL(ACK)
+			// YELL(ACK)
+			// YELL(ACK)
+			std::cout << "Test 3 " << std::endl;
+		}
+
+		// If received msg was a duplicate, the empty() will catch it here
+		if (!received_package.empty())
+		{
+			TlToDll inter_dll_tl;
+			std::cout << "Test 4 " << std::endl;
+
+			inter_dll_tl.add_segment_to_buffer(received_package);
+			tlR.add_segment(inter_dll_tl.take_segment_from_buffer());
+
+			std::cout << "Test 5 " << std::endl;
+
+			std::cout << "Printed segment vector: " << std::endl;
+
+			std::string combined_string = tlR.combine_segments_to_string();
+
+			std::cout << "Test 5.1 " << std::endl;
+
+			std::cout << "Temporarily combined string in Transport Layer: " << combined_string << "	| Length of temporary combined string: " << tlR.get_length_from_header(combined_string) << std::endl;
+
+			if (tlR.is_combined_msg_complete(combined_string))
 			{
+				std::cout << "Test 5.1.2 " << std::endl;
+
+				inter_dll_tl.set_all_segments_received(true);
+			}
+
+			if (!inter_dll_tl.get_all_segments_received())
+			{
+				std::cout << "Test 5.2 " << std::endl;
+
+				// LISTEN FOR NEXT SEGMENT
+				// LISTEN FOR NEXT SEGMENT
+				// LISTEN FOR NEXT SEGMENT
+			}
+			else if (inter_dll_tl.get_all_segments_received())
+			{
+
+				combined_string = tlR.remove_header_and_unstuff(combined_string);
 
 				AlToTl altlr;
 
+				std::cout << "Combined string " << combined_string << std::endl;
+
 				altlr.add_string_to_buffer(combined_string);
+				std::cout << "Test 6 " << std::endl;
 
 				std::string msg_for_robot = altlr.get_buffer();
 
+				std::cout << "Test 6.1 " << std::endl;
+
 				ApplicationLayer AlR;
+
+				if (AlR.is_msg_correct(msg_for_robot))
+				{
+					std::cout << "Test 6.2 " << std::endl;
+
+					AlR.remove_msg_crc(msg_for_robot);
+					std::cout << "Test 6.3 " << std::endl;
+				}
+				else
+				{
+					std::cerr << "Message received is wrong, CRC-check failed" << std::endl;
+				}
+
+				std::cout << "msg_for_robot: " << msg_for_robot << std::endl;
 
 				auto final_final_commands_vec = AlR.bits_to_commands(msg_for_robot);
 
+				std::cout << "Dir 0 " << final_final_commands_vec[0].direction << std::endl;
+				std::cout << "Val 0 " << final_final_commands_vec[0].value << std::endl;
+
+				std::cout << "Test 7 " << std::endl;
+
 				AlR.print_robot_commands(final_final_commands_vec);
+			}
+			else
+			{
+				std::cout << "ERROR: LENGTH NOT FOUND, SEGMENTATION COUNT WRONG";
 			}
 		}
 	}
