@@ -1,0 +1,22 @@
+[0.150s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[1.284s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[1.630s] [  6%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[37.346s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[37.349s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:107:118:[m[K [01;31m[Kerror: [m[Kcould not convert ‘[01m[K{p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36, 37}[m[K’ from ‘[01m[K<brace-enclosed initializer list>[m[K’ to ‘[01m[Kstd::vector<robot_command>[m[K’
+[37.350s]   107 |  p29 ,p30, p31, p32, p33, p34, p35, p36, 37[01;31m[K}[m[K;
+[37.351s]       |                                            [01;31m[K^[m[K
+[37.352s]       |                                            [01;31m[K|[m[K
+[37.353s]       |                                            [01;31m[K<brace-enclosed initializer list>[m[K
+[37.354s] 
+[37.381s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:200:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kack_check[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[37.382s]   200 |     bool [01;35m[Kack_check[m[K = false;
+[37.383s]       |          [01;35m[K^~~~~~~~~[m[K
+[48.959s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[48.960s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:[m[K At global scope:
+[48.960s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[48.961s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[48.962s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[50.751s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+[50.753s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+[50.756s] gmake: *** [Makefile:146: all] Error 2
+[50.994s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4

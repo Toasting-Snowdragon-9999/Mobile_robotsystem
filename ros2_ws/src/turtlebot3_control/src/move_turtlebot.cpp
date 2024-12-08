@@ -12,7 +12,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
-#include "communication_protocol/application_layer.cpp"
 
 using namespace std::chrono_literals;
 
@@ -49,18 +48,18 @@ public:
         //     total_time = acceleration_time + const_velocity_time + deacceleration_time;
         // }
 
-        std::cout << "\nDEBUGGING MOVE" << std::endl;
+//        std::cout << "\nDEBUGGING MOVE" << std::endl;
         //std::cout << "Acceleration: " << acceleration<< std::endl;
-        std::cout << "Distance in centimeters: " << distance_cm << std::endl;
-        std::cout << "Distance in meters: " << distance_m << std::endl;
-        std::cout << "Velocity: " << temp_velocity << std::endl;
+//        std::cout << "Distance in centimeters: " << distance_cm << std::endl;
+//        std::cout << "Distance in meters: " << distance_m << std::endl;
+//        std::cout << "Velocity: " << temp_velocity << std::endl;
         //std::cout << "Fancy time for move: " << total_time << std::endl;
-        std::cout << "Time for move: " << time << std::endl;
+//        std::cout << "Time for move: " << time << std::endl;
 
         message.linear.x = temp_velocity; //  m/s
         message.angular.z = 0.0;
 
-        RCLCPP_INFO(this->get_logger(), "Moving the TurtleBot!");
+//        RCLCPP_INFO(this->get_logger(), "Moving the TurtleBot!");
         auto start_time = this->now();
         rclcpp::Duration duration = rclcpp::Duration::from_seconds(time);
         while ((this->now() - start_time) < duration) {
@@ -82,17 +81,17 @@ public:
         }
 
         /* DEBUG */
-        std::cout << "\nDEBUGGING" << std::endl;
-        std::cout << "Angle in degrees: " << angle_degree << std::endl;
-        std::cout << "Angle in radians: " << angle_radians << std::endl;
-        std::cout << "Angular velocity: " << temp_angular_velocity << std::endl;
-        std::cout << "Time for turn: " << time << std::endl;
+//        std::cout << "\nDEBUGGING" << std::endl;
+//        std::cout << "Angle in degrees: " << angle_degree << std::endl;
+//        std::cout << "Angle in radians: " << angle_radians << std::endl;
+//        std::cout << "Angular velocity: " << temp_angular_velocity << std::endl;
+//        std::cout << "Time for turn: " << time << std::endl;
 
 
         message.linear.x = 0.0;
         message.angular.z = temp_angular_velocity;
 
-        RCLCPP_INFO(this->get_logger(), "Turning the TurtleBot!");
+//        RCLCPP_INFO(this->get_logger(), "Turning the TurtleBot!");
         auto start_time = this->now();
         rclcpp::Duration duration = rclcpp::Duration::from_seconds(time);
         rclcpp::Rate rate(100);  // 100 Hz control rate
@@ -110,10 +109,10 @@ public:
             rclcpp::sleep_for(std::chrono::milliseconds(10));
         }
 
-        RCLCPP_INFO(this->get_logger(), "Rotation completed.");
+//        RCLCPP_INFO(this->get_logger(), "Rotation completed.");
     }
 
-    void run_path(std::vector<robot_command> &sequence){
+    void run_path(std::vector<std::vector<std::string>> &sequence){
 
         /* maybe this works? */
         rclcpp::sleep_for(std::chrono::milliseconds(1000));
@@ -121,8 +120,8 @@ public:
 
         for(auto command : sequence){
 
-            std::string action = command.direction;
-            int length = std::stoi(command.value);
+            std::string action = command[0];
+            int length = std::stoi(command[1]);
 
             /* Debug purposes */
             std::string action_text;
@@ -154,9 +153,9 @@ public:
             }
 
             /* Debug purposes */
-            std::cout << "\n     MORE DEBUGGING" << std::endl;
-            std::cout << "     Action: " + action_text + ", " << action << std::endl;
-            std::cout << "     Length: " << length << std::endl;
+//            std::cout << "\n     MORE DEBUGGING" << std::endl;
+//            std::cout << "     Action: " + action_text + ", " << action << std::endl;
+//            std::cout << "     Length: " << length << std::endl;
             /* Debug purposes end */
 
             rclcpp::sleep_for(std::chrono::milliseconds(100));
@@ -167,7 +166,7 @@ private:
 
    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr _publisher;
 
-    float _angular_velocity = 1.5;
+    float _angular_velocity = 1;
     float _velocity = 0.15;
 
 };

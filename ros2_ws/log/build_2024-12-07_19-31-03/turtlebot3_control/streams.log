@@ -1,0 +1,28 @@
+[0.113s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[0.509s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[0.805s] [  6%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[25.874s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[25.875s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:112:35:[m[K [01;35m[Kwarning: [m[Kempty parentheses were disambiguated as a function declaration [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wvexing-parse-Wvexing-parse]8;;[m[K]
+[25.876s]   112 |         ApplicationLayer app_layer[01;35m[K()[m[K;
+[25.877s]       |                                   [01;35m[K^~[m[K
+[25.878s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:112:35:[m[K [01;36m[Knote: [m[Kremove parentheses to default-initialize a variable
+[25.879s]   112 |         ApplicationLayer app_layer[01;36m[K()[m[K;
+[25.879s]       |                                   [01;36m[K^~[m[K
+[25.881s]       |                                   [31m[K--[m[K
+[25.881s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:112:35:[m[K [01;36m[Knote: [m[Kor replace parentheses with braces to value-initialize a variable
+[25.882s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:113:74:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kcpp_to_robot[m[K’ in ‘[01m[Kapp_layer[m[K’, which is of non-class type ‘[01m[KApplicationLayer()[m[K’
+[25.883s]   113 | td::vector<std::string>> robtek_strings = app_layer.[01;31m[Kcpp_to_robot[m[K(robtek);
+[25.884s]       |                                                     [01;31m[K^~~~~~~~~~~~[m[K
+[25.885s] 
+[25.898s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:187:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kack_check[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[25.898s]   187 |     bool [01;35m[Kack_check[m[K = false;
+[25.899s]       |          [01;35m[K^~~~~~~~~[m[K
+[31.372s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[31.373s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:[m[K At global scope:
+[31.374s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[31.375s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[31.376s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[32.974s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+[32.976s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+[32.978s] gmake: *** [Makefile:146: all] Error 2
+[32.997s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4

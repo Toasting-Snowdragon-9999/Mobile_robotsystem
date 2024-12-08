@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 	robot_command p6("-r", "90");
 	robot_command p7("-fw", std::to_string(2*LENGTH_FACTOR));
 	robot_command p8("-r", "45");
-	robot_command p9("-fw", std::to_string(2.8*LENGTH_FACTOR));
+	robot_command p9("-bw", std::to_string(2.8*LENGTH_FACTOR));
 	// ---
 	robot_command p10("-l", "45");
 	robot_command p11("-bw", std::to_string(1*LENGTH_FACTOR));
@@ -88,17 +88,26 @@ int main(int argc, char *argv[]) {
 	robot_command p50("-bw", std::to_string(1*LENGTH_FACTOR));
 	robot_command p51("-l", "90");
 	robot_command p52("-bw", std::to_string(2*LENGTH_FACTOR));
+	robot_command p53("-l", "90");
+	robot_command p54("-bw", std::to_string(2*LENGTH_FACTOR));
 	// ---
-	robot_command p53("-bw", std::to_string(1*LENGTH_FACTOR));
-	robot_command p54("-r", "90");
+	robot_command p55("-bw", std::to_string(1*LENGTH_FACTOR));
+	robot_command p56("-r", "90");
 	// --- K
-	robot_command p55("-fw", std::to_string(4*LENGTH_FACTOR));
-	robot_command p56("-bw", std::to_string(2*LENGTH_FACTOR));
-	robot_command p57("-r", "45");
-	robot_command p58("-fw", std::to_string(2.8*LENGTH_FACTOR));
-	robot_command p59("-bw", std::to_string(2.8*LENGTH_FACTOR));
-	robot_command p60("-r", "90");
-	robot_command p61("-fw", std::to_string(2.8*LENGTH_FACTOR));
+	robot_command p57("-fw", std::to_string(4*LENGTH_FACTOR));
+	robot_command p58("-bw", std::to_string(2*LENGTH_FACTOR));
+	robot_command p59("-r", "45");
+	robot_command p60("-fw", std::to_string(2.8*LENGTH_FACTOR));
+	robot_command p61("-bw", std::to_string(2.8*LENGTH_FACTOR));
+	robot_command p62("-r", "90");
+	robot_command p63("-fw", std::to_string(2.8*LENGTH_FACTOR));
+	
+	std::vector<robot_command> r = {p1, p2, p3, p4, p5, p6, p7, p8 ,p9};
+	std::vector<robot_command> o = {p13, p14, p15, p16, p17, p18, p19};
+	std::vector<robot_command> b = {p22, p23, p24, p25, p26, p27, p28, p29 ,p30, p31, p32, p33, p34, p35, p36, p37};
+	std::vector<robot_command> t = {p40, p41, p42, p43};
+	std::vector<robot_command> e = {p45, p46, p47, p48, p49, p50, p51, p52 ,p53, p54};
+	std::vector<robot_command> k = {p57, p58, p59, p60, p61, p62, p63};
 	
 	std::vector<robot_command> robtek = {
 		p1,  p2,  p3,  p4,  p5,  p6,  p7,  p8,  p9,  p10,
@@ -109,6 +118,12 @@ int main(int argc, char *argv[]) {
 		p51, p52, p53, p54, p55, p56, p57, p58, p59, p60,
 		p61
 	};
+
+	ApplicationLayer app_layer;
+	std::vector<std::vector<std::string>> robtek_strings = app_layer.cpp_to_robot(o);
+	for(auto a : robtek_strings){
+		std::cout << a[0] << ", " << a[1] << std::endl;
+	}
 /*
         robot_command r1("-fw", "325");
 	robot_command r2("-l", "6");
@@ -167,7 +182,7 @@ int main(int argc, char *argv[]) {
     /*std::vector<std::vector<int>> sequence = {{12, 2, 0}, {13, 2, 0}, {14, 9, 0}, {15, 9, 0}};
     std::vector<std::vector<std::string>> table_sequence = {{"-fw", "40"}, {"-l", "90"}, {"-l", "45"}, {"-fw", "25"}, {"-r", "90"}, {"-fw", "30"}};
 */
-    node->run_path(robtek);
+    node->run_path(robtek_strings);
 
     // --- Print commands ---
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
