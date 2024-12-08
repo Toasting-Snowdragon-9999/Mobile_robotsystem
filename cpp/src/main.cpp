@@ -29,7 +29,7 @@ int main()
 {
 	std::string ack_commands = "1";
 	for(int i = 0; i < 2; i++){
-		PhysicalLayer pl;
+		PhysicalLayer pl(16000, 2);
 		std::vector<int> dtmf_sounds = pl.listen(false);
 
 		SignalProcessing sp(dtmf_sounds);

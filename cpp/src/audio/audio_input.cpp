@@ -202,16 +202,11 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         Goertzel algo(hyperx, 16000);
         algo.load_data(buffer);
         algo.translate_signal_goertzel(data->result_in_mic);
-        std::cout << "Tone Flag: " << data->result_in_mic.tone_flag << std::endl;
-        std::cout << "Garbage Flag: " << data->result_in_mic.garbage_flag << std::endl;
-        std::cout << "Esc Flag: " << data->result_in_mic.esc_flag << std::endl;
-        std::cout << "Pre 1 flag: " << data->pre_1_flag << std::endl;
         if (data->result_in_mic.tone_flag && !data->result_in_mic.garbage_flag){
             if (data->recorded_DTMF_tones.back() != _preamble[0]){
                 data->pre_1_flag = false;  
             }
             data->recorded_DTMF_tones.push_back(data->result_in_mic.dtmf_tone);
-            std::cout << "Detected DTMF tone: " << data->result_in_mic.dtmf_tone << std::endl;
             if(algo.detect_bit("esc", _esc_tone)){
                 data->result_in_mic.esc_flag = true;
             }
@@ -235,7 +230,7 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         Goertzel algo(hyperx);
         algo.load_data(buffer);
         algo.translate_signal_goertzel(data->result_in_mic);
-        std::cout << "pre 1 Flag: " << data->pre_1_flag << std::endl;
+        //std::cout << "pre 1 Flag: " << data->pre_1_flag << std::endl;
         if((algo.detect_bit("start 1", _preamble[0]) || algo.detect_bit("start 2", _preamble[1])) && (data->result_in_mic.tone_flag && !data->result_in_mic.garbage_flag)){
             if(data->pre_1_flag && data->result_in_mic.dtmf_tone == _preamble[1]){
                 data->pre_success = true;
@@ -250,8 +245,8 @@ static int read_mic_callback( const void *input_buffer, void *output_buffer,
         }
         else{
            if((data->result_in_mic.dtmf_tone != _preamble[0] && data->result_in_mic.dtmf_tone != _preamble[1] && data->result_in_mic.dtmf_tone != -1)  && !data->result_in_mic.garbage_flag){
-                std::cout << "Garbage tone detected: " << data->result_in_mic.dtmf_tone << std::endl;
-                std::cout << "Garbage flag: " << data->result_in_mic.garbage_flag << std::endl;
+                //std::cout << "Garbage tone detected: " << data->result_in_mic.dtmf_tone << std::endl;
+                //std::cout << "Garbage flag: " << data->result_in_mic.garbage_flag << std::endl;
                 data->pre_1_flag = false;
                 data->recorded_DTMF_tones.clear();
            }

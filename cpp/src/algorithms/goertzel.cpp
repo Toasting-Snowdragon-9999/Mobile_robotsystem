@@ -171,7 +171,7 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
                 r.garbage_flag = true;
             }
             r.dtmf_tone = DTMF_freq->second;
-            save_to_json(DTMF_freq->second);
+            // save_to_json(DTMF_freq->second);
             r.tone_flag = true;
             //std::cout << "Tone flag: " << r.tone_flag << std::endl;
         }
