@@ -35,10 +35,7 @@ int main()
 	{
 		PhysicalLayer pl(16000, 2);
 		PhysicalLayer pl2(48000, 2);
-<<<<<<< HEAD
 		std::cout << "Listening.." << std::endl;
-=======
->>>>>>> 3a472a7acc291108ac3e90a1b0aa05eba618acfc
 		Timer timer;
 		timer.start_timer(&pl);
 		std::vector<int> dtmf_sounds = pl.listen(false);
@@ -56,17 +53,16 @@ int main()
 		if (dllR.get_is_msg_correct())
 		{
 			std::string ack = dllack.ack_protocol_structure();
-<<<<<<< HEAD
 			std::cout << "Ack string: " << ack << std::endl;
 
 			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
 			for(auto ayman : ack_dtmf){
 				std::cout << "Ack tone: " << ayman << " $" << std::endl;
 			}
-=======
 
 			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
->>>>>>> 3a472a7acc291108ac3e90a1b0aa05eba618acfc
+
+			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
 			pl2.yell(ack_dtmf);
 		}
 
