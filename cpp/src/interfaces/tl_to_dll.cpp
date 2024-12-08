@@ -3,7 +3,7 @@
 std::deque<std::string> TlToDll::add_segments_to_buffer(const std::vector<std::string> &segment_buffer)
 {
     _segment_buffer = std::deque<std::string>(segment_buffer.begin(),segment_buffer.end());
-
+    std::cout << _segment_buffer.size() << std::endl;
     return _segment_buffer;
 }
 

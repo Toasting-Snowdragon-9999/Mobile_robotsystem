@@ -18,6 +18,7 @@ class PhysicalLayer{
         PhysicalLayer(int sample_rate, int device);
         ~PhysicalLayer();
         void yell(std::vector<int> message);
+        std::vector<int> list(bool hyperx);
         std::vector<int> listen(bool hyperx);
 
 

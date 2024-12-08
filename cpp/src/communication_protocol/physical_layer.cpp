@@ -18,6 +18,14 @@ void PhysicalLayer::yell(std::vector<int> message){
     sounds.play_sounds();
 }
 
+std::vector<int> PhysicalLayer::list(bool hyperx){
+    if(hyperx){}
+    AudioInput audio_input(_sample_rate, FRAMES_PER_BUFFER);
+    audio_input.audio_open();
+    audio_input.list_audio_devices();
+    return {0};
+}
+
 std::vector<int> PhysicalLayer::listen(bool hyperx){
     try{
         AudioInput audio_input(_sample_rate, FRAMES_PER_BUFFER);

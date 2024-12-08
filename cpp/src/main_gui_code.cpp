@@ -30,10 +30,10 @@ int main(){
 	std::string ack = "1";
 	std::string path_gui = "../Docs/shared_file.json";
 	std::string path_debug = "../../Docs/shared_file.json";
-	SharedData sd(path_gui);
+	SharedData shared_json(path_gui);
 	std::vector<std::vector<std::string>> python_path;
 	try{
-		python_path= sd.read_json();
+		python_path= shared_json.read_json();
 	}
 	catch(SharedDataException &e){
 		if (e.error_code() == 21){
@@ -45,16 +45,7 @@ int main(){
 	app_layer.print_robot_commands(commands);
 	std::string test_bits = app_layer.command_vector_to_bitstream(commands);
 
-	std::cout
-		<< "Command_vector_to_bitstream: " << test_bits + "\n"
-		<< std::endl;
-
 	std::string encoded_test_bits = app_layer.encode_message(test_bits);
-	std::cout
-		<< "CRC encoded message: " << encoded_test_bits + "\n"
-		<< std::endl;
-
-	// Interface from Application Layer to Transport Layer
 
 	AlToTl i_al_tl;
 
@@ -94,9 +85,8 @@ int main(){
 		PhysicalLayer pl(16000, 7);
 		pl.yell(dtmf);
 		
-		PhysicalLayer pl2(16000, 16);
+		PhysicalLayer pl2(16000, 18);
 		std::vector <int> samples = pl2.listen(true);
-		
 		SignalProcessing sp_ack(samples);
 		std::string binary_msg = sp_ack.message_str_binary();
 
