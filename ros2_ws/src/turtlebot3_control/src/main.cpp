@@ -26,7 +26,7 @@
 #define LENGTH_FACTOR 10
 
 int main(int argc, char *argv[]) {
-
+/*
 	// --- R
 	robot_command p1("-fw", std::to_string(4*LENGTH_FACTOR));
 	robot_command p2("-r", "90");
@@ -118,58 +118,101 @@ int main(int argc, char *argv[]) {
 		p51, p52, p53, p54, p55, p56, p57, p58, p59, p60,
 		p61
 	};
-
-	ApplicationLayer app_layer;
-	std::vector<std::vector<std::string>> robtek_strings = app_layer.cpp_to_robot(o);
-	for(auto a : robtek_strings){
-		std::cout << a[0] << ", " << a[1] << std::endl;
-	}
-/*
-        robot_command r1("-fw", "325");
-	robot_command r2("-l", "6");
-	robot_command r3("-r", "21");
-	robot_command r4("-bw", "15");
-	robot_command r5("-r", "3");
-
-	std::vector<robot_command> test_bit_vec = {r1, r2, r3, r4, r5};
-
-        std::vector<int> ack = {14, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 0};
-	PhysicalLayer pl(SAMPLE_RATE, INPUT_DEVICE);
-	std::vector<int> dtmf_sounds = pl.listen(false);
-	
-	SignalProcessing sp(dtmf_sounds);
-	std::string binary_msg = sp.message_str_binary();
-	
-	DataLinkLayer dl_layer;
-	std::string package = dl_layer.get_data_from_package(binary_msg);
-
-	
-	std::vector<robot_command> commands;
-    if(!package.empty()){
-		TlToDll i_tl;
-		i_tl.add_segment_to_buffer(package);
-		std::string segment = i_tl.take_segment_from_buffer();
-
-		AlToTl i_al;
-		i_al.add_string_to_buffer(segment);
-		std::string buffer = i_al.get_buffer();	
-
-		Transport_Layer tp_layer;
-		std::string package_no_header = tp_layer.remove_header_and_unstuff(buffer);
-		
-		ApplicationLayer app_layer;
-		std::string final_package = app_layer.check_crc(package_no_header);
-		if(final_package.empty()){
-			std::cerr << "CRC check failed" << std::endl;
-		}
-		else{
-            std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-	    commands = app_layer.bits_to_commands(final_package);
-			pl.yell(ack);
-		}
-	}
-
 */
+
+	Transport_Layer tlR;
+
+	std::vector<std::vector<std::string>> turtlebot_move_ass;
+
+	while (!tlR.get_combined_msg_flag())
+	{
+		PhysicalLayer pl(16000, 2);
+		PhysicalLayer pl2(48000, 2);
+		std::cout << "Listening.." << std::endl;
+		Timer timer;
+		timer.start_timer(&pl);
+		std::vector<int> dtmf_sounds = pl.listen(false);
+
+		SignalProcessing sp(dtmf_sounds);
+		std::string binary_msg = sp.message_str_binary();
+
+		DataLinkLayer dllR; // Initialize DataLinkLayer with the current segment
+		// Creating empty object to send ACK later on
+		DataLinkLayer dllack;
+
+		std::string received_package = dllR.receiver_side_get_data_from_package(binary_msg);
+
+		// Send ACK to Computer again if received msg is correct
+		if (dllR.get_is_msg_correct())
+		{
+			std::string ack = dllack.ack_protocol_structure();
+			std::cout << "Ack string: " << ack << std::endl;
+
+			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
+			for(auto ayman : ack_dtmf){
+				std::cout << "Ack tone: " << ayman << " $" << std::endl;
+			}
+
+			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
+
+			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
+			pl2.yell(ack_dtmf);
+		}
+
+		// If received msg was a duplicate, the empty() will catch it here
+		if (!received_package.empty())
+		{
+			TlToDll inter_dll_tl;
+
+			inter_dll_tl.add_segment_to_buffer(received_package);
+			tlR.add_segment(inter_dll_tl.take_segment_from_buffer());
+
+			std::string combined_string = tlR.combine_segments_to_string();
+
+			if (tlR.is_combined_msg_complete(combined_string))
+			{
+				inter_dll_tl.set_all_segments_received(true);
+			}
+
+			if (!inter_dll_tl.get_all_segments_received())
+			{
+
+			}
+			else if (inter_dll_tl.get_all_segments_received())
+			{
+
+				combined_string = tlR.remove_header_and_unstuff(combined_string);
+
+				AlToTl altlr;
+
+				altlr.add_string_to_buffer(combined_string);
+
+				std::string msg_for_robot = altlr.get_buffer();
+
+				ApplicationLayer AlR;
+
+				if (AlR.is_msg_correct(msg_for_robot))
+				{
+					msg_for_robot = AlR.remove_msg_crc(msg_for_robot);
+				}
+				else
+				{
+					std::cerr << "Message received is wrong, CRC-check failed" << std::endl;
+				}
+
+				auto final_final_commands_vec = AlR.bits_to_commands(msg_for_robot);
+
+				AlR.print_robot_commands(final_final_commands_vec);
+
+				turtlebot_move_ass = AlR.cpp_to_robot(final_final_commands_vec);
+			}
+			else
+			{
+				std::cout << "ERROR: LENGTH NOT FOUND, SEGMENTATION COUNT WRONG";
+			}
+		}
+	}
+
     // --- Turtlebot control ---
     rclcpp::init(argc, argv);
     auto node = std::make_shared<MoveTurtlebot>();
@@ -179,39 +222,10 @@ int main(int argc, char *argv[]) {
     // 14: right -> {"-r", "degree"}
     // 15: left -> {"-l", "degree"}
 
-    /*std::vector<std::vector<int>> sequence = {{12, 2, 0}, {13, 2, 0}, {14, 9, 0}, {15, 9, 0}};
-    std::vector<std::vector<std::string>> table_sequence = {{"-fw", "40"}, {"-l", "90"}, {"-l", "45"}, {"-fw", "25"}, {"-r", "90"}, {"-fw", "30"}};
-*/
-    node->run_path(robtek_strings);
+    node->run_path(turtlebot_move_ass);
 
     // --- Print commands ---
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-/*
-    for(auto i = 0; i < test_bit_vec.size(); i++){
-        std::cout << i << + " Sent: " << test_bit_vec[i].direction << ", " << test_bit_vec[i].value << std::endl;
-
-   }
-    std::cout << commands.size() << std::endl;
-    for(auto i = 0; i < commands.size(); i++){
-        std::cout << i << " Received: " << commands[i].direction << ", " << commands[i].value << std::endl;
-    }
-
-*/
-    bool ack_check = false;
-/*
-    if(test_bit_vec.size() == commands.size()){
-        for(auto i = 0; i < commands.size(); i++){
-            if((test_bit_vec[i].direction == commands[i].direction) && (test_bit_vec[i].value == commands[i].value)){
-                ack_check = true;
-            } else{
-                ack_check = false;
-                break;
-            }
-        }
-    } else{
-        std::cout << "Not the same size" << std::endl;
-    }
-*/
 
     rclcpp::shutdown();
     return 0;
