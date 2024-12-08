@@ -3,7 +3,6 @@
 
 #define NIBBLE_SIZE (4)
 #define byte_size 8
-#define timeout std::chrono::seconds(10)
 
 #include <vector>
 #include <iostream>
@@ -13,7 +12,14 @@
 #include <cstdint>
 #include <sstream>
 #include <chrono>
+#include <atomic>
+#include <thread>
 #include "communication_protocol/crc.h"
+
+static std::string previous_seq_no = "1001";
+static std::string received_ack_no = "0000";
+static std::string received_seq_no = "1000";
+
 
 class DataLinkLayer
 {
@@ -23,16 +29,29 @@ private:
     std::string _SFD = "11110";                  // Start-of-Frame Delimiter for header
     std::string _EFD = _SFD;                     // End-of-Frame Delimiter for header
     std::string _ESC_nibble = "1111";            // ESC nibble
-    std::string _robot_path = "";                // Data formed by path for robot, created by user
+    std::string _binary_msg = "";                // Data formed by path for robot, created by user
     std::string _ready_for_pl_path = "";         // Path that's ready to send to physical layer
     bool _is_ack_received = false;
+    std::vector<std::string> _ackNo = {"0000", "0001"};
+    std::vector<std::string> _seqNo = {"1000", "1001"};
+    bool _is_msg_correct = false;
 
 public:
+    /// @brief Empty constructor
+    /// @note This constructor is defined primarily for the ACK
     DataLinkLayer();
-
+  
     /// @brief Constructor to create instance of DataLinkLayer
     /// @param robotPath - Path for robot created by user
-    DataLinkLayer(std::string robotPath);
+    DataLinkLayer(std::string binary_msg);
+  
+    bool get_is_msg_correct();
+
+    void set_is_msg_correct(const bool &input);
+
+    std::string get_ready_for_pl_path();
+
+    void change_ack_indx_sender_sider();
 
     std::string get_ready_for_pl_path();
 
@@ -41,9 +60,13 @@ public:
     /// @return Type: String - Length in binary
     std::string length_of_string(std::string s);
 
-    /// @brief Method for creating entire package - Adds preamble, header, data, CRC, ESC-nibbles, and postamble together in a bitstream
+    /// @brief Method for creating entire package with sequence no. - Adds preamble, header, data, CRC, ESC-nibbles, and postamble together in a bitstream
     /// @return The full package while it's saved as a private variable
-    std::string protocol_structure();
+    std::string seq_protocol_structure();
+
+    /// @brief Method for creating entire package with ACK - Adds preamble, header, data, CRC, ESC-nibbles, and postamble together in a bitstream
+    /// @return The full package while it's saved as a private variable
+    std::string ack_protocol_structure();
 
     /// @brief Nibble stuffing the package with ESC nibbles
     /// @param package Type: String - The package to be stuffed
@@ -78,10 +101,12 @@ public:
     /// @brief Finds the data/message itself, from the received package
     /// @param received_package Type: String - The received package as a string of bits
     /// @return Type: String - The data itself
-    std::string get_data_from_package(std::string received_package);
+    std::string sender_side_get_data_from_package(std::string received_package);
 
-    // Method for main
-    void start_ack_timer();
+    /// @brief Finds the data/message itself, from the received package
+    /// @param received_package Type: String - The received package as a string of bits
+    /// @return Type: String - The data itself
+    std::string receiver_side_get_data_from_package(std::string received_package);
 
     /// @brief Returns true if header and message is correct by checking CRC-remainder and false if not
     /// @param header_and_msg
@@ -90,7 +115,7 @@ public:
 
     void stop_and_wait_arq();
 
-    bool is_ack_received();
+    bool get_ack_received();
 
     void set_ack_received(const bool &boolean);
 
@@ -102,6 +127,8 @@ public:
     std::string bit_stuff(const std::string &header);
 
     std::string bit_unstuff(const std::string &header);
+
+    std::string send_ack(std::string);
 };
 
 #endif // COM_PROTOCOL_H

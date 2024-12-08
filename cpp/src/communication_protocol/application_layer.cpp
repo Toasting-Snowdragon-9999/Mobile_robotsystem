@@ -1,6 +1,5 @@
 #include "communication_protocol/application_layer.h"
 
-
 robot_command::robot_command(std::string input_command, std::string inputValue) : direction(input_command), value(inputValue) {}
 
 ApplicationLayer::ApplicationLayer() { create_all_commands_map(); }
@@ -172,6 +171,15 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(std::string input_
 
 void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &command_vector)
 {
+    if (!command_vector.empty())
+    {
+        std::cout << "Command 0: " << command_vector[0].direction << "   Value 0: " << command_vector[0].value << " " << std::endl;
+    }
+    else
+    {
+        std::cout << "No commands available." << std::endl;
+    }
+
     for (const auto &selection : command_vector)
     {
         std::cout << "Command: " << selection.direction << "   Value: " << selection.value << " " << std::endl;
@@ -198,9 +206,25 @@ std::string ApplicationLayer::encode_message(const std::string &message)
     return CRC::CRC32::encode(message);
 }
 
-std::string ApplicationLayer::decode_message(const std::string &message)
+bool ApplicationLayer::is_msg_correct(const std::string &msg_with_crc)
 {
-    return CRC::CRC32::decode(message);
+
+    std::cout << "return stoi: " << std::stoi(CRC::CRC32::decode(msg_with_crc), nullptr, 2) << std::endl;
+
+    return ~std::stoi(CRC::CRC32::decode(msg_with_crc), nullptr, 2);
+}
+
+std::string ApplicationLayer::remove_msg_crc(const std::string &msg_with_crc)
+{
+
+    std::string msg_without_crc = msg_with_crc;
+    auto crc32_size = CRC::CRC32::decode(msg_with_crc).length();
+
+    std::cout << "Test crc size: " << crc32_size << std::endl;
+
+    msg_without_crc.erase(msg_without_crc.end() - crc32_size, msg_without_crc.end()-1);
+
+    return msg_without_crc;
 }
 
 

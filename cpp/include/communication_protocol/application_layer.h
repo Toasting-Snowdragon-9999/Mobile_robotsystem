@@ -13,7 +13,6 @@
 #include <chrono>
 #include "communication_protocol/crc.h"
 
-
 struct robot_command
 {
     std::string direction;
@@ -67,7 +66,7 @@ public:
 
     std::string command_to_bits(const robot_command &input_command);
 
-    std::string command_vector_to_bitstream(std::vector <robot_command> &command_vector);
+    std::string command_vector_to_bitstream(std::vector<robot_command> &command_vector);
 
     std::vector<robot_command> bits_to_commands(std::string input_bits);
 
@@ -76,11 +75,9 @@ public:
 
     std::string encode_message(const std::string &message);
 
-    void start_ack_timer();
+    bool is_msg_correct(const std::string &msg_with_crc);
 
-    std::string decode_message(const std::string &message);
-
-    std::string check_crc(const std::string &message);
+    std::string remove_msg_crc(const std::string &msg_with_crc);
 
     std::vector<robot_command> python_to_cpp(std::vector<std::vector<std::string>> python_string);
 

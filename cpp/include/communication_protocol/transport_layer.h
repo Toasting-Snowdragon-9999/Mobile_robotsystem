@@ -22,10 +22,13 @@ private:
 public:
     Transport_Layer();
 
+
+
     std::vector<std::string> get_segments_vector();
 
-
     int find_max_ones(const std::string &s);
+
+    bool is_combined_msg_complete(const std::string &combined_msg);
 
     /// @brief Finds length of the given binary msg
     /// @param binary_msg
@@ -67,6 +70,10 @@ public:
     /// @brief Prints out the number of segments and all segments in the private segment vector
     /// @param vector
     void print_segment_vector(const std::vector<std::string> &vector);
+
+    void store_till_length(){
+
+    }
 
 
 };

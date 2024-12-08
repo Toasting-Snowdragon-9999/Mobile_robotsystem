@@ -2,9 +2,83 @@
 
 Transport_Layer::Transport_Layer() {}
 
+bool Transport_Layer::is_combined_msg_complete(const std::string &combined_msg)
+{
+
+    size_t begin_length = _SFD.length();
+    size_t end_length = _EFD.length();
+
+    // Find position of SFD
+    auto SFD_pos_start = combined_msg.find(_SFD);
+    if (SFD_pos_start == std::string::npos)
+    {
+        std::cout << "SFD not found in the binary message";
+        return 0;
+    }
+
+    // Find position of indices of EFD
+
+    auto EFD_pos_start = combined_msg.find(_EFD, SFD_pos_start + begin_length);
+
+    auto EFD_pos_end = EFD_pos_start + end_length;
+
+    if (EFD_pos_start == std::string::npos)
+    {
+        std::cout << "EFD not found in the binary message";
+        return 0;
+    }
+
+    // Find position of length
+
+    auto length_part_start = SFD_pos_start + begin_length;
+
+    if (EFD_pos_start <= length_part_start)
+    {
+        std::cerr << "EFD is not correctly positioned after SFD";
+        return 0;
+    }
+
+    // Find size of length
+
+    auto length_part_len = EFD_pos_start - length_part_start;
+
+    if (length_part_len <= 0)
+    {
+        std::cerr << "The length of the message is invalid";
+    }
+
+    // Find the msg in the Transport Layer without the Transport Layer Header
+
+    if (EFD_pos_end > combined_msg.length())
+    {
+        std::cerr << "EFD position exceeds message length";
+        return 0;
+    }
+    std::string no_header_msg = combined_msg.substr(EFD_pos_end);
+
+    std::cout << "Header: " << combined_msg.substr(0,EFD_pos_end) << std::endl;
+
+    std::cout << "No_header_msg: " << no_header_msg << std::endl;
+
+    std::cout << "get_length_from_header(combined_msg): " << get_length_from_header(combined_msg) << "no_header_msg_length(): " << no_header_msg.length() << std::endl;
+
+    if (get_length_from_header(combined_msg) == no_header_msg.length())
+    {
+        std::cout << "Something right" << std::endl;
+        return 1;
+    }
+
+    else
+    {
+        std::cout << "Something wrong" << std::endl;
+        return 0;
+    }
+}
+
 /// @brief Getter method for the private segments vector
 /// @return The private segments vector
-std::vector<std::string> Transport_Layer::get_segments_vector()
+std::vector<std::string>
+Transport_Layer::get_segments_vector()
 {
     return _segments_vector;
 }
@@ -59,7 +133,7 @@ std::string Transport_Layer::find_length(const std::string &binary_msg)
 std::string Transport_Layer::add_header(const std::string &binary_msg)
 {
     std::string stuffed_msg = Transport_Layer::bit_stuff(binary_msg);
-    std::string stuffed_length = Transport_Layer::bit_stuff(Transport_Layer::find_length(binary_msg));
+    std::string stuffed_length = Transport_Layer::bit_stuff(Transport_Layer::find_length(stuffed_msg));
     return _SFD + stuffed_length + _EFD + stuffed_msg;
 }
 
@@ -71,13 +145,15 @@ int Transport_Layer::get_length_from_header(const std::string &binary_msg)
     auto SFD_pos_start = binary_msg.find(_SFD);
     if (SFD_pos_start == std::string::npos)
     {
-        std::cerr << "SFD not found in the binary message";
+        std::cout << "SFD not found in the binary message";
+        return 0;
     }
 
     auto EFD_pos_start = binary_msg.find(_EFD, begin_length);
     if (EFD_pos_start == std::string::npos)
     {
-        std::cerr << "EFD not found in the binary message";
+        std::cout << "EFD not found in the binary message";
+        return 0;
     }
 
     auto length_part_start = SFD_pos_start + begin_length;
@@ -189,7 +265,7 @@ std::string Transport_Layer::bit_unstuff(const std::string &full_binary_msg)
     return unstuffed;
 }
 
-std::vector <std::string> Transport_Layer::segment_msg(const std::string &full_binary_msg)
+std::vector<std::string> Transport_Layer::segment_msg(const std::string &full_binary_msg)
 {
     std::string unsegmented_msg = full_binary_msg;
 
@@ -241,6 +317,3 @@ void Transport_Layer::print_segment_vector(const std::vector<std::string> &vecto
         i++;
     }
 }
-
-
-

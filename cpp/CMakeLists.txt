@@ -35,6 +35,7 @@ set(SHARED_SOURCES
     src/communication_protocol/application_layer.cpp
     src/communication_protocol/transport_layer.cpp 
     src/communication_protocol/crc.cpp
+    src/communication_protocol/timer.cpp
     src/interfaces/al_to_tl.cpp
     src/interfaces/tl_to_dll.cpp
     src/interfaces/dll_to_pl.cpp
