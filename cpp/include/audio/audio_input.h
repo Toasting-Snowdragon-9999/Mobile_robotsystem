@@ -9,11 +9,14 @@
 #include <chrono>
 #include <iomanip>
 #include <cmath>
+#include <mutex>
+#include <thread>
 #include "algorithms/goertzel.h"
 
 #define MILLISECONDS (4000)
 #define NUM_CHANNELS (1)
 #define SAMPLE_TYPE paFloat32
+
 
 typedef float SAMPLE;
 
@@ -36,6 +39,7 @@ struct MicSample {
 
 class AudioInput {
 public:
+    AudioInput();
     AudioInput(int sample_rate, int frames_per_buffer);
     ~AudioInput();
     void list_audio_devices();
@@ -49,6 +53,8 @@ public:
     int check(bool print, std::vector<int> &test_sequence);
     void check_sequence(TestResult &result, std::vector<int> &tones, std::vector<int> &test_sequence);
     std::vector<int> get_recorded_DTMF_tones();
+    void set_stop_flag(bool stop);
+    void set_values(int sample_rate, int frames_per_buffer);
 
 private:
     int _sample_rate;
@@ -57,7 +63,7 @@ private:
     PaError _err;
     PaStreamParameters _input_parameters;
     MicSample _mic_data;
-
+    std::mutex _stop_mutex;
 };
 
 static int read_mic_callback(const void *input_buffer, void *output_buffer,

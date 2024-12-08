@@ -10,6 +10,7 @@
 class PhysicalLayer{
 
     private:
+        AudioInput _audio_input;
         int _sample_rate;
         int _device;
 
@@ -20,7 +21,7 @@ class PhysicalLayer{
         void yell(std::vector<int> message);
         std::vector<int> list(bool hyperx);
         std::vector<int> listen(bool hyperx);
-
+        void stop_audio(bool stop);
 
 };
 #endif

@@ -26,14 +26,17 @@
 #include "communication_protocol/timer.h"
 #include "interfaces/signal_processing.h"
 
+
 int main()
 {
 	Transport_Layer tlR;
-
+	
 	while (!tlR.get_combined_msg_flag())
 	{
 		PhysicalLayer pl(16000, 2);
 		PhysicalLayer pl2(48000, 2);
+		Timer timer;
+		timer.start_timer(&pl);
 		std::vector<int> dtmf_sounds = pl.listen(false);
 
 		SignalProcessing sp(dtmf_sounds);
@@ -49,6 +52,7 @@ int main()
 		if (dllR.get_is_msg_correct())
 		{
 			std::string ack = dllack.ack_protocol_structure();
+
 			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
 			pl2.yell(ack_dtmf);
 		}

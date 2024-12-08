@@ -1,6 +1,7 @@
 #include <chrono>
 #include <atomic>
 #include <thread>
+#include "communication_protocol/physical_layer.h"
 
 #define timeout_time std::chrono::seconds(5)
 
@@ -17,7 +18,7 @@ public:
 
     /// @brief Timer that checks whether the timeout time has been reached
     /// @note Wrties true to private variable _timeout if timeout time has been reached
-    void start_timer();
+    void start_timer(PhysicalLayer *data);
 
     /// @brief Getter method for getting the timeout boolean
     /// @return Type - atomic bool
