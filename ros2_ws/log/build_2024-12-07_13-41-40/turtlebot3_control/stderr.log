@@ -1,0 +1,121 @@
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:[m[K In function ‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:164:60:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime_info[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  164 |                            [01;35m[Kconst PaStreamCallbackTimeInfo* time_info[m[K,
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:165:50:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus_flags[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  165 |                            [01;35m[KPaStreamCallbackFlags status_flags[m[K,
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:[m[K In member function ‘[01m[Kvoid AudioInput::check_sequence(TestResult&, std::vector<int>&, std::vector<int>&)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:318:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  318 |     for (int i = 0; [01;35m[Ki < tones.size()[m[K; i++){
+      |                     [01;35m[K~~^~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In constructor ‘[01m[KGoertzel::Goertzel(GoertzelResult&, bool)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:7:44:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Khyperx[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+    7 | Goertzel::Goertzel(GoertzelResult& r, [01;35m[Kbool hyperx[m[K): _result(r){}
+      |                                       [01;35m[K~~~~~^~~~~~[m[K
+In file included from [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:1[m[K:
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:[m[K In constructor ‘[01m[KGoertzel::Goertzel(std::vector<float>)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:30:24:[m[K [01;35m[Kwarning: [m[K‘[01m[KGoertzel::_data[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   30 |     std::vector<float> [01;35m[K_data[m[K;
+      |                        [01;35m[K^~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:27:9:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kint Goertzel::_size_of_signal[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   27 |     int [01;35m[K_size_of_signal[m[K;
+      |         [01;35m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:10:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   10 | [01;35m[KGoertzel[m[K::Goertzel(const std::vector<float> data)
+      | [01;35m[K^~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::_init_coefficients()[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   28 |     for (int i = 0; [01;35m[Ki < _DTMF_freq.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::compute_goertzel()[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:37:41:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   37 |     for (int freq_index = 0; [01;35m[Kfreq_index < _DTMF_freq.size()[m[K; ++freq_index) {
+      |                              [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::sort(std::vector<double>&, std::vector<int>&)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:87:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   87 |     for(int i = 0; [01;35m[Ki < (x.size())/2-1[m[K; i++){
+      |                    [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:91:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   91 |         for (int j = 0; [01;35m[Kj < (x.size())/2-1[m[K; j++){
+      |                         [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:105:33:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  105 |     for(int i = (x.size())/2; [01;35m[Ki < x.size()-1[m[K; i++){
+      |                               [01;35m[K~~^~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:109:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  109 |         for (int j = (x.size())/2; [01;35m[Kj < x.size()-1[m[K; j++){
+      |                                    [01;35m[K~~^~~~~~~~~~~~[m[K
+In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/communication_protocol/physical_layer.h:7[m[K,
+                 from [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/physical_layer.cpp:1[m[K:
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+   63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+      |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+   63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+      |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:[m[K In member function ‘[01m[Kint Transport_Layer::get_length_from_header(const string&)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:69:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kend_length[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   69 |     size_t [01;35m[Kend_length[m[K = _EFD.length();
+      |            [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:[m[K In member function ‘[01m[Kstd::string Transport_Layer::remove_header_and_unstuff(const string&)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:100:12:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Klength[m[K’ set but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable-Wunused-but-set-variable]8;;[m[K]
+  100 |     size_t [01;35m[Klength[m[K = stripped_msg.length();
+      |            [01;35m[K^~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:101:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbegin_length[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  101 |     size_t [01;35m[Kbegin_length[m[K = _SFD.length();
+      |            [01;35m[K^~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::exclusive_or_strings(std::string, std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:12:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   12 |         for (int i = 0; [01;35m[Ki < a.size()[m[K; i++)
+      |                         [01;35m[K~~^~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC7::encode(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:29:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   29 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+      |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC7::decode(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:61:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcDegree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   61 |             int [01;35m[KcrcDegree[m[K = generator_poly.length() - 1;
+      |                 [01;35m[K^~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:64:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   64 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+      |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC16::encode(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:100:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  100 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+      |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC16::decode(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:132:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcDegree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  132 |             int [01;35m[KcrcDegree[m[K = generator_poly.length() - 1;
+      |                 [01;35m[K^~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:135:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  135 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+      |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC32::encode(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:172:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  172 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+      |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC32::decode(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:204:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcDegree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  204 |             int [01;35m[KcrcDegree[m[K = generator_poly.length() - 1;
+      |                 [01;35m[K^~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:207:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  207 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+      |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:[m[K In member function ‘[01m[Kstd::vector<robot_command> ApplicationLayer::bits_to_commands(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:141:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  141 |     for (int i = 0; [01;35m[Ki <= length[m[K; i += nibble_size)
+      |                     [01;35m[K~~^~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:150:36:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  150 |             while ([01;35m[Ki + nibble_size <= length[m[K)
+      |                    [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:[m[K In member function ‘[01m[Kstd::string DataLinkLayer::nibble_stuffing(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:74:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   74 |     while (i <= package.size() - nibble_size)
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:[m[K In member function ‘[01m[Kstd::string DataLinkLayer::remove_esc_nibbles(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:94:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   94 |     while (i <= received_package.size() - byte_size)
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:[m[K In member function ‘[01m[Kstd::vector<int> DataLinkLayer::find_length_pos_in_header(std::string)[m[K’:
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:177:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KEFD_length[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  177 |     int [01;35m[KEFD_length[m[K = _EFD.size();
+      |         [01;35m[K^~~~~~~~~~[m[K

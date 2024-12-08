@@ -1,0 +1,15 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o[0m
+[01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kwave_generator.h: No such file or directory
+    1 | #include [01;31m[K"wave_generator.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:132: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+[01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:8:10:[m[K [01;31m[Kfatal error: [m[Kgoertzel.h: No such file or directory
+    8 | #include [01;31m[K"goertzel.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

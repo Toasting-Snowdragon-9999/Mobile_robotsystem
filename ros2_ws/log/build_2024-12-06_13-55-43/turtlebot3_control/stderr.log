@@ -1,0 +1,21 @@
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:[m[K In function ‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:168:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kdata[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  168 |     MicSample *[01;35m[Kdata[m[K = (MicSample*)userData;
+      |                [01;35m[K^~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:175:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[K_esc_tone[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  175 |     int [01;35m[K_esc_tone[m[K = 15;
+      |         [01;35m[K^~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:163:60:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime_info[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  163 |                            [01;35m[Kconst PaStreamCallbackTimeInfo* time_info[m[K,
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:164:50:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus_flags[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  164 |                            [01;35m[KPaStreamCallbackFlags status_flags[m[K,
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:[m[K In member function ‘[01m[Kvoid AudioInput::check_sequence(TestResult&, std::vector<int>&, std::vector<int>&)[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:312:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  312 |     for (int i = 0; [01;35m[Ki < tones.size()[m[K; i++){
+      |                     [01;35m[K~~^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:61:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+   61 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+      |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K

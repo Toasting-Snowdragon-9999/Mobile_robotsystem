@@ -1,7 +1,7 @@
 #ifndef APPLICATIONLAYER_H
 #define APPLICATIONLAYER_H
 
-#define nibble_size 4
+#define NIBBLE_SIZE (4)
 
 #include <string>
 #include <unordered_map>
@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <memory>
 #include <chrono>
-#include "crc.h"
+#include "communication_protocol/crc.h"
 
 struct robot_command
 {
@@ -78,6 +78,10 @@ public:
     bool is_msg_correct(const std::string &msg_with_crc);
 
     std::string remove_msg_crc(const std::string &msg_with_crc);
+
+    std::vector<robot_command> python_to_cpp(std::vector<std::vector<std::string>> python_string);
+
+    std::vector<std::vector<std::string>> cpp_to_robot(std::vector<robot_command>python_path);
 };
 
 #endif // APPLICATIONLAYER_H

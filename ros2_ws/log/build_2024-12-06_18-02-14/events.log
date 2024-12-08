@@ -1,0 +1,547 @@
+[0.000000] (-) TimerEvent: {}
+[0.004883] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.005566] (-) JobUnselected: {'identifier': 'cpp_srvcli'}
+[0.006078] (turtlebot3_control) JobQueued: {'identifier': 'turtlebot3_control', 'dependencies': OrderedDict()}
+[0.006574] (turtlebot3_control) JobStarted: {'identifier': 'turtlebot3_control'}
+[0.097348] (-) TimerEvent: {}
+[0.127463] (turtlebot3_control) JobProgress: {'identifier': 'turtlebot3_control', 'progress': 'cmake'}
+[0.133436] (turtlebot3_control) Command: {'cmd': ['/usr/bin/cmake', '/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control', '-DCMAKE_INSTALL_PREFIX=/home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control'], 'cwd': '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'pi'), ('SSH_CLIENT', '10.126.74.9 2764 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/pi'), ('OLDPWD', '/home/pi/Mobile_robotsystem'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/pi/ros2_ws/install:/home/pi/turtlebot3_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'pi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'screen.xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('STY', '1328.pts-0.pietoeat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/home/pi/ros2_ws/install/turtlebot3_control:/home/pi/turtlebot3_ws/install/turtlebot3:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_bringup:/home/pi/turtlebot3_ws/install/turtlebot3_node:/home/pi/turtlebot3_ws/install/turtlebot3_example:/home/pi/turtlebot3_ws/install/turtlebot3_description:/home/pi/turtlebot3_ws/install/ld08_driver:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('WINDOW', '1'), ('PWD', '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.126.74.9 2764 10.126.128.42 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('TERMCAP', 'SC|screen.xterm-256color|VT 100/ANSI X3.64 virtual terminal:DO=\\E[%dB:LE=\\E[%dD:RI=\\E[%dC:UP=\\E[%dA:bs:bt=\\E[Z:cd=\\E[J:ce=\\E[K:cl=\\E[H\\E[J:cm=\\E[%i%d;%dH:ct=\\E[3g:do=^J:nd=\\E[C:pt:rc=\\E8:rs=\\Ec:sc=\\E7:st=\\EH:up=\\EM:le=^H:bl=^G:cr=^M:it#8:ho=\\E[H:nw=\\EE:ta=^I:is=\\E)0:li#42:co#72:am:xn:xv:LP:sr=\\EM:al=\\E[L:AL=\\E[%dL:cs=\\E[%i%d;%dr:dl=\\E[M:DL=\\E[%dM:dc=\\E[P:DC=\\E[%dP:im=\\E[4h:ei=\\E[4l:mi:IC=\\E[%d@:ks=\\E[?1h\\E=:ke=\\E[?1l\\E>:vi=\\E[?25l:ve=\\E[34h\\E[?25h:vs=\\E[34l:ti=\\E[?1049h:te=\\E[?1049l:us=\\E[4m:ue=\\E[24m:so=\\E[3m:se=\\E[23m:mb=\\E[5m:md=\\E[1m:mh=\\E[2m:mr=\\E[7m:me=\\E[m:ms:Co#8:pa#64:AF=\\E[3%dm:AB=\\E[4%dm:op=\\E[39;49m:AX:vb=\\Eg:G0:as=\\E(0:ae=\\E(B:ac=\\140\\140aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~..--++,,hhII00:po=\\E[5i:pf=\\E[4i:Km=\\E[<:k0=\\E[10~:k1=\\EOP:k2=\\EOQ:k3=\\EOR:k4=\\EOS:k5=\\E[15~:k6=\\E[17~:k7=\\E[18~:k8=\\E[19~:k9=\\E[20~:k;=\\E[21~:F1=\\E[23~:F2=\\E[24~:kB=\\E[Z:kh=\\E[1~:@1=\\E[1~:kH=\\E[4~:@7=\\E[4~:kN=\\E[6~:kP=\\E[5~:kI=\\E[2~:kD=\\E[3~:ku=\\EOA:kd=\\EOB:kr=\\EOC:kl=\\EOD:km:'), ('LDS_MODEL', 'LDS-02'), ('PYTHONPATH', '/home/pi/turtlebot3_ws/build/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:/home/pi/turtlebot3_ws/build/turtlebot3_example:/home/pi/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/pi/ros2_ws/install/turtlebot3_control:/home/pi/turtlebot3_ws/install/turtlebot3:/home/pi/turtlebot3_ws/install/turtlebot3_bringup:/home/pi/turtlebot3_ws/install/turtlebot3_node:/home/pi/turtlebot3_ws/install/turtlebot3_description:/home/pi/turtlebot3_ws/install/ld08_driver:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble')]), 'shell': False}
+[0.197740] (-) TimerEvent: {}
+[0.299136] (-) TimerEvent: {}
+[0.400505] (-) TimerEvent: {}
+[0.501864] (-) TimerEvent: {}
+[0.603533] (-) TimerEvent: {}
+[0.705307] (-) TimerEvent: {}
+[0.807165] (-) TimerEvent: {}
+[0.909025] (-) TimerEvent: {}
+[1.010859] (-) TimerEvent: {}
+[1.112782] (-) TimerEvent: {}
+[1.214641] (-) TimerEvent: {}
+[1.316713] (-) TimerEvent: {}
+[1.418456] (-) TimerEvent: {}
+[1.519779] (-) TimerEvent: {}
+[1.621356] (-) TimerEvent: {}
+[1.804676] (turtlebot3_control) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[1.806038] (-) TimerEvent: {}
+[1.907320] (-) TimerEvent: {}
+[2.008948] (-) TimerEvent: {}
+[2.110482] (-) TimerEvent: {}
+[2.212037] (-) TimerEvent: {}
+[2.313427] (-) TimerEvent: {}
+[2.414888] (-) TimerEvent: {}
+[2.461514] (turtlebot3_control) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[2.515267] (-) TimerEvent: {}
+[2.563055] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.615563] (-) TimerEvent: {}
+[2.716985] (-) TimerEvent: {}
+[2.818429] (-) TimerEvent: {}
+[2.919749] (-) TimerEvent: {}
+[3.021197] (-) TimerEvent: {}
+[3.122416] (-) TimerEvent: {}
+[3.224009] (-) TimerEvent: {}
+[3.325434] (-) TimerEvent: {}
+[3.387236] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.425693] (-) TimerEvent: {}
+[3.446426] (turtlebot3_control) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[3.450702] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.458203] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.492065] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.526044] (-) TimerEvent: {}
+[3.627548] (-) TimerEvent: {}
+[3.729041] (-) TimerEvent: {}
+[3.832806] (-) TimerEvent: {}
+[3.934668] (-) TimerEvent: {}
+[4.036158] (-) TimerEvent: {}
+[4.137567] (-) TimerEvent: {}
+[4.239277] (-) TimerEvent: {}
+[4.279140] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[4.339569] (-) TimerEvent: {}
+[4.341065] (turtlebot3_control) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[4.343252] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[4.346855] (turtlebot3_control) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[4.439893] (-) TimerEvent: {}
+[4.485058] (turtlebot3_control) StdoutLine: {'line': b'-- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML\n'}
+[4.540393] (-) TimerEvent: {}
+[4.603516] (turtlebot3_control) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[4.640499] (-) TimerEvent: {}
+[4.741780] (-) TimerEvent: {}
+[4.843387] (-) TimerEvent: {}
+[4.944779] (-) TimerEvent: {}
+[5.046108] (-) TimerEvent: {}
+[5.147502] (-) TimerEvent: {}
+[5.248983] (-) TimerEvent: {}
+[5.350472] (-) TimerEvent: {}
+[5.451910] (-) TimerEvent: {}
+[5.553106] (-) TimerEvent: {}
+[5.654547] (-) TimerEvent: {}
+[5.755917] (-) TimerEvent: {}
+[5.857148] (-) TimerEvent: {}
+[5.958382] (-) TimerEvent: {}
+[6.059727] (-) TimerEvent: {}
+[6.161188] (-) TimerEvent: {}
+[6.262522] (-) TimerEvent: {}
+[6.363961] (-) TimerEvent: {}
+[6.372268] (turtlebot3_control) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[6.464195] (-) TimerEvent: {}
+[6.565409] (-) TimerEvent: {}
+[6.666755] (-) TimerEvent: {}
+[6.976532] (-) TimerEvent: {}
+[7.078197] (-) TimerEvent: {}
+[7.180402] (-) TimerEvent: {}
+[7.282441] (-) TimerEvent: {}
+[7.383854] (-) TimerEvent: {}
+[7.485108] (-) TimerEvent: {}
+[7.586388] (-) TimerEvent: {}
+[7.687904] (-) TimerEvent: {}
+[7.789224] (-) TimerEvent: {}
+[7.890417] (-) TimerEvent: {}
+[7.991725] (-) TimerEvent: {}
+[8.093147] (-) TimerEvent: {}
+[8.194546] (-) TimerEvent: {}
+[8.295934] (-) TimerEvent: {}
+[8.397171] (-) TimerEvent: {}
+[8.476626] (turtlebot3_control) StdoutLine: {'line': b'-- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[8.497498] (-) TimerEvent: {}
+[8.598877] (-) TimerEvent: {}
+[8.700315] (-) TimerEvent: {}
+[8.801558] (-) TimerEvent: {}
+[8.902866] (-) TimerEvent: {}
+[9.004214] (-) TimerEvent: {}
+[9.105570] (-) TimerEvent: {}
+[9.207119] (-) TimerEvent: {}
+[9.308400] (-) TimerEvent: {}
+[9.409641] (-) TimerEvent: {}
+[9.483443] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[9.510076] (-) TimerEvent: {}
+[9.611437] (-) TimerEvent: {}
+[9.619247] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[9.711718] (-) TimerEvent: {}
+[9.801554] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[9.811961] (-) TimerEvent: {}
+[9.913352] (-) TimerEvent: {}
+[10.014792] (-) TimerEvent: {}
+[10.062929] (turtlebot3_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[10.115169] (-) TimerEvent: {}
+[10.216516] (-) TimerEvent: {}
+[10.317764] (-) TimerEvent: {}
+[10.371194] (turtlebot3_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[10.418087] (-) TimerEvent: {}
+[10.519299] (-) TimerEvent: {}
+[10.620525] (-) TimerEvent: {}
+[10.721906] (-) TimerEvent: {}
+[10.823277] (-) TimerEvent: {}
+[10.924491] (-) TimerEvent: {}
+[11.025839] (-) TimerEvent: {}
+[11.127339] (-) TimerEvent: {}
+[11.228977] (-) TimerEvent: {}
+[11.263723] (turtlebot3_control) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[11.329217] (-) TimerEvent: {}
+[11.338739] (turtlebot3_control) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[11.429806] (-) TimerEvent: {}
+[11.531695] (-) TimerEvent: {}
+[11.633375] (-) TimerEvent: {}
+[11.735079] (-) TimerEvent: {}
+[11.905959] (-) TimerEvent: {}
+[12.007827] (-) TimerEvent: {}
+[12.109257] (-) TimerEvent: {}
+[12.210593] (-) TimerEvent: {}
+[12.312137] (-) TimerEvent: {}
+[12.413482] (-) TimerEvent: {}
+[12.515015] (-) TimerEvent: {}
+[12.616979] (-) TimerEvent: {}
+[12.719008] (-) TimerEvent: {}
+[12.820798] (-) TimerEvent: {}
+[12.922349] (-) TimerEvent: {}
+[13.024444] (-) TimerEvent: {}
+[13.126385] (-) TimerEvent: {}
+[13.227863] (-) TimerEvent: {}
+[13.329964] (-) TimerEvent: {}
+[13.432043] (-) TimerEvent: {}
+[13.534059] (-) TimerEvent: {}
+[13.635945] (-) TimerEvent: {}
+[13.737660] (-) TimerEvent: {}
+[13.839627] (-) TimerEvent: {}
+[13.941628] (-) TimerEvent: {}
+[14.043671] (-) TimerEvent: {}
+[14.145029] (-) TimerEvent: {}
+[14.246549] (-) TimerEvent: {}
+[14.348513] (-) TimerEvent: {}
+[14.450128] (-) TimerEvent: {}
+[14.551629] (-) TimerEvent: {}
+[14.653158] (-) TimerEvent: {}
+[14.754835] (-) TimerEvent: {}
+[14.856620] (-) TimerEvent: {}
+[14.958028] (-) TimerEvent: {}
+[15.059435] (-) TimerEvent: {}
+[15.161014] (-) TimerEvent: {}
+[15.262372] (-) TimerEvent: {}
+[15.364368] (-) TimerEvent: {}
+[15.466240] (-) TimerEvent: {}
+[15.567833] (-) TimerEvent: {}
+[15.669567] (-) TimerEvent: {}
+[15.771234] (-) TimerEvent: {}
+[15.873132] (-) TimerEvent: {}
+[15.975023] (-) TimerEvent: {}
+[16.076826] (-) TimerEvent: {}
+[16.178124] (-) TimerEvent: {}
+[16.279897] (-) TimerEvent: {}
+[16.381415] (-) TimerEvent: {}
+[16.483003] (-) TimerEvent: {}
+[16.584618] (-) TimerEvent: {}
+[16.686422] (-) TimerEvent: {}
+[16.788305] (-) TimerEvent: {}
+[17.250385] (-) TimerEvent: {}
+[17.352073] (-) TimerEvent: {}
+[17.453418] (-) TimerEvent: {}
+[17.554794] (-) TimerEvent: {}
+[17.656290] (-) TimerEvent: {}
+[17.758046] (-) TimerEvent: {}
+[17.762187] (turtlebot3_control) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[17.858374] (-) TimerEvent: {}
+[17.959784] (-) TimerEvent: {}
+[18.061008] (-) TimerEvent: {}
+[18.162232] (-) TimerEvent: {}
+[18.234469] (turtlebot3_control) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[18.262551] (-) TimerEvent: {}
+[18.364015] (-) TimerEvent: {}
+[18.465276] (-) TimerEvent: {}
+[18.566705] (-) TimerEvent: {}
+[18.668399] (-) TimerEvent: {}
+[18.769558] (-) TimerEvent: {}
+[18.870801] (-) TimerEvent: {}
+[18.955903] (turtlebot3_control) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[18.971256] (-) TimerEvent: {}
+[19.072585] (-) TimerEvent: {}
+[19.172501] (turtlebot3_control) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[19.173801] (-) TimerEvent: {}
+[19.275274] (-) TimerEvent: {}
+[19.377058] (-) TimerEvent: {}
+[19.478555] (-) TimerEvent: {}
+[19.581733] (-) TimerEvent: {}
+[19.683264] (-) TimerEvent: {}
+[19.784695] (-) TimerEvent: {}
+[19.866302] (turtlebot3_control) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[19.868725] (turtlebot3_control) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[19.884993] (-) TimerEvent: {}
+[19.986254] (-) TimerEvent: {}
+[20.087666] (-) TimerEvent: {}
+[20.189212] (-) TimerEvent: {}
+[20.290738] (-) TimerEvent: {}
+[20.392259] (-) TimerEvent: {}
+[20.493842] (-) TimerEvent: {}
+[20.561294] (turtlebot3_control) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[20.569857] (turtlebot3_control) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[20.594140] (-) TimerEvent: {}
+[20.695417] (-) TimerEvent: {}
+[20.796673] (-) TimerEvent: {}
+[20.897955] (-) TimerEvent: {}
+[20.999416] (-) TimerEvent: {}
+[21.101023] (-) TimerEvent: {}
+[21.202632] (-) TimerEvent: {}
+[21.304091] (-) TimerEvent: {}
+[21.405687] (-) TimerEvent: {}
+[21.416386] (turtlebot3_control) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[21.505977] (-) TimerEvent: {}
+[21.607377] (-) TimerEvent: {}
+[21.642618] (turtlebot3_control) StdoutLine: {'line': b'-- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[21.707709] (-) TimerEvent: {}
+[21.809177] (-) TimerEvent: {}
+[21.910566] (-) TimerEvent: {}
+[21.928452] (turtlebot3_control) StdoutLine: {'line': b'-- Found tf2: 0.25.8 (/opt/ros/humble/share/tf2/cmake)\n'}
+[22.010891] (-) TimerEvent: {}
+[22.112383] (-) TimerEvent: {}
+[22.213680] (-) TimerEvent: {}
+[22.261067] (turtlebot3_control) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.25.8 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)\n'}
+[22.314109] (-) TimerEvent: {}
+[22.415452] (-) TimerEvent: {}
+[22.516909] (-) TimerEvent: {}
+[22.618191] (-) TimerEvent: {}
+[22.640445] (turtlebot3_control) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[22.658354] (turtlebot3_control) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[22.660462] (turtlebot3_control) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[22.718499] (-) TimerEvent: {}
+[22.819792] (-) TimerEvent: {}
+[22.921312] (-) TimerEvent: {}
+[23.022630] (-) TimerEvent: {}
+[23.124162] (-) TimerEvent: {}
+[23.225510] (-) TimerEvent: {}
+[23.327218] (-) TimerEvent: {}
+[23.428623] (-) TimerEvent: {}
+[23.530123] (-) TimerEvent: {}
+[23.631677] (-) TimerEvent: {}
+[23.733182] (-) TimerEvent: {}
+[23.834585] (-) TimerEvent: {}
+[23.935901] (-) TimerEvent: {}
+[24.037222] (-) TimerEvent: {}
+[24.138703] (-) TimerEvent: {}
+[24.193505] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[24.238940] (-) TimerEvent: {}
+[24.338677] (turtlebot3_control) StdoutLine: {'line': b'-- Found PortAudio: /usr/local/lib/libportaudio.so\n'}
+[24.339936] (-) TimerEvent: {}
+[24.340859] (turtlebot3_control) StdoutLine: {'line': b'-- Found PortAudio headers: /usr/local/include\n'}
+[24.352000] (turtlebot3_control) StdoutLine: {'line': b'-- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML\n'}
+[24.353271] (turtlebot3_control) StdoutLine: {'line': b'-- SFML found: \n'}
+[24.440225] (-) TimerEvent: {}
+[24.541564] (-) TimerEvent: {}
+[24.642777] (-) TimerEvent: {}
+[24.744168] (-) TimerEvent: {}
+[24.845468] (-) TimerEvent: {}
+[24.946922] (-) TimerEvent: {}
+[25.048409] (-) TimerEvent: {}
+[25.078105] (turtlebot3_control) StdoutLine: {'line': b'-- Configuring done\n'}
+[25.148708] (-) TimerEvent: {}
+[25.250091] (-) TimerEvent: {}
+[25.261984] (turtlebot3_control) StdoutLine: {'line': b'-- Generating done\n'}
+[25.310486] (turtlebot3_control) StdoutLine: {'line': b'-- Build files have been written to: /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control\n'}
+[25.350486] (-) TimerEvent: {}
+[25.409483] (turtlebot3_control) CommandEnded: {'returncode': 0}
+[25.413466] (turtlebot3_control) JobProgress: {'identifier': 'turtlebot3_control', 'progress': 'build'}
+[25.423969] (turtlebot3_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control', '--', '-j4', '-l4'], 'cwd': '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'pi'), ('SSH_CLIENT', '10.126.74.9 2764 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/pi'), ('OLDPWD', '/home/pi/Mobile_robotsystem'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/pi/ros2_ws/install:/home/pi/turtlebot3_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'pi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'screen.xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('STY', '1328.pts-0.pietoeat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/home/pi/ros2_ws/install/turtlebot3_control:/home/pi/turtlebot3_ws/install/turtlebot3:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_bringup:/home/pi/turtlebot3_ws/install/turtlebot3_node:/home/pi/turtlebot3_ws/install/turtlebot3_example:/home/pi/turtlebot3_ws/install/turtlebot3_description:/home/pi/turtlebot3_ws/install/ld08_driver:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('WINDOW', '1'), ('PWD', '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.126.74.9 2764 10.126.128.42 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('TERMCAP', 'SC|screen.xterm-256color|VT 100/ANSI X3.64 virtual terminal:DO=\\E[%dB:LE=\\E[%dD:RI=\\E[%dC:UP=\\E[%dA:bs:bt=\\E[Z:cd=\\E[J:ce=\\E[K:cl=\\E[H\\E[J:cm=\\E[%i%d;%dH:ct=\\E[3g:do=^J:nd=\\E[C:pt:rc=\\E8:rs=\\Ec:sc=\\E7:st=\\EH:up=\\EM:le=^H:bl=^G:cr=^M:it#8:ho=\\E[H:nw=\\EE:ta=^I:is=\\E)0:li#42:co#72:am:xn:xv:LP:sr=\\EM:al=\\E[L:AL=\\E[%dL:cs=\\E[%i%d;%dr:dl=\\E[M:DL=\\E[%dM:dc=\\E[P:DC=\\E[%dP:im=\\E[4h:ei=\\E[4l:mi:IC=\\E[%d@:ks=\\E[?1h\\E=:ke=\\E[?1l\\E>:vi=\\E[?25l:ve=\\E[34h\\E[?25h:vs=\\E[34l:ti=\\E[?1049h:te=\\E[?1049l:us=\\E[4m:ue=\\E[24m:so=\\E[3m:se=\\E[23m:mb=\\E[5m:md=\\E[1m:mh=\\E[2m:mr=\\E[7m:me=\\E[m:ms:Co#8:pa#64:AF=\\E[3%dm:AB=\\E[4%dm:op=\\E[39;49m:AX:vb=\\Eg:G0:as=\\E(0:ae=\\E(B:ac=\\140\\140aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~..--++,,hhII00:po=\\E[5i:pf=\\E[4i:Km=\\E[<:k0=\\E[10~:k1=\\EOP:k2=\\EOQ:k3=\\EOR:k4=\\EOS:k5=\\E[15~:k6=\\E[17~:k7=\\E[18~:k8=\\E[19~:k9=\\E[20~:k;=\\E[21~:F1=\\E[23~:F2=\\E[24~:kB=\\E[Z:kh=\\E[1~:@1=\\E[1~:kH=\\E[4~:@7=\\E[4~:kN=\\E[6~:kP=\\E[5~:kI=\\E[2~:kD=\\E[3~:ku=\\EOA:kd=\\EOB:kr=\\EOC:kl=\\EOD:km:'), ('LDS_MODEL', 'LDS-02'), ('PYTHONPATH', '/home/pi/turtlebot3_ws/build/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:/home/pi/turtlebot3_ws/build/turtlebot3_example:/home/pi/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/pi/ros2_ws/install/turtlebot3_control:/home/pi/turtlebot3_ws/install/turtlebot3:/home/pi/turtlebot3_ws/install/turtlebot3_bringup:/home/pi/turtlebot3_ws/install/turtlebot3_node:/home/pi/turtlebot3_ws/install/turtlebot3_description:/home/pi/turtlebot3_ws/install/ld08_driver:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble')]), 'shell': False}
+[25.450881] (-) TimerEvent: {}
+[25.552314] (-) TimerEvent: {}
+[25.653551] (-) TimerEvent: {}
+[25.755043] (-) TimerEvent: {}
+[25.850877] (turtlebot3_control) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o\x1b[0m\n'}
+[25.855396] (-) TimerEvent: {}
+[25.858259] (turtlebot3_control) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o\x1b[0m\n'}
+[25.860273] (turtlebot3_control) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp.o\x1b[0m\n'}
+[25.870645] (turtlebot3_control) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp.o\x1b[0m\n'}
+[25.955798] (-) TimerEvent: {}
+[26.057577] (-) TimerEvent: {}
+[26.159033] (-) TimerEvent: {}
+[26.260386] (-) TimerEvent: {}
+[26.361757] (-) TimerEvent: {}
+[26.463536] (-) TimerEvent: {}
+[26.564837] (-) TimerEvent: {}
+[26.667821] (-) TimerEvent: {}
+[26.770723] (-) TimerEvent: {}
+[26.872124] (-) TimerEvent: {}
+[26.973728] (-) TimerEvent: {}
+[27.075135] (-) TimerEvent: {}
+[27.176628] (-) TimerEvent: {}
+[27.305975] (-) TimerEvent: {}
+[27.407412] (-) TimerEvent: {}
+[27.510936] (-) TimerEvent: {}
+[27.612453] (-) TimerEvent: {}
+[27.714027] (-) TimerEvent: {}
+[27.815659] (-) TimerEvent: {}
+[27.917860] (-) TimerEvent: {}
+[28.019820] (-) TimerEvent: {}
+[28.121356] (-) TimerEvent: {}
+[28.223443] (-) TimerEvent: {}
+[28.325873] (-) TimerEvent: {}
+[28.428019] (-) TimerEvent: {}
+[28.530165] (-) TimerEvent: {}
+[28.632327] (-) TimerEvent: {}
+[28.734354] (-) TimerEvent: {}
+[28.836898] (-) TimerEvent: {}
+[28.940425] (-) TimerEvent: {}
+[29.042272] (-) TimerEvent: {}
+[29.144515] (-) TimerEvent: {}
+[29.246309] (-) TimerEvent: {}
+[29.348129] (-) TimerEvent: {}
+[29.449812] (-) TimerEvent: {}
+[29.551723] (-) TimerEvent: {}
+[29.653767] (-) TimerEvent: {}
+[29.755601] (-) TimerEvent: {}
+[29.857865] (-) TimerEvent: {}
+[29.962754] (-) TimerEvent: {}
+[30.065027] (-) TimerEvent: {}
+[30.167023] (-) TimerEvent: {}
+[30.269200] (-) TimerEvent: {}
+[30.371184] (-) TimerEvent: {}
+[30.473174] (-) TimerEvent: {}
+[30.578286] (-) TimerEvent: {}
+[30.681746] (-) TimerEvent: {}
+[30.785486] (-) TimerEvent: {}
+[30.855490] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:8:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kgoertzel.h: No such file or directory\n'}
+[30.859205] (turtlebot3_control) StderrLine: {'line': b'    8 | #include \x1b[01;31m\x1b[K"goertzel.h"\x1b[m\x1b[K\n'}
+[30.861403] (turtlebot3_control) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[30.863566] (turtlebot3_control) StderrLine: {'line': b'compilation terminated.\n'}
+[30.886093] (-) TimerEvent: {}
+[30.892429] (turtlebot3_control) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1\n'}
+[30.901119] (turtlebot3_control) StderrLine: {'line': b'gmake[2]: *** Waiting for unfinished jobs....\n'}
+[30.986657] (-) TimerEvent: {}
+[31.089266] (-) TimerEvent: {}
+[31.192938] (-) TimerEvent: {}
+[31.298892] (-) TimerEvent: {}
+[31.404593] (-) TimerEvent: {}
+[31.510592] (-) TimerEvent: {}
+[31.612931] (-) TimerEvent: {}
+[31.715329] (-) TimerEvent: {}
+[31.820918] (-) TimerEvent: {}
+[31.927169] (-) TimerEvent: {}
+[32.033255] (-) TimerEvent: {}
+[32.139808] (-) TimerEvent: {}
+[32.241957] (-) TimerEvent: {}
+[32.344580] (-) TimerEvent: {}
+[32.449207] (-) TimerEvent: {}
+[32.551371] (-) TimerEvent: {}
+[32.653176] (-) TimerEvent: {}
+[32.756340] (-) TimerEvent: {}
+[32.859703] (-) TimerEvent: {}
+[32.961663] (-) TimerEvent: {}
+[33.063484] (-) TimerEvent: {}
+[33.166495] (-) TimerEvent: {}
+[33.268478] (-) TimerEvent: {}
+[33.370393] (-) TimerEvent: {}
+[33.476107] (-) TimerEvent: {}
+[33.581589] (-) TimerEvent: {}
+[33.684016] (-) TimerEvent: {}
+[33.789840] (-) TimerEvent: {}
+[33.892227] (-) TimerEvent: {}
+[33.994517] (-) TimerEvent: {}
+[34.097585] (-) TimerEvent: {}
+[34.199549] (-) TimerEvent: {}
+[34.302523] (-) TimerEvent: {}
+[34.406820] (-) TimerEvent: {}
+[34.510545] (-) TimerEvent: {}
+[34.616493] (-) TimerEvent: {}
+[34.721610] (-) TimerEvent: {}
+[34.823831] (-) TimerEvent: {}
+[34.929797] (-) TimerEvent: {}
+[35.032090] (-) TimerEvent: {}
+[35.137754] (-) TimerEvent: {}
+[35.241984] (-) TimerEvent: {}
+[35.277371] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[35.281278] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:164:60:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ktime_info\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.285081] (turtlebot3_control) StderrLine: {'line': b'  164 |                            \x1b[01;35m\x1b[Kconst PaStreamCallbackTimeInfo* time_info\x1b[m\x1b[K,\n'}
+[35.288654] (turtlebot3_control) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[35.295518] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:165:50:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus_flags\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.298035] (turtlebot3_control) StderrLine: {'line': b'  165 |                            \x1b[01;35m\x1b[KPaStreamCallbackFlags status_flags\x1b[m\x1b[K,\n'}
+[35.300590] (turtlebot3_control) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[35.319943] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid AudioInput::check_sequence(TestResult&, std::vector<int>&, std::vector<int>&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[35.324280] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:318:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.327133] (turtlebot3_control) StderrLine: {'line': b'  318 |     for (int i = 0; \x1b[01;35m\x1b[Ki < tones.size()\x1b[m\x1b[K; i++){\n'}
+[35.329322] (turtlebot3_control) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[35.341147] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KGoertzel::Goertzel(GoertzelResult&, bool)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[35.348245] (-) TimerEvent: {}
+[35.352430] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:7:44:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Khyperx\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.355558] (turtlebot3_control) StderrLine: {'line': b'    7 | Goertzel::Goertzel(GoertzelResult& r, \x1b[01;35m\x1b[Kbool hyperx\x1b[m\x1b[K): _result(r){}\n'}
+[35.358376] (turtlebot3_control) StderrLine: {'line': b'      |                                       \x1b[01;35m\x1b[K~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[35.360707] (turtlebot3_control) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:1\x1b[m\x1b[K:\n'}
+[35.362697] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KGoertzel::Goertzel(std::vector<float>)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[35.367153] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:30:24:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KGoertzel::_data\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.370198] (turtlebot3_control) StderrLine: {'line': b'   30 |     std::vector<float> \x1b[01;35m\x1b[K_data\x1b[m\x1b[K;\n'}
+[35.372752] (turtlebot3_control) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[35.375039] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:27:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kint Goertzel::_size_of_signal\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.387894] (turtlebot3_control) StderrLine: {'line': b'   27 |     int \x1b[01;35m\x1b[K_size_of_signal\x1b[m\x1b[K;\n'}
+[35.390158] (turtlebot3_control) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[35.392457] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:10:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.394799] (turtlebot3_control) StderrLine: {'line': b'   10 | \x1b[01;35m\x1b[KGoertzel\x1b[m\x1b[K::Goertzel(const std::vector<float> data)\n'}
+[35.398639] (turtlebot3_control) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[35.400591] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Goertzel::_init_coefficients()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[35.402321] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:28:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.404169] (turtlebot3_control) StderrLine: {'line': b'   28 |     for (int i = 0; \x1b[01;35m\x1b[Ki < _DTMF_freq.size()\x1b[m\x1b[K; ++i) {\n'}
+[35.405912] (turtlebot3_control) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[35.408954] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Goertzel::compute_goertzel()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[35.411412] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:37:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<int>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.413582] (turtlebot3_control) StderrLine: {'line': b'   37 |     for (int freq_index = 0; \x1b[01;35m\x1b[Kfreq_index < _DTMF_freq.size()\x1b[m\x1b[K; ++freq_index) {\n'}
+[35.415698] (turtlebot3_control) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[35.417667] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Goertzel::sort(std::vector<double>&, std::vector<int>&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[35.419540] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:87:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<double>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.421670] (turtlebot3_control) StderrLine: {'line': b'   87 |     for(int i = 0; \x1b[01;35m\x1b[Ki < (x.size())/2-1\x1b[m\x1b[K; i++){\n'}
+[35.423702] (turtlebot3_control) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[35.428145] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:91:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<double>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.438809] (turtlebot3_control) StderrLine: {'line': b'   91 |         for (int j = 0; \x1b[01;35m\x1b[Kj < (x.size())/2-1\x1b[m\x1b[K; j++){\n'}
+[35.441401] (turtlebot3_control) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[35.445675] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:105:33:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<double>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.448277] (turtlebot3_control) StderrLine: {'line': b'  105 |     for(int i = (x.size())/2; \x1b[01;35m\x1b[Ki < x.size()-1\x1b[m\x1b[K; i++){\n'}
+[35.450411] (-) TimerEvent: {}
+[35.454912] (turtlebot3_control) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[35.457398] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:109:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<double>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[35.460072] (turtlebot3_control) StderrLine: {'line': b'  109 |         for (int j = (x.size())/2; \x1b[01;35m\x1b[Kj < x.size()-1\x1b[m\x1b[K; j++){\n'}
+[35.462492] (turtlebot3_control) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[35.550936] (-) TimerEvent: {}
+[35.656317] (-) TimerEvent: {}
+[35.758855] (-) TimerEvent: {}
+[35.865243] (-) TimerEvent: {}
+[35.967729] (-) TimerEvent: {}
+[36.072136] (-) TimerEvent: {}
+[36.176576] (-) TimerEvent: {}
+[36.282909] (-) TimerEvent: {}
+[36.396594] (-) TimerEvent: {}
+[36.504061] (-) TimerEvent: {}
+[36.607124] (-) TimerEvent: {}
+[36.713619] (-) TimerEvent: {}
+[36.817065] (-) TimerEvent: {}
+[36.919428] (-) TimerEvent: {}
+[37.025747] (-) TimerEvent: {}
+[37.130840] (-) TimerEvent: {}
+[37.236512] (-) TimerEvent: {}
+[37.339120] (-) TimerEvent: {}
+[37.441772] (-) TimerEvent: {}
+[37.679919] (-) TimerEvent: {}
+[37.782266] (-) TimerEvent: {}
+[37.884651] (-) TimerEvent: {}
+[37.986591] (-) TimerEvent: {}
+[38.088288] (-) TimerEvent: {}
+[38.189870] (-) TimerEvent: {}
+[38.291290] (-) TimerEvent: {}
+[38.392708] (-) TimerEvent: {}
+[38.494292] (-) TimerEvent: {}
+[38.595850] (-) TimerEvent: {}
+[38.697265] (-) TimerEvent: {}
+[38.798776] (-) TimerEvent: {}
+[38.900336] (-) TimerEvent: {}
+[39.001743] (-) TimerEvent: {}
+[39.103087] (-) TimerEvent: {}
+[39.204483] (-) TimerEvent: {}
+[39.306238] (-) TimerEvent: {}
+[39.407915] (-) TimerEvent: {}
+[39.509465] (-) TimerEvent: {}
+[39.611010] (-) TimerEvent: {}
+[39.712523] (-) TimerEvent: {}
+[39.814037] (-) TimerEvent: {}
+[39.915536] (-) TimerEvent: {}
+[40.016967] (-) TimerEvent: {}
+[40.118496] (-) TimerEvent: {}
+[40.219877] (-) TimerEvent: {}
+[40.321433] (-) TimerEvent: {}
+[40.422889] (-) TimerEvent: {}
+[40.524467] (-) TimerEvent: {}
+[40.626105] (-) TimerEvent: {}
+[40.727753] (-) TimerEvent: {}
+[40.829551] (-) TimerEvent: {}
+[40.931447] (-) TimerEvent: {}
+[41.032877] (-) TimerEvent: {}
+[41.134523] (-) TimerEvent: {}
+[41.236213] (-) TimerEvent: {}
+[41.337771] (-) TimerEvent: {}
+[41.439969] (-) TimerEvent: {}
+[41.541495] (-) TimerEvent: {}
+[41.643002] (-) TimerEvent: {}
+[41.744672] (-) TimerEvent: {}
+[64.209584] (-) TimerEvent: {}
+[64.406391] (-) TimerEvent: {}
+[64.511249] (-) TimerEvent: {}
+[64.613014] (-) TimerEvent: {}
+[64.718299] (-) TimerEvent: {}
+[64.820036] (-) TimerEvent: {}
+[64.921530] (-) TimerEvent: {}
+[65.023182] (-) TimerEvent: {}
+[65.124754] (-) TimerEvent: {}
+[65.226312] (-) TimerEvent: {}
+[65.327876] (-) TimerEvent: {}
+[65.429475] (-) TimerEvent: {}
+[65.531525] (-) TimerEvent: {}
+[65.633337] (-) TimerEvent: {}
+[65.734896] (-) TimerEvent: {}
+[65.836285] (-) TimerEvent: {}
+[65.937624] (-) TimerEvent: {}
+[66.039320] (-) TimerEvent: {}
+[66.140803] (-) TimerEvent: {}
+[66.219083] (turtlebot3_control) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2\n'}
+[66.221335] (turtlebot3_control) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[66.241139] (-) TimerEvent: {}
+[66.253134] (turtlebot3_control) CommandEnded: {'returncode': 2}
+[66.341469] (-) TimerEvent: {}
+[66.443750] (-) TimerEvent: {}
+[66.546026] (-) TimerEvent: {}
+[66.647926] (-) TimerEvent: {}
+[66.749641] (-) TimerEvent: {}
+[66.851889] (-) TimerEvent: {}
+[66.953729] (-) TimerEvent: {}
+[67.055309] (-) TimerEvent: {}
+[67.092601] (turtlebot3_control) JobEnded: {'identifier': 'turtlebot3_control', 'rc': 2}
+[67.107275] (-) EventReactorShutdown: {}

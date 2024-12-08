@@ -8,15 +8,14 @@ class RunCpp:
         self.threadpool = QThreadPool()
 
     def run_exe(self):
-        path = "..//cpp//build//mobile_system"
-        result = subprocess.run(path, capture_output=True, text=True)
-        print("Output:", result.stdout)
-        print("Errors:", result.stderr)
+        path = os.path.abspath(os.path.join(os.getcwd(), '..', 'cpp', 'build', 'gui_code'))
+        print("Executable Path:", path)
+        result = subprocess.run([path], capture_output=True, text=True)
+        print(result.stdout)  # Print captured stdout)
         return result.stdout
 
     def run(self):
         print("Running C++ program")
-        print(os.getcwd())
         worker_thread = SecondThread(self.run_exe)
         worker_thread.signals.result.connect(self.result)
         worker_thread.signals.finished.connect(self.thread_complete)
@@ -24,8 +23,9 @@ class RunCpp:
         self.threadpool.start(worker_thread)
     
     def result(self, result):
-        print("Result:", result)
-    
+        # print("Result:", result)
+        pass
+
     def thread_complete(self):
         print("Thread complete")
     

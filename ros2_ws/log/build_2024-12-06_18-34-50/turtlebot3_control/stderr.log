@@ -1,0 +1,6 @@
+[31mCMake Error at CMakeLists.txt:74 (add_executable):
+  No SOURCES given to target: move_turtlebot
+
+[0m
+[0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m
+gmake: *** [Makefile:375: cmake_check_build_system] Error 1

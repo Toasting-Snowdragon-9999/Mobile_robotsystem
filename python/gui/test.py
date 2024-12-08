@@ -27,7 +27,6 @@ def path():
         return
 
 def main(): 
-    
     path()
     print(os.getcwd())
     data = [

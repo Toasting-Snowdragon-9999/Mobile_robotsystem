@@ -5,7 +5,7 @@
 #include <string>
 #include <bitset>
 
-#define nibble_size 4
+#define NIBBLE_SIZE (4)
 
 
 class AlToTl

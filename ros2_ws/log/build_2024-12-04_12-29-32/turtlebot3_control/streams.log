@@ -1,0 +1,56 @@
+[0.106s] Invoking command in '/home/pi/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[0.358s] -- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML
+[0.362s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.835s] -- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)
+[2.292s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.327s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.417s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.546s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.701s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.235s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[3.261s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[5.044s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[5.659s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[5.813s] -- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)
+[6.005s] -- Found tf2: 0.25.8 (/opt/ros/humble/share/tf2/cmake)
+[6.059s] -- Found tf2_geometry_msgs: 0.25.8 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[6.097s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[6.112s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[7.095s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[7.182s] -- Found PortAudio: /usr/local/lib/libportaudio.so
+[7.184s] -- Found PortAudio headers: /usr/local/include
+[7.196s] -- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML
+[7.197s] -- SFML found: 
+[7.937s] -- Configuring done
+[8.146s] -- Generating done
+[8.194s] -- Build files have been written to: /home/pi/ros2_ws/build/turtlebot3_control
+[8.441s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[8.664s] [ 16%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[8.669s] [ 33%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/wave_generator.cpp.o[0m
+[15.111s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/wave_generator.cpp:[m[K In constructor ‘[01m[KWaveGenerator::WaveGenerator(std::vector<int>&)[m[K’:
+[15.117s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/wave_generator.cpp:8:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[15.119s]     8 |     for(int i = 0; [01;35m[Ki < _low_frequencies.size()[m[K; i++){
+[15.121s]       |                    [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[15.122s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/wave_generator.cpp:11:34:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[15.124s]    11 |                 for(int j = 0; [01;35m[Kj < _high_frequencies.size()[m[K; j++){
+[15.126s]       |                                [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[15.128s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/wave_generator.cpp:22:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[15.129s]    22 |     for(int i = 0; [01;35m[Ki < sequence.size()[m[K; i++){
+[15.131s]       |                    [01;35m[K~~^~~~~~~~~~~~~~~~~[m[K
+[35.153s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[35.154s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:38:5:[m[K [01;31m[Kerror: [m[K‘[01m[KWaveGenerator[m[K’ was not declared in this scope
+[35.155s]    38 |     [01;31m[KWaveGenerator[m[K sounds(test_sequence2);
+[35.156s]       |     [01;31m[K^~~~~~~~~~~~~[m[K
+[35.181s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:39:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ksounds[m[K’ was not declared in this scope; did you mean ‘[01m[Kroundl[m[K’?
+[35.182s]    39 |     [01;31m[Ksounds[m[K.play_sounds();
+[35.183s]       |     [01;31m[K^~~~~~[m[K
+[35.184s]       |     [32m[Kroundl[m[K
+[40.579s] In file included from [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[40.580s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:[m[K At global scope:
+[40.581s] [01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:61:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[40.582s]    61 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[40.583s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[45.473s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+[45.476s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+[45.480s] gmake: *** [Makefile:146: all] Error 2
+[45.856s] Invoked command in '/home/pi/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/ros2_ws/build/turtlebot3_control -- -j4 -l4

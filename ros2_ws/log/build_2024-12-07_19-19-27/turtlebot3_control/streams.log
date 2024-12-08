@@ -1,0 +1,47 @@
+[0.115s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[0.655s] [  6%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[0.666s] [ 13%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o[0m
+[0.686s] [ 20%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o[0m
+[6.869s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:[m[K In member function ‘[01m[Kstd::vector<robot_command> ApplicationLayer::bits_to_commands(std::string)[m[K’:
+[6.870s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:140:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[6.872s]   140 |     for (int i = 0; [01;35m[Ki <= length[m[K; i += NIBBLE_SIZE)
+[6.874s]       |                     [01;35m[K~~^~~~~~~~~[m[K
+[6.917s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:140:39:[m[K [01;31m[Kerror: [m[K‘[01m[KNIBBLE_SIZE[m[K’ was not declared in this scope
+[6.921s]   140 |     for (int i = 0; i <= length; i += [01;31m[KNIBBLE_SIZE[m[K)
+[6.923s]       |                                       [01;31m[K^~~~~~~~~~~[m[K
+[6.956s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:[m[K At global scope:
+[6.958s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:207:28:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::vector<robot_command> ApplicationLayer::python_to_cpp(std::vector<std::vector<std::__cxx11::basic_string<char> > >)[m[K’
+[6.960s]   207 | std::vector<robot_command> [01;31m[KApplicationLayer[m[K::python_to_cpp(std::vector<std::vector<std::string>> python_string){
+[6.963s]       |                            [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[6.965s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:207:28:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::vector<robot_command> ApplicationLayer::python_to_cpp(std::vector<std::vector<std::__cxx11::basic_string<char> > >)[m[K’
+[6.968s] In file included from [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:1[m[K:
+[6.970s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/communication_protocol/application_layer.h:25:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass ApplicationLayer[m[K’ defined here
+[6.972s]    25 | class [01;36m[KApplicationLayer[m[K
+[6.975s]       |       [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[6.982s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:217:39:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::vector<std::vector<std::__cxx11::basic_string<char> > > ApplicationLayer::cpp_to_robot(std::vector<robot_command>)[m[K’
+[6.984s]   217 | std::vector<std::vector<std::string>> [01;31m[KApplicationLayer[m[K::cpp_to_robot(std::vector<robot_command> python_path){
+[6.987s]       |                                       [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[6.990s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:217:39:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::vector<std::vector<std::__cxx11::basic_string<char> > > ApplicationLayer::cpp_to_robot(std::vector<robot_command>)[m[K’
+[6.996s] In file included from [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:1[m[K:
+[7.011s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/communication_protocol/application_layer.h:25:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass ApplicationLayer[m[K’ defined here
+[7.013s]    25 | class [01;36m[KApplicationLayer[m[K
+[7.016s]       |       [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[8.044s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:174: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o] Error 1
+[8.046s] gmake[2]: *** Waiting for unfinished jobs....
+[43.831s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[43.883s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:112:64:[m[K [01;31m[Kerror: [m[K‘[01m[Kcpp_to_robot[m[K’ was not declared in this scope
+[43.886s]   112 | <std::string>> robtek_strings = [01;31m[Kcpp_to_robot[m[K(robtek);
+[43.888s]       |                                 [01;31m[K^~~~~~~~~~~~[m[K
+[43.890s] 
+[43.894s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:186:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kack_check[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[43.899s]   186 |     bool [01;35m[Kack_check[m[K = false;
+[43.905s]       |          [01;35m[K^~~~~~~~~[m[K
+[137.852s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[138.210s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:[m[K At global scope:
+[138.212s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[138.231s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[138.233s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[144.001s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+[144.106s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+[144.155s] gmake: *** [Makefile:146: all] Error 2
+[145.527s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4

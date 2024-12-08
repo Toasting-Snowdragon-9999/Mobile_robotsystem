@@ -1,0 +1,40 @@
+[0.120s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[0.362s] -- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML
+[0.364s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.668s] -- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)
+[2.000s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.024s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.076s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.163s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.275s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.568s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[2.583s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[4.239s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[4.684s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[4.804s] -- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)
+[4.960s] -- Found tf2: 0.25.8 (/opt/ros/humble/share/tf2/cmake)
+[4.993s] -- Found tf2_geometry_msgs: 0.25.8 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[5.015s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[5.026s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[5.761s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[5.831s] -- Found PortAudio: /usr/local/lib/libportaudio.so
+[5.832s] -- Found PortAudio headers: /usr/local/include
+[5.844s] -- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML
+[5.845s] -- SFML found: 
+[6.553s] -- Configuring done
+[6.613s] [31mCMake Error at CMakeLists.txt:74 (add_executable):
+[6.614s]   Cannot find source file:
+[6.615s] 
+[6.616s]     algorithms/goertzel.cpp
+[6.617s] 
+[6.618s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
+[6.618s]   .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
+[6.619s] 
+[6.620s] [0m
+[6.627s] [31mCMake Error at CMakeLists.txt:74 (add_executable):
+[6.629s]   No SOURCES given to target: move_turtlebot
+[6.630s] 
+[6.631s] [0m
+[6.632s] [0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m
+[6.701s] gmake: *** [Makefile:375: cmake_check_build_system] Error 1
+[6.716s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4

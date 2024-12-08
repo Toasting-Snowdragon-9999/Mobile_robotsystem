@@ -1,0 +1,284 @@
+[0.132s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake /home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control -DCMAKE_INSTALL_PREFIX=/home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control
+[5.769s] -- The C compiler identification is GNU 11.4.0
+[6.548s] -- The CXX compiler identification is GNU 11.4.0
+[6.662s] -- Detecting C compiler ABI info
+[7.512s] -- Detecting C compiler ABI info - done
+[7.571s] -- Check for working C compiler: /usr/bin/cc - skipped
+[7.575s] -- Detecting C compile features
+[7.583s] -- Detecting C compile features - done
+[7.618s] -- Detecting CXX compiler ABI info
+[8.401s] -- Detecting CXX compiler ABI info - done
+[8.463s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[8.465s] -- Detecting CXX compile features
+[8.469s] -- Detecting CXX compile features - done
+[8.606s] -- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML
+[8.717s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[10.493s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[12.309s] -- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)
+[13.297s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[13.428s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[13.602s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[13.851s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[14.153s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[15.036s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[15.109s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[16.965s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[17.428s] -- Found FastRTPS: /opt/ros/humble/include  
+[18.151s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[18.371s] -- Looking for pthread.h
+[19.208s] -- Looking for pthread.h - found
+[19.211s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[19.962s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[19.970s] -- Found Threads: TRUE  
+[21.270s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[21.477s] -- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)
+[21.760s] -- Found tf2: 0.25.8 (/opt/ros/humble/share/tf2/cmake)
+[22.040s] -- Found tf2_geometry_msgs: 0.25.8 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[22.416s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[22.433s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[22.434s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[23.969s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[24.116s] -- Found PortAudio: /usr/local/lib/libportaudio.so
+[24.117s] -- Found PortAudio headers: /usr/local/include
+[24.129s] -- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML
+[24.130s] -- SFML found: 
+[24.869s] -- Configuring done
+[25.081s] -- Generating done
+[25.124s] -- Build files have been written to: /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control
+[25.227s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake /home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control -DCMAKE_INSTALL_PREFIX=/home/pi/Mobile_robotsystem/ros2_ws/install/turtlebot3_control
+[25.243s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[25.872s] [ 13%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o[0m
+[25.874s] [ 13%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[25.884s] [ 20%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp.o[0m
+[25.890s] [ 26%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o[0m
+[34.747s] [ 33%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp.o[0m
+[36.846s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:[m[K In function ‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’:
+[36.848s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:164:60:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime_info[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[36.850s]   164 |                            [01;35m[Kconst PaStreamCallbackTimeInfo* time_info[m[K,
+[36.852s]       |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[36.854s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:165:50:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus_flags[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[36.855s]   165 |                            [01;35m[KPaStreamCallbackFlags status_flags[m[K,
+[36.865s]       |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[36.895s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:[m[K In member function ‘[01m[Kvoid AudioInput::check_sequence(TestResult&, std::vector<int>&, std::vector<int>&)[m[K’:
+[36.897s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/audio_input.cpp:318:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[36.899s]   318 |     for (int i = 0; [01;35m[Ki < tones.size()[m[K; i++){
+[36.901s]       |                     [01;35m[K~~^~~~~~~~~~~~~~[m[K
+[51.150s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In constructor ‘[01m[KGoertzel::Goertzel(GoertzelResult&, bool)[m[K’:
+[53.773s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:7:44:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Khyperx[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[53.775s]     7 | Goertzel::Goertzel(GoertzelResult& r, [01;35m[Kbool hyperx[m[K): _result(r){}
+[53.780s]       |                                       [01;35m[K~~~~~^~~~~~[m[K
+[53.783s] In file included from [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:1[m[K:
+[53.785s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:[m[K In constructor ‘[01m[KGoertzel::Goertzel(std::vector<float>)[m[K’:
+[53.788s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:30:24:[m[K [01;35m[Kwarning: [m[K‘[01m[KGoertzel::_data[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[53.791s]    30 |     std::vector<float> [01;35m[K_data[m[K;
+[53.793s]       |                        [01;35m[K^~~~~[m[K
+[53.796s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/algorithms/goertzel.h:27:9:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kint Goertzel::_size_of_signal[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[53.799s]    27 |     int [01;35m[K_size_of_signal[m[K;
+[53.801s]       |         [01;35m[K^~~~~~~~~~~~~~~[m[K
+[53.803s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:10:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+[53.805s]    10 | [01;35m[KGoertzel[m[K::Goertzel(const std::vector<float> data)
+[53.808s]       | [01;35m[K^~~~~~~~[m[K
+[53.811s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::_init_coefficients()[m[K’:
+[53.814s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[53.818s]    28 |     for (int i = 0; [01;35m[Ki < _DTMF_freq.size()[m[K; ++i) {
+[53.820s]       |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[53.822s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::compute_goertzel()[m[K’:
+[53.826s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:37:41:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[53.829s]    37 |     for (int freq_index = 0; [01;35m[Kfreq_index < _DTMF_freq.size()[m[K; ++freq_index) {
+[53.831s]       |                              [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[53.834s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::sort(std::vector<double>&, std::vector<int>&)[m[K’:
+[53.836s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:87:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[53.842s]    87 |     for(int i = 0; [01;35m[Ki < (x.size())/2-1[m[K; i++){
+[53.845s]       |                    [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[53.847s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:91:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[53.849s]    91 |         for (int j = 0; [01;35m[Kj < (x.size())/2-1[m[K; j++){
+[53.852s]       |                         [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[53.857s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:105:33:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[53.860s]   105 |     for(int i = (x.size())/2; [01;35m[Ki < x.size()-1[m[K; i++){
+[53.865s]       |                               [01;35m[K~~^~~~~~~~~~~~[m[K
+[53.874s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/algorithms/goertzel.cpp:109:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[53.876s]   109 |         for (int j = (x.size())/2; [01;35m[Kj < x.size()-1[m[K; j++){
+[53.878s]       |                                    [01;35m[K~~^~~~~~~~~~~~[m[K
+[55.239s] [ 46%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp.o[0m
+[55.242s] [ 46%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/physical_layer.cpp.o[0m
+[63.426s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:[m[K In member function ‘[01m[Kstd::string DataLinkLayer::nibble_stuffing(std::string)[m[K’:
+[63.428s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:74:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[63.433s]    74 |     while (i <= package.size() - nibble_size)
+[63.437s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:[m[K In member function ‘[01m[Kstd::string DataLinkLayer::remove_esc_nibbles(std::string)[m[K’:
+[63.440s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:94:14:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[63.442s]    94 |     while (i <= received_package.size() - byte_size)
+[63.683s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:[m[K In member function ‘[01m[Kstd::vector<int> DataLinkLayer::find_length_pos_in_header(std::string)[m[K’:
+[63.685s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/data_link_layer.cpp:177:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KEFD_length[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[63.687s]   177 |     int [01;35m[KEFD_length[m[K = _EFD.size();
+[63.689s]       |         [01;35m[K^~~~~~~~~~[m[K
+[133.403s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/communication_protocol/physical_layer.h:7[m[K,
+[133.413s]                  from [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/physical_layer.cpp:1[m[K:
+[133.415s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[133.417s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[133.420s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[153.538s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/move_turtlebot.cpp:15[m[K:
+[153.543s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/src/communication_protocol/application_layer.cpp:[m[K In member function ‘[01m[Kstd::vector<robot_command> ApplicationLayer::bits_to_commands(std::string)[m[K’:
+[153.545s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/src/communication_protocol/application_layer.cpp:141:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[153.547s]   141 |     for (int i = 0; [01;35m[Ki <= length[m[K; i += nibble_size)
+[153.549s]       |                     [01;35m[K~~^~~~~~~~~[m[K
+[153.552s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/src/communication_protocol/application_layer.cpp:150:36:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[153.554s]   150 |             while ([01;35m[Ki + nibble_size <= length[m[K)
+[153.555s]       |                    [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[153.655s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/move_turtlebot.cpp:15[m[K,
+[153.656s]                  from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:7[m[K:
+[153.658s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/src/communication_protocol/application_layer.cpp:[m[K In member function ‘[01m[Kstd::vector<robot_command> ApplicationLayer::bits_to_commands(std::string)[m[K’:
+[153.661s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/src/communication_protocol/application_layer.cpp:141:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[153.663s]   141 |     for (int i = 0; [01;35m[Ki <= length[m[K; i += nibble_size)
+[153.666s]       |                     [01;35m[K~~^~~~~~~~~[m[K
+[153.667s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/src/communication_protocol/application_layer.cpp:150:36:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[153.669s]   150 |             while ([01;35m[Ki + nibble_size <= length[m[K)
+[153.670s]       |                    [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[154.815s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[154.817s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:185:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kack_check[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[154.821s]   185 |     bool [01;35m[Kack_check[m[K = false;
+[154.823s]       |          [01;35m[K^~~~~~~~~[m[K
+[211.008s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[211.050s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:[m[K At global scope:
+[211.052s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[211.053s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[211.055s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[306.652s] [ 53%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp.o[0m
+[311.995s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::exclusive_or_strings(std::string, std::string)[m[K’:
+[312.001s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:12:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::__cxx11::basic_string<char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[312.005s]    12 |         for (int i = 0; [01;35m[Ki < a.size()[m[K; i++)
+[312.007s]       |                         [01;35m[K~~^~~~~~~~~~[m[K
+[312.008s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC7::encode(std::string)[m[K’:
+[312.010s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:29:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[312.012s]    29 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[312.015s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[312.016s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC7::decode(std::string)[m[K’:
+[312.023s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:61:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcDegree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[312.024s]    61 |             int [01;35m[KcrcDegree[m[K = generator_poly.length() - 1;
+[312.025s]       |                 [01;35m[K^~~~~~~~~[m[K
+[312.027s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:64:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[312.028s]    64 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[312.029s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[312.030s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC16::encode(std::string)[m[K’:
+[312.033s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:100:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[312.034s]   100 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[312.035s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[312.036s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC16::decode(std::string)[m[K’:
+[312.038s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:132:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcDegree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[312.040s]   132 |             int [01;35m[KcrcDegree[m[K = generator_poly.length() - 1;
+[312.041s]       |                 [01;35m[K^~~~~~~~~[m[K
+[312.042s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:135:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[312.043s]   135 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[312.044s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[312.045s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC32::encode(std::string)[m[K’:
+[312.046s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:172:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[312.047s]   172 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[312.049s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[312.050s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:[m[K In function ‘[01m[Kstd::string CRC::CRC32::decode(std::string)[m[K’:
+[312.051s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:204:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcDegree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[312.052s]   204 |             int [01;35m[KcrcDegree[m[K = generator_poly.length() - 1;
+[312.053s]       |                 [01;35m[K^~~~~~~~~[m[K
+[312.054s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/crc.cpp:207:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgenerator_polyLength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[312.055s]   207 |             int [01;35m[Kgenerator_polyLength[m[K = generator_poly.length();
+[312.057s]       |                 [01;35m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[312.787s] [ 60%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/interfaces/al_to_tl.cpp.o[0m
+[315.995s] [ 66%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/interfaces/tl_to_dll.cpp.o[0m
+[319.588s] [ 73%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/interfaces/dll_to_pl.cpp.o[0m
+[321.970s] [ 80%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/interfaces/signal_processing.cpp.o[0m
+[327.829s] [ 86%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp.o[0m
+[332.257s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:[m[K In member function ‘[01m[Kint Transport_Layer::get_length_from_header(const string&)[m[K’:
+[332.258s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:69:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kend_length[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[332.263s]    69 |     size_t [01;35m[Kend_length[m[K = _EFD.length();
+[332.264s]       |            [01;35m[K^~~~~~~~~~[m[K
+[332.265s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:[m[K In member function ‘[01m[Kstd::string Transport_Layer::remove_header_and_unstuff(const string&)[m[K’:
+[332.266s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:100:12:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Klength[m[K’ set but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable-Wunused-but-set-variable]8;;[m[K]
+[332.267s]   100 |     size_t [01;35m[Klength[m[K = stripped_msg.length();
+[332.269s]       |            [01;35m[K^~~~~~[m[K
+[332.270s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/transport_layer.cpp:101:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbegin_length[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[332.271s]   101 |     size_t [01;35m[Kbegin_length[m[K = _SFD.length();
+[332.272s]       |            [01;35m[K^~~~~~~~~~~~[m[K
+[333.708s] [ 93%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o[0m
+[339.121s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:[m[K In member function ‘[01m[Kstd::vector<robot_command> ApplicationLayer::bits_to_commands(std::string)[m[K’:
+[339.123s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:141:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[339.124s]   141 |     for (int i = 0; [01;35m[Ki <= length[m[K; i += nibble_size)
+[339.125s]       |                     [01;35m[K~~^~~~~~~~~[m[K
+[339.127s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp:150:36:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[339.128s]   150 |             while ([01;35m[Ki + nibble_size <= length[m[K)
+[339.129s]       |                    [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[342.177s] [100%] [32m[1mLinking CXX executable move_turtlebot[0m
+[342.662s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `robot_command::robot_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+[342.676s] move_turtlebot.cpp:(.text+0x0): multiple definition of `robot_command::robot_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x8): first defined here
+[342.678s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `robot_command::robot_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+[342.679s] move_turtlebot.cpp:(.text+0x0): multiple definition of `robot_command::robot_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x8): first defined here
+[342.682s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::ApplicationLayer()':
+[342.683s] move_turtlebot.cpp:(.text+0x58): multiple definition of `ApplicationLayer::ApplicationLayer()'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x60): first defined here
+[342.684s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::create_all_commands_map()':
+[342.686s] move_turtlebot.cpp:(.text+0x420): multiple definition of `ApplicationLayer::create_all_commands_map()'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x428): first defined here
+[342.688s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::ApplicationLayer()':
+[342.691s] move_turtlebot.cpp:(.text+0x58): multiple definition of `ApplicationLayer::ApplicationLayer()'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x60): first defined here
+[342.693s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::add_direction(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.694s] move_turtlebot.cpp:(.text+0x4ac): multiple definition of `ApplicationLayer::add_direction(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x4b4): first defined here
+[342.696s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::add_value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.697s] move_turtlebot.cpp:(.text+0x4f8): multiple definition of `ApplicationLayer::add_value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x500): first defined here
+[342.699s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::add_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.700s] move_turtlebot.cpp:(.text+0x548): multiple definition of `ApplicationLayer::add_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x550): first defined here
+[342.701s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::command_to_bits[abi:cxx11](robot_command const&)':
+[342.705s] move_turtlebot.cpp:(.text+0x598): multiple definition of `ApplicationLayer::command_to_bits[abi:cxx11](robot_command const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x5a0): first defined here
+[342.708s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::command_vector_to_bitstream[abi:cxx11](std::vector<robot_command, std::allocator<robot_command> >&)':
+[342.709s] move_turtlebot.cpp:(.text+0x908): multiple definition of `ApplicationLayer::command_vector_to_bitstream[abi:cxx11](std::vector<robot_command, std::allocator<robot_command> >&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x910): first defined here
+[342.716s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::is_value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.718s] move_turtlebot.cpp:(.text+0xa44): multiple definition of `ApplicationLayer::is_value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0xa4c): first defined here
+[342.719s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::is_direction(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.722s] move_turtlebot.cpp:(.text+0xb18): multiple definition of `ApplicationLayer::is_direction(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0xb20): first defined here
+[342.723s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::find_key(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::unordered_map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&)':
+[342.726s] move_turtlebot.cpp:(.text+0xbe8): multiple definition of `ApplicationLayer::find_key(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::unordered_map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0xbf0): first defined here
+[342.728s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::bits_to_commands(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+[342.729s] move_turtlebot.cpp:(.text+0xd08): multiple definition of `ApplicationLayer::bits_to_commands(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0xd10): first defined here
+[342.731s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::print_robot_commands(std::vector<robot_command, std::allocator<robot_command> > const&)':
+[342.733s] move_turtlebot.cpp:(.text+0x1110): multiple definition of `ApplicationLayer::print_robot_commands(std::vector<robot_command, std::allocator<robot_command> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x1118): first defined here
+[342.734s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::check_crc(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.735s] move_turtlebot.cpp:(.text+0x1240): multiple definition of `ApplicationLayer::check_crc(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x1248): first defined here
+[342.736s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::encode_message(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.737s] move_turtlebot.cpp:(.text+0x1380): multiple definition of `ApplicationLayer::encode_message(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x1388): first defined here
+[342.738s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/src/move_turtlebot.cpp.o: in function `ApplicationLayer::decode_message(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.738s] move_turtlebot.cpp:(.text+0x1414): multiple definition of `ApplicationLayer::decode_message(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x141c): first defined here
+[342.895s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `robot_command::robot_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+[342.898s] application_layer.cpp:(.text+0x0): multiple definition of `robot_command::robot_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x8): first defined here
+[342.899s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `robot_command::robot_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+[342.900s] application_layer.cpp:(.text+0x0): multiple definition of `robot_command::robot_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x8): first defined here
+[342.902s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::ApplicationLayer()':
+[342.906s] application_layer.cpp:(.text+0x58): multiple definition of `ApplicationLayer::ApplicationLayer()'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x60): first defined here
+[342.908s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::create_all_commands_map()':
+[342.910s] application_layer.cpp:(.text+0x420): multiple definition of `ApplicationLayer::create_all_commands_map()'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x428): first defined here
+[342.912s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::ApplicationLayer()':
+[342.913s] application_layer.cpp:(.text+0x58): multiple definition of `ApplicationLayer::ApplicationLayer()'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x60): first defined here
+[342.915s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::add_direction(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.919s] application_layer.cpp:(.text+0x4ac): multiple definition of `ApplicationLayer::add_direction(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x4b4): first defined here
+[342.920s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::add_value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.922s] application_layer.cpp:(.text+0x4f8): multiple definition of `ApplicationLayer::add_value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x500): first defined here
+[342.923s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::add_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.925s] application_layer.cpp:(.text+0x548): multiple definition of `ApplicationLayer::add_command(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x550): first defined here
+[342.926s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::command_to_bits[abi:cxx11](robot_command const&)':
+[342.928s] application_layer.cpp:(.text+0x598): multiple definition of `ApplicationLayer::command_to_bits[abi:cxx11](robot_command const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x5a0): first defined here
+[342.929s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::command_vector_to_bitstream[abi:cxx11](std::vector<robot_command, std::allocator<robot_command> >&)':
+[342.930s] application_layer.cpp:(.text+0x908): multiple definition of `ApplicationLayer::command_vector_to_bitstream[abi:cxx11](std::vector<robot_command, std::allocator<robot_command> >&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x910): first defined here
+[342.932s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::is_value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.933s] application_layer.cpp:(.text+0xa44): multiple definition of `ApplicationLayer::is_value(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0xa4c): first defined here
+[342.935s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::is_direction(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[342.937s] application_layer.cpp:(.text+0xb18): multiple definition of `ApplicationLayer::is_direction(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0xb20): first defined here
+[342.938s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::find_key(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::unordered_map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&)':
+[342.940s] application_layer.cpp:(.text+0xbe8): multiple definition of `ApplicationLayer::find_key(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::unordered_map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0xbf0): first defined here
+[342.941s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::bits_to_commands(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+[343.118s] application_layer.cpp:(.text+0xd08): multiple definition of `ApplicationLayer::bits_to_commands(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0xd10): first defined here
+[343.121s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::print_robot_commands(std::vector<robot_command, std::allocator<robot_command> > const&)':
+[343.122s] application_layer.cpp:(.text+0x1110): multiple definition of `ApplicationLayer::print_robot_commands(std::vector<robot_command, std::allocator<robot_command> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x1118): first defined here
+[343.124s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::check_crc(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[343.125s] application_layer.cpp:(.text+0x1240): multiple definition of `ApplicationLayer::check_crc(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x1248): first defined here
+[343.126s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::encode_message(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[343.127s] application_layer.cpp:(.text+0x1380): multiple definition of `ApplicationLayer::encode_message(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x1388): first defined here
+[343.128s] /usr/bin/ld: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/communication_protocol/application_layer.cpp.o: in function `ApplicationLayer::decode_message(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)':
+[343.129s] application_layer.cpp:(.text+0x1414): multiple definition of `ApplicationLayer::decode_message(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'; CMakeFiles/move_turtlebot.dir/src/main.cpp.o:main.cpp:(.text+0x141c): first defined here
+[349.289s] collect2: error: ld returned 1 exit status
+[349.306s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:421: move_turtlebot] Error 1
+[349.341s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+[349.384s] gmake: *** [Makefile:146: all] Error 2
+[350.194s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4

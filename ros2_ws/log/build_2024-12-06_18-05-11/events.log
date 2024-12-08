@@ -1,0 +1,178 @@
+[0.000000] (-) TimerEvent: {}
+[0.003695] (-) JobUnselected: {'identifier': 'cpp_pubsub'}
+[0.005371] (-) JobUnselected: {'identifier': 'cpp_srvcli'}
+[0.005953] (turtlebot3_control) JobQueued: {'identifier': 'turtlebot3_control', 'dependencies': OrderedDict()}
+[0.006514] (turtlebot3_control) JobStarted: {'identifier': 'turtlebot3_control'}
+[0.097643] (-) TimerEvent: {}
+[0.159677] (turtlebot3_control) JobProgress: {'identifier': 'turtlebot3_control', 'progress': 'cmake'}
+[0.169149] (turtlebot3_control) JobProgress: {'identifier': 'turtlebot3_control', 'progress': 'build'}
+[0.176597] (turtlebot3_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control', '--', '-j4', '-l4'], 'cwd': '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'pi'), ('SSH_CLIENT', '10.126.74.9 2764 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/pi'), ('OLDPWD', '/home/pi'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/pi/ros2_ws/install:/home/pi/turtlebot3_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'pi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'screen.xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('STY', '1328.pts-0.pietoeat'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/home/pi/ros2_ws/install/turtlebot3_control:/home/pi/turtlebot3_ws/install/turtlebot3:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_bringup:/home/pi/turtlebot3_ws/install/turtlebot3_node:/home/pi/turtlebot3_ws/install/turtlebot3_example:/home/pi/turtlebot3_ws/install/turtlebot3_description:/home/pi/turtlebot3_ws/install/ld08_driver:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('WINDOW', '1'), ('PWD', '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.126.74.9 2764 10.126.128.42 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('TERMCAP', 'SC|screen.xterm-256color|VT 100/ANSI X3.64 virtual terminal:DO=\\E[%dB:LE=\\E[%dD:RI=\\E[%dC:UP=\\E[%dA:bs:bt=\\E[Z:cd=\\E[J:ce=\\E[K:cl=\\E[H\\E[J:cm=\\E[%i%d;%dH:ct=\\E[3g:do=^J:nd=\\E[C:pt:rc=\\E8:rs=\\Ec:sc=\\E7:st=\\EH:up=\\EM:le=^H:bl=^G:cr=^M:it#8:ho=\\E[H:nw=\\EE:ta=^I:is=\\E)0:li#42:co#72:am:xn:xv:LP:sr=\\EM:al=\\E[L:AL=\\E[%dL:cs=\\E[%i%d;%dr:dl=\\E[M:DL=\\E[%dM:dc=\\E[P:DC=\\E[%dP:im=\\E[4h:ei=\\E[4l:mi:IC=\\E[%d@:ks=\\E[?1h\\E=:ke=\\E[?1l\\E>:vi=\\E[?25l:ve=\\E[34h\\E[?25h:vs=\\E[34l:ti=\\E[?1049h:te=\\E[?1049l:us=\\E[4m:ue=\\E[24m:so=\\E[3m:se=\\E[23m:mb=\\E[5m:md=\\E[1m:mh=\\E[2m:mr=\\E[7m:me=\\E[m:ms:Co#8:pa#64:AF=\\E[3%dm:AB=\\E[4%dm:op=\\E[39;49m:AX:vb=\\Eg:G0:as=\\E(0:ae=\\E(B:ac=\\140\\140aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~..--++,,hhII00:po=\\E[5i:pf=\\E[4i:Km=\\E[<:k0=\\E[10~:k1=\\EOP:k2=\\EOQ:k3=\\EOR:k4=\\EOS:k5=\\E[15~:k6=\\E[17~:k7=\\E[18~:k8=\\E[19~:k9=\\E[20~:k;=\\E[21~:F1=\\E[23~:F2=\\E[24~:kB=\\E[Z:kh=\\E[1~:@1=\\E[1~:kH=\\E[4~:@7=\\E[4~:kN=\\E[6~:kP=\\E[5~:kI=\\E[2~:kD=\\E[3~:ku=\\EOA:kd=\\EOB:kr=\\EOC:kl=\\EOD:km:'), ('LDS_MODEL', 'LDS-02'), ('PYTHONPATH', '/home/pi/turtlebot3_ws/build/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:/home/pi/turtlebot3_ws/build/turtlebot3_example:/home/pi/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/pi/ros2_ws/install/turtlebot3_control:/home/pi/turtlebot3_ws/install/turtlebot3:/home/pi/turtlebot3_ws/install/turtlebot3_bringup:/home/pi/turtlebot3_ws/install/turtlebot3_node:/home/pi/turtlebot3_ws/install/turtlebot3_description:/home/pi/turtlebot3_ws/install/ld08_driver:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble')]), 'shell': False}
+[0.204208] (-) TimerEvent: {}
+[0.306997] (-) TimerEvent: {}
+[0.408910] (-) TimerEvent: {}
+[0.511581] (-) TimerEvent: {}
+[0.613179] (-) TimerEvent: {}
+[0.645150] (turtlebot3_control) StdoutLine: {'line': b'-- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML\n'}
+[0.649782] (turtlebot3_control) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.713490] (-) TimerEvent: {}
+[0.814850] (-) TimerEvent: {}
+[0.916310] (-) TimerEvent: {}
+[1.017897] (-) TimerEvent: {}
+[1.119262] (-) TimerEvent: {}
+[1.220536] (-) TimerEvent: {}
+[1.322216] (-) TimerEvent: {}
+[1.423724] (-) TimerEvent: {}
+[1.525084] (-) TimerEvent: {}
+[1.626400] (-) TimerEvent: {}
+[1.727719] (-) TimerEvent: {}
+[1.828989] (-) TimerEvent: {}
+[1.930367] (-) TimerEvent: {}
+[2.031814] (-) TimerEvent: {}
+[2.133276] (-) TimerEvent: {}
+[2.154086] (turtlebot3_control) StdoutLine: {'line': b'-- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[2.233552] (-) TimerEvent: {}
+[2.334977] (-) TimerEvent: {}
+[2.436450] (-) TimerEvent: {}
+[2.537730] (-) TimerEvent: {}
+[2.593078] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[2.627833] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[2.638069] (-) TimerEvent: {}
+[2.709670] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[2.738340] (-) TimerEvent: {}
+[2.834092] (turtlebot3_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.838757] (-) TimerEvent: {}
+[2.940225] (-) TimerEvent: {}
+[2.982473] (turtlebot3_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.040594] (-) TimerEvent: {}
+[3.142035] (-) TimerEvent: {}
+[3.243575] (-) TimerEvent: {}
+[3.344961] (-) TimerEvent: {}
+[3.386045] (turtlebot3_control) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[3.409409] (turtlebot3_control) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[3.445269] (-) TimerEvent: {}
+[3.546724] (-) TimerEvent: {}
+[3.648159] (-) TimerEvent: {}
+[3.749631] (-) TimerEvent: {}
+[3.850776] (-) TimerEvent: {}
+[3.952029] (-) TimerEvent: {}
+[4.053490] (-) TimerEvent: {}
+[4.154704] (-) TimerEvent: {}
+[4.255992] (-) TimerEvent: {}
+[4.357432] (-) TimerEvent: {}
+[4.458798] (-) TimerEvent: {}
+[4.560142] (-) TimerEvent: {}
+[4.661403] (-) TimerEvent: {}
+[4.762655] (-) TimerEvent: {}
+[4.863992] (-) TimerEvent: {}
+[4.965319] (-) TimerEvent: {}
+[5.066456] (-) TimerEvent: {}
+[5.167729] (-) TimerEvent: {}
+[5.176153] (turtlebot3_control) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[5.268048] (-) TimerEvent: {}
+[5.369897] (-) TimerEvent: {}
+[5.471574] (-) TimerEvent: {}
+[5.573030] (-) TimerEvent: {}
+[5.674448] (-) TimerEvent: {}
+[5.775845] (-) TimerEvent: {}
+[5.787007] (turtlebot3_control) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[5.876151] (-) TimerEvent: {}
+[5.931019] (turtlebot3_control) StdoutLine: {'line': b'-- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[5.976555] (-) TimerEvent: {}
+[6.077989] (-) TimerEvent: {}
+[6.113259] (turtlebot3_control) StdoutLine: {'line': b'-- Found tf2: 0.25.8 (/opt/ros/humble/share/tf2/cmake)\n'}
+[6.166559] (turtlebot3_control) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.25.8 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)\n'}
+[6.178302] (-) TimerEvent: {}
+[6.205662] (turtlebot3_control) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[6.221845] (turtlebot3_control) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[6.278609] (-) TimerEvent: {}
+[6.380238] (-) TimerEvent: {}
+[6.481764] (-) TimerEvent: {}
+[6.583105] (-) TimerEvent: {}
+[6.684784] (-) TimerEvent: {}
+[6.786332] (-) TimerEvent: {}
+[6.887807] (-) TimerEvent: {}
+[6.989366] (-) TimerEvent: {}
+[7.090788] (-) TimerEvent: {}
+[7.172489] (turtlebot3_control) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[7.191107] (-) TimerEvent: {}
+[7.258384] (turtlebot3_control) StdoutLine: {'line': b'-- Found PortAudio: /usr/local/lib/libportaudio.so\n'}
+[7.259840] (turtlebot3_control) StdoutLine: {'line': b'-- Found PortAudio headers: /usr/local/include\n'}
+[7.272385] (turtlebot3_control) StdoutLine: {'line': b'-- Found SFML 2.5.1 in /usr/lib/aarch64-linux-gnu/cmake/SFML\n'}
+[7.273768] (turtlebot3_control) StdoutLine: {'line': b'-- SFML found: \n'}
+[7.291402] (-) TimerEvent: {}
+[7.392707] (-) TimerEvent: {}
+[7.494040] (-) TimerEvent: {}
+[7.595400] (-) TimerEvent: {}
+[7.696886] (-) TimerEvent: {}
+[7.798161] (-) TimerEvent: {}
+[7.899557] (-) TimerEvent: {}
+[8.000991] (-) TimerEvent: {}
+[8.013058] (turtlebot3_control) StdoutLine: {'line': b'-- Configuring done\n'}
+[8.101255] (-) TimerEvent: {}
+[8.202496] (-) TimerEvent: {}
+[8.216973] (turtlebot3_control) StdoutLine: {'line': b'-- Generating done\n'}
+[8.274978] (turtlebot3_control) StdoutLine: {'line': b'-- Build files have been written to: /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control\n'}
+[8.302823] (-) TimerEvent: {}
+[8.404340] (-) TimerEvent: {}
+[8.505779] (-) TimerEvent: {}
+[8.517121] (turtlebot3_control) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target move_turtlebot\x1b[0m\n'}
+[8.606157] (-) TimerEvent: {}
+[8.688143] (turtlebot3_control) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o\x1b[0m\n'}
+[8.706543] (-) TimerEvent: {}
+[8.727631] (turtlebot3_control) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o\x1b[0m\n'}
+[8.807014] (-) TimerEvent: {}
+[8.847100] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp:1:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kwave_generator.h: No such file or directory\n'}
+[8.848819] (turtlebot3_control) StderrLine: {'line': b'    1 | #include \x1b[01;31m\x1b[K"wave_generator.h"\x1b[m\x1b[K\n'}
+[8.849860] (turtlebot3_control) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.850740] (turtlebot3_control) StderrLine: {'line': b'compilation terminated.\n'}
+[8.857375] (turtlebot3_control) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:132: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o] Error 1\n'}
+[8.859026] (turtlebot3_control) StderrLine: {'line': b'gmake[2]: *** Waiting for unfinished jobs....\n'}
+[8.907256] (-) TimerEvent: {}
+[9.008473] (-) TimerEvent: {}
+[9.109751] (-) TimerEvent: {}
+[9.211012] (-) TimerEvent: {}
+[9.312363] (-) TimerEvent: {}
+[9.413950] (-) TimerEvent: {}
+[9.515243] (-) TimerEvent: {}
+[9.616414] (-) TimerEvent: {}
+[9.717628] (-) TimerEvent: {}
+[9.819064] (-) TimerEvent: {}
+[9.920475] (-) TimerEvent: {}
+[10.021815] (-) TimerEvent: {}
+[10.123083] (-) TimerEvent: {}
+[10.224335] (-) TimerEvent: {}
+[10.325703] (-) TimerEvent: {}
+[10.426929] (-) TimerEvent: {}
+[10.528393] (-) TimerEvent: {}
+[10.629766] (-) TimerEvent: {}
+[10.731029] (-) TimerEvent: {}
+[10.832327] (-) TimerEvent: {}
+[10.933527] (-) TimerEvent: {}
+[11.034745] (-) TimerEvent: {}
+[11.135943] (-) TimerEvent: {}
+[11.237243] (-) TimerEvent: {}
+[11.338438] (-) TimerEvent: {}
+[11.439821] (-) TimerEvent: {}
+[11.541516] (-) TimerEvent: {}
+[11.642799] (-) TimerEvent: {}
+[11.744005] (-) TimerEvent: {}
+[11.845275] (-) TimerEvent: {}
+[11.946652] (-) TimerEvent: {}
+[12.048291] (-) TimerEvent: {}
+[12.149597] (-) TimerEvent: {}
+[12.250715] (-) TimerEvent: {}
+[12.351961] (-) TimerEvent: {}
+[12.453263] (-) TimerEvent: {}
+[12.554535] (-) TimerEvent: {}
+[12.633059] (turtlebot3_control) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:8:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kgoertzel.h: No such file or directory\n'}
+[12.634058] (turtlebot3_control) StderrLine: {'line': b'    8 | #include \x1b[01;31m\x1b[K"goertzel.h"\x1b[m\x1b[K\n'}
+[12.634781] (turtlebot3_control) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.635447] (turtlebot3_control) StderrLine: {'line': b'compilation terminated.\n'}
+[12.654837] (-) TimerEvent: {}
+[12.658458] (turtlebot3_control) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1\n'}
+[12.661297] (turtlebot3_control) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2\n'}
+[12.663524] (turtlebot3_control) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[12.679935] (turtlebot3_control) CommandEnded: {'returncode': 2}
+[12.755855] (-) TimerEvent: {}
+[12.797417] (turtlebot3_control) JobEnded: {'identifier': 'turtlebot3_control', 'rc': 2}
+[12.812099] (-) EventReactorShutdown: {}

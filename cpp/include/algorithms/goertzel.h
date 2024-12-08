@@ -58,8 +58,8 @@ private:
 public:
 
     Goertzel();
-    Goertzel(GoertzelResult& r, bool hyperx=false);
-    Goertzel(bool hyperx=false);
+    Goertzel(GoertzelResult& r, bool hyperx=false, int sample_rate=16000);
+    Goertzel(bool hyperx=false, int sample_rate=16000);
     Goertzel(const std::vector<float> data);
 
     void compute_goertzel();

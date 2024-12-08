@@ -2,9 +2,9 @@
 
 Goertzel::Goertzel(){}
 
-Goertzel::Goertzel(bool hyperx): _hyperx(hyperx){}
+Goertzel::Goertzel(bool hyperx, int sample_rate): _hyperx(hyperx), _sample_freq(sample_rate){}
 
-Goertzel::Goertzel(GoertzelResult& r, bool hyperx): _result(r){}
+Goertzel::Goertzel(GoertzelResult& r, bool hyperx, int sample_rate): _result(r), _hyperx(hyperx), _sample_freq(sample_rate){}
 
 
 Goertzel::Goertzel(const std::vector<float> data)
@@ -165,11 +165,11 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
             r.tone_flag = false;
         }
         else{
+            std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
             r.garbage_flag = false;
             if(r.tone_flag){
                 r.garbage_flag = true;
             }
-            _message_vec.push_back(DTMF_freq->second);
             r.dtmf_tone = DTMF_freq->second;
             // save_to_json(DTMF_freq->second);
             r.tone_flag = true;

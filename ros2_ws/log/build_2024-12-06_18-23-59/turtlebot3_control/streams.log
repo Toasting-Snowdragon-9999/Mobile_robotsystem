@@ -1,0 +1,27 @@
+[0.113s] Invoking command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4
+[0.479s] [35m[1mConsolidate compiler generated dependencies of target move_turtlebot[0m
+[0.653s] [ 16%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/src/main.cpp.o[0m
+[0.688s] [ 33%] [32mBuilding CXX object CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o[0m
+[0.805s] [01m[K/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kwave_generator.h: No such file or directory
+[0.806s]     1 | #include [01;31m[K"wave_generator.h"[m[K
+[0.807s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[0.808s] compilation terminated.
+[0.815s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:132: CMakeFiles/move_turtlebot.dir/home/pi/Mobile_robotsystem/cpp/src/audio/wave_generator.cpp.o] Error 1
+[0.816s] gmake[2]: *** Waiting for unfinished jobs....
+[25.209s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[25.210s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:50:29:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KAudioInput::record_audio(int)[m[K’
+[25.210s]    50 |     [01;31m[Kaudio_input.record_audio(INPUT_DEVICE)[m[K;
+[25.211s]       |     [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[25.211s] In file included from [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[25.212s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:42:10:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid AudioInput::record_audio(int, bool)[m[K’
+[25.213s]    42 |     void [01;36m[Krecord_audio[m[K(int input_device, bool hyperx);
+[25.214s]       |          [01;36m[K^~~~~~~~~~~~[m[K
+[25.217s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:42:10:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 1 provided
+[30.440s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:[m[K At global scope:
+[30.442s] [01m[K/home/pi/Mobile_robotsystem/ros2_ws/src/turtlebot3_control/../../../cpp/include/audio/audio_input.h:63:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[30.443s]    63 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+[30.444s]       |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[31.885s] gmake[2]: *** [CMakeFiles/move_turtlebot.dir/build.make:76: CMakeFiles/move_turtlebot.dir/src/main.cpp.o] Error 1
+[31.888s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/move_turtlebot.dir/all] Error 2
+[31.890s] gmake: *** [Makefile:146: all] Error 2
+[31.906s] Invoked command in '/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/turtlebot3_ws/install/turtlebot3_teleop:/home/pi/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble /usr/bin/cmake --build /home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control -- -j4 -l4

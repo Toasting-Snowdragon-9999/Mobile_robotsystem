@@ -1,0 +1,47 @@
+In file included from [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:1[m[K:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/goertzel.h:[m[K In constructor ‘[01m[KGoertzel::Goertzel(std::vector<float>)[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/goertzel.h:29:24:[m[K [01;35m[Kwarning: [m[K‘[01m[KGoertzel::_data[m[K’ will be initialized after [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   29 |     std::vector<float> [01;35m[K_data[m[K;
+      |                        [01;35m[K^~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:[m[K In function ‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:163:60:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime_info[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  163 |                            [01;35m[Kconst PaStreamCallbackTimeInfo* time_info[m[K,
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/goertzel.h:27:9:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kint Goertzel::_size_of_signal[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+   27 |     int [01;35m[K_size_of_signal[m[K;
+      |         [01;35m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:164:50:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus_flags[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  164 |                            [01;35m[KPaStreamCallbackFlags status_flags[m[K,
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:8:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder-Wreorder]8;;[m[K]
+    8 | [01;35m[KGoertzel[m[K::Goertzel(const std::vector<float> data)
+      | [01;35m[K^~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::_init_coefficients()[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:26:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   26 |     for (int i = 0; [01;35m[Ki < _DTMF_freq.size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::compute_goertzel()[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:35:41:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   35 |     for (int freq_index = 0; [01;35m[Kfreq_index < _DTMF_freq.size()[m[K; ++freq_index) {
+      |                              [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:[m[K In member function ‘[01m[Kvoid Goertzel::sort(std::vector<double>&, std::vector<int>&)[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:85:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   85 |     for(int i = 0; [01;35m[Ki < (x.size())/2-1[m[K; i++){
+      |                    [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:89:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   89 |         for (int j = 0; [01;35m[Kj < (x.size())/2-1[m[K; j++){
+      |                         [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:[m[K In member function ‘[01m[Kvoid AudioInput::check_sequence(TestResult&, std::vector<int>&, std::vector<int>&)[m[K’:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/audio_input.cpp:312:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  312 |     for (int i = 0; [01;35m[Ki < tones.size()[m[K; i++){
+      |                     [01;35m[K~~^~~~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:103:33:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  103 |     for(int i = (x.size())/2; [01;35m[Ki < x.size()-1[m[K; i++){
+      |                               [01;35m[K~~^~~~~~~~~~~~[m[K
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/goertzel.cpp:107:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  107 |         for (int j = (x.size())/2; [01;35m[Kj < x.size()-1[m[K; j++){
+      |                                    [01;35m[K~~^~~~~~~~~~~~[m[K
+In file included from [01m[K/home/pi/ros2_ws/src/turtlebot3_control/src/main.cpp:9[m[K:
+[01m[K/home/pi/ros2_ws/src/turtlebot3_control/include/audio_input.h:61:12:[m[K [01;35m[Kwarning: [m[K‘[01m[Kint read_mic_callback(const void*, void*, long unsigned int, const PaStreamCallbackTimeInfo*, PaStreamCallbackFlags, void*)[m[K’ declared ‘[01m[Kstatic[m[K’ but never defined [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+   61 | static int [01;35m[Kread_mic_callback[m[K(const void *input_buffer, void *output_buffer,
+      |            [01;35m[K^~~~~~~~~~~~~~~~~[m[K

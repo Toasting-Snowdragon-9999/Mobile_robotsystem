@@ -1,0 +1,10 @@
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/uninstall.dir
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/turtlebot3_control_uninstall.dir
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/move_turtlebot.dir
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/test.dir
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/edit_cache.dir
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/rebuild_cache.dir
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/list_install_components.dir
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/install.dir
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/install/local.dir
+/home/pi/Mobile_robotsystem/ros2_ws/build/turtlebot3_control/CMakeFiles/install/strip.dir

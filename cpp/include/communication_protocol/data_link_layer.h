@@ -1,7 +1,7 @@
 #ifndef DATA_LINK_LAYER_H
 #define DATA_LINK_LAYER_H
 
-#define nibble_size 4
+#define NIBBLE_SIZE (4)
 #define byte_size 8
 
 #include <vector>
@@ -14,17 +14,18 @@
 #include <chrono>
 #include <atomic>
 #include <thread>
-#include "crc.h"
+#include "communication_protocol/crc.h"
 
 static std::string previous_seq_no = "1001";
 static std::string received_ack_no = "0000";
 static std::string received_seq_no = "1000";
 
+
 class DataLinkLayer
 {
 
 private:
-    std::string _pre_and_postamble = "11101110"; // DTMF tone for preamble and postamble
+    std::string _pre_and_postamble = "11100000"; // DTMF tone for preamble and postamble
     std::string _SFD = "11110";                  // Start-of-Frame Delimiter for header
     std::string _EFD = _SFD;                     // End-of-Frame Delimiter for header
     std::string _ESC_nibble = "1111";            // ESC nibble
@@ -36,6 +37,14 @@ private:
     bool _is_msg_correct = false;
 
 public:
+    /// @brief Empty constructor
+    /// @note This constructor is defined primarily for the ACK
+    DataLinkLayer();
+  
+    /// @brief Constructor to create instance of DataLinkLayer
+    /// @param robotPath - Path for robot created by user
+    DataLinkLayer(std::string binary_msg);
+  
     bool get_is_msg_correct();
 
     void set_is_msg_correct(const bool &input);
@@ -44,13 +53,7 @@ public:
 
     void change_ack_indx_sender_sider();
 
-    /// @brief Constructor to create instance of DataLinkLayer
-    /// @param robotPath - Path for robot created by user
-    DataLinkLayer(std::string binary_msg);
-
-    /// @brief Empty constructor
-    /// @note This constructor is defined primarily for the ACK
-    DataLinkLayer();
+    std::string get_ready_for_pl_path();
 
     /// @brief Method for finding the length of a string in binary
     /// @param s Type: String

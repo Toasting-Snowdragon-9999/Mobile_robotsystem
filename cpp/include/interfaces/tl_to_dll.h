@@ -1,6 +1,10 @@
+#ifndef TL_TO_DLL_H
+#define TL_TO_DLL_H
+
 #include <vector>
 #include <deque>
 #include <string>
+#include <iostream>
 
 class TlToDll
 {
@@ -27,4 +31,9 @@ public:
     std::string get_first_segment_from_buffer();
 
     void remove_first_segment_from_buffer();
+
+    bool is_buffer_empty();
+  
 };
+
+#endif

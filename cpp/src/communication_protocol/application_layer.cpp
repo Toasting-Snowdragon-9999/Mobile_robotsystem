@@ -136,23 +136,22 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(std::string input_
     size_t length = input_bits.length();
     std::string value_bits = "";
 
-    for (int i = 0; i <= length; i += nibble_size)
+    for (int i = 0; i <= length; i += NIBBLE_SIZE)
     {
-        temp_bits = input_bits.substr(i, nibble_size);
+        temp_bits = input_bits.substr(i, NIBBLE_SIZE);
         std::string commandB = find_key(temp_bits, _direction_map);
-
+        std::cout << commandB << std::endl; 
         if (!commandB.empty())
         {
             Value = "";
-            while (i + nibble_size <= length)
+            while (i + NIBBLE_SIZE <= length)
             {
-                std::string value_bits = input_bits.substr(i + nibble_size, nibble_size);
+                std::string value_bits = input_bits.substr(i + NIBBLE_SIZE, NIBBLE_SIZE);
                 std::string valueB = find_key(value_bits, _value_map);
-
                 if (!valueB.empty())
                 {
                     Value += valueB;
-                    i += nibble_size;
+                    i += NIBBLE_SIZE;
                 }
                 else
                 {
@@ -188,6 +187,20 @@ void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &co
     std::cout << std::endl;
 }
 
+std::string ApplicationLayer::check_crc(const std::string &message)
+{
+
+    std::string remainder = CRC::CRC32::decode(message);
+    if (std::stoi(remainder, nullptr, 2) == 0)
+    {
+        return message.substr(0, message.size() - remainder.size());
+    }
+    else
+    {
+        return "";
+    }
+}
+
 std::string ApplicationLayer::encode_message(const std::string &message)
 {
     return CRC::CRC32::encode(message);
@@ -212,4 +225,27 @@ std::string ApplicationLayer::remove_msg_crc(const std::string &msg_with_crc)
     msg_without_crc.erase(msg_without_crc.end() - crc32_size, msg_without_crc.end()-1);
 
     return msg_without_crc;
+}
+
+
+std::vector<robot_command> ApplicationLayer::python_to_cpp(std::vector<std::vector<std::string>> python_string){
+    std::vector<robot_command> command_vector;
+    for (const auto &command : python_string)
+    {
+        robot_command temp_command(command[0], command[1]);
+        command_vector.push_back(temp_command);
+    }
+    return command_vector;
+}
+
+std::vector<std::vector<std::string>> ApplicationLayer::cpp_to_robot(std::vector<robot_command> python_path){
+    std::vector<std::vector<std::string>> python_string;
+    for (const auto &command : python_path)
+    {
+        std::vector<std::string> temp_command;
+        temp_command.push_back(command.direction);
+        temp_command.push_back(command.value);
+        python_string.push_back(temp_command);
+    }
+    return python_string;
 }

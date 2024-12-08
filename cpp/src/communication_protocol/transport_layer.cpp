@@ -280,6 +280,7 @@ std::vector<std::string> Transport_Layer::segment_msg(const std::string &full_bi
     {
         _segments_vector.push_back(unsegmented_msg.substr(0, unsegmented_msg.size()));
     }
+    std::cout << "Number of segments: " << _segments_vector.size() << std::endl;
 
     return _segments_vector;
 }

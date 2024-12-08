@@ -13,6 +13,7 @@ def path():
         # Walk through the home directory and subdirectories to find 'Mobile_robotsystem'
         for root, dirs, files in os.walk(home_dir):
             if 'Mobile_robotsystem' in dirs:
+                print("Root dir: ", root)   
                 target_dir = os.path.join(root, 'Mobile_robotsystem//python')
                 break
 
