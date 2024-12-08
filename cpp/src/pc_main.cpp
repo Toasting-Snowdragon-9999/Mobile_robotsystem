@@ -38,18 +38,24 @@ int main()
 	// ======================================================
 
 	// Application Layer start
+	std::string path_gui = "../Docs/shared_file.json";
+	std::string path_debug = "../../Docs/shared_file.json";
 
-	robot_command r1("-fw", "325");
-	robot_command r2("-l", "6");
-	robot_command r3("-r", "21");
-	robot_command r4("-bw", "15");
-	robot_command r5("-r", "3");
-
-	std::vector<robot_command> test_bit_vec = {r1, r2, r3, r4, r5};
-
+	SharedData shared_json(path_gui);
+	std::vector<std::vector<std::string>> python_path;
+	try{
+		python_path= shared_json.read_json();
+	}
+	catch(SharedDataException &e){
+		if (e.error_code() == 21){
+		}
+		else{std::cout << "[Error] " << e.what() << std::endl;}
+	}
 	ApplicationLayer Alc;
 
-	std::string test_bits = Alc.command_vector_to_bitstream(test_bit_vec);
+	std::vector<robot_command> commands = Alc.python_to_cpp(python_path);
+	Alc.print_robot_commands(commands);
+	std::string test_bits = Alc.command_vector_to_bitstream(commands);
 
 	std::string encoded_test_bits = Alc.encode_message(test_bits);
 

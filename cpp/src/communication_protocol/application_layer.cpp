@@ -171,10 +171,7 @@ std::vector<robot_command> ApplicationLayer::bits_to_commands(std::string input_
 
 void ApplicationLayer::print_robot_commands(const std::vector<robot_command> &command_vector)
 {
-    if (!command_vector.empty())
-    {
-        std::cout << "Command 0: " << command_vector[0].direction << "   Value 0: " << command_vector[0].value << " " << std::endl;
-    }
+    if (!command_vector.empty()){}
     else
     {
         std::cout << "No commands available." << std::endl;
