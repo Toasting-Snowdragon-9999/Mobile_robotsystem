@@ -26,11 +26,10 @@
 #include "communication_protocol/timer.h"
 #include "interfaces/signal_processing.h"
 
-
 int main()
 {
 	Transport_Layer tlR;
-	
+
 	while (!tlR.get_combined_msg_flag())
 	{
 		PhysicalLayer pl(16000, 2);

@@ -101,21 +101,31 @@ int main()
 
 		PhysicalLayer pl_mic(SAMPLING_FREQ, DEVICE_SPEAKER);
 
-		timer.start_timer();
+		timer.start_timer(&pl_mic);
 
 		while (!timer.get_timeout())
 		{
 			std::vector<int> ack_dtmf = pl_mic.listen(true);
-			SignalProcessing sp_ack(ack_dtmf);					// TODO: Change to not initialised with vector
-			std::string binary_ack = sp_ack.message_str_binary();
-			dll.sender_side_get_data_from_package(binary_ack);
-			if (dll.get_ack_received())
-			{
-				inter_2.remove_first_segment_from_buffer();
+			
+			if(ack_dtmf.size() > 1){
+				for (auto v : ack_dtmf){
+					std::cout << v << " ";
+				}
+				SignalProcessing sp_ack(ack_dtmf);					// TODO: Change to not initialised with vector
+				std::string binary_ack = sp_ack.message_str_binary();
+				dll.sender_side_get_data_from_package(binary_ack);
+				if (dll.get_ack_received()){
+					std::cout << "Acknowledge received" << std::endl;
+					inter_2.remove_first_segment_from_buffer();
 
-				timer.~Timer();
-				break;
+					timer.~Timer();
+					break;
+				}
 			}
+			else{
+
+			}
+			
 			std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Avoid busy waiting
 		}
 		timer.~Timer();

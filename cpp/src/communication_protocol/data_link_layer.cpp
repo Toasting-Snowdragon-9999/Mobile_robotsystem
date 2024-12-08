@@ -67,7 +67,7 @@ std::string DataLinkLayer::seq_protocol_structure()
     std::string seqNo;
     if (received_ack_no == _ackNo[0])
     {
-        seqNo = _seqNo[0];
+        seqNo = _seqNo[0];  
         std::cout << "Received_AckNo: " << received_ack_no << std::endl;
     }
     else if (received_ack_no == _ackNo[1])
@@ -141,9 +141,10 @@ std::string DataLinkLayer::ack_protocol_structure()
     {
         std::cout << "Received_SeqNo: " << received_seq_no << std::endl;
         std::cout << "Previous sequenceNo: " << previous_seq_no << std::endl;
+        ackNo = previous_seq_no;
 
         std::cout << "ERROR: Package already received previously" << std::endl;
-        return "";
+        // return "";
     }
 
     // Creating header+data
