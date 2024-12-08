@@ -33,6 +33,7 @@ int main()
 	while (!tlR.get_combined_msg_flag())
 	{
 		PhysicalLayer pl(16000, 2);
+		PhysicalLayer pl2(48000, 2);
 		std::vector<int> dtmf_sounds = pl.listen(false);
 
 		SignalProcessing sp(dtmf_sounds);
@@ -49,7 +50,7 @@ int main()
 		{
 			std::string ack = dllack.ack_protocol_structure();
 			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
-			pl.yell(ack_dtmf);
+			pl2.yell(ack_dtmf);
 		}
 
 		// If received msg was a duplicate, the empty() will catch it here
@@ -86,7 +87,7 @@ int main()
 
 				if (AlR.is_msg_correct(msg_for_robot))
 				{
-					AlR.remove_msg_crc(msg_for_robot);
+					msg_for_robot = AlR.remove_msg_crc(msg_for_robot);
 				}
 				else
 				{

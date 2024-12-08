@@ -121,6 +121,7 @@ void AudioInput::record_audio(int input_device, bool hx){
 
     while (_mic_data.stop == false){
     }
+
     save_to_textfile("../dtmf_sounds/output.txt");
     auto end = std::chrono::high_resolution_clock::now();
 
@@ -147,22 +148,6 @@ void AudioInput::record_audio(int input_device, bool hx){
 }
 
 void AudioInput::audio_close() {
-    if (_stream != nullptr) {
-        // Stop the stream if it is running
-        if (Pa_IsStreamActive(_stream) == 1) { // Check if the stream is active
-            _err = Pa_StopStream(_stream);
-            if (_err != paNoError) {
-                std::cerr << "PortAudio error (StopStream): " << Pa_GetErrorText(_err) << std::endl;
-            }
-        }
-
-        // Close the stream
-        _err = Pa_CloseStream(_stream);
-        if (_err != paNoError) {
-            std::cerr << "PortAudio error (CloseStream): " << Pa_GetErrorText(_err) << std::endl;
-        }
-        _stream = nullptr; // Clear the stream pointer
-    }
 
     // Terminate PortAudio
     _err = Pa_Terminate();
