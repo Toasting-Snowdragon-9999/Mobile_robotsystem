@@ -192,9 +192,9 @@ std::string ApplicationLayer::encode_message(const std::string &message)
 bool ApplicationLayer::is_msg_correct(const std::string &msg_with_crc)
 {
 
-    std::cout << "return stoi: " << std::stoi(CRC::CRC32::decode(msg_with_crc), nullptr, 2) << std::endl;
+    std::cout << "return stoll: " << std::stoll(CRC::CRC32::decode(msg_with_crc), nullptr, 2) << std::endl;
 
-    return ~std::stoi(CRC::CRC32::decode(msg_with_crc), nullptr, 2);
+    return ~std::stoll(CRC::CRC32::decode(msg_with_crc), nullptr, 2);
 }
 
 std::string ApplicationLayer::remove_msg_crc(const std::string &msg_with_crc)

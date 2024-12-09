@@ -14,7 +14,7 @@ PhysicalLayer::~PhysicalLayer(){
 
 
 void PhysicalLayer::yell(std::vector<int> message){
-    
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
     WaveGenerator sounds(message, _sample_rate);
     sounds.play_sounds();
 }

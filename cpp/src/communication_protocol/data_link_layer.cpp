@@ -330,7 +330,7 @@ std::string DataLinkLayer::sender_side_get_data_from_package(std::string receive
 
     // Checking CRC (validity) of received package
     std::string crc_decoded_remainder = CRC::CRC32::decode(received_package);
-    int int_crc_decoded_remainder = std::stoi(crc_decoded_remainder, nullptr, 2);
+    int int_crc_decoded_remainder = std::stoll(crc_decoded_remainder, nullptr, 2);
     if (int_crc_decoded_remainder != 0)
     {
         std::cout << "Received package IS NOT correct. CRC remainder not equal to 0." << std::endl;
@@ -351,7 +351,7 @@ std::string DataLinkLayer::sender_side_get_data_from_package(std::string receive
         std::vector<int> length_pos = find_length_pos_in_header(received_package);
         std::string binary_length_of_data = received_package.substr(length_pos[0], length_pos[1] - length_pos[0] + 1);
         std::string unstuffed_binary_length = bit_unstuff(binary_length_of_data); // Making sure to unstuff the length
-        int int_length_of_data = std::stoi(unstuffed_binary_length, nullptr, 2);
+        int int_length_of_data = std::stoll(unstuffed_binary_length, nullptr, 2);
         // std::cout << "Length of data: " << int_length_of_data << std::endl;
 
         // Retrieving the data from the received package
@@ -389,7 +389,7 @@ std::string DataLinkLayer::receiver_side_get_data_from_package(std::string recei
         std::cerr << e.what() << '\n';
         return "";
     }
-    int int_crc_decoded_remainder = std::stoi(crc_decoded_remainder, nullptr, 2);
+    int int_crc_decoded_remainder = std::stoll(crc_decoded_remainder, nullptr, 2);
     if (int_crc_decoded_remainder != 0)
     {
         std::cout << "Received package IS NOT correct. CRC remainder not equal to 0." << std::endl;
@@ -409,7 +409,7 @@ std::string DataLinkLayer::receiver_side_get_data_from_package(std::string recei
         std::vector<int> length_pos = find_length_pos_in_header(received_package);
         std::string binary_length_of_data = received_package.substr(length_pos[0], length_pos[1] - length_pos[0] + 1);
         std::string unstuffed_binary_length = bit_unstuff(binary_length_of_data); // Making sure to unstuff the length
-        int int_length_of_data = std::stoi(unstuffed_binary_length, nullptr, 2);
+        int int_length_of_data = std::stoll(unstuffed_binary_length, nullptr, 2);
         // std::cout << "Length of data: " << int_length_of_data << std::endl;
 
         // Retrieving the data from the received package
@@ -427,7 +427,7 @@ std::string DataLinkLayer::receiver_side_get_data_from_package(std::string recei
 
 bool DataLinkLayer::is_header_and_msg_correct(const std::string &header_and_msg)
 {
-    return ~std::stoi(CRC::CRC32::decode(header_and_msg), nullptr, 2);
+    return ~std::stoll(CRC::CRC32::decode(header_and_msg), nullptr, 2);
 }
 
 bool DataLinkLayer::get_ack_received()

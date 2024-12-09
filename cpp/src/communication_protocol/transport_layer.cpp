@@ -172,7 +172,7 @@ int Transport_Layer::get_length_from_header(const std::string &binary_msg)
 
     std::string length_part = Transport_Layer::bit_unstuff(binary_msg.substr(length_part_start, length_part_len));
 
-    return std::stoi(length_part, nullptr, 2);
+    return std::stoll(length_part, nullptr, 2);
 }
 
 std::string Transport_Layer::remove_header_and_unstuff(const std::string &full_binary_msg)

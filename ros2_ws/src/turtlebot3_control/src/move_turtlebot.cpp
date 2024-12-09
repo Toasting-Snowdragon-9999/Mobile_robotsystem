@@ -121,7 +121,7 @@ public:
         for(auto command : sequence){
 
             std::string action = command[0];
-            int length = std::stoi(command[1]);
+            int length = std::stoll(command[1]);
 
             /* Debug purposes */
             std::string action_text;

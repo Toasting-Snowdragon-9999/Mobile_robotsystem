@@ -3,7 +3,7 @@
 #include <thread>
 #include "communication_protocol/physical_layer.h"
 
-#define timeout_time std::chrono::seconds(5)
+#define timeout_time std::chrono::seconds(2)
 
 class Timer
 {
