@@ -103,6 +103,7 @@ int main()
 		SignalProcessing sp;
 		std::vector<int> dtmf_tone = sp.convert_to_dtmf(msg_to_send);
 		PhysicalLayer pl_speaker(SAMPLING_FREQ, DEVICE_SPEAKER);
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000)); // Avoid busy waiting
 		pl_speaker.yell(dtmf_tone);
 
 		PhysicalLayer pl_mic(SAMPLING_FREQ, DEVICE_SPEAKER);

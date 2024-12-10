@@ -40,7 +40,7 @@ class PathGenerator:
     
     def delete_path(self, index: int,  stop: int = 0) -> None:
         self.ui.path_overview.clear()
-        self.index = 0
+        self.index: int = 0
         self.beginning()
         if index == -1:
             self.path.clear()
