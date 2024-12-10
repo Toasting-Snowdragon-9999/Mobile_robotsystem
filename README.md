@@ -37,7 +37,7 @@ How do I get set up?
 Contribution guidelines
 
     guidelines for git and code structure found in Docs.
-cd
+
 Who do I talk to?
 
     Repo owner or admin

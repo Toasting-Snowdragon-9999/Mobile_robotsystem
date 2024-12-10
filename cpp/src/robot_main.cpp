@@ -38,8 +38,6 @@ int main()
 		PhysicalLayer pl(16000, 2);
 		PhysicalLayer pl2(48000, 2);
 		std::cout << "Listening.." << std::endl;
-		Timer timer;
-		timer.start_timer(&pl);
 		std::vector<int> dtmf_sounds = pl.listen(false);
 
 		SignalProcessing sp(dtmf_sounds);

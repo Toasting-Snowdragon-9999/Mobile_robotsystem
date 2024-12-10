@@ -92,6 +92,7 @@ std::string DataLinkLayer::seq_protocol_structure()
 
     // CRC encoding header+data
     std::string crc_encoded_header_and_data = CRC::CRC32::encode(zero_padded_header_and_data);
+    std::cout << "CRC decoded remainder: " << CRC::CRC32::decode(crc_encoded_header_and_data) << std::endl; 
 
     // Nibble stuffing CRC encoded header+data
     std::string nibble_stuffed_header_and_data = nibble_stuffing(crc_encoded_header_and_data);
@@ -183,7 +184,8 @@ std::string DataLinkLayer::nibble_stuffing(std::string package)
     while (i <= package.size() - NIBBLE_SIZE)
     {
         std::string nibble = package.substr(i, NIBBLE_SIZE);
-        if (nibble == _pre_and_postamble || nibble == _ESC_nibble)
+        std::string nibble_preamble_size = package.substr(i, _pre_and_postamble.size());
+        if (nibble == _ESC_nibble || nibble_preamble_size == _pre_and_postamble)
         {
             package.insert(i, _ESC_nibble);
             i += _ESC_nibble.size();
@@ -202,8 +204,9 @@ std::string DataLinkLayer::remove_esc_nibbles(std::string received_package)
     int i = 0;
     while (i <= received_package.size() - byte_size)
     {
-        std::string byte = received_package.substr(i, byte_size);
-        if (byte == ESC_and_pre_and_postamble || byte == ESC_and_ESC)
+        std::string ESC_and_ESC_size = received_package.substr(i, ESC_and_ESC.size());
+        std::string ESC_and_pre_and_postamble_size = received_package.substr(i, ESC_and_pre_and_postamble.size());
+        if (ESC_and_pre_and_postamble_size == ESC_and_pre_and_postamble || ESC_and_ESC_size == ESC_and_ESC)
         {
             received_package.erase(i, _ESC_nibble.size());
         }
@@ -369,11 +372,16 @@ std::string DataLinkLayer::sender_side_get_data_from_package(std::string receive
 
 std::string DataLinkLayer::receiver_side_get_data_from_package(std::string received_package)
 {
+    std::cout << "==========================================" << std::endl;
+    std::cout << "Received package: " << received_package << std::endl;
+    
     // Removing the pre- and postamble from received package
     received_package = remove_pre_and_postamble(received_package);
+    std::cout << "Removed pre and postamble: " << received_package << std::endl;
 
     // Removing ESC nibbles
     received_package = remove_esc_nibbles(received_package);
+    std::cout << "Removed ESC nibbles: " << received_package << std::endl;
 
     // Removing AckNo and temporarily saving received AckNo
     int seqNo_size = received_seq_no.size();
@@ -382,17 +390,11 @@ std::string DataLinkLayer::receiver_side_get_data_from_package(std::string recei
 
     // Checking CRC (validity) of received package
     std::string crc_decoded_remainder;
-    try{
-        crc_decoded_remainder = CRC::CRC32::decode(received_package);
-    }
-    catch(const std::exception& e){
-        std::cerr << e.what() << '\n';
-        return "";
-    }
-    int int_crc_decoded_remainder = std::stoll(crc_decoded_remainder, nullptr, 2);
+    crc_decoded_remainder = CRC::CRC32::decode(received_package);
+    auto int_crc_decoded_remainder = std::stoll(crc_decoded_remainder, nullptr, 2);
     if (int_crc_decoded_remainder != 0)
     {
-        std::cout << "Received package IS NOT correct. CRC remainder not equal to 0." << std::endl;
+        std::cout << "Received package IS NOT correct. CRC remainder not equal to 0." << " | CRC decoded remainder: " << int_crc_decoded_remainder << std::endl;
         return "";
     }
     else

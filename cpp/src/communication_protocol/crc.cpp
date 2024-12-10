@@ -7,7 +7,7 @@ namespace CRC
         std::string xorresult = "";
         if (a.size() != b.size())
         {
-            throw std::invalid_argument("Strings of XOR-operation are not same size");
+            std::string ("Strings of XOR-operation are not same size");
         }
         for (int i = 0; i < a.size(); i++)
         {
@@ -193,6 +193,7 @@ namespace CRC
             }
 
             std::string remainder = selection.substr(1); // Return substring since generator_poly is CRC-Degree+1 in size
+            std::cout << "Remainder encoded: " << remainder << " | Interger value: " << std::stoll(remainder, nullptr, 2) << std::endl;
 
             return codeword = dataword + remainder;
         }

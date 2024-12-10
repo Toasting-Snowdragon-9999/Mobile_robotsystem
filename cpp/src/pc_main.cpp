@@ -28,7 +28,7 @@
 
 #define SAMPLING_FREQ 16000
 #define DEVICE_SPEAKER 7
-#define DEVICE_MIC 16
+#define DEVICE_MIC 18
 
 int main()
 {
@@ -37,11 +37,11 @@ int main()
 	// SENDER
 	// ======================================================
 
-	// Application Layer start
+	// Application Layer start	
 	std::string path_gui = "../Docs/shared_file.json";
 	std::string path_debug = "../../Docs/shared_file.json";
 
-	SharedData shared_json(path_debug);
+	SharedData shared_json(path_debug);	
 	std::vector<std::vector<std::string>> python_path;
 	try{
 		python_path= shared_json.read_json();
@@ -51,9 +51,21 @@ int main()
 		}
 		else{std::cout << "[Error] " << e.what() << std::endl;}
 	}
+
+
+
 	ApplicationLayer Alc;
 
 	std::vector<robot_command> commands = Alc.python_to_cpp(python_path);
+	// robot_command p1("-fw", "10");
+	// robot_command p2("-r", "90");
+	// robot_command p3("-fw", "40");
+	// robot_command p4("-l", "45");
+	// robot_command p5("-fw", "10");
+	// // robot_command p6("-r", "90");
+
+	// std::vector<robot_command> commands = {p1, p2, p3, p4, p5};
+
 	Alc.print_robot_commands(commands);
 	std::string test_bits = Alc.command_vector_to_bitstream(commands);
 
@@ -62,7 +74,6 @@ int main()
 	// Application Layer end
 
 	AlToTl inter_1;
-
 	inter_1.add_string_to_buffer(encoded_test_bits);
 
 	// Transport Layer start
@@ -84,8 +95,11 @@ int main()
 	for (auto segment : segment_vector)
 	{
 		std::cout << "Segment" << i << " " << segment << std::endl;
+
 		i++;
 	}
+
+
 
 	Timer timer;
 
@@ -95,7 +109,9 @@ int main()
 	{
 		std::cout << "How many segments left in buffer before iteration: " << inter_2.get_segment_buffer().size() << std::endl;
 		DataLinkLayer dll(inter_2.get_first_segment_from_buffer());
+		std::cout << "HERE COMES THE DATA LINK LAYER FRAME" << std::endl;
 		std::string msg_to_send = dll.seq_protocol_structure();
+		std::cout << "Receiver side get data from package: " << dll.receiver_side_get_data_from_package(msg_to_send) << std::endl;
 
 		std::cout << "Sequence " << j << std::endl;
 		j++;
@@ -104,6 +120,10 @@ int main()
 		std::vector<int> dtmf_tone = sp.convert_to_dtmf(msg_to_send);
 		PhysicalLayer pl_speaker(SAMPLING_FREQ, DEVICE_SPEAKER);
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000)); // Avoid busy waiting
+
+		for(auto v: dtmf_tone){
+			std::cout << v << " ";
+		}
 		pl_speaker.yell(dtmf_tone);
 
 		PhysicalLayer pl_mic(SAMPLING_FREQ, DEVICE_SPEAKER);

@@ -142,7 +142,7 @@ void AudioInput::record_audio(int input_device, bool hx)
         if (_mic_data.stop){
             break; // Stop if stop flag is set
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(10)); // Avoid busy-waiting
+        std::this_thread::sleep_for(std::chrono::milliseconds(5)); // Avoid busy-waiting
     }
 
     // save_to_textfile("../dtmf_sounds/output.txt");
