@@ -35,8 +35,8 @@ int main()
 
 	while (!tlR.get_combined_msg_flag())
 	{
-		PhysicalLayer pl(16000, 2);
-		PhysicalLayer pl2(48000, 2);
+		PhysicalLayer pl(16000, 13);
+		PhysicalLayer pl2(48000, 13);
 		std::cout << "Listening.." << std::endl;
 		std::vector<int> dtmf_sounds = pl.listen(false);
 
