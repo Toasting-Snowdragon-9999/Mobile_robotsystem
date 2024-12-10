@@ -62,9 +62,6 @@ int main()
 				std::cout << "Ack tone: " << ayman << " $" << std::endl;
 			}
 
-			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
-
-			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
 			pl2.yell(ack_dtmf);
 		}
 
