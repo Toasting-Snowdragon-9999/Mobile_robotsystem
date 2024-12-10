@@ -28,7 +28,7 @@
 
 #define SAMPLING_FREQ 16000
 #define DEVICE_SPEAKER 7
-#define DEVICE_MIC 18
+#define DEVICE_MIC 16
 
 int main()
 {
@@ -41,7 +41,7 @@ int main()
 	std::string path_gui = "../Docs/shared_file.json";
 	std::string path_debug = "../../Docs/shared_file.json";
 
-	SharedData shared_json(path_gui);
+	SharedData shared_json(path_debug);
 	std::vector<std::vector<std::string>> python_path;
 	try{
 		python_path= shared_json.read_json();

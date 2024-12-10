@@ -28,19 +28,18 @@
 
 int main()
 {
+
 	Transport_Layer tlR;
-	bool first_time = true;
-	Timer timer;
+
+	std::vector<std::vector<std::string>> turtlebot_move_ass;
 
 	while (!tlR.get_combined_msg_flag())
 	{
 		PhysicalLayer pl(16000, 2);
 		PhysicalLayer pl2(48000, 2);
 		std::cout << "Listening.." << std::endl;
-		if(!first_time){
-			timer.start_timer(&pl);
-		}
-		
+		Timer timer;
+		timer.start_timer(&pl);
 		std::vector<int> dtmf_sounds = pl.listen(false);
 
 		SignalProcessing sp(dtmf_sounds);
@@ -63,6 +62,9 @@ int main()
 				std::cout << "Ack tone: " << ayman << " $" << std::endl;
 			}
 
+			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
+
+			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
 			pl2.yell(ack_dtmf);
 		}
 
@@ -83,7 +85,7 @@ int main()
 
 			if (!inter_dll_tl.get_all_segments_received())
 			{
-				
+
 			}
 			else if (inter_dll_tl.get_all_segments_received())
 			{
@@ -111,16 +113,14 @@ int main()
 
 				AlR.print_robot_commands(final_final_commands_vec);
 
-				AlR.cpp_to_robot(final_final_commands_vec);
+				turtlebot_move_ass = AlR.cpp_to_robot(final_final_commands_vec);
 			}
 			else
 			{
 				std::cout << "ERROR: LENGTH NOT FOUND, SEGMENTATION COUNT WRONG";
 			}
 		}
-		timer.~Timer();
-		first_time = false;
-	} 
+	}
 
 	return 0;
 }
