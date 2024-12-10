@@ -7,7 +7,7 @@ namespace CRC
         std::string xorresult = "";
         if (a.size() != b.size())
         {
-            std::string ("Strings of XOR-operation are not same size");
+            std::cout << "Strings of XOR-operation are not same size" << std::endl;
         }
         for (int i = 0; i < a.size(); i++)
         {
