@@ -12,8 +12,13 @@ private:
     std::atomic<bool> _timeout{false}; // Atomic bool to keep track of whether the timer has run out
 
 public:
+    /**
+     * @brief Construct a new Timer object
+     */
     Timer();
-
+    /**
+     * @brief Destroy the Timer object
+     */
     ~Timer();
 
     /// @brief Timer that checks whether the timeout time has been reached

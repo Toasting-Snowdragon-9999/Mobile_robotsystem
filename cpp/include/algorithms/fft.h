@@ -19,8 +19,20 @@ private:
     double _half_signal_size = 0;
     double _sample_freq = 44100.0;
 
+    /**
+     * @brief This function is used to compute the Fast Fourier Transform
+     * @param data The signal data
+     */
     void _fft(std::vector<std::complex<double>>& data);
+    /**
+     * @brief This function is used to extract DTMF freq from the FFT, this is saved in the _freq_vec and _abs_vecs
+     */
     void _extract_DTMF_freq();
+    /**
+     * @brief This function is used to sort the frequencies and amplitudes, is used the bubblesort algorithm
+     * @param abs_vec The amplitudes of the signal
+     * @param freq_vec The frequencies of the signal
+     */
     void _sort(std::vector <double> &abs_vec, std::vector <double> &freq_vec);
 
     std::vector<std::complex<double>> _data;
@@ -32,8 +44,15 @@ private:
 
 
 public:
-
+    /**
+     * @brief Reading signal data from a file
+     * @param file_name The path of the file to read from
+     */
     void read_from_file(const std::string &file_name);
+
+    /**
+     * @brief Perform the Fast Fourier Transform
+     */
     void perform_fft();
     
 };

@@ -2,7 +2,7 @@
 
 DFT::DFT(){}
 
-DFT::DFT(const std::vector<double> data)
+DFT::DFT(const std::vector<float> data)
         : _data(data), _size_of_signal(data.size()){}
 
 void DFT::frequencies_of_signal(){
@@ -11,8 +11,7 @@ void DFT::frequencies_of_signal(){
     _abs_coef.resize(_size_of_signal, 0.0);
 
     compute_dft();
-    sort(_abs_coef, _DTMF_freq);
-
+    // sort(_abs_coef, _DTMF_freq);
 }
 
 void DFT::compute_dft() {
@@ -27,7 +26,7 @@ void DFT::compute_dft() {
 
         for (int j = 0; j < _size_of_signal; ++j) {
             double angle = 2 * M_PI * nr_sample * j / _size_of_signal;
-            _dft_coef[nr_sample] += _data[j] * std::exp(std::complex<double>(0.0, -angle));
+            _dft_coef[nr_sample] += _data[j] * std::exp(std::complex<float>(0.0, -angle));
 
 
         }
@@ -75,4 +74,8 @@ void DFT::sort(std::vector <double> &x, std::vector <int> &y){
     }
     
 //    std::cout << "Frequency found: " << y[0] << " and " << y[1] << std::endl;
+}
+
+std::vector<double> DFT::return_data(){
+    return _abs_coef;
 }

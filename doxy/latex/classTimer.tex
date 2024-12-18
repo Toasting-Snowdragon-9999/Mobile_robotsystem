@@ -1,0 +1,49 @@
+\hypertarget{classTimer}{}\doxysection{Timer Class Reference}
+\label{classTimer}\index{Timer@{Timer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTimer_a5f16e8da27d2a5a5242dead46de05d97}\label{classTimer_a5f16e8da27d2a5a5242dead46de05d97}} 
+\mbox{\hyperlink{classTimer_a5f16e8da27d2a5a5242dead46de05d97}{Timer}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classTimer}{Timer}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTimer_a14fa469c4c295c5fa6e66a4ad1092146}\label{classTimer_a14fa469c4c295c5fa6e66a4ad1092146}} 
+\mbox{\hyperlink{classTimer_a14fa469c4c295c5fa6e66a4ad1092146}{$\sim$\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classTimer}{Timer}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTimer_aedc4b458d514f0f478f79af52bf29467}{start\+\_\+timer}} (\mbox{\hyperlink{classPhysicalLayer}{Physical\+Layer}} $\ast$data)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classTimer}{Timer}} that checks whether the timeout time has been reached. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTimer_a2b03f78f0d8048d205b22fa367789a18}{get\+\_\+timeout}} ()
+\begin{DoxyCompactList}\small\item\em Getter method for getting the timeout boolean. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimer_a2b03f78f0d8048d205b22fa367789a18}\label{classTimer_a2b03f78f0d8048d205b22fa367789a18}} 
+\index{Timer@{Timer}!get\_timeout@{get\_timeout}}
+\index{get\_timeout@{get\_timeout}!Timer@{Timer}}
+\doxysubsubsection{\texorpdfstring{get\_timeout()}{get\_timeout()}}
+{\footnotesize\ttfamily bool Timer\+::get\+\_\+timeout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter method for getting the timeout boolean. 
+
+\begin{DoxyReturn}{Returns}
+Type -\/ atomic bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTimer_aedc4b458d514f0f478f79af52bf29467}\label{classTimer_aedc4b458d514f0f478f79af52bf29467}} 
+\index{Timer@{Timer}!start\_timer@{start\_timer}}
+\index{start\_timer@{start\_timer}!Timer@{Timer}}
+\doxysubsubsection{\texorpdfstring{start\_timer()}{start\_timer()}}
+{\footnotesize\ttfamily void Timer\+::start\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPhysicalLayer}{Physical\+Layer}} $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classTimer}{Timer}} that checks whether the timeout time has been reached. 
+
+\begin{DoxyNote}{Note}
+Wrties true to private variable \+\_\+timeout if timeout time has been reached 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+cpp/include/communication\+\_\+protocol/timer.\+h\end{DoxyCompactItemize}

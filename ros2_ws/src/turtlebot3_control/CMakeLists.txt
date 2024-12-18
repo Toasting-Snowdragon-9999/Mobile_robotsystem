@@ -64,6 +64,7 @@ set(SOURCES
     ../../../cpp/src/audio/wave_generator.cpp
     # Signal Processing
     ../../../cpp/src/algorithms/goertzel.cpp
+    ../../../cpp/src/algorithms/dft.cpp
     # Communication Protocol
     ../../../cpp/src/communication_protocol/physical_layer.cpp
     ../../../cpp/src/communication_protocol/data_link_layer.cpp

@@ -27,12 +27,11 @@
 #include "interfaces/signal_processing.h"
 
 #define SAMPLING_FREQ 16000
-#define DEVICE_SPEAKER 7
-#define DEVICE_MIC 18
+#define DEVICE_SPEAKER 15
+#define DEVICE_MIC 16
 
 int main()
 {
-
 	// ======================================================
 	// SENDER
 	// ======================================================
@@ -53,6 +52,7 @@ int main()
 	}
 
 
+	
 
 	ApplicationLayer Alc;
 
@@ -126,7 +126,7 @@ int main()
 		}
 		pl_speaker.yell(dtmf_tone);
 
-		PhysicalLayer pl_mic(SAMPLING_FREQ, DEVICE_SPEAKER);
+		PhysicalLayer pl_mic(SAMPLING_FREQ, DEVICE_MIC);
 
 		timer.start_timer(&pl_mic);
 

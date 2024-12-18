@@ -1,0 +1,91 @@
+\hypertarget{classWaveGenerator}{}\doxysection{Wave\+Generator Class Reference}
+\label{classWaveGenerator}\index{WaveGenerator@{WaveGenerator}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWaveGenerator_ae76d33eef12981de31aaf5af0c57682a}\label{classWaveGenerator_ae76d33eef12981de31aaf5af0c57682a}} 
+\mbox{\hyperlink{classWaveGenerator_ae76d33eef12981de31aaf5af0c57682a}{Wave\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Wave Generator object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWaveGenerator_a965b450ca5280ee0e4e20154e3725435}{Wave\+Generator}} (std\+::vector$<$ int $>$ \&sequence)
+\begin{DoxyCompactList}\small\item\em Construct a new Wave Generator object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWaveGenerator_a98ac93f891ec44fc910dd460fd4670bd}\label{classWaveGenerator_a98ac93f891ec44fc910dd460fd4670bd}} 
+\mbox{\hyperlink{classWaveGenerator_a98ac93f891ec44fc910dd460fd4670bd}{$\sim$\+Wave\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Wave Generator object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWaveGenerator_a63b9356c80df479ecb07d3a68b33d1aa}\label{classWaveGenerator_a63b9356c80df479ecb07d3a68b33d1aa}} 
+void \mbox{\hyperlink{classWaveGenerator_a63b9356c80df479ecb07d3a68b33d1aa}{save\+\_\+to\+\_\+wav\+\_\+file}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em This function is used to save the generated sound to a wav file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWaveGenerator_aa9ecb5155e446ea9788620c82f9a6446}\label{classWaveGenerator_aa9ecb5155e446ea9788620c82f9a6446}} 
+void \mbox{\hyperlink{classWaveGenerator_aa9ecb5155e446ea9788620c82f9a6446}{play\+\_\+sounds}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to play the sounds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWaveGenerator_ae76d33eef12981de31aaf5af0c57682a}\label{classWaveGenerator_ae76d33eef12981de31aaf5af0c57682a}} 
+\mbox{\hyperlink{classWaveGenerator_ae76d33eef12981de31aaf5af0c57682a}{Wave\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Wave Generator object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWaveGenerator_a3c23741c27d0f6bfb190c966ca9c82c0}{Wave\+Generator}} (std\+::vector$<$ int $>$ \&sequence, int sample\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em Construct a new Wave Generator object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWaveGenerator_a98ac93f891ec44fc910dd460fd4670bd}\label{classWaveGenerator_a98ac93f891ec44fc910dd460fd4670bd}} 
+\mbox{\hyperlink{classWaveGenerator_a98ac93f891ec44fc910dd460fd4670bd}{$\sim$\+Wave\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Wave Generator object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWaveGenerator_aa9ecb5155e446ea9788620c82f9a6446}\label{classWaveGenerator_aa9ecb5155e446ea9788620c82f9a6446}} 
+void \mbox{\hyperlink{classWaveGenerator_aa9ecb5155e446ea9788620c82f9a6446}{play\+\_\+sounds}} ()
+\begin{DoxyCompactList}\small\item\em Play the DTMF tones. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWaveGenerator_a63b9356c80df479ecb07d3a68b33d1aa}{save\+\_\+to\+\_\+wav\+\_\+file}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Save the combined audio data to a WAV file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWaveGenerator_a965b450ca5280ee0e4e20154e3725435}\label{classWaveGenerator_a965b450ca5280ee0e4e20154e3725435}} 
+\index{WaveGenerator@{WaveGenerator}!WaveGenerator@{WaveGenerator}}
+\index{WaveGenerator@{WaveGenerator}!WaveGenerator@{WaveGenerator}}
+\doxysubsubsection{\texorpdfstring{WaveGenerator()}{WaveGenerator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Wave\+Generator\+::\+Wave\+Generator (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{sequence }\end{DoxyParamCaption})}
+
+
+
+Construct a new Wave Generator object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & The sequence to be played \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWaveGenerator_a3c23741c27d0f6bfb190c966ca9c82c0}\label{classWaveGenerator_a3c23741c27d0f6bfb190c966ca9c82c0}} 
+\index{WaveGenerator@{WaveGenerator}!WaveGenerator@{WaveGenerator}}
+\index{WaveGenerator@{WaveGenerator}!WaveGenerator@{WaveGenerator}}
+\doxysubsubsection{\texorpdfstring{WaveGenerator()}{WaveGenerator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Wave\+Generator\+::\+Wave\+Generator (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{sequence,  }\item[{int}]{sample\+\_\+rate }\end{DoxyParamCaption})}
+
+
+
+Construct a new Wave Generator object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & The sequence of DTMF tones to play \\
+\hline
+{\em sample\+\_\+rate} & The sample rate of the signal \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWaveGenerator_a63b9356c80df479ecb07d3a68b33d1aa}\label{classWaveGenerator_a63b9356c80df479ecb07d3a68b33d1aa}} 
+\index{WaveGenerator@{WaveGenerator}!save\_to\_wav\_file@{save\_to\_wav\_file}}
+\index{save\_to\_wav\_file@{save\_to\_wav\_file}!WaveGenerator@{WaveGenerator}}
+\doxysubsubsection{\texorpdfstring{save\_to\_wav\_file()}{save\_to\_wav\_file()}}
+{\footnotesize\ttfamily void Wave\+Generator\+::save\+\_\+to\+\_\+wav\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Save the combined audio data to a WAV file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to save the audio data to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+cpp/include/audio/sfml\+\_\+wave\+\_\+generator.\+h\item 
+cpp/include/audio/wave\+\_\+generator.\+h\end{DoxyCompactItemize}

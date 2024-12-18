@@ -25,8 +25,7 @@
 #define INPUT_DEVICE (2) // Insert device #
 #define LENGTH_FACTOR 10
 
-int main(int argc, char *argv[]) {
-/*
+std::vector<robot_command> init_robtek(){
 	// --- R
 	robot_command p1("-fw", std::to_string(4*LENGTH_FACTOR));
 	robot_command p2("-r", "90");
@@ -118,7 +117,11 @@ int main(int argc, char *argv[]) {
 		p51, p52, p53, p54, p55, p56, p57, p58, p59, p60,
 		p61
 	};
-*/
+
+	return robtek;
+}
+
+int main(int argc, char *argv[]) {
 
 	Transport_Layer tlR;
 
@@ -126,11 +129,9 @@ int main(int argc, char *argv[]) {
 
 	while (!tlR.get_combined_msg_flag())
 	{
-		PhysicalLayer pl(16000, 2);
-		PhysicalLayer pl2(48000, 2);
+		PhysicalLayer pl(16000, INPUT_DEVICE);
+		PhysicalLayer pl2(48000, INPUT_DEVICE);
 		std::cout << "Listening.." << std::endl;
-		Timer timer;
-		timer.start_timer(&pl);
 		std::vector<int> dtmf_sounds = pl.listen(false);
 
 		SignalProcessing sp(dtmf_sounds);
@@ -153,9 +154,6 @@ int main(int argc, char *argv[]) {
 				std::cout << "Ack tone: " << ayman << " $" << std::endl;
 			}
 
-			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
-
-			std::vector<int> ack_dtmf = sp.convert_to_dtmf(ack);
 			pl2.yell(ack_dtmf);
 		}
 
@@ -212,6 +210,7 @@ int main(int argc, char *argv[]) {
 			}
 		}
 	}
+
 
     // --- Turtlebot control ---
     rclcpp::init(argc, argv);

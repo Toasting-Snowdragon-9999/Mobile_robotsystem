@@ -28,7 +28,7 @@ class PathGenerator:
         if command == "-fw":
             return "↑", "Move forward", " cm"
         if command == "-bw":    
-            return "↓", "Mow backwards", " cm"
+            return "↓", "Move backwards", " cm"
         if command == "-l":
             return "←", "Turn left", "\u00B0"
         if command == "-r":

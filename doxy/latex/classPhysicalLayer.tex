@@ -1,0 +1,95 @@
+\hypertarget{classPhysicalLayer}{}\doxysection{Physical\+Layer Class Reference}
+\label{classPhysicalLayer}\index{PhysicalLayer@{PhysicalLayer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPhysicalLayer_afc972a84153977d6ccd9e116b6181ad4}\label{classPhysicalLayer_afc972a84153977d6ccd9e116b6181ad4}} 
+\mbox{\hyperlink{classPhysicalLayer_afc972a84153977d6ccd9e116b6181ad4}{Physical\+Layer}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Physical Layer object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPhysicalLayer_a5eadaa87dd97c5f9e7356af62b33cc95}{Physical\+Layer}} (int sample\+\_\+rate, int device)
+\begin{DoxyCompactList}\small\item\em Construct a new Physical Layer object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhysicalLayer_a4cc84a8d4418797e725154786a785ef4}\label{classPhysicalLayer_a4cc84a8d4418797e725154786a785ef4}} 
+\mbox{\hyperlink{classPhysicalLayer_a4cc84a8d4418797e725154786a785ef4}{$\sim$\+Physical\+Layer}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Physical Layer object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhysicalLayer_ab35bb002ee2663622f8941d245c26016}\label{classPhysicalLayer_ab35bb002ee2663622f8941d245c26016}} 
+void \mbox{\hyperlink{classPhysicalLayer_ab35bb002ee2663622f8941d245c26016}{yell}} (std\+::vector$<$ int $>$ message)
+\begin{DoxyCompactList}\small\item\em This function is used to yell / play out a given dtmf sequence. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classPhysicalLayer_a1b433a0b22f1c707a26978018f0b3a81}{list}} (bool hyperx)
+\begin{DoxyCompactList}\small\item\em This function is used to list the available audio devices. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classPhysicalLayer_a5833834bc6c46450336ad85dec166625}{listen}} (bool hyperx)
+\begin{DoxyCompactList}\small\item\em This function is used to capturing the a dtmf sequence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPhysicalLayer_a227237cf937896d96609985675ac665b}{stop\+\_\+audio}} (bool stop)
+\begin{DoxyCompactList}\small\item\em This function is used to stop the audio, from the outside. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPhysicalLayer_a5eadaa87dd97c5f9e7356af62b33cc95}\label{classPhysicalLayer_a5eadaa87dd97c5f9e7356af62b33cc95}} 
+\index{PhysicalLayer@{PhysicalLayer}!PhysicalLayer@{PhysicalLayer}}
+\index{PhysicalLayer@{PhysicalLayer}!PhysicalLayer@{PhysicalLayer}}
+\doxysubsubsection{\texorpdfstring{PhysicalLayer()}{PhysicalLayer()}}
+{\footnotesize\ttfamily Physical\+Layer\+::\+Physical\+Layer (\begin{DoxyParamCaption}\item[{int}]{sample\+\_\+rate,  }\item[{int}]{device }\end{DoxyParamCaption})}
+
+
+
+Construct a new Physical Layer object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sample\+\_\+rate} & The sample rate of the signal \\
+\hline
+{\em device} & The device to use \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPhysicalLayer_a1b433a0b22f1c707a26978018f0b3a81}\label{classPhysicalLayer_a1b433a0b22f1c707a26978018f0b3a81}} 
+\index{PhysicalLayer@{PhysicalLayer}!list@{list}}
+\index{list@{list}!PhysicalLayer@{PhysicalLayer}}
+\doxysubsubsection{\texorpdfstring{list()}{list()}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Physical\+Layer\+::list (\begin{DoxyParamCaption}\item[{bool}]{hyperx }\end{DoxyParamCaption})}
+
+
+
+This function is used to list the available audio devices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hyperx} & not used \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPhysicalLayer_a5833834bc6c46450336ad85dec166625}\label{classPhysicalLayer_a5833834bc6c46450336ad85dec166625}} 
+\index{PhysicalLayer@{PhysicalLayer}!listen@{listen}}
+\index{listen@{listen}!PhysicalLayer@{PhysicalLayer}}
+\doxysubsubsection{\texorpdfstring{listen()}{listen()}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Physical\+Layer\+::listen (\begin{DoxyParamCaption}\item[{bool}]{hyperx }\end{DoxyParamCaption})}
+
+
+
+This function is used to capturing the a dtmf sequence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hyperx} & not used \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPhysicalLayer_a227237cf937896d96609985675ac665b}\label{classPhysicalLayer_a227237cf937896d96609985675ac665b}} 
+\index{PhysicalLayer@{PhysicalLayer}!stop\_audio@{stop\_audio}}
+\index{stop\_audio@{stop\_audio}!PhysicalLayer@{PhysicalLayer}}
+\doxysubsubsection{\texorpdfstring{stop\_audio()}{stop\_audio()}}
+{\footnotesize\ttfamily void Physical\+Layer\+::stop\+\_\+audio (\begin{DoxyParamCaption}\item[{bool}]{stop }\end{DoxyParamCaption})}
+
+
+
+This function is used to stop the audio, from the outside. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stop} & The flag to indicate if the audio should stop \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+cpp/include/communication\+\_\+protocol/physical\+\_\+layer.\+h\end{DoxyCompactItemize}

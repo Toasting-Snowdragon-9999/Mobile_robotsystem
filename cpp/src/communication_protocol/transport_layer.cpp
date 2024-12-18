@@ -275,13 +275,13 @@ std::vector<std::string> Transport_Layer::segment_msg(const std::string &full_bi
 {
     std::string unsegmented_msg = full_binary_msg;
 
-    while (unsegmented_msg.length() >= mms)
+    while (unsegmented_msg.length() >= mss)
     {
-        _segments_vector.push_back(unsegmented_msg.substr(0, mms));
-        unsegmented_msg.erase(0, mms);
+        _segments_vector.push_back(unsegmented_msg.substr(0, mss));
+        unsegmented_msg.erase(0, mss);
     }
 
-    // Final segmentation if msg isn't divisible by the mms
+    // Final segmentation if msg isn't divisible by the mss
     if (!unsegmented_msg.empty())
     {
         _segments_vector.push_back(unsegmented_msg.substr(0, unsegmented_msg.size()));

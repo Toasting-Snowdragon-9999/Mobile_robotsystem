@@ -1,0 +1,325 @@
+\hypertarget{classDataLinkLayer}{}\doxysection{Data\+Link\+Layer Class Reference}
+\label{classDataLinkLayer}\index{DataLinkLayer@{DataLinkLayer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDataLinkLayer_ada207f031f942ca95305c3eb81330f6b}{Data\+Link\+Layer}} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataLinkLayer_ac4ebe478334b31fd98f969953b4f0211}{Data\+Link\+Layer}} (std\+::string binary\+\_\+msg)
+\begin{DoxyCompactList}\small\item\em Constructor to create instance of \mbox{\hyperlink{classDataLinkLayer}{Data\+Link\+Layer}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataLinkLayer_a0d4ffd3532d7c639741185d15b0eb233}\label{classDataLinkLayer_a0d4ffd3532d7c639741185d15b0eb233}} 
+bool {\bfseries get\+\_\+is\+\_\+msg\+\_\+correct} ()
+\item 
+\mbox{\Hypertarget{classDataLinkLayer_a90a6d4f9d04e22dcc98b2e1e13699910}\label{classDataLinkLayer_a90a6d4f9d04e22dcc98b2e1e13699910}} 
+void {\bfseries set\+\_\+is\+\_\+msg\+\_\+correct} (const bool \&input)
+\item 
+\mbox{\Hypertarget{classDataLinkLayer_a2b969cdea8012a68eca1c5db088a2d4a}\label{classDataLinkLayer_a2b969cdea8012a68eca1c5db088a2d4a}} 
+void {\bfseries change\+\_\+ack\+\_\+indx\+\_\+sender\+\_\+sider} ()
+\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_a4697c7e20f1caa6334e03b88527f7494}{length\+\_\+of\+\_\+string}} (std\+::string s)
+\begin{DoxyCompactList}\small\item\em Method for finding the length of a string in binary. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_a38236543906e55451ffd17fb0ffd7695}{seq\+\_\+protocol\+\_\+structure}} ()
+\begin{DoxyCompactList}\small\item\em Method for creating entire package with sequence no. -\/ Adds preamble, header, data, CRC, ESC-\/nibbles, and postamble together in a bitstream. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_aea329eb7dd82ac2fcf9ce0d8a978eebb}{ack\+\_\+protocol\+\_\+structure}} ()
+\begin{DoxyCompactList}\small\item\em Method for creating entire package with ACK -\/ Adds preamble, header, data, CRC, ESC-\/nibbles, and postamble together in a bitstream. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_ac86dd3e5769103e5586b75b526695f37}{nibble\+\_\+stuffing}} (std\+::string package)
+\begin{DoxyCompactList}\small\item\em Nibble stuffing the package with ESC nibbles. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_a090bd95a8a10b5d478ca5baf10b20464}{remove\+\_\+esc\+\_\+nibbles}} (std\+::string received\+\_\+package)
+\begin{DoxyCompactList}\small\item\em Removes ESC nibbles from the received package. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_ab4a3eaec5df0cc223c2df787c5a4aa21}{decimal\+\_\+seq\+\_\+to\+\_\+binary\+\_\+msg}} (const std\+::vector$<$ std\+::vector$<$ int $>$$>$ \&decimal\+Sequence)
+\begin{DoxyCompactList}\small\item\em Binary conversion for CRC-\/check. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_a604192847d494340254052bb62a86684}{remove\+\_\+pre\+\_\+and\+\_\+postamble}} (std\+::string received\+\_\+package)
+\begin{DoxyCompactList}\small\item\em Method for removing the pre-\/ and postamble from the received package. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_a633e0ad12ce79ebccf99b4338322019b}{zero\+\_\+pad}} (std\+::string binary\+\_\+msg)
+\begin{DoxyCompactList}\small\item\em Zero-\/pads a binary message to make it \%4=0. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classDataLinkLayer_ae636b424e7524dd98003a370ac7ab206}{find\+\_\+length\+\_\+pos\+\_\+in\+\_\+header}} (std\+::string received\+\_\+package)
+\begin{DoxyCompactList}\small\item\em Finds the indexes at which the length description begins and ends. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_a2a405f72ea45c70b2c37a756c89e80c3}{sender\+\_\+side\+\_\+get\+\_\+data\+\_\+from\+\_\+package}} (std\+::string received\+\_\+package)
+\begin{DoxyCompactList}\small\item\em Finds the data/message itself, from the received package. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataLinkLayer_aaa319fb224daf73b6c8cfad6437897cd}{receiver\+\_\+side\+\_\+get\+\_\+data\+\_\+from\+\_\+package}} (std\+::string received\+\_\+package)
+\begin{DoxyCompactList}\small\item\em Finds the data/message itself, from the received package. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDataLinkLayer_aa4f5613ce0d997744f26ce4c28fb5d12}{is\+\_\+header\+\_\+and\+\_\+msg\+\_\+correct}} (const std\+::string \&header\+\_\+and\+\_\+msg)
+\begin{DoxyCompactList}\small\item\em Returns true if header and message is correct by checking CRC-\/remainder and false if not. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataLinkLayer_a67159bcbee54cdcb4bf9a33c998af2f3}\label{classDataLinkLayer_a67159bcbee54cdcb4bf9a33c998af2f3}} 
+void {\bfseries stop\+\_\+and\+\_\+wait\+\_\+arq} ()
+\item 
+\mbox{\Hypertarget{classDataLinkLayer_ae4701f03f5bb51268c3cddf24c557547}\label{classDataLinkLayer_ae4701f03f5bb51268c3cddf24c557547}} 
+bool {\bfseries get\+\_\+ack\+\_\+received} ()
+\item 
+\mbox{\Hypertarget{classDataLinkLayer_a0c24fa524128d0a1535e73c955c13c66}\label{classDataLinkLayer_a0c24fa524128d0a1535e73c955c13c66}} 
+void {\bfseries set\+\_\+ack\+\_\+received} (const bool \&boolean)
+\item 
+int \mbox{\hyperlink{classDataLinkLayer_ac2a833a7d1e4509b868e1c8c11580368}{find\+\_\+max\+\_\+ones}} (const std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em Finds maximum consecutive ones in a string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataLinkLayer_a2637a6cd10d3cd5d31d21c068ec0d19d}\label{classDataLinkLayer_a2637a6cd10d3cd5d31d21c068ec0d19d}} 
+std\+::string {\bfseries bit\+\_\+stuff} (const std\+::string \&header)
+\item 
+\mbox{\Hypertarget{classDataLinkLayer_abdf211e49c911ff7efe45781016ba357}\label{classDataLinkLayer_abdf211e49c911ff7efe45781016ba357}} 
+std\+::string {\bfseries bit\+\_\+unstuff} (const std\+::string \&header)
+\item 
+\mbox{\Hypertarget{classDataLinkLayer_a6067eec827b00dd86745c71fef6b575b}\label{classDataLinkLayer_a6067eec827b00dd86745c71fef6b575b}} 
+std\+::string {\bfseries send\+\_\+ack} (std\+::string)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDataLinkLayer_ada207f031f942ca95305c3eb81330f6b}\label{classDataLinkLayer_ada207f031f942ca95305c3eb81330f6b}} 
+\index{DataLinkLayer@{DataLinkLayer}!DataLinkLayer@{DataLinkLayer}}
+\index{DataLinkLayer@{DataLinkLayer}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{DataLinkLayer()}{DataLinkLayer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Data\+Link\+Layer\+::\+Data\+Link\+Layer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Empty constructor. 
+
+\begin{DoxyNote}{Note}
+This constructor is defined primarily for the ACK 
+\end{DoxyNote}
+\mbox{\Hypertarget{classDataLinkLayer_ac4ebe478334b31fd98f969953b4f0211}\label{classDataLinkLayer_ac4ebe478334b31fd98f969953b4f0211}} 
+\index{DataLinkLayer@{DataLinkLayer}!DataLinkLayer@{DataLinkLayer}}
+\index{DataLinkLayer@{DataLinkLayer}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{DataLinkLayer()}{DataLinkLayer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Data\+Link\+Layer\+::\+Data\+Link\+Layer (\begin{DoxyParamCaption}\item[{std\+::string}]{binary\+\_\+msg }\end{DoxyParamCaption})}
+
+
+
+Constructor to create instance of \mbox{\hyperlink{classDataLinkLayer}{Data\+Link\+Layer}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em robot\+Path} & -\/ Path for robot created by user \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDataLinkLayer_aea329eb7dd82ac2fcf9ce0d8a978eebb}\label{classDataLinkLayer_aea329eb7dd82ac2fcf9ce0d8a978eebb}} 
+\index{DataLinkLayer@{DataLinkLayer}!ack\_protocol\_structure@{ack\_protocol\_structure}}
+\index{ack\_protocol\_structure@{ack\_protocol\_structure}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{ack\_protocol\_structure()}{ack\_protocol\_structure()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::ack\+\_\+protocol\+\_\+structure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method for creating entire package with ACK -\/ Adds preamble, header, data, CRC, ESC-\/nibbles, and postamble together in a bitstream. 
+
+\begin{DoxyReturn}{Returns}
+The full package while it\textquotesingle{}s saved as a private variable 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_ab4a3eaec5df0cc223c2df787c5a4aa21}\label{classDataLinkLayer_ab4a3eaec5df0cc223c2df787c5a4aa21}} 
+\index{DataLinkLayer@{DataLinkLayer}!decimal\_seq\_to\_binary\_msg@{decimal\_seq\_to\_binary\_msg}}
+\index{decimal\_seq\_to\_binary\_msg@{decimal\_seq\_to\_binary\_msg}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{decimal\_seq\_to\_binary\_msg()}{decimal\_seq\_to\_binary\_msg()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::decimal\+\_\+seq\+\_\+to\+\_\+binary\+\_\+msg (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ int $>$$>$ \&}]{decimal\+Sequence }\end{DoxyParamCaption})}
+
+
+
+Binary conversion for CRC-\/check. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em decimal\+Sequence} & Type\+: vector of vectors \{ \{...\}, \{...\}, ....., \{...\} \} -\/ The original tone sequence in decimal, divided in vectors of vectors \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\+: String -\/ The sequence in a long binary string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_ae636b424e7524dd98003a370ac7ab206}\label{classDataLinkLayer_ae636b424e7524dd98003a370ac7ab206}} 
+\index{DataLinkLayer@{DataLinkLayer}!find\_length\_pos\_in\_header@{find\_length\_pos\_in\_header}}
+\index{find\_length\_pos\_in\_header@{find\_length\_pos\_in\_header}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{find\_length\_pos\_in\_header()}{find\_length\_pos\_in\_header()}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Data\+Link\+Layer\+::find\+\_\+length\+\_\+pos\+\_\+in\+\_\+header (\begin{DoxyParamCaption}\item[{std\+::string}]{received\+\_\+package }\end{DoxyParamCaption})}
+
+
+
+Finds the indexes at which the length description begins and ends. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received\+\_\+package} & Type\+: String -\/ The received package as a string of bits \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\+: vector$<$int$>$ -\/ \{start index, end index\} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_ac2a833a7d1e4509b868e1c8c11580368}\label{classDataLinkLayer_ac2a833a7d1e4509b868e1c8c11580368}} 
+\index{DataLinkLayer@{DataLinkLayer}!find\_max\_ones@{find\_max\_ones}}
+\index{find\_max\_ones@{find\_max\_ones}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{find\_max\_ones()}{find\_max\_ones()}}
+{\footnotesize\ttfamily int Data\+Link\+Layer\+::find\+\_\+max\+\_\+ones (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Finds maximum consecutive ones in a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Max number of consecutive ones 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_aa4f5613ce0d997744f26ce4c28fb5d12}\label{classDataLinkLayer_aa4f5613ce0d997744f26ce4c28fb5d12}} 
+\index{DataLinkLayer@{DataLinkLayer}!is\_header\_and\_msg\_correct@{is\_header\_and\_msg\_correct}}
+\index{is\_header\_and\_msg\_correct@{is\_header\_and\_msg\_correct}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{is\_header\_and\_msg\_correct()}{is\_header\_and\_msg\_correct()}}
+{\footnotesize\ttfamily bool Data\+Link\+Layer\+::is\+\_\+header\+\_\+and\+\_\+msg\+\_\+correct (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{header\+\_\+and\+\_\+msg }\end{DoxyParamCaption})}
+
+
+
+Returns true if header and message is correct by checking CRC-\/remainder and false if not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header\+\_\+and\+\_\+msg} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True or False 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_a4697c7e20f1caa6334e03b88527f7494}\label{classDataLinkLayer_a4697c7e20f1caa6334e03b88527f7494}} 
+\index{DataLinkLayer@{DataLinkLayer}!length\_of\_string@{length\_of\_string}}
+\index{length\_of\_string@{length\_of\_string}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{length\_of\_string()}{length\_of\_string()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::length\+\_\+of\+\_\+string (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})}
+
+
+
+Method for finding the length of a string in binary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Type\+: String \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\+: String -\/ Length in binary 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_ac86dd3e5769103e5586b75b526695f37}\label{classDataLinkLayer_ac86dd3e5769103e5586b75b526695f37}} 
+\index{DataLinkLayer@{DataLinkLayer}!nibble\_stuffing@{nibble\_stuffing}}
+\index{nibble\_stuffing@{nibble\_stuffing}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{nibble\_stuffing()}{nibble\_stuffing()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::nibble\+\_\+stuffing (\begin{DoxyParamCaption}\item[{std\+::string}]{package }\end{DoxyParamCaption})}
+
+
+
+Nibble stuffing the package with ESC nibbles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em package} & Type\+: String -\/ The package to be stuffed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\+: String -\/ The nibble stuffed package 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_aaa319fb224daf73b6c8cfad6437897cd}\label{classDataLinkLayer_aaa319fb224daf73b6c8cfad6437897cd}} 
+\index{DataLinkLayer@{DataLinkLayer}!receiver\_side\_get\_data\_from\_package@{receiver\_side\_get\_data\_from\_package}}
+\index{receiver\_side\_get\_data\_from\_package@{receiver\_side\_get\_data\_from\_package}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{receiver\_side\_get\_data\_from\_package()}{receiver\_side\_get\_data\_from\_package()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::receiver\+\_\+side\+\_\+get\+\_\+data\+\_\+from\+\_\+package (\begin{DoxyParamCaption}\item[{std\+::string}]{received\+\_\+package }\end{DoxyParamCaption})}
+
+
+
+Finds the data/message itself, from the received package. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received\+\_\+package} & Type\+: String -\/ The received package as a string of bits \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\+: String -\/ The data itself 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_a090bd95a8a10b5d478ca5baf10b20464}\label{classDataLinkLayer_a090bd95a8a10b5d478ca5baf10b20464}} 
+\index{DataLinkLayer@{DataLinkLayer}!remove\_esc\_nibbles@{remove\_esc\_nibbles}}
+\index{remove\_esc\_nibbles@{remove\_esc\_nibbles}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{remove\_esc\_nibbles()}{remove\_esc\_nibbles()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::remove\+\_\+esc\+\_\+nibbles (\begin{DoxyParamCaption}\item[{std\+::string}]{received\+\_\+package }\end{DoxyParamCaption})}
+
+
+
+Removes ESC nibbles from the received package. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received\+\_\+package} & Type\+: String -\/ The received package as a string of bits \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\+: String -\/ The received package without ESC nibbles 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_a604192847d494340254052bb62a86684}\label{classDataLinkLayer_a604192847d494340254052bb62a86684}} 
+\index{DataLinkLayer@{DataLinkLayer}!remove\_pre\_and\_postamble@{remove\_pre\_and\_postamble}}
+\index{remove\_pre\_and\_postamble@{remove\_pre\_and\_postamble}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{remove\_pre\_and\_postamble()}{remove\_pre\_and\_postamble()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::remove\+\_\+pre\+\_\+and\+\_\+postamble (\begin{DoxyParamCaption}\item[{std\+::string}]{received\+\_\+package }\end{DoxyParamCaption})}
+
+
+
+Method for removing the pre-\/ and postamble from the received package. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received\+\_\+package} & Type\+: String -\/ The received package as a string of bits \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\+: String -\/ The received package as a string of bits without the pre-\/ and postamble 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_a2a405f72ea45c70b2c37a756c89e80c3}\label{classDataLinkLayer_a2a405f72ea45c70b2c37a756c89e80c3}} 
+\index{DataLinkLayer@{DataLinkLayer}!sender\_side\_get\_data\_from\_package@{sender\_side\_get\_data\_from\_package}}
+\index{sender\_side\_get\_data\_from\_package@{sender\_side\_get\_data\_from\_package}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{sender\_side\_get\_data\_from\_package()}{sender\_side\_get\_data\_from\_package()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::sender\+\_\+side\+\_\+get\+\_\+data\+\_\+from\+\_\+package (\begin{DoxyParamCaption}\item[{std\+::string}]{received\+\_\+package }\end{DoxyParamCaption})}
+
+
+
+Finds the data/message itself, from the received package. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received\+\_\+package} & Type\+: String -\/ The received package as a string of bits \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\+: String -\/ The data itself 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_a38236543906e55451ffd17fb0ffd7695}\label{classDataLinkLayer_a38236543906e55451ffd17fb0ffd7695}} 
+\index{DataLinkLayer@{DataLinkLayer}!seq\_protocol\_structure@{seq\_protocol\_structure}}
+\index{seq\_protocol\_structure@{seq\_protocol\_structure}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{seq\_protocol\_structure()}{seq\_protocol\_structure()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::seq\+\_\+protocol\+\_\+structure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method for creating entire package with sequence no. -\/ Adds preamble, header, data, CRC, ESC-\/nibbles, and postamble together in a bitstream. 
+
+\begin{DoxyReturn}{Returns}
+The full package while it\textquotesingle{}s saved as a private variable 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataLinkLayer_a633e0ad12ce79ebccf99b4338322019b}\label{classDataLinkLayer_a633e0ad12ce79ebccf99b4338322019b}} 
+\index{DataLinkLayer@{DataLinkLayer}!zero\_pad@{zero\_pad}}
+\index{zero\_pad@{zero\_pad}!DataLinkLayer@{DataLinkLayer}}
+\doxysubsubsection{\texorpdfstring{zero\_pad()}{zero\_pad()}}
+{\footnotesize\ttfamily std\+::string Data\+Link\+Layer\+::zero\+\_\+pad (\begin{DoxyParamCaption}\item[{std\+::string}]{binary\+\_\+msg }\end{DoxyParamCaption})}
+
+
+
+Zero-\/pads a binary message to make it \%4=0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em binary\+\_\+msg} & Type\+: String -\/ The binary message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\+: String -\/ The binary message with zero-\/padding 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+cpp/include/communication\+\_\+protocol/data\+\_\+link\+\_\+layer.\+h\end{DoxyCompactItemize}

@@ -19,7 +19,6 @@ void Goertzel::translate_signal_goertzel(GoertzelResult& r){
     sort(_magnitudes, _DTMF_freq);
 
     detect_DTMF(_freq_from_signals[0], _freq_from_signals[1], r);
-
 }
 
 void Goertzel::_init_coefficients()  {
@@ -32,6 +31,7 @@ void Goertzel::_init_coefficients()  {
 }
 
 void Goertzel::compute_goertzel() {
+
     _magnitudes.resize(_DTMF_freq.size());
 
     for (int freq_index = 0; freq_index < _DTMF_freq.size(); ++freq_index) {
@@ -159,13 +159,13 @@ void Goertzel::detect_DTMF(int freq_1, int freq_2, GoertzelResult& r) {
     auto DTMF_freq = _DTMF_mapping.find({freq_1, freq_2});
 
     if (DTMF_freq != _DTMF_mapping.end()) {
-        //std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
+        // std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
         if (DTMF_freq->second == -1){
             r.garbage_flag = false;
             r.tone_flag = false;
         }
         else{
-            // std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
+            std::cout << "DTMF_Freq found: " << DTMF_freq->second << std::endl;
             r.garbage_flag = false;
             if(r.tone_flag){
                 r.garbage_flag = true;

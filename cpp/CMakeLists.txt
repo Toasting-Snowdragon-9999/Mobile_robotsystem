@@ -28,6 +28,7 @@ endif()
 # Shared sources
 set(SHARED_SOURCES
     src/algorithms/goertzel.cpp
+    src/algorithms/dft.cpp
     src/audio/audio_input.cpp
     src/audio/wave_generator.cpp
     src/communication_protocol/physical_layer.cpp

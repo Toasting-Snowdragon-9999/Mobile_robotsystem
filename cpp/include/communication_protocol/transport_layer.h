@@ -2,7 +2,7 @@
 #define TRANSPORT_LAYER_H
 
 #define NIBBLE_SIZE (4)
-#define mms 32 // (Maximum Segment Size)
+#define mss 32 // (Maximum Segment Size)
 
 #include <string>
 #include <iostream>
@@ -71,7 +71,7 @@ public:
     /// @brief Prints out the number of segments and all segments in the private segment vector
     /// @param vector
     void print_segment_vector(const std::vector<std::string> &vector);
-
+    
     void store_till_length(){
 
     }
