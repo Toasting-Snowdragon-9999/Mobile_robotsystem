@@ -142,7 +142,14 @@ std::string DataLinkLayer::ack_protocol_structure()
     {
         std::cout << "Received_SeqNo: " << received_seq_no << std::endl;
         std::cout << "Previous sequenceNo: " << previous_seq_no << std::endl;
-        ackNo = previous_seq_no;
+        
+        if(previous_seq_no == _seqNo[0]){
+               ackNo = _ackNo[0];
+  
+           } else if (previous_seq_no == _seqNo[1]){
+               ackNo = _ackNo[1];
+  
+           }
 
         std::cout << "ERROR: Package already received previously" << std::endl;
         // return "";
