@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['micsample_42',['MicSample',['../structMicSample.html',1,'']]]
+  ['nibble_5fstuffing_36',['nibble_stuffing',['../classDataLinkLayer.html#ac86dd3e5769103e5586b75b526695f37',1,'DataLinkLayer']]]
 ];

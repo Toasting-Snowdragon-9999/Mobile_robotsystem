@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['physicallayer_99',['PhysicalLayer',['../classPhysicalLayer.html',1,'']]]
+  ['shareddata_86',['SharedData',['../classSharedData.html',1,'']]],
+  ['shareddataexception_87',['SharedDataException',['../classSharedDataException.html',1,'']]],
+  ['signalprocessing_88',['SignalProcessing',['../classSignalProcessing.html',1,'']]]
 ];

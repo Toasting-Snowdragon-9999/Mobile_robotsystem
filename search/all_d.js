@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['testresult_73',['TestResult',['../structTestResult.html',1,'']]],
-  ['timer_74',['Timer',['../classTimer.html',1,'Timer'],['../classTimer.html#a5f16e8da27d2a5a5242dead46de05d97',1,'Timer::Timer()']]],
-  ['tltodll_75',['TlToDll',['../classTlToDll.html',1,'']]],
-  ['translate_5fsignal_5fgoertzel_76',['translate_signal_goertzel',['../classGoertzel.html#af4b90d5c39f303cd395166cb3e125ce9',1,'Goertzel']]],
-  ['transport_5flayer_77',['Transport_Layer',['../classTransport__Layer.html',1,'']]]
+  ['wavegenerator_69',['WaveGenerator',['../classWaveGenerator.html',1,'WaveGenerator'],['../classWaveGenerator.html#ae76d33eef12981de31aaf5af0c57682a',1,'WaveGenerator::WaveGenerator()'],['../classWaveGenerator.html#a965b450ca5280ee0e4e20154e3725435',1,'WaveGenerator::WaveGenerator(std::vector&lt; int &gt; &amp;sequence)'],['../classWaveGenerator.html#ae76d33eef12981de31aaf5af0c57682a',1,'WaveGenerator::WaveGenerator()'],['../classWaveGenerator.html#a3c23741c27d0f6bfb190c966ca9c82c0',1,'WaveGenerator::WaveGenerator(std::vector&lt; int &gt; &amp;sequence, int sample_rate)']]]
 ];

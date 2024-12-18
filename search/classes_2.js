@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fft_93',['FFT',['../classFFT.html',1,'']]]
+  ['goertzel_81',['Goertzel',['../classGoertzel.html',1,'']]],
+  ['goertzelresult_82',['GoertzelResult',['../structGoertzelResult.html',1,'']]]
 ];
