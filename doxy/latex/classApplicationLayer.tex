@@ -1,0 +1,55 @@
+\hypertarget{classApplicationLayer}{}\doxysection{Application\+Layer Class Reference}
+\label{classApplicationLayer}\index{ApplicationLayer@{ApplicationLayer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classApplicationLayer_acec490ede5227c2d5f0045dfb3e1b97f}\label{classApplicationLayer_acec490ede5227c2d5f0045dfb3e1b97f}} 
+void {\bfseries add\+\_\+direction} (const std\+::string \&key, const std\+::string \&value)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_abdbd117160c1099da3554b63debfc37e}\label{classApplicationLayer_abdbd117160c1099da3554b63debfc37e}} 
+bool {\bfseries is\+\_\+value} (const std\+::string \&bits)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_a03b4dc074f9329a96958f1fbced1b8af}\label{classApplicationLayer_a03b4dc074f9329a96958f1fbced1b8af}} 
+bool {\bfseries is\+\_\+direction} (const std\+::string \&bits)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_ae4b97a8822f2943dcff7907d2c2eed1b}\label{classApplicationLayer_ae4b97a8822f2943dcff7907d2c2eed1b}} 
+std\+::string {\bfseries find\+\_\+key} (const std\+::string \&value, const std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \&map)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_af034a26f86e5edc12c9a66642e2adbb3}\label{classApplicationLayer_af034a26f86e5edc12c9a66642e2adbb3}} 
+void {\bfseries add\+\_\+value} (const std\+::string \&key, const std\+::string \&value)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_af1801ef2b0a3ca4babfcfb75250d0a46}\label{classApplicationLayer_af1801ef2b0a3ca4babfcfb75250d0a46}} 
+void {\bfseries add\+\_\+command} (const std\+::string \&key, const std\+::string \&value)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_adbf2a8b892f18f959d3090f705a0a6c7}\label{classApplicationLayer_adbf2a8b892f18f959d3090f705a0a6c7}} 
+std\+::string {\bfseries command\+\_\+to\+\_\+bits} (const \mbox{\hyperlink{structrobot__command}{robot\+\_\+command}} \&input\+\_\+command)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_a9344a204d5760283b39af00a61b9f86a}\label{classApplicationLayer_a9344a204d5760283b39af00a61b9f86a}} 
+std\+::string {\bfseries command\+\_\+vector\+\_\+to\+\_\+bitstream} (std\+::vector$<$ \mbox{\hyperlink{structrobot__command}{robot\+\_\+command}} $>$ \&command\+\_\+vector)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_a07425b1f56910d494402a2b0cb49233f}\label{classApplicationLayer_a07425b1f56910d494402a2b0cb49233f}} 
+std\+::vector$<$ \mbox{\hyperlink{structrobot__command}{robot\+\_\+command}} $>$ {\bfseries bits\+\_\+to\+\_\+commands} (std\+::string input\+\_\+bits)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_a34e3866c492abdb8a8b67ba1a660637e}\label{classApplicationLayer_a34e3866c492abdb8a8b67ba1a660637e}} 
+void {\bfseries print\+\_\+robot\+\_\+commands} (const std\+::vector$<$ \mbox{\hyperlink{structrobot__command}{robot\+\_\+command}} $>$ \&command\+\_\+vector)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_a5f04cff06d3d978ed46725404b6ad8b9}\label{classApplicationLayer_a5f04cff06d3d978ed46725404b6ad8b9}} 
+std\+::string {\bfseries encode\+\_\+message} (const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_aca6662c4a24cad71046f64137652ab0f}\label{classApplicationLayer_aca6662c4a24cad71046f64137652ab0f}} 
+bool {\bfseries is\+\_\+msg\+\_\+correct} (const std\+::string \&msg\+\_\+with\+\_\+crc)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_ab743019a5eb688e2db60ebfc7abfc322}\label{classApplicationLayer_ab743019a5eb688e2db60ebfc7abfc322}} 
+std\+::string {\bfseries remove\+\_\+msg\+\_\+crc} (const std\+::string \&msg\+\_\+with\+\_\+crc)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_aeea31e524b24cce22be82a65ca208c83}\label{classApplicationLayer_aeea31e524b24cce22be82a65ca208c83}} 
+std\+::vector$<$ \mbox{\hyperlink{structrobot__command}{robot\+\_\+command}} $>$ {\bfseries python\+\_\+to\+\_\+cpp} (std\+::vector$<$ std\+::vector$<$ std\+::string $>$$>$ python\+\_\+string)
+\item 
+\mbox{\Hypertarget{classApplicationLayer_ac42ef4e285172058da42c0a06cb0df15}\label{classApplicationLayer_ac42ef4e285172058da42c0a06cb0df15}} 
+std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ {\bfseries cpp\+\_\+to\+\_\+robot} (std\+::vector$<$ \mbox{\hyperlink{structrobot__command}{robot\+\_\+command}} $>$python\+\_\+path)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+cpp/include/communication\+\_\+protocol/application\+\_\+layer.\+h\end{DoxyCompactItemize}

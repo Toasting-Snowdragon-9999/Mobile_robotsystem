@@ -1,0 +1,244 @@
+\hypertarget{classGoertzel}{}\doxysection{Goertzel Class Reference}
+\label{classGoertzel}\index{Goertzel@{Goertzel}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGoertzel_a6d3474ca99574bc3d8aaaa49096ad3da}\label{classGoertzel_a6d3474ca99574bc3d8aaaa49096ad3da}} 
+\mbox{\hyperlink{classGoertzel_a6d3474ca99574bc3d8aaaa49096ad3da}{Goertzel}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classGoertzel}{Goertzel}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGoertzel_a00e7cee021e4dda0723f8a87adacb62c}{Goertzel}} (\mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} \&r, bool hyperx=false, int sample\+\_\+rate=16000)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classGoertzel}{Goertzel}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGoertzel_ae14431b454cd695494a94d5299686a76}{Goertzel}} (bool hyperx=false, int sample\+\_\+rate=16000)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classGoertzel}{Goertzel}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGoertzel_a5d55261d7267064e839ee6fd172c1b97}{Goertzel}} (const std\+::vector$<$ float $>$ data)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classGoertzel}{Goertzel}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGoertzel_a85dd187e41a101de033ecc4ad2f6ed15}\label{classGoertzel_a85dd187e41a101de033ecc4ad2f6ed15}} 
+void \mbox{\hyperlink{classGoertzel_a85dd187e41a101de033ecc4ad2f6ed15}{compute\+\_\+goertzel}} ()
+\begin{DoxyCompactList}\small\item\em Compute the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm and saves the result in the \+\_\+result object and the \+\_\+freq\+\_\+from\+\_\+signals. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGoertzel_a8cdad8691a769aca6cd163d1592d45a8}{read\+\_\+from\+\_\+file}} (const std\+::string \&file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Read the signal data from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGoertzel_af4b90d5c39f303cd395166cb3e125ce9}{translate\+\_\+signal\+\_\+goertzel}} (\mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} \&r)
+\begin{DoxyCompactList}\small\item\em This function is used to compute the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGoertzel_a9a96a0785cf9d419fb3b0ccf4710c77f}{sort}} (std\+::vector$<$ double $>$ \&x, std\+::vector$<$ int $>$ \&y)
+\begin{DoxyCompactList}\small\item\em This function using bubble sort to sort the frequencies and amplitudes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGoertzel_a6c8900f5db1db2e8313a36dc24d4b9bd}{detect\+\_\+\+DTMF}} (int freq\+\_\+1, int freq\+\_\+2, \mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} \&r)
+\begin{DoxyCompactList}\small\item\em This function is used to detect the DTMF tones, it will map two freq to a DTMF tone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGoertzel_a3d467b5a30ee10326de20b35d2bf5752}{load\+\_\+data}} (const std\+::vector$<$ float $>$ \&data)
+\begin{DoxyCompactList}\small\item\em This function is used to load the data into the \+\_\+data vector. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classGoertzel_a5b9aa7482060241d0f59cfc80756d98c}{get\+\_\+message\+\_\+vec}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to return the result of the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGoertzel_a5e7264ad2880ac16acd2a3f741339276}{detect\+\_\+bit}} (std\+::string start\+\_\+stop, int dtmf\+\_\+tone)
+\begin{DoxyCompactList}\small\item\em This function is used to detect if the tone is start, stop or escape. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGoertzel_ab7a5b6b3ae0fb8286a76ec60d9987d41}{save\+\_\+to\+\_\+json}} (const int \&key)
+\begin{DoxyCompactList}\small\item\em This function is used to save the result of the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm to a json file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGoertzel_a2203cec03ee219578ee98c9df5b3b6f4}{generate\+\_\+json\+\_\+string}} (const int \&key)
+\begin{DoxyCompactList}\small\item\em This function is used to generate a json string from the result of the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGoertzel_a00e7cee021e4dda0723f8a87adacb62c}\label{classGoertzel_a00e7cee021e4dda0723f8a87adacb62c}} 
+\index{Goertzel@{Goertzel}!Goertzel@{Goertzel}}
+\index{Goertzel@{Goertzel}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{Goertzel()}{Goertzel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Goertzel\+::\+Goertzel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} \&}]{r,  }\item[{bool}]{hyperx = {\ttfamily false},  }\item[{int}]{sample\+\_\+rate = {\ttfamily 16000} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classGoertzel}{Goertzel}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The \mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} object \\
+\hline
+{\em hyperx} & The flag to indicate if the signal is captured from a HyperX Quadcast microphone, this changes the threshholds \\
+\hline
+{\em sample\+\_\+rate} & The sample rate of the signal \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGoertzel_ae14431b454cd695494a94d5299686a76}\label{classGoertzel_ae14431b454cd695494a94d5299686a76}} 
+\index{Goertzel@{Goertzel}!Goertzel@{Goertzel}}
+\index{Goertzel@{Goertzel}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{Goertzel()}{Goertzel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Goertzel\+::\+Goertzel (\begin{DoxyParamCaption}\item[{bool}]{hyperx = {\ttfamily false},  }\item[{int}]{sample\+\_\+rate = {\ttfamily 16000} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classGoertzel}{Goertzel}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hyperx} & The flag to indicate if the signal is captured from a HyperX Quadcast microphone, this changes the threshholds \\
+\hline
+{\em sample\+\_\+rate} & The sample rate of the signal \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGoertzel_a5d55261d7267064e839ee6fd172c1b97}\label{classGoertzel_a5d55261d7267064e839ee6fd172c1b97}} 
+\index{Goertzel@{Goertzel}!Goertzel@{Goertzel}}
+\index{Goertzel@{Goertzel}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{Goertzel()}{Goertzel()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Goertzel\+::\+Goertzel (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ float $>$}]{data }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classGoertzel}{Goertzel}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The signal data \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGoertzel_a5e7264ad2880ac16acd2a3f741339276}\label{classGoertzel_a5e7264ad2880ac16acd2a3f741339276}} 
+\index{Goertzel@{Goertzel}!detect\_bit@{detect\_bit}}
+\index{detect\_bit@{detect\_bit}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{detect\_bit()}{detect\_bit()}}
+{\footnotesize\ttfamily bool Goertzel\+::detect\+\_\+bit (\begin{DoxyParamCaption}\item[{std\+::string}]{start\+\_\+stop,  }\item[{int}]{dtmf\+\_\+tone }\end{DoxyParamCaption})}
+
+
+
+This function is used to detect if the tone is start, stop or escape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+stop} & The tone to detect \\
+\hline
+{\em dtmf\+\_\+tone} & The DTMF tone to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean value weather the tone was detected 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGoertzel_a6c8900f5db1db2e8313a36dc24d4b9bd}\label{classGoertzel_a6c8900f5db1db2e8313a36dc24d4b9bd}} 
+\index{Goertzel@{Goertzel}!detect\_DTMF@{detect\_DTMF}}
+\index{detect\_DTMF@{detect\_DTMF}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{detect\_DTMF()}{detect\_DTMF()}}
+{\footnotesize\ttfamily void Goertzel\+::detect\+\_\+\+DTMF (\begin{DoxyParamCaption}\item[{int}]{freq\+\_\+1,  }\item[{int}]{freq\+\_\+2,  }\item[{\mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} \&}]{r }\end{DoxyParamCaption})}
+
+
+
+This function is used to detect the DTMF tones, it will map two freq to a DTMF tone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em freq\+\_\+1} & The first frequency \\
+\hline
+{\em freq\+\_\+2} & The second frequency \\
+\hline
+{\em r} & The \mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} object to store the result \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGoertzel_a2203cec03ee219578ee98c9df5b3b6f4}\label{classGoertzel_a2203cec03ee219578ee98c9df5b3b6f4}} 
+\index{Goertzel@{Goertzel}!generate\_json\_string@{generate\_json\_string}}
+\index{generate\_json\_string@{generate\_json\_string}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{generate\_json\_string()}{generate\_json\_string()}}
+{\footnotesize\ttfamily std\+::string Goertzel\+::generate\+\_\+json\+\_\+string (\begin{DoxyParamCaption}\item[{const int \&}]{key }\end{DoxyParamCaption})}
+
+
+
+This function is used to generate a json string from the result of the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to save the json file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string The json string to be saved 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGoertzel_a5b9aa7482060241d0f59cfc80756d98c}\label{classGoertzel_a5b9aa7482060241d0f59cfc80756d98c}} 
+\index{Goertzel@{Goertzel}!get\_message\_vec@{get\_message\_vec}}
+\index{get\_message\_vec@{get\_message\_vec}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{get\_message\_vec()}{get\_message\_vec()}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Goertzel\+::get\+\_\+message\+\_\+vec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to return the result of the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} The result of the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGoertzel_a3d467b5a30ee10326de20b35d2bf5752}\label{classGoertzel_a3d467b5a30ee10326de20b35d2bf5752}} 
+\index{Goertzel@{Goertzel}!load\_data@{load\_data}}
+\index{load\_data@{load\_data}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{load\_data()}{load\_data()}}
+{\footnotesize\ttfamily void Goertzel\+::load\+\_\+data (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ float $>$ \&}]{data }\end{DoxyParamCaption})}
+
+
+
+This function is used to load the data into the \+\_\+data vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The signal data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGoertzel_a8cdad8691a769aca6cd163d1592d45a8}\label{classGoertzel_a8cdad8691a769aca6cd163d1592d45a8}} 
+\index{Goertzel@{Goertzel}!read\_from\_file@{read\_from\_file}}
+\index{read\_from\_file@{read\_from\_file}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{read\_from\_file()}{read\_from\_file()}}
+{\footnotesize\ttfamily void Goertzel\+::read\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Read the signal data from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & The name of the file to read from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGoertzel_ab7a5b6b3ae0fb8286a76ec60d9987d41}\label{classGoertzel_ab7a5b6b3ae0fb8286a76ec60d9987d41}} 
+\index{Goertzel@{Goertzel}!save\_to\_json@{save\_to\_json}}
+\index{save\_to\_json@{save\_to\_json}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{save\_to\_json()}{save\_to\_json()}}
+{\footnotesize\ttfamily void Goertzel\+::save\+\_\+to\+\_\+json (\begin{DoxyParamCaption}\item[{const int \&}]{key }\end{DoxyParamCaption})}
+
+
+
+This function is used to save the result of the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm to a json file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to save the json file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGoertzel_a9a96a0785cf9d419fb3b0ccf4710c77f}\label{classGoertzel_a9a96a0785cf9d419fb3b0ccf4710c77f}} 
+\index{Goertzel@{Goertzel}!sort@{sort}}
+\index{sort@{sort}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{sort()}{sort()}}
+{\footnotesize\ttfamily void Goertzel\+::sort (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{x,  }\item[{std\+::vector$<$ int $>$ \&}]{y }\end{DoxyParamCaption})}
+
+
+
+This function using bubble sort to sort the frequencies and amplitudes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The frequencies of the signal \\
+\hline
+{\em y} & The index of the frequencies \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGoertzel_af4b90d5c39f303cd395166cb3e125ce9}\label{classGoertzel_af4b90d5c39f303cd395166cb3e125ce9}} 
+\index{Goertzel@{Goertzel}!translate\_signal\_goertzel@{translate\_signal\_goertzel}}
+\index{translate\_signal\_goertzel@{translate\_signal\_goertzel}!Goertzel@{Goertzel}}
+\doxysubsubsection{\texorpdfstring{translate\_signal\_goertzel()}{translate\_signal\_goertzel()}}
+{\footnotesize\ttfamily void Goertzel\+::translate\+\_\+signal\+\_\+goertzel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} \&}]{r }\end{DoxyParamCaption})}
+
+
+
+This function is used to compute the \mbox{\hyperlink{classGoertzel}{Goertzel}} algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & A \mbox{\hyperlink{structGoertzelResult}{Goertzel\+Result}} object to store the result \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+cpp/include/algorithms/goertzel.\+h\end{DoxyCompactItemize}
